@@ -221,7 +221,7 @@ function App() {
           {activeTab === 'alerts' && (
             <div>
               <div style={{ marginBottom: '2rem' }}>
-                <h1 style={{ fontSize: '28px', fontWeight: 700', marginBottom: '1rem', color: '#1b2817' }}>
+                <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '1rem', color: '#1b2817' }}>
                   All Alerts
                 </h1>
 
@@ -292,7 +292,7 @@ function App() {
           {/* Inventory Tab */}
           {activeTab === 'inventory' && (
             <div>
-              <h1 style={{ fontSize: '28px', fontWeight: 700', marginBottom: '2rem', color: '#1b2817' }}>
+              <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '2rem', color: '#1b2817' }}>
                 Inventory Search
               </h1>
               <InventoryTable skus={inventory} />
@@ -302,7 +302,7 @@ function App() {
           {/* Factories Tab */}
           {activeTab === 'factories' && (
             <div>
-              <h1 style={{ fontSize: '28px', fontWeight: 700', marginBottom: '2rem', color: '#1b2817' }}>
+              <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '2rem', color: '#1b2817' }}>
                 Factory Configuration
               </h1>
               <FactoryGrid factories={factories} factoryEmails={{}} />
