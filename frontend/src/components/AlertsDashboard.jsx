@@ -1,7 +1,9 @@
-import React from 'react'
-import { AlertTriangle, TrendingDown } from 'lucide-react'
+import React, { useState } from 'react'
+import { AlertTriangle, TrendingDown, Download } from 'lucide-react'
 
 function AlertsDashboard({ alerts, factory }) {
+  const [downloading, setDownloading] = useState(false)
+
   const sortedAlerts = [...alerts].sort((a, b) => {
     if (a.priority === 'critical' && b.priority !== 'critical') return -1
     if (a.priority !== 'critical' && b.priority === 'critical') return 1
@@ -10,6 +12,38 @@ function AlertsDashboard({ alerts, factory }) {
 
   const criticalCount = alerts.filter(a => a.priority === 'critical').length
   const warningCount = alerts.filter(a => a.priority === 'warning').length
+
+  const handleDownloadWord = async () => {
+    setDownloading(true)
+    try {
+      const response = await fetch('/api/generateWord', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          factory: factory?.name || 'Unknown',
+          alerts: sortedAlerts,
+          mosThreshold: factory?.mosThreshold || 1.5
+        })
+      })
+
+      if (!response.ok) throw new Error('Download failed')
+
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `Weekly_Low_SKU_Alert_${factory?.name || 'Alerts'}_${new Date().toISOString().split('T')[0]}.docx`
+      document.body.appendChild(a)
+      a.click()
+      window.URL.revokeObjectURL(url)
+      document.body.removeChild(a)
+    } catch (error) {
+      console.error('Word download error:', error)
+      alert('Failed to download Word document')
+    } finally {
+      setDownloading(false)
+    }
+  }
 
   if (alerts.length === 0) {
     return (
@@ -66,6 +100,34 @@ function AlertsDashboard({ alerts, factory }) {
             SKUs below threshold
           </div>
         </div>
+      </div>
+
+      {/* Download Button */}
+      <div style={{ marginBottom: '1.5rem' }}>
+        <button
+          onClick={handleDownloadWord}
+          disabled={downloading}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.75rem 1.5rem',
+            background: '#2d5016',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            fontSize: '14px',
+            fontWeight: 600,
+            cursor: downloading ? 'not-allowed' : 'pointer',
+            opacity: downloading ? 0.6 : 1,
+            transition: 'all 0.2s'
+          }}
+          onMouseEnter={(e) => !downloading && (e.currentTarget.style.background = '#1b2817')}
+          onMouseLeave={(e) => !downloading && (e.currentTarget.style.background = '#2d5016')}
+        >
+          <Download size={16} />
+          {downloading ? 'Generating Word Document...' : 'Download as Word Document'}
+        </button>
       </div>
 
       {/* Alerts Table */}
