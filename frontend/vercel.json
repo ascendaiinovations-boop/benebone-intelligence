@@ -1,9 +1,11 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "buildCache": {
+    "files": []
+  },
   "env": {
-    "VITE_API_URL": "@vite_api_url",
-    "FORCE_REBUILD": "2026-09-11-18-47"
+    "VITE_FORCE_REBUILD": "2026-09-11-2220"
   },
   "functions": {
     "api/**/*.js": {
