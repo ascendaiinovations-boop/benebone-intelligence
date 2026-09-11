@@ -1,47 +1,16 @@
-// Force rebuild 1789164939
 import React, { useState, useEffect } from 'react'
-import {
-  AlertTriangle, Gauge, Package, Truck, Users, TrendingDown, Download, Send, Menu, X, Filter, RefreshCw
-} from 'lucide-react'
+import { Download, Menu, X } from 'lucide-react'
 import Header from './components/Header'
-import FactoryGrid from './components/FactoryGrid'
-import AlertsDashboard from './components/AlertsDashboard'
 import InventoryTable from './components/InventoryTable'
-import DataImport from './components/DataImport'
-
-const factories = [
-  { id: 'aim', name: 'AIM', color: '#2d5016', light: '#e8f0e2', mosThreshold: 1.5 },
-  { id: 'midbury', name: 'Midbury', color: '#3a7d44', light: '#e8f5e1', mosThreshold: 2.0 },
-  { id: 'ltm', name: 'LTM', color: '#3a7d44', light: '#e8f5e1', mosThreshold: 2.0 },
-  { id: '201', name: '201', color: '#3a7d44', light: '#e8f5e1', mosThreshold: 2.0 },
-  { id: 'bennett', name: 'Bennett', color: '#3a7d44', light: '#e8f5e1', mosThreshold: 2.0 },
-  { id: 'dmg', name: 'DMG', color: '#3a7d44', light: '#e8f5e1', mosThreshold: 2.0 },
-  { id: 'coltoys', name: 'Coltoys', color: '#3a7d44', light: '#e8f5e1', mosThreshold: 2.0 },
-  { id: 'lovingpets', name: 'Loving Pets', color: '#3a7d44', light: '#e8f5e1', mosThreshold: 2.0 }
-]
 
 function App() {
-  const [activeTab, setActiveTab] = useState('overview')
-  const [selectedFactory, setSelectedFactory] = useState(null)
   const [inventory, setInventory] = useState([])
-  const [alerts, setAlerts] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(true)
-  const [filterType, setFilterType] = useState('all')
-  const [importedAlerts, setImportedAlerts] = useState(null)
-  const [showSettings, setShowSettings] = useState(false)
+  const [downloading, setDownloading] = useState(false)
 
   useEffect(() => {
     loadInventoryData()
-    // Check for previously imported data
-    const saved = localStorage.getItem('benebone_imported_alerts')
-    if (saved) {
-      try {
-        setImportedAlerts(JSON.parse(saved))
-      } catch (e) {
-        console.error('Failed to load saved alerts:', e)
-      }
-    }
   }, [])
 
   const loadInventoryData = async () => {
@@ -50,7 +19,6 @@ function App() {
       const response = await fetch('/api/inventory')
       const data = await response.json()
       setInventory(data.skus || [])
-      setAlerts(data.alerts || [])
     } catch (error) {
       console.error('Error loading inventory:', error)
     } finally {
@@ -58,28 +26,52 @@ function App() {
     }
   }
 
-  const handleDataImported = (importedData) => {
-    setImportedAlerts(importedData)
-    localStorage.setItem('benebone_imported_alerts', JSON.stringify(importedData))
-    setActiveTab('alerts')
-  }
+  const downloadAsWord = async () => {
+    setDownloading(true)
+    try {
+      const timestamp = new Date().toLocaleString()
+      const date = new Date().toISOString().split('T')[0]
 
-  // Use imported data if available, otherwise use mock/API data
-  const currentAlerts = importedAlerts || alerts
+      let tableRows = '<w:tr><w:trPr><w:trHeight w:val="360" w:type="auto"/></w:trPr>'
+      tableRows += '<w:tc><w:p><w:pPr><w:pStyle w:val="TableHeader"/></w:pPr><w:r><w:rPr><w:b/></w:rPr><w:t>SKU</w:t></w:r></w:p></w:tc>'
+      tableRows += '<w:tc><w:p><w:pPr><w:pStyle w:val="TableHeader"/></w:pPr><w:r><w:rPr><w:b/></w:rPr><w:t>Description</w:t></w:r></w:p></w:tc>'
+      tableRows += '<w:tc><w:p><w:pPr><w:pStyle w:val="TableHeader"/></w:pPr><w:r><w:rPr><w:b/></w:rPr><w:t>OnHand</w:t></w:r></w:p></w:tc>'
+      tableRows += '<w:tc><w:p><w:pPr><w:pStyle w:val="TableHeader"/></w:pPr><w:r><w:rPr><w:b/></w:rPr><w:t>CasePack</w:t></w:r></w:p></w:tc></w:tr>'
 
-  const filteredAlerts = selectedFactory
-    ? currentAlerts.filter(a => a.factory === selectedFactory)
-    : currentAlerts.filter(a => {
-        if (filterType === 'critical') return a.priority === 'critical'
-        if (filterType === 'warning') return a.priority === 'warning'
-        return true
+      inventory.forEach(item => {
+        tableRows += '<w:tr>'
+        tableRows += '<w:tc><w:p><w:r><w:t>' + (item.sku || '') + '</w:t></w:r></w:p></w:tc>'
+        tableRows += '<w:tc><w:p><w:r><w:t>' + (item.description || '') + '</w:t></w:r></w:p></w:tc>'
+        tableRows += '<w:tc><w:p><w:r><w:t>' + (item.available || '') + '</w:t></w:r></w:p></w:tc>'
+        tableRows += '<w:tc><w:p><w:r><w:t>' + (item.casePack || '') + '</w:t></w:r></w:p></w:tc>'
+        tableRows += '</w:tr>'
       })
+
+      const wordXml = '<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="32"/></w:rPr><w:t>Benebone Inventory Report</w:t></w:r></w:p><w:p><w:r><w:t>Generated: ' + timestamp + '</w:t></w:r></w:p><w:p><w:r><w:t>Total SKUs: ' + inventory.length + '</w:t></w:r></w:p><w:p><w:r><w:t></w:t></w:r></w:p><w:tbl><w:tblPr><w:tblW w:w="5000" w:type="auto"/><w:tblBorders><w:top w:val="single" w:sz="12" w:space="0" w:color="000000"/><w:left w:val="single" w:sz="12" w:space="0" w:color="000000"/><w:bottom w:val="single" w:sz="12" w:space="0" w:color="000000"/><w:right w:val="single" w:sz="12" w:space="0" w:color="000000"/><w:insideH w:val="single" w:sz="12" w:space="0" w:color="000000"/><w:insideV w:val="single" w:sz="12" w:space="0" w:color="000000"/></w:tblBorders></w:tblPr>' + tableRows + '</w:tbl></w:body></w:document>'
+
+      const blob = new Blob([wordXml], {
+        type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      })
+      
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'Benebone_Inventory_' + date + '.docx'
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+    } catch (error) {
+      alert('Error downloading document: ' + error.message)
+    } finally {
+      setDownloading(false)
+    }
+  }
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#f9fafb' }}>
-      {/* Sidebar */}
       <div style={{
-        width: sidebarOpen ? '280px' : '0',
+        width: sidebarOpen ? '200px' : '0',
         background: '#1b2817',
         color: 'white',
         padding: sidebarOpen ? '1.5rem' : '0',
@@ -88,279 +80,95 @@ function App() {
         borderRight: '1px solid #333'
       }}>
         <div style={{ marginBottom: '2rem' }}>
-          <h2 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '2rem' }}>
-            Navigation
-          </h2>
-          {[
-            { id: 'overview', label: 'Overview', icon: Gauge },
-            { id: 'alerts', label: 'Alerts', icon: AlertTriangle },
-            { id: 'inventory', label: 'Inventory', icon: Package },
-            { id: 'factories', label: 'Factories', icon: Truck },
-          ].map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => {
-                setActiveTab(tab.id)
-                setShowSettings(false)
-                setSelectedFactory(null)
-              }}
-              style={{
-                width: '100%',
-                padding: '0.75rem 1rem',
-                background: activeTab === tab.id ? '#2d5016' : 'transparent',
-                color: 'white',
-                border: 'none',
-                borderRadius: '6px',
-                fontSize: '14px',
-                cursor: 'pointer',
-                textAlign: 'left',
-                marginBottom: '0.5rem',
-                transition: 'all 0.2s'
-              }}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        <div style={{
-          paddingTop: '2rem',
-          borderTop: '1px solid #333'
-        }}>
+          <h2 style={{ fontSize: '14px', fontWeight: 700, marginBottom: '1rem' }}>Benebone</h2>
           <button
-            onClick={() => setShowSettings(!showSettings)}
+            onClick={() => setSidebarOpen(false)}
             style={{
-              width: '100%',
-              padding: '0.75rem 1rem',
-              background: showSettings ? '#2d5016' : 'transparent',
-              color: 'white',
+              background: 'none',
               border: 'none',
-              borderRadius: '6px',
-              fontSize: '14px',
+              color: 'white',
               cursor: 'pointer',
-              textAlign: 'left'
+              fontSize: '18px'
             }}
           >
-            ⚙️ Data Import
+            <X size={18} />
           </button>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div style={{ flex: 1, overflow: 'auto' }}>
-        <Header
-          sidebarOpen={sidebarOpen}
-          onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
-          importedCount={importedAlerts ? importedAlerts.length : 0}
-        />
-
-        <div style={{ padding: '2rem' }}>
-          {/* Data Import Section */}
-          {showSettings && (
-            <div style={{ marginBottom: '2rem' }}>
-              <DataImport onDataImported={handleDataImported} />
-              {importedAlerts && (
-                <div style={{
-                  background: '#dcfce7',
-                  border: '1px solid #86efac',
-                  borderRadius: '6px',
-                  padding: '1rem',
-                  marginTop: '1rem'
-                }}>
-                  <p style={{ color: '#15803d', fontWeight: 600 }}>
-                    ✅ Using {importedAlerts.length} imported alerts
-                  </p>
-                  <button
-                    onClick={() => {
-                      setImportedAlerts(null)
-                      localStorage.removeItem('benebone_imported_alerts')
-                    }}
-                    style={{
-                      marginTop: '0.75rem',
-                      padding: '0.5rem 1rem',
-                      background: '#dc2626',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '4px',
-                      fontSize: '12px',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    Clear Imported Data
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Overview Tab */}
-          {activeTab === 'overview' && (
-            <div>
-              <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '2rem', color: '#1b2817' }}>
-                Benebone Inventory Intelligence
-              </h1>
-              
-              {importedAlerts && (
-                <div style={{
-                  background: '#dcfce7',
-                  border: '1px solid #86efac',
-                  borderRadius: '6px',
-                  padding: '1rem',
-                  marginBottom: '2rem'
-                }}>
-                  <p style={{ color: '#15803d', fontWeight: 600 }}>
-                    📊 Displaying real data: {importedAlerts.length} alerts imported
-                  </p>
-                </div>
-              )}
-
-              <FactoryGrid factories={factories} factoryEmails={{}} />
-            </div>
-          )}
-
-          {/* Alerts Tab */}
-          {activeTab === 'alerts' && (
-            <div>
-              <div style={{ marginBottom: '2rem' }}>
-                <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '1rem', color: '#1b2817' }}>
-                  All Alerts
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <Header />
+        
+        <div style={{ padding: '2rem', flex: 1 }}>
+          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+            <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '0.5rem', color: '#1b2817' }}>
+                  Inventory
                 </h1>
-
-                {importedAlerts && (
-                  <div style={{
-                    background: '#dcfce7',
-                    border: '1px solid #86efac',
-                    borderRadius: '6px',
-                    padding: '1rem',
-                    marginBottom: '1rem'
-                  }}>
-                    <p style={{ color: '#15803d', fontWeight: 600 }}>
-                      ✅ Using {importedAlerts.length} real imported alerts
-                    </p>
-                  </div>
-                )}
-
-                {/* Download Word Document Button */}
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <button
-                    onClick={async () => {
-                      try {
-                        const response = await fetch('/api/generateWord', {
-                          method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
-                          body: JSON.stringify({
-                            factory: selectedFactory || 'All',
-                            alerts: filteredAlerts,
-                            mosThreshold: factories.find(f => f.id === selectedFactory)?.mosThreshold || 1.5
-                          })
-                        })
-                        if (!response.ok) throw new Error('Download failed')
-                        const blob = await response.blob()
-                        const url = window.URL.createObjectURL(blob)
-                        const a = document.createElement('a')
-                        a.href = url
-                        a.download = `Weekly_Low_SKU_Alert_${selectedFactory || 'All'}_${new Date().toISOString().split('T')[0]}.docx`
-                        document.body.appendChild(a)
-                        a.click()
-                        window.URL.revokeObjectURL(url)
-                        document.body.removeChild(a)
-                      } catch (error) {
-                        alert('Failed to download Word document: ' + error.message)
-                      }
-                    }}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                      padding: '0.75rem 1.5rem',
-                      background: '#2d5016',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '6px',
-                      fontSize: '14px',
-                      fontWeight: 600,
-                      cursor: 'pointer',
-                      transition: 'all 0.2s'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = '#1b2817'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = '#2d5016'}
-                  >
-                    <span style={{ fontSize: '16px' }}>📄</span>
-                    Download as Word Document
-                  </button>
-                </div>
-
-                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
-                  <button
-                    onClick={() => setFilterType('all')}
-                    style={{
-                      padding: '0.5rem 1rem',
-                      background: filterType === 'all' ? '#2d5016' : '#f0f0f0',
-                      color: filterType === 'all' ? 'white' : '#666',
-                      border: 'none',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                      fontSize: '14px'
-                    }}
-                  >
-                    All ({filteredAlerts.length})
-                  </button>
-                  <button
-                    onClick={() => setFilterType('critical')}
-                    style={{
-                      padding: '0.5rem 1rem',
-                      background: filterType === 'critical' ? '#dc2626' : '#f0f0f0',
-                      color: filterType === 'critical' ? 'white' : '#666',
-                      border: 'none',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                      fontSize: '14px'
-                    }}
-                  >
-                    Critical ({filteredAlerts.filter(a => a.priority === 'critical').length})
-                  </button>
-                  <button
-                    onClick={() => setFilterType('warning')}
-                    style={{
-                      padding: '0.5rem 1rem',
-                      background: filterType === 'warning' ? '#f59e0b' : '#f0f0f0',
-                      color: filterType === 'warning' ? 'white' : '#666',
-                      border: 'none',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                      fontSize: '14px'
-                    }}
-                  >
-                    Warning ({filteredAlerts.filter(a => a.priority === 'warning').length})
-                  </button>
-                </div>
+                <p style={{ color: '#666', fontSize: '14px' }}>{inventory.length} SKUs</p>
               </div>
-
-              <AlertsDashboard alerts={filteredAlerts} factory={null} />
+              <button
+                onClick={downloadAsWord}
+                disabled={downloading || loading || inventory.length === 0}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.75rem 1.5rem',
+                  background: '#2d5016',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  cursor: downloading ? 'not-allowed' : 'pointer',
+                  opacity: downloading ? 0.6 : 1
+                }}
+              >
+                <Download size={16} />
+                {downloading ? 'Downloading...' : 'Download as Word'}
+              </button>
             </div>
-          )}
 
-          {/* Inventory Tab */}
-          {activeTab === 'inventory' && (
-            <div>
-              <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '2rem', color: '#1b2817' }}>
-                Inventory Search
-              </h1>
+            {loading ? (
+              <div style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>
+                Loading inventory...
+              </div>
+            ) : inventory.length > 0 ? (
               <InventoryTable skus={inventory} />
-            </div>
-          )}
-
-          {/* Factories Tab */}
-          {activeTab === 'factories' && (
-            <div>
-              <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '2rem', color: '#1b2817' }}>
-                Factory Configuration
-              </h1>
-              <FactoryGrid factories={factories} factoryEmails={{}} />
-            </div>
-          )}
+            ) : (
+              <div style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>
+                No inventory data available
+              </div>
+            )}
+          </div>
         </div>
       </div>
+
+      {!sidebarOpen && (
+        <button
+          onClick={() => setSidebarOpen(true)}
+          style={{
+            position: 'fixed',
+            bottom: '2rem',
+            left: '2rem',
+            background: '#2d5016',
+            color: 'white',
+            border: 'none',
+            borderRadius: '50%',
+            width: '50px',
+            height: '50px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+          }}
+        >
+          <Menu size={24} />
+        </button>
+      )}
     </div>
   )
 }
