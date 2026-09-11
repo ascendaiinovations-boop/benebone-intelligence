@@ -24,7 +24,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
             alignItems: 'center'
           }}
         >
-          {sidebarOpen ? &lt;X size={20} /&gt; : &lt;Menu size={20} /&gt;}
+          {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
         <div>
           <h1 style={{ fontSize: '18px', fontWeight: 700, color: '#1b2817', margin: 0 }}>

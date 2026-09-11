@@ -84,8 +84,8 @@ function App() {
       })
     })
     return newAlerts.sort((a, b) => {
-      if (a.priority === 'critical' &amp;&amp; b.priority !== 'critical') return -1
-      if (a.priority !== 'critical' &amp;&amp; b.priority === 'critical') return 1
+      if (a.priority === 'critical' && b.priority !== 'critical') return -1
+      if (a.priority !== 'critical' && b.priority === 'critical') return 1
       return a.mos - b.mos
     })
   }
@@ -217,7 +217,7 @@ function App() {
 
         {/* Content Area */}
         <div style={{ flex: 1, overflowY: 'auto', padding: '2rem' }}>
-          {activeTab === 'overview' &amp;&amp; (
+          {activeTab === 'overview' && (
             <div>
               <div style={{ marginBottom: '2rem' }}>
                 <h1 style={{ fontSize: '28px', fontWeight: 700, color: '#1b2817', marginBottom: '0.5rem' }}>
@@ -285,7 +285,7 @@ function App() {
                 ))}
               </div>
 
-              {selectedFactory &amp;&amp; (
+              {selectedFactory && (
                 <div style={{
                   background: 'white',
                   borderRadius: '8px',
@@ -348,7 +348,7 @@ function App() {
             </div>
           )}
 
-          {activeTab === 'alerts' &amp;&amp; (
+          {activeTab === 'alerts' && (
             <div>
               <div style={{ marginBottom: '2rem' }}>
                 <h1 style={{ fontSize: '28px', fontWeight: 700, color: '#1b2817', marginBottom: '1rem' }}>
@@ -359,7 +359,7 @@ function App() {
             </div>
           )}
 
-          {activeTab === 'inventory' &amp;&amp; (
+          {activeTab === 'inventory' && (
             <div>
               <div style={{ marginBottom: '2rem' }}>
                 <h1 style={{ fontSize: '28px', fontWeight: 700, color: '#1b2817', marginBottom: '1rem' }}>
@@ -370,7 +370,7 @@ function App() {
             </div>
           )}
 
-          {activeTab === 'factories' &amp;&amp; (
+          {activeTab === 'factories' && (
             <div>
               <div style={{ marginBottom: '2rem' }}>
                 <h1 style={{ fontSize: '28px', fontWeight: 700, color: '#1b2817', marginBottom: '1rem' }}>
@@ -399,7 +399,7 @@ const generateMockAlerts = (inventory) => {
   const mockAlerts = []
   inventory.forEach(sku => {
     factories.forEach(factory => {
-      if (sku.mos &lt;= factory.mosThreshold) {
+      if (sku.mos <= factory.mosThreshold) {
         mockAlerts.push({
           id: `${sku.sku}-${factory.id}`,
           sku: sku.sku,
@@ -411,7 +411,7 @@ const generateMockAlerts = (inventory) => {
           onHand: sku.available,
           avgMonthlySales: sku.avgMonthlySales,
           amountToReachSS: sku.amountToReachSS,
-          priority: sku.mos &lt; 1 ? 'critical' : 'warning',
+          priority: sku.mos < 1 ? 'critical' : 'warning',
           segmentBand: sku.segmentBand
         })
       }

@@ -18,7 +18,7 @@ function InventoryTable({ inventory }) {
   })
 
   return (
-    &lt;div&gt;
+    <div>
       {/* Search Bar */}
       <div style={{
         background: 'white',
@@ -26,8 +26,8 @@ function InventoryTable({ inventory }) {
         padding: '1.5rem',
         marginBottom: '1.5rem',
         boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
-      }}&gt;
-        <div style={{ position: 'relative' }}&gt;
+      }}>
+        <div style={{ position: 'relative' }}>
           <Search size={18} style={{
             position: 'absolute',
             left: '1rem',
@@ -58,15 +58,15 @@ function InventoryTable({ inventory }) {
         borderRadius: '8px',
         boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
         overflow: 'hidden'
-      }}&gt;
-        <div style={{ overflowX: 'auto' }}&gt;
+      }}>
+        <div style={{ overflowX: 'auto' }}>
           <table style={{
             width: '100%',
             borderCollapse: 'collapse',
             fontSize: '13px'
-          }}&gt;
+          }}>
             <thead>
-              <tr style={{ background: '#f9fafb', borderBottom: '2px solid #e5e7eb' }}&gt;
+              <tr style={{ background: '#f9fafb', borderBottom: '2px solid #e5e7eb' }}>
                 <th
                   onClick={() => setSortColumn('sku')}
                   style={{
@@ -78,7 +78,7 @@ function InventoryTable({ inventory }) {
                     userSelect: 'none'
                   }}
                 >
-                  SKU {sortColumn === 'sku' &amp;&amp; '↓'}
+                  SKU {sortColumn === 'sku' && '↓'}
                 </th>
                 <th style={{ padding: '0.75rem 1rem', textAlign: 'left', fontWeight: 600, color: '#666' }}>
                   Description
@@ -94,7 +94,7 @@ function InventoryTable({ inventory }) {
                     userSelect: 'none'
                   }}
                 >
-                  On Hand {sortColumn === 'available' &amp;&amp; '↓'}
+                  On Hand {sortColumn === 'available' && '↓'}
                 </th>
                 <th style={{ padding: '0.75rem 1rem', textAlign: 'center', fontWeight: 600, color: '#666' }}>
                   Case Pack
@@ -116,7 +116,7 @@ function InventoryTable({ inventory }) {
                     userSelect: 'none'
                   }}
                 >
-                  MOS {sortColumn === 'mos' &amp;&amp; '↓'}
+                  MOS {sortColumn === 'mos' && '↓'}
                 </th>
               </tr>
             </thead>
@@ -163,9 +163,9 @@ function InventoryTable({ inventory }) {
                         fontSize: '14px',
                         padding: '0.25rem 0.5rem',
                         borderRadius: '4px',
-                        background: item.mos &lt; 1 ? '#fee2e2' : item.mos &lt; 2 ? '#fef3c7' : '#f0fdf4',
-                        color: item.mos &lt; 1 ? '#dc2626' : item.mos &lt; 2 ? '#f59e0b' : '#22c55e'
-                      }}&gt;
+                        background: item.mos < 1 ? '#fee2e2' : item.mos < 2 ? '#fef3c7' : '#f0fdf4',
+                        color: item.mos < 1 ? '#dc2626' : item.mos < 2 ? '#f59e0b' : '#22c55e'
+                      }}>
                         {item.mos.toFixed(2)}
                       </span>
                     </td>
@@ -176,7 +176,7 @@ function InventoryTable({ inventory }) {
           </table>
         </div>
       </div>
-    &lt;/div&gt;
+    </div>
   )
 }
 

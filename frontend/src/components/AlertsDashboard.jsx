@@ -3,8 +3,8 @@ import { AlertTriangle, TrendingDown } from 'lucide-react'
 
 function AlertsDashboard({ alerts, factory }) {
   const sortedAlerts = [...alerts].sort((a, b) => {
-    if (a.priority === 'critical' &amp;&amp; b.priority !== 'critical') return -1
-    if (a.priority !== 'critical' &amp;&amp; b.priority === 'critical') return 1
+    if (a.priority === 'critical' && b.priority !== 'critical') return -1
+    if (a.priority !== 'critical' && b.priority === 'critical') return 1
     return a.mos - b.mos
   })
 
@@ -13,33 +13,33 @@ function AlertsDashboard({ alerts, factory }) {
 
   if (alerts.length === 0) {
     return (
-      &lt;div style={{
+      <div style={{
         padding: '2rem',
         textAlign: 'center',
         color: '#999'
-      }}&gt;
+      }}>
         <div style={{ fontSize: '14px', marginTop: '1rem' }}>
           No alerts {factory ? `for ${factory.name}` : ''} — All SKUs above MOS thresholds
         </div>
-      &lt;/div&gt;
+      </div>
     )
   }
 
   return (
-    &lt;div&gt;
+    <div>
       {/* Summary */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(2, 1fr)',
         gap: '1rem',
         marginBottom: '1.5rem'
-      }}&gt;
+      }}>
         <div style={{
           background: '#fee2e2',
           border: '1px solid #fca5a5',
           borderRadius: '6px',
           padding: '1rem'
-        }}&gt;
+        }}>
           <div style={{ fontSize: '12px', fontWeight: 600, color: '#991b1b', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
             Critical Alerts
           </div>
@@ -55,7 +55,7 @@ function AlertsDashboard({ alerts, factory }) {
           border: '1px solid #fcd34d',
           borderRadius: '6px',
           padding: '1rem'
-        }}&gt;
+        }}>
           <div style={{ fontSize: '12px', fontWeight: 600, color: '#92400e', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
             Warning Alerts
           </div>
@@ -69,14 +69,14 @@ function AlertsDashboard({ alerts, factory }) {
       </div>
 
       {/* Alerts Table */}
-      <div style={{ overflowX: 'auto' }}&gt;
+      <div style={{ overflowX: 'auto' }}>
         <table style={{
           width: '100%',
           borderCollapse: 'collapse',
           fontSize: '13px'
-        }}&gt;
+        }}>
           <thead>
-            <tr style={{ background: '#f9fafb', borderBottom: '2px solid #e5e7eb' }}&gt;
+            <tr style={{ background: '#f9fafb', borderBottom: '2px solid #e5e7eb' }}>
               <th style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#666' }}>Priority</th>
               <th style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#666' }}>SKU</th>
               <th style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#666' }}>Description</th>
@@ -100,7 +100,7 @@ function AlertsDashboard({ alerts, factory }) {
                 onMouseEnter={(e) => e.currentTarget.style.background = '#eef2e8'}
                 onMouseLeave={(e) => e.currentTarget.style.background = idx % 2 === 0 ? 'white' : '#f9fafb'}
               >
-                <td style={{ padding: '0.75rem', textAlign: 'left' }}&gt;
+                <td style={{ padding: '0.75rem', textAlign: 'left' }}>
                   <div style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -112,39 +112,39 @@ function AlertsDashboard({ alerts, factory }) {
                     fontSize: '11px',
                     fontWeight: 600,
                     textTransform: 'uppercase'
-                  }}&gt;
+                  }}>
                     <AlertTriangle size={12} />
                     {alert.priority}
                   </div>
                 </td>
-                <td style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#1b2817' }}&gt;
+                <td style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#1b2817' }}>
                   {alert.sku}
                 </td>
-                <td style={{ padding: '0.75rem', textAlign: 'left', color: '#666', maxWidth: '300px' }}&gt;
+                <td style={{ padding: '0.75rem', textAlign: 'left', color: '#666', maxWidth: '300px' }}>
                   {alert.description}
                 </td>
-                <td style={{ padding: '0.75rem', textAlign: 'center', color: '#1b2817', fontWeight: 500 }}&gt;
+                <td style={{ padding: '0.75rem', textAlign: 'center', color: '#1b2817', fontWeight: 500 }}>
                   {alert.onHand}
                 </td>
-                <td style={{ padding: '0.75rem', textAlign: 'center', color: '#666' }}&gt;
+                <td style={{ padding: '0.75rem', textAlign: 'center', color: '#666' }}>
                   {alert.avgMonthlySales}
                 </td>
-                <td style={{ padding: '0.75rem', textAlign: 'center' }}&gt;
+                <td style={{ padding: '0.75rem', textAlign: 'center' }}>
                   <span style={{
                     fontWeight: 700,
                     fontSize: '14px',
                     color: alert.priority === 'critical' ? '#dc2626' : '#f59e0b'
-                  }}&gt;
+                  }}>
                     {alert.mos.toFixed(2)}
                   </span>
                 </td>
-                <td style={{ padding: '0.75rem', textAlign: 'center', color: '#2d5016', fontWeight: 600 }}&gt;
+                <td style={{ padding: '0.75rem', textAlign: 'center', color: '#2d5016', fontWeight: 600 }}>
                   {alert.threshold}
                 </td>
-                <td style={{ padding: '0.75rem', textAlign: 'center', fontWeight: 600, color: '#3a7d44' }}&gt;
+                <td style={{ padding: '0.75rem', textAlign: 'center', fontWeight: 600, color: '#3a7d44' }}>
                   {alert.amountToReachSS}
                 </td>
-                <td style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 500, color: '#666' }}&gt;
+                <td style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 500, color: '#666' }}>
                   {alert.segmentBand}
                 </td>
               </tr>
@@ -152,7 +152,7 @@ function AlertsDashboard({ alerts, factory }) {
           </tbody>
         </table>
       </div>
-    &lt;/div&gt;
+    </div>
   )
 }
 

@@ -3,11 +3,11 @@ import { Mail, Users } from 'lucide-react'
 
 function FactoryGrid({ factories, factoryEmails }) {
   return (
-    &lt;div style={{
+    <div style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
       gap: '1.5rem'
-    }}&gt;
+    }}>
       {factories.map(factory => (
         <div
           key={factory.id}
@@ -160,7 +160,7 @@ function FactoryGrid({ factories, factoryEmails }) {
           </div>
         </div>
       ))}
-    &lt;/div&gt;
+    </div>
   )
 }
 
