@@ -239,6 +239,56 @@ function App() {
                   </div>
                 )}
 
+                {/* Download Word Document Button */}
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <button
+                    onClick={async () => {
+                      try {
+                        const response = await fetch('/api/generateWord', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            factory: selectedFactory || 'All',
+                            alerts: filteredAlerts,
+                            mosThreshold: factories.find(f => f.id === selectedFactory)?.mosThreshold || 1.5
+                          })
+                        })
+                        if (!response.ok) throw new Error('Download failed')
+                        const blob = await response.blob()
+                        const url = window.URL.createObjectURL(blob)
+                        const a = document.createElement('a')
+                        a.href = url
+                        a.download = `Weekly_Low_SKU_Alert_${selectedFactory || 'All'}_${new Date().toISOString().split('T')[0]}.docx`
+                        document.body.appendChild(a)
+                        a.click()
+                        window.URL.revokeObjectURL(url)
+                        document.body.removeChild(a)
+                      } catch (error) {
+                        alert('Failed to download Word document: ' + error.message)
+                      }
+                    }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      padding: '0.75rem 1.5rem',
+                      background: '#2d5016',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '6px',
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      transition: 'all 0.2s'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = '#1b2817'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = '#2d5016'}
+                  >
+                    <span style={{ fontSize: '16px' }}>📄</span>
+                    Download as Word Document
+                  </button>
+                </div>
+
                 <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
                   <button
                     onClick={() => setFilterType('all')}
