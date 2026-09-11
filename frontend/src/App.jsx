@@ -1,3 +1,9 @@
+import React, { useState } from 'react'
+import { Download } from 'lucide-react'
+import Header from './components/Header'
+import InventoryTable from './components/InventoryTable'
+
+const INVENTORY_DATA = [
   { sku: '111244', description: 'Benebone Rubber Bone Small', available: 714, casePack: 24 },
   { sku: '111244ML', description: 'ML Benebone Rubber Bone Small', available: 262, casePack: 24 },
   { sku: '112244', description: 'Benebone Rubber Bone Medium', available: 792, casePack: 24 },
