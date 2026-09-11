@@ -68,6 +68,7 @@ function App() {
     }
   }
 
+// Force rebuild v2
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#f9fafb' }}>
       <div style={{
