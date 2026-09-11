@@ -5,6 +5,23 @@ function InventoryTable({ inventory }) {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortColumn, setSortColumn] = useState('sku')
 
+  // Handle null/undefined inventory
+  if (!inventory || !Array.isArray(inventory)) {
+    return (
+      <div style={{
+        background: 'white',
+        borderRadius: '8px',
+        padding: '3rem',
+        textAlign: 'center',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
+      }}>
+        <p style={{ color: '#999', fontSize: '14px' }}>
+          No inventory data available. Upload a CSV file to see inventory.
+        </p>
+      </div>
+    )
+  }
+
   const filteredInventory = inventory.filter(item =>
     item.sku.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.description.toLowerCase().includes(searchTerm.toLowerCase())
