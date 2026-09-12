@@ -63,11 +63,17 @@ export async function getArchivedWeeks(req, res) {
 
     // Get list of all archive files
     initializeArchiveDir()
-    const files = fs.readdirSync(ARCHIVE_DIR)
-      .filter(f => f.match(/\d{4}-\d{2}-\d{2}-.*-alerts\.json/))
-      .sort()
-      .reverse()
-      .slice(0, parseInt(limit))
+    let files = []
+    try {
+      files = fs.readdirSync(ARCHIVE_DIR)
+        .filter(f => f.match(/\d{4}-\d{2}-\d{2}-.*-alerts\.json/))
+        .sort()
+        .reverse()
+        .slice(0, parseInt(limit))
+    } catch (readErr) {
+      // Directory might not exist yet or be empty, that's okay
+      files = []
+    }
 
     const weeks = files.map(file => {
       const filePath = path.join(ARCHIVE_DIR, file)
