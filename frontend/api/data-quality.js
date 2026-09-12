@@ -11,7 +11,47 @@ export default async function handler(req, res) {
 
   try {
     // Import inventory data
-    const { inventoryData } = await import('./inventory-data.js')
+    let inventoryModule = await import('./inventory-data.js')
+    let inventoryData = inventoryModule.inventoryData || inventoryModule.default || []
+    
+    // Ensure inventoryData is an array
+    if (!Array.isArray(inventoryData)) {
+      inventoryData = []
+    }
+    
+    // If data is empty, return warning report
+    if (inventoryData.length === 0) {
+      return res.status(200).json({
+        timestamp: new Date().toISOString(),
+        dataVersion: {
+          snapshot: 'BeneBone Inventory Snapshot 20260910191007.csv',
+          snapshotDate: '2026-09-10',
+          weeklyReport: 'Weekly Inventory Report 9-11-2026.xlsx',
+          reportDate: '2026-09-11',
+          planning: 'Benebone Planning Tool September 2026.xlsx',
+          planningDate: '2026-09-09',
+          cpd: 'Benebone CPD v03.xlsx',
+          cpdDate: '2026-08-15',
+          poLog: 'PO & Receiving Log.xlsm',
+          poLogDate: '2026-09-10'
+        },
+        checks: {
+          skuCount: {
+            name: 'SKU Count',
+            expected: '750-810',
+            actual: 0,
+            pass: false,
+            message: '⚠️ No data loaded - please upload inventory CSV file first',
+            severity: 'WARNING',
+            weight: 15
+          }
+        },
+        overallScore: 0,
+        status: 'FAIL',
+        readyToProcess: false,
+        message: 'No inventory data available. Please upload a CSV file to begin.'
+      })
+    }
 
     // Validation report structure
     const report = {
