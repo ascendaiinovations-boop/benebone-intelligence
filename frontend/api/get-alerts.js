@@ -7,11 +7,6 @@ function isBaconWishbone(description) {
   return desc.includes('Wishbone') && (desc.includes('Bacon') || desc.includes('bacon'))
 }
 
-function isWishbone(description) {
-  const desc = description || ''
-  return desc.includes('Wishbone')
-}
-
 function getPrimaryProducer(sku) {
   const productions = {
     'AIM': sku.aimProduction || 0,
@@ -53,18 +48,13 @@ export default async function handler(req, res) {
       // Get primary producer
       const primaryProducer = getPrimaryProducer(sku)
       
-      // Bacon Wishbones: AIM only, exclude from all others
+      // Bacon Wishbones: AIM only, exclude from all others per Michael's requirement
       const isBacon = isBaconWishbone(sku.description)
-      if (isBacon && factory !== 'AIM') return false
-      if (isBacon && factory === 'AIM') return primaryProducer === 'AIM'
+      if (isBacon) {
+        return factory === 'AIM' && primaryProducer === 'AIM'
+      }
       
-      // Regular Wishbones: AIM only, exclude from Midbury
-      const isWish = isWishbone(sku.description)
-      if (isWish && factory === 'Midbury') return false
-      if (isWish && factory !== 'AIM') return false
-      if (isWish && factory === 'AIM') return primaryProducer === 'AIM'
-      
-      // All other SKUs: single-sourced to their primary producer
+      // All other SKUs (including regular Wishbones): single-sourced to their primary producer
       return primaryProducer === factory
     }).sort((a, b) => a.mos - b.mos)
 
