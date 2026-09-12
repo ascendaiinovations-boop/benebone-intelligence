@@ -10,6 +10,8 @@ export default function App() {
   const [uploading, setUploading] = useState(false)
   const [uploadStatus, setUploadStatus] = useState('')
   const [csvFile, setCsvFile] = useState(null)
+  const [dataQualityReport, setDataQualityReport] = useState(null)
+  const [qualityLoading, setQualityLoading] = useState(false)
 
   const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets']
 
@@ -80,9 +82,38 @@ export default function App() {
     }
   }
 
+  const handleCheckDataQuality = async () => {
+    setQualityLoading(true)
+    try {
+      const response = await fetch('/api/data-quality')
+      const data = await response.json()
+      setDataQualityReport(data)
+      return data.readyToProcess
+    } catch (error) {
+      console.error('Error checking data quality:', error)
+      setDataQualityReport({
+        overallScore: 0,
+        status: 'FAIL',
+        readyToProcess: false,
+        error: error.message
+      })
+      return false
+    } finally {
+      setQualityLoading(false)
+    }
+  }
+
   const handleCheckAlerts = async () => {
     setLoading(true)
     try {
+      // First check data quality
+      const qualityOk = await handleCheckDataQuality()
+      if (!qualityOk) {
+        alert('Data quality check failed. Please review the report above.')
+        setLoading(false)
+        return
+      }
+
       const response = await fetch('/api/get-alerts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -190,6 +221,71 @@ export default function App() {
           )}
         </div>
 
+        {/* Data Quality Report */}
+        {dataQualityReport && (
+          <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: dataQualityReport.readyToProcess ? '2px solid #059669' : '2px solid #dc2626' }}>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <span style={{ fontSize: '24px' }}>📊</span>
+                <div>
+                  <h2 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>Data Quality Report</h2>
+                  <p style={{ fontSize: '12px', color: '#666', margin: '0.25rem 0 0 0' }}>Generated: {new Date(dataQualityReport.timestamp).toLocaleString()}</p>
+                </div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: '28px', fontWeight: 700, color: dataQualityReport.overallScore >= 95 ? '#059669' : dataQualityReport.overallScore >= 85 ? '#f59e0b' : '#dc2626' }}>
+                  {dataQualityReport.overallScore}%
+                </div>
+                <div style={{ fontSize: '12px', fontWeight: 600, color: dataQualityReport.readyToProcess ? '#059669' : dataQualityReport.overallScore >= 85 ? '#f59e0b' : '#dc2626' }}>
+                  {dataQualityReport.status}
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+              {Object.entries(dataQualityReport.checks || {}).map(([key, check]) => (
+                <div key={key} style={{ padding: '0.75rem', background: check.pass ? '#ecfdf5' : check.severity === 'WARN' ? '#fffbeb' : '#fef2f2', border: `1px solid ${check.pass ? '#d1fae5' : check.severity === 'WARN' ? '#fef3c7' : '#fee2e2'}`, borderRadius: '6px' }}>
+                  <div style={{ fontSize: '12px', fontWeight: 600, color: '#1b2817', marginBottom: '0.25rem' }}>
+                    {check.pass ? '✓' : '⚠️'} {check.name}
+                  </div>
+                  <div style={{ fontSize: '11px', color: '#666', marginBottom: '0.25rem' }}>
+                    <span style={{ fontWeight: 500 }}>Expected:</span> {check.expected}
+                  </div>
+                  <div style={{ fontSize: '11px', color: '#666' }}>
+                    <span style={{ fontWeight: 500 }}>Actual:</span> {check.actual}
+                  </div>
+                  {check.message && (
+                    <div style={{ fontSize: '11px', color: '#666', marginTop: '0.5rem', fontStyle: 'italic' }}>
+                      {check.message}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {dataQualityReport.dataVersion && (
+              <div style={{ padding: '0.75rem', background: '#f9fafb', borderRadius: '6px', fontSize: '11px', color: '#666' }}>
+                <div style={{ fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>Data Sources:</div>
+                <div>Snapshot: {dataQualityReport.dataVersion.snapshot} ({dataQualityReport.dataVersion.snapshotDate})</div>
+                <div>Weekly: {dataQualityReport.dataVersion.weeklyReport} ({dataQualityReport.dataVersion.reportDate})</div>
+                <div>Planning: {dataQualityReport.dataVersion.planning}</div>
+              </div>
+            )}
+
+            {!dataQualityReport.readyToProcess && (
+              <div style={{ marginTop: '1rem', padding: '0.75rem', background: '#fef2f2', border: '1px solid #fee2e2', borderRadius: '6px', fontSize: '12px', color: '#dc2626', fontWeight: 500 }}>
+                ⚠️ Data quality score is below 95%. Please verify data before generating alerts.
+              </div>
+            )}
+
+            {dataQualityReport.readyToProcess && (
+              <div style={{ marginTop: '1rem', padding: '0.75rem', background: '#ecfdf5', border: '1px solid #d1fae5', borderRadius: '6px', fontSize: '12px', color: '#059669', fontWeight: 500 }}>
+                ✓ Data quality is good. Ready to generate alerts.
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Alert Controls */}
         <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
           <div style={{ marginBottom: '1.5rem' }}>
@@ -209,7 +305,12 @@ export default function App() {
           </div>
 
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <button onClick={handleCheckAlerts} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '14px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.6 : 1 }}>
+            <button onClick={handleCheckDataQuality} disabled={qualityLoading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: '#6b7280', color: 'white', border: 'none', borderRadius: '6px', fontSize: '14px', fontWeight: 600, cursor: qualityLoading ? 'not-allowed' : 'pointer', opacity: qualityLoading ? 0.6 : 1 }} title="Check data quality before generating alerts">
+              {qualityLoading ? <Loader size={16} /> : <span>🔍</span>}
+              {qualityLoading ? 'Validating...' : 'Check Data Quality'}
+            </button>
+
+            <button onClick={handleCheckAlerts} disabled={loading || (dataQualityReport && !dataQualityReport.readyToProcess)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '14px', fontWeight: 600, cursor: loading || (dataQualityReport && !dataQualityReport.readyToProcess) ? 'not-allowed' : 'pointer', opacity: loading || (dataQualityReport && !dataQualityReport.readyToProcess) ? 0.6 : 1 }} title={dataQualityReport && !dataQualityReport.readyToProcess ? 'Data quality check failed' : 'Check alerts for selected factory'}>
               {loading ? <Loader size={16} /> : <span>📊</span>}
               {loading ? 'Analyzing...' : 'Check Alerts'}
             </button>
