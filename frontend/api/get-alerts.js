@@ -2,6 +2,42 @@ import { INVENTORY_DATA } from './inventory-data.js'
 
 const THRESHOLDS = { AIM: 1.5, Midbury: 2.0, LTM: 2.0, '201': 2.0, Bennett: 2.0, DMG: 2.0, Coltoys: 2.0, 'Loving Pets': 2.0 }
 
+function isBaconWishbone(description) {
+  const desc = description || ''
+  return desc.includes('Wishbone') && (desc.includes('Bacon') || desc.includes('bacon'))
+}
+
+function isWishbone(description) {
+  const desc = description || ''
+  return desc.includes('Wishbone')
+}
+
+function getPrimaryProducer(sku) {
+  const productions = {
+    'AIM': sku.aimProduction || 0,
+    'Midbury': sku.midburyProduction || 0,
+    'LTM': sku.ltmProduction || 0,
+    '201': sku.grupoProduction || 0,
+    'Bennett': sku.bennettProduction || 0,
+    'DMG': 0,
+    'Coltoys': 0,
+    'Loving Pets': 0
+  }
+
+  // Find highest producer
+  let highest = null
+  let maxProduction = 0
+  
+  for (const [factory, prod] of Object.entries(productions)) {
+    if (prod > maxProduction) {
+      maxProduction = prod
+      highest = factory
+    }
+  }
+
+  return highest
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
@@ -10,22 +46,26 @@ export default async function handler(req, res) {
 
   try {
     const threshold = THRESHOLDS[factory]
+    
     const alertSkus = INVENTORY_DATA.filter(sku => {
       if (!sku.description || sku.mos > threshold || sku.exclude === 'X') return false
       
-      const productions = {
-        'AIM': sku.aimProduction || 0,
-        'Midbury': sku.midburyProduction || 0,
-        'LTM': sku.ltmProduction || 0,
-        '201': sku.grupoProduction || 0,
-        'Bennett': sku.bennettProduction || 0,
-        'DMG': 0,
-        'Coltoys': 0,
-        'Loving Pets': 0
-      }
+      // Get primary producer
+      const primaryProducer = getPrimaryProducer(sku)
       
-      const factoryProd = productions[factory] || 0
-      return Object.entries(productions).every(([f, p]) => !p || p <= factoryProd) && factoryProd > 0
+      // Bacon Wishbones: AIM only, exclude from all others
+      const isBacon = isBaconWishbone(sku.description)
+      if (isBacon && factory !== 'AIM') return false
+      if (isBacon && factory === 'AIM') return primaryProducer === 'AIM'
+      
+      // Regular Wishbones: AIM only, exclude from Midbury
+      const isWish = isWishbone(sku.description)
+      if (isWish && factory === 'Midbury') return false
+      if (isWish && factory !== 'AIM') return false
+      if (isWish && factory === 'AIM') return primaryProducer === 'AIM'
+      
+      // All other SKUs: single-sourced to their primary producer
+      return primaryProducer === factory
     }).sort((a, b) => a.mos - b.mos)
 
     res.json({

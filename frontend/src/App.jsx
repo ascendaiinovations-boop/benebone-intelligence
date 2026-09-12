@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Download, Mail, Loader, Upload, CheckCircle } from 'lucide-react'
+import { Download, Mail, Loader, Upload } from 'lucide-react'
 import Header from './components/Header'
 
 export default function App() {
@@ -44,7 +44,6 @@ export default function App() {
         setUploadStatus(`✅ Success! Loaded ${data.skuCount} SKUs`)
         setCsvFile(null)
         document.getElementById('csvInput').value = ''
-        // Refresh alerts
         handleCheckAlerts()
       }
     } catch (error) {
@@ -247,33 +246,39 @@ export default function App() {
               </p>
             </div>
 
-            <div style={{ overflowX: 'auto', borderTop: '1px solid #e5e7eb' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
-                <thead>
-                  <tr style={{ background: '#f3f4f6' }}>
-                    {columns.map(col => (
-                      <th key={col} style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#1b2817', borderBottom: '2px solid #e5e7eb' }}>
-                        {col}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {alertData.skus.map((sku, i) => {
-                    const rowData = getRowData(sku, selectedFactory)
-                    return (
-                      <tr key={i} style={{ background: i % 2 === 0 ? 'white' : '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
-                        {rowData.map((val, j) => (
-                          <td key={j} style={{ padding: '0.75rem', color: '#666' }}>
-                            {j === 0 ? <strong>{val}</strong> : val}
-                          </td>
-                        ))}
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
+            {alertCount === 0 ? (
+              <div style={{ padding: '1.5rem', borderTop: '1px solid #e5e7eb', background: '#f9fafb' }}>
+                <p style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: 0 }}>No SKUs are on alert this week.</p>
+              </div>
+            ) : (
+              <div style={{ overflowX: 'auto', borderTop: '1px solid #e5e7eb' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
+                  <thead>
+                    <tr style={{ background: '#f3f4f6' }}>
+                      {columns.map(col => (
+                        <th key={col} style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#1b2817', borderBottom: '2px solid #e5e7eb' }}>
+                          {col}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {alertData.skus.map((sku, i) => {
+                      const rowData = getRowData(sku, selectedFactory)
+                      return (
+                        <tr key={i} style={{ background: i % 2 === 0 ? 'white' : '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
+                          {rowData.map((val, j) => (
+                            <td key={j} style={{ padding: '0.75rem', color: '#666' }}>
+                              {j === 0 ? <strong>{val}</strong> : val}
+                            </td>
+                          ))}
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         )}
       </div>

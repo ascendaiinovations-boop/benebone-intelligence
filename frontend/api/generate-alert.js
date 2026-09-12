@@ -3,6 +3,7 @@ import { INVENTORY_DATA } from './inventory-data.js'
 
 const THRESHOLDS = { AIM: 1.5, Midbury: 2.0, LTM: 2.0, '201': 2.0, Bennett: 2.0, DMG: 2.0, Coltoys: 2.0, 'Loving Pets': 2.0 }
 
+// Recipients per Michael's Sep 10 email - Peter Toolan EXCLUDED from AIM
 const RECIPIENTS = {
   'AIM': { to: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
   'Midbury': { to: ['benebone@midbury.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
@@ -14,6 +15,41 @@ const RECIPIENTS = {
   'Loving Pets': { to: ['aaron@lovingpetsproducts.com'], cc: ['zach@benebone.com', 'carly@benebone.com', 'punam@benebone.com'] }
 }
 
+function isBaconWishbone(description) {
+  const desc = description || ''
+  return desc.includes('Wishbone') && (desc.includes('Bacon') || desc.includes('bacon'))
+}
+
+function isWishbone(description) {
+  const desc = description || ''
+  return desc.includes('Wishbone')
+}
+
+function getPrimaryProducer(sku) {
+  const productions = {
+    'AIM': sku.aimProduction || 0,
+    'Midbury': sku.midburyProduction || 0,
+    'LTM': sku.ltmProduction || 0,
+    '201': sku.grupoProduction || 0,
+    'Bennett': sku.bennettProduction || 0,
+    'DMG': 0,
+    'Coltoys': 0,
+    'Loving Pets': 0
+  }
+
+  let highest = null
+  let maxProduction = 0
+  
+  for (const [factory, prod] of Object.entries(productions)) {
+    if (prod > maxProduction) {
+      maxProduction = prod
+      highest = factory
+    }
+  }
+
+  return highest
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
@@ -22,22 +58,25 @@ export default async function handler(req, res) {
 
   try {
     const threshold = THRESHOLDS[factory]
+    
     const alertSkus = INVENTORY_DATA.filter(sku => {
       if (!sku.description || sku.mos > threshold || sku.exclude === 'X') return false
       
-      const productions = {
-        'AIM': sku.aimProduction || 0,
-        'Midbury': sku.midburyProduction || 0,
-        'LTM': sku.ltmProduction || 0,
-        '201': sku.grupoProduction || 0,
-        'Bennett': sku.bennettProduction || 0,
-        'DMG': 0,
-        'Coltoys': 0,
-        'Loving Pets': 0
-      }
+      const primaryProducer = getPrimaryProducer(sku)
       
-      const factoryProd = productions[factory] || 0
-      return Object.entries(productions).every(([f, p]) => !p || p <= factoryProd) && factoryProd > 0
+      // Bacon Wishbones: AIM only, exclude from all others
+      const isBacon = isBaconWishbone(sku.description)
+      if (isBacon && factory !== 'AIM') return false
+      if (isBacon && factory === 'AIM') return primaryProducer === 'AIM'
+      
+      // Regular Wishbones: AIM only, exclude from Midbury
+      const isWish = isWishbone(sku.description)
+      if (isWish && factory === 'Midbury') return false
+      if (isWish && factory !== 'AIM') return false
+      if (isWish && factory === 'AIM') return primaryProducer === 'AIM'
+      
+      // All other SKUs: single-sourced to their primary producer
+      return primaryProducer === factory
     }).sort((a, b) => a.mos - b.mos)
 
     let headerCells, dataRows
@@ -90,6 +129,8 @@ export default async function handler(req, res) {
       }))
     }
 
+    const recipients = RECIPIENTS[factory] || { to: [], cc: [] }
+
     const headerRow = new TableRow({
       children: headerCells.map(text => new TableCell({
         children: [new Paragraph({ text, bold: true, size: 20 })],
@@ -98,20 +139,25 @@ export default async function handler(req, res) {
       }))
     })
 
-    const table = new Table({ width: { size: 100, type: 'pct' }, rows: [headerRow, ...dataRows] })
+    let docChildren = [
+      new Paragraph({ text: `Weekly Low SKU Alert - ${factory}`, bold: true, size: 32, alignment: AlignmentType.CENTER }),
+      new Paragraph({ text: `Generated: ${new Date().toLocaleString()}`, size: 20, spacing: { after: 200 } }),
+      new Paragraph({ text: `To: ${recipients.to.join(', ')}`, size: 20 }),
+      new Paragraph({ text: `CC: ${recipients.cc.join(', ')}`, size: 20, spacing: { after: 400 } })
+    ]
 
-    const recipients = RECIPIENTS[factory] || { to: [], cc: [] }
+    // Add alert message or table
+    if (alertSkus.length === 0) {
+      docChildren.push(new Paragraph({ text: 'No SKUs are on alert this week.', bold: true, size: 22, spacing: { after: 200 } }))
+    } else {
+      docChildren.push(new Paragraph({ text: `SKUs on Alert (MOS ≤ ${threshold}): ${alertSkus.length}`, bold: true, size: 22, spacing: { after: 300 } }))
+      const table = new Table({ width: { size: 100, type: 'pct' }, rows: [headerRow, ...dataRows] })
+      docChildren.push(table)
+    }
 
     const doc = new Document({
       sections: [{
-        children: [
-          new Paragraph({ text: `Weekly Low SKU Alert - ${factory}`, bold: true, size: 32, alignment: AlignmentType.CENTER }),
-          new Paragraph({ text: `Generated: ${new Date().toLocaleString()}`, size: 20, spacing: { after: 200 } }),
-          new Paragraph({ text: `To: ${recipients.to.join(', ')}`, size: 20 }),
-          new Paragraph({ text: `CC: ${recipients.cc.join(', ')}`, size: 20, spacing: { after: 400 } }),
-          new Paragraph({ text: `SKUs on Alert (MOS ≤ ${threshold}): ${alertSkus.length}`, bold: true, size: 22, spacing: { after: 300 } }),
-          table
-        ]
+        children: docChildren
       }]
     })
 
