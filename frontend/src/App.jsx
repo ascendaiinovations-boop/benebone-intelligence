@@ -56,10 +56,39 @@ export default function App() {
     }
   }
 
+  const getRecipients = (factory) => {
+    const recipients = {
+      'AIM': { to: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'Midbury': { to: ['benebone@midbury.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'LTM': { to: ['eric@ltmplastics.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      '201': { to: ['emilio.otero@201oficial.com.mx'], cc: ['salvador@201oficial.com.mx', 'punam@benebone.com'] },
+      'Bennett': { to: ['jmattox@bpkc.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'DMG': { to: ['monique.brunson@dmgincusa.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'Coltoys': { to: ['jparra@coltoys.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'Loving Pets': { to: ['aaron@lovingpetsproducts.com'], cc: ['zach@benebone.com', 'carly@benebone.com', 'punam@benebone.com'] }
+    }
+    return recipients[factory]
+  }
+
+  const getColumns = (factory) => {
+    if (factory === 'AIM') return ['SKU', 'Description', 'OnHand', 'Available Eaches', 'Avg Mthly Sales', 'MOS OH', 'Amt to SS', 'Notes', 'Seg Band', 'Wrappers OH', 'Wrappers OO', 'Planned Prod']
+    if (factory === 'DMG') return ['SKU', 'Description', 'OnHand', 'Available', 'Avg Mthly Sales', 'MOS', 'Amt to SS', 'Notes']
+    return ['SKU', 'Description', 'OnHand', 'Available', 'Avg Mthly Sales', 'MOS', 'Amt to SS', 'Notes']
+  }
+
+  const getRowData = (sku, factory) => {
+    if (factory === 'AIM') return [sku.sku, sku.description, sku.onHand, Math.round(sku.availableEaches), Math.round(sku.avgMonthlySales), sku.mos.toFixed(2), Math.round(sku.amtToSS), sku.notes, sku.segBand, Math.round(sku.wrappersOH), Math.round(sku.wrappersOO), Math.round(sku.plannedProdEaches)]
+    if (factory === 'DMG') return [sku.sku, sku.description, sku.onHand, Math.round(sku.available), Math.round(sku.avgMonthlySales), sku.mos.toFixed(2), Math.round(sku.amtToSS), sku.notes]
+    return [sku.sku, sku.description, sku.onHand, Math.round(sku.available), Math.round(sku.avgMonthlySales), sku.mos.toFixed(2), Math.round(sku.amtToSS), sku.notes]
+  }
+
+  const recipients = getRecipients(selectedFactory)
+  const columns = getColumns(selectedFactory)
+
   return (
     <div style={{ minHeight: '100vh', background: '#f9fafb' }}>
       <Header />
-      <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ padding: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
         
         <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
           <div style={{ marginBottom: '1.5rem' }}>
@@ -97,18 +126,53 @@ export default function App() {
         </div>
 
         {alertData && (
-          <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1b2817', marginBottom: '0.5rem' }}>{selectedFactory} Alert Analysis</h2>
-            <p style={{ color: '#666', fontSize: '14px' }}>Threshold: ≤ {alertData.threshold} MOS | SKUs on Alert: <strong>{alertCount}</strong></p>
-            <p style={{ color: '#888', fontSize: '12px', marginTop: '0.5rem' }}>Production-level data from Michael + Paul files only • {new Date().toLocaleString()}</p>
+          <div style={{ background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
+            <div style={{ padding: '1.5rem', borderBottom: '2px solid #e5e7eb', background: '#f9fafb' }}>
+              <h2 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Weekly Low SKU Alert - {selectedFactory}</h2>
+              <p style={{ fontSize: '13px', color: '#666', margin: '0.5rem 0 0 0' }}>Generated: {new Date().toLocaleString()}</p>
+            </div>
+
+            <div style={{ padding: '1.5rem' }}>
+              <p style={{ fontSize: '13px', color: '#333', margin: '0 0 0.5rem 0' }}>
+                <strong>To:</strong> {recipients.to.join(', ')}
+              </p>
+              <p style={{ fontSize: '13px', color: '#333', margin: '0 0 1rem 0' }}>
+                <strong>CC:</strong> {recipients.cc.join(', ')}
+              </p>
+              <p style={{ fontSize: '13px', color: '#666', margin: '0 0 1.5rem 0' }}>
+                <strong>SKUs on Alert (MOS ≤ {alertData.threshold}):</strong> {alertCount}
+              </p>
+            </div>
+
+            <div style={{ overflowX: 'auto', borderTop: '1px solid #e5e7eb' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
+                <thead>
+                  <tr style={{ background: '#f3f4f6' }}>
+                    {columns.map(col => (
+                      <th key={col} style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#1b2817', borderBottom: '2px solid #e5e7eb' }}>
+                        {col}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {alertData.skus.map((sku, i) => {
+                    const rowData = getRowData(sku, selectedFactory)
+                    return (
+                      <tr key={i} style={{ background: i % 2 === 0 ? 'white' : '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
+                        {rowData.map((val, j) => (
+                          <td key={j} style={{ padding: '0.75rem', color: '#666' }}>
+                            {j === 0 ? <strong>{val}</strong> : val}
+                          </td>
+                        ))}
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
-
-        <div style={{ background: '#eef2e8', padding: '1rem', borderRadius: '6px', border: '1px solid #2d5016' }}>
-          <p style={{ fontSize: '14px', color: '#1b2817', margin: 0 }}>
-            <strong>Phase 1.5:</strong> Check Alerts to analyze inventory (Michael's files only). Then download Word to copy-paste into email manually.
-          </p>
-        </div>
       </div>
     </div>
   )
