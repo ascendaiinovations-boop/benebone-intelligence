@@ -1,4 +1,4 @@
-import { Document, Packer, Table, TableRow, TableCell, Paragraph, AlignmentType, BorderStyle, PageSize, PageOrientation } from 'docx'
+import { Document, Packer, Table, TableRow, TableCell, Paragraph, AlignmentType, BorderStyle } from 'docx'
 import { INVENTORY_DATA } from './inventory-data.js'
 
 const THRESHOLDS = { AIM: 1.5, Midbury: 2.0, LTM: 2.0, '201': 2.0, Bennett: 2.0, DMG: 2.0, Coltoys: 2.0, 'Loving Pets': 2.0 }
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
   try {
     const threshold = THRESHOLDS[factory]
     const alertSkus = INVENTORY_DATA.filter(sku => {
-      if (!sku.description || sku.mos > threshold || sku.plannedProdEaches <= 0 || sku.exclude === 'X') return false
+      if (!sku.description || sku.mos > threshold || sku.exclude === 'X') return false
       
       const productions = {
         'AIM': sku.aimProduction || 0,
@@ -49,15 +49,15 @@ export default async function handler(req, res) {
           new TableCell({ children: [new Paragraph(s.sku)] }),
           new TableCell({ children: [new Paragraph(s.description)] }),
           new TableCell({ children: [new Paragraph(String(s.onHand))] }),
-          new TableCell({ children: [new Paragraph(String(s.availableEaches))] }),
-          new TableCell({ children: [new Paragraph(String(s.avgMonthlySales))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.availableEaches)))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.avgMonthlySales)))] }),
           new TableCell({ children: [new Paragraph(String(s.mos.toFixed(2)))] }),
-          new TableCell({ children: [new Paragraph(String(s.amtToSS))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.amtToSS)))] }),
           new TableCell({ children: [new Paragraph(s.notes)] }),
           new TableCell({ children: [new Paragraph(s.segBand)] }),
-          new TableCell({ children: [new Paragraph(String(s.wrappersOH))] }),
-          new TableCell({ children: [new Paragraph(String(s.wrappersOO))] }),
-          new TableCell({ children: [new Paragraph(String(s.plannedProdEaches))] })
+          new TableCell({ children: [new Paragraph(String(Math.round(s.wrappersOH)))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.wrappersOO)))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.plannedProdEaches)))] })
         ]
       }))
     } else if (factory === 'DMG') {
@@ -67,10 +67,10 @@ export default async function handler(req, res) {
           new TableCell({ children: [new Paragraph(s.sku)] }),
           new TableCell({ children: [new Paragraph(s.description)] }),
           new TableCell({ children: [new Paragraph(String(s.onHand))] }),
-          new TableCell({ children: [new Paragraph(String(s.available))] }),
-          new TableCell({ children: [new Paragraph(String(s.avgMonthlySales))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.available)))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.avgMonthlySales)))] }),
           new TableCell({ children: [new Paragraph(String(s.mos.toFixed(2)))] }),
-          new TableCell({ children: [new Paragraph(String(s.amtToSS))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.amtToSS)))] }),
           new TableCell({ children: [new Paragraph(s.notes)] })
         ]
       }))
@@ -81,10 +81,10 @@ export default async function handler(req, res) {
           new TableCell({ children: [new Paragraph(s.sku)] }),
           new TableCell({ children: [new Paragraph(s.description)] }),
           new TableCell({ children: [new Paragraph(String(s.onHand))] }),
-          new TableCell({ children: [new Paragraph(String(s.available))] }),
-          new TableCell({ children: [new Paragraph(String(s.avgMonthlySales))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.available)))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.avgMonthlySales)))] }),
           new TableCell({ children: [new Paragraph(String(s.mos.toFixed(2)))] }),
-          new TableCell({ children: [new Paragraph(String(s.amtToSS))] }),
+          new TableCell({ children: [new Paragraph(String(Math.round(s.amtToSS)))] }),
           new TableCell({ children: [new Paragraph(s.notes)] })
         ]
       }))

@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   try {
     const threshold = THRESHOLDS[factory]
     const alertSkus = INVENTORY_DATA.filter(sku => {
-      if (!sku.description || sku.mos > threshold || sku.plannedProdEaches <= 0 || sku.exclude === 'X') return false
+      if (!sku.description || sku.mos > threshold || sku.exclude === 'X') return false
       
       const productions = {
         'AIM': sku.aimProduction || 0,
