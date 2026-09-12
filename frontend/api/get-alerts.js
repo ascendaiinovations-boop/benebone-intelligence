@@ -1,5 +1,4 @@
-import fs from 'fs'
-import path from 'path'
+import { INVENTORY_DATA } from './inventory-data.js'
 
 const THRESHOLDS = { AIM: 1.5, Midbury: 2.0, LTM: 2.0, '201': 2.0, Bennett: 2.0, DMG: 2.0, Coltoys: 2.0, 'Loving Pets': 2.0 }
 
@@ -10,14 +9,10 @@ export default async function handler(req, res) {
   if (!factory || !THRESHOLDS[factory]) return res.status(400).json({ error: 'Invalid factory' })
 
   try {
-    const inventoryPath = path.join(process.cwd(), 'src/data/inventory.json')
-    const data = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'))
-    
     const threshold = THRESHOLDS[factory]
-    const alertSkus = data.skus.filter(sku => {
+    const alertSkus = INVENTORY_DATA.filter(sku => {
       if (!sku.description || sku.mos > threshold || sku.plannedProdEaches <= 0 || sku.exclude === 'X') return false
       
-      // Check primary producer
       const productions = {
         'AIM': sku.aimProduction || 0,
         'Midbury': sku.midburyProduction || 0,
@@ -36,7 +31,7 @@ export default async function handler(req, res) {
     res.json({
       factory,
       threshold,
-      skus: alertSkus.slice(0, 20), // Preview first 20
+      skus: alertSkus.slice(0, 20),
       total: alertSkus.length,
       source: 'Michael + Paul files only'
     })
