@@ -106,14 +106,6 @@ export default function App() {
   const handleCheckAlerts = async () => {
     setLoading(true)
     try {
-      // First check data quality
-      const qualityOk = await handleCheckDataQuality()
-      if (!qualityOk) {
-        alert('Data quality check failed. Please review the report above.')
-        setLoading(false)
-        return
-      }
-
       const response = await fetch('/api/get-alerts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
