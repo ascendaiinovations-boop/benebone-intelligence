@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Download, Mail, Loader } from 'lucide-react'
+import { Download, Mail, Loader, Upload, CheckCircle } from 'lucide-react'
 import Header from './components/Header'
 
 export default function App() {
@@ -7,8 +7,52 @@ export default function App() {
   const [loading, setLoading] = useState(false)
   const [alertCount, setAlertCount] = useState(0)
   const [alertData, setAlertData] = useState(null)
+  const [uploading, setUploading] = useState(false)
+  const [uploadStatus, setUploadStatus] = useState('')
+  const [csvFile, setCsvFile] = useState(null)
 
   const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets']
+
+  const handleFileSelect = (e) => {
+    setCsvFile(e.target.files[0])
+    setUploadStatus('')
+  }
+
+  const handleUpload = async () => {
+    if (!csvFile) {
+      setUploadStatus('Please select a CSV file')
+      return
+    }
+
+    setUploading(true)
+    setUploadStatus('Uploading and parsing...')
+
+    try {
+      const formData = new FormData()
+      formData.append('csvFile', csvFile)
+
+      const response = await fetch('/api/upload-csv', {
+        method: 'POST',
+        body: formData
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        setUploadStatus(`Error: ${data.error}`)
+      } else {
+        setUploadStatus(`✅ Success! Loaded ${data.skuCount} SKUs`)
+        setCsvFile(null)
+        document.getElementById('csvInput').value = ''
+        // Refresh alerts
+        handleCheckAlerts()
+      }
+    } catch (error) {
+      setUploadStatus(`Upload failed: ${error.message}`)
+    } finally {
+      setUploading(false)
+    }
+  }
 
   const handleDownloadWord = async () => {
     setLoading(true)
@@ -90,6 +134,64 @@ export default function App() {
       <Header />
       <div style={{ padding: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
         
+        {/* Upload Section */}
+        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #e5e7eb' }}>
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+            <Upload size={20} style={{ marginRight: '0.5rem', color: '#1b4d3e' }} />
+            <h2 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>Upload Inventory Data</h2>
+          </div>
+          <p style={{ fontSize: '13px', color: '#666', margin: '0 0 1rem 0' }}>
+            Upload BeneBone Inventory Snapshot CSV to update alerts
+          </p>
+          
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
+                Select CSV File
+              </label>
+              <input
+                id="csvInput"
+                type="file"
+                accept=".csv"
+                onChange={handleFileSelect}
+                style={{ fontSize: '12px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
+              />
+            </div>
+            <button
+              onClick={handleUpload}
+              disabled={uploading || !csvFile}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.6rem 1.2rem',
+                background: uploading || !csvFile ? '#ccc' : '#1b4d3e',
+                color: 'white',
+                border: 'none',
+                borderRadius: '6px',
+                fontSize: '12px',
+                fontWeight: 600,
+                cursor: uploading || !csvFile ? 'not-allowed' : 'pointer',
+                opacity: uploading || !csvFile ? 0.5 : 1
+              }}
+            >
+              {uploading ? <Loader size={14} /> : <Upload size={14} />}
+              {uploading ? 'Uploading...' : 'Upload'}
+            </button>
+          </div>
+
+          {uploadStatus && (
+            <p style={{
+              fontSize: '12px',
+              marginTop: '1rem',
+              color: uploadStatus.startsWith('✅') ? '#059669' : '#dc2626'
+            }}>
+              {uploadStatus}
+            </p>
+          )}
+        </div>
+
+        {/* Alert Controls */}
         <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
           <div style={{ marginBottom: '1.5rem' }}>
             <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
@@ -125,6 +227,7 @@ export default function App() {
           </div>
         </div>
 
+        {/* Preview Table */}
         {alertData && (
           <div style={{ background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
             <div style={{ padding: '1.5rem', borderBottom: '2px solid #e5e7eb', background: '#f9fafb' }}>
