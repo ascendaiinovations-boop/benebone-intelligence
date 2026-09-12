@@ -310,7 +310,7 @@ export default function App() {
               {qualityLoading ? 'Validating...' : 'Check Data Quality'}
             </button>
 
-            <button onClick={handleCheckAlerts} disabled={loading || (dataQualityReport && !dataQualityReport.readyToProcess)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '14px', fontWeight: 600, cursor: loading || (dataQualityReport && !dataQualityReport.readyToProcess) ? 'not-allowed' : 'pointer', opacity: loading || (dataQualityReport && !dataQualityReport.readyToProcess) ? 0.6 : 1 }} title={dataQualityReport && !dataQualityReport.readyToProcess ? 'Data quality check failed' : 'Check alerts for selected factory'}>
+            <button onClick={handleCheckAlerts} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '14px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.6 : 1 }} title="Check alerts for selected factory">
               {loading ? <Loader size={16} /> : <span>📊</span>}
               {loading ? 'Analyzing...' : 'Check Alerts'}
             </button>
