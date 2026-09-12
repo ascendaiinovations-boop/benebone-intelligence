@@ -1,462 +1,134 @@
 import React, { useState } from 'react'
-import { Download } from 'lucide-react'
+import { Download, Mail } from 'lucide-react'
 import Header from './components/Header'
-import InventoryTable from './components/InventoryTable'
-
-const INVENTORY_DATA = [
-  { sku: '111244', description: 'Benebone Rubber Bone Small', available: 714, casePack: 24 },
-  { sku: '111244ML', description: 'ML Benebone Rubber Bone Small', available: 262, casePack: 24 },
-  { sku: '112244', description: 'Benebone Rubber Bone Medium', available: 792, casePack: 24 },
-  { sku: '112244ML', description: 'ML Benebone Rubber Bone Medium', available: 221, casePack: 24 },
-  { sku: '113244', description: 'Benebone Rubber Bone Large', available: 391, casePack: 24 },
-  { sku: '113244ML', description: 'ML Benebone Rubber Bone Large', available: 320, casePack: 24 },
-  { sku: '121244', description: 'Benebone Rubber Ball', available: 419, casePack: 24 },
-  { sku: '121244ML', description: 'ML Benebone Rubber Ball', available: 198, casePack: 24 },
-  { sku: '130244', description: 'Benebone Rubber Tug (Flat)', available: 747, casePack: 24 },
-  { sku: '131122', description: 'Benebone Rubber Tug (Ball)', available: 550, casePack: 12 },
-  { sku: '131122ML', description: 'ML Benebone Rubber Tug', available: 345, casePack: 12 },
-  { sku: '141122', description: 'Benebone Rubber Cone', available: 207, casePack: 12 },
-  { sku: '141122ML', description: 'ML Benebone Rubber Cone', available: 290, casePack: 12 },
-  { sku: '150122', description: 'Benebone Rubber Pawbler S/M', available: 821, casePack: 12 },
-  { sku: '150122ML', description: 'ML Benebone Rubber Pawbler S/M', available: 347, casePack: 12 },
-  { sku: '151122', description: 'Benebone Rubber Pawbler M/L', available: 949, casePack: 12 },
-  { sku: '151122ML', description: 'ML Benebone Rubber Pawbler M/L', available: 366, casePack: 12 },
-  { sku: '231240', description: 'Benebone Tongue Twister Treat Medium 24PK', available: 108, casePack: 24 },
-  { sku: '231244', description: 'Benebone Tongue Twister Treat Medium 24/4PK', available: 537, casePack: 24 },
-  { sku: '232060', description: 'Benebone Treat Pod - Bacon 9ct', available: 52, casePack: 6 },
-  { sku: '233060', description: 'Benebone Treat Pod - Peanut 9ct', available: 365, casePack: 6 },
-  { sku: '236080', description: 'Benebone Tongue Twister / Bacon Treat Pod 2PK', available: 161, casePack: 8 },
-  { sku: '237080', description: 'Benebone Tongue Twister / Peanut Treat Pod 2PK', available: 121, casePack: 8 },
-  { sku: '301244', description: 'Benebone Essentials Wishbone Bacon S/M', available: 3866, casePack: 24 },
-  { sku: '302244', description: 'Benebone Essentials Wishbone Bacon M/L', available: 2110, casePack: 24 },
-  { sku: '302244EF', description: 'EF Benebone Essentials Wishbone Bacon M/L', available: 314, casePack: 24 },
-  { sku: '303244', description: 'Benebone Essentials Bone Bacon M/L', available: 3115, casePack: 24 },
-  { sku: '304244', description: 'Benebone Essentials Fishbone M/L', available: 1330, casePack: 24 },
-  { sku: '304244EF', description: 'EF Benebone Essentials Fishbone M/L', available: 103, casePack: 24 },
-  { sku: '305244', description: 'Benebone Essentials Puppy 2-pack Rubber Bone/Wishbone Bacon Tiny', available: 3032, casePack: 24 },
-  { sku: '305244EF', description: 'EF Benebone Essentials Puppy 2-pack Rubber Bone/Wishbone Bacon Tiny', available: 55, casePack: 24 },
-  { sku: '306244', description: 'Benebone Essentials 2-Pack Wishbone Bacon & Chicken M/L 24/4pk', available: 6067, casePack: 24 },
-  { sku: '306244EF', description: 'EF Benebone Essentials 2-Pack Wishbone Bacon & Chicken M/L', available: 135, casePack: 24 },
-  { sku: '307244', description: 'Benebone Essentials Rubber Bone Medium', available: 754, casePack: 24 },
-  { sku: '308122', description: 'Benebone Essentials Pawbler Medium', available: 762, casePack: 12 },
-  { sku: '309244', description: 'Benebone Essentials Tug Medium', available: 197, casePack: 24 },
-  { sku: '310150', description: 'Benebone Essentials Wishbone Bacon Large', available: 120, casePack: 15 },
-  { sku: '310244', description: 'Benebone Essentials Wishbone Bacon L/G', available: 3046, casePack: 24 },
-  { sku: '311100', description: 'Benebone Essentials Wishbone Bacon Giant', available: 180, casePack: 10 },
-  { sku: '312300', description: 'Benebone Essentials Wishbone Chicken Small', available: 50, casePack: 30 },
-  { sku: '313150', description: 'Benebone Essentials Wishbone Chicken Large', available: 110, casePack: 15 },
-  { sku: '314100', description: 'Benebone Essentials Wishbone Chicken Giant', available: 172, casePack: 10 },
-  { sku: '315', description: 'LBL21126 Benebone Essentials Fishbone Small', available: 2000, casePack: 1 },
-  { sku: '315400', description: 'Benebone Essentials Fishbone Small', available: 110, casePack: 40 },
-  { sku: '316', description: 'LBL21127 Benebone Essentials Fishbone Large', available: 1000, casePack: 1 },
-  { sku: '316200', description: 'Benebone Essentials Fishbone Large', available: 80, casePack: 20 },
-  { sku: '317', description: 'LBL21128 Benebone Essentials Fishbone Giant', available: 1000, casePack: 1 },
-  { sku: '317150', description: 'Benebone Essentials Fishbone Giant', available: 50, casePack: 15 },
-  { sku: '318300', description: 'Benebone Essentials Bone Bacon Small', available: 72, casePack: 30 },
-  { sku: '319150', description: 'Benebone Essentials Bone Bacon Large', available: 110, casePack: 15 },
-  { sku: '321100', description: 'Benebone Essentials Bone Bacon Giant', available: 79, casePack: 10 },
-  { sku: '322200', description: 'Benebone Essentials Wishbone Chicken Medium', available: 21, casePack: 20 },
-  { sku: '323244', description: 'Benebone Essentials Puppy 2-pack Wishbone & Dental Chew Bacon Tiny', available: 2149, casePack: 24 },
-  { sku: '324244', description: 'Benebone Essentials 2-Pack Fishbone / Dental Chew Bacon M/L', available: 3550, casePack: 24 },
-  { sku: '326244', description: 'Benebone Essentials Tongue Twister Medium 24/4PK', available: 108, casePack: 24 },
-  { sku: '327060', description: 'Benebone Essentials Treat Pod - Bacon 6ct', available: 815, casePack: 6 },
-  { sku: '410244', description: 'Benebone Fishbone Small 24/4PK', available: 46, casePack: 24 },
-  { sku: '410244ML', description: 'ML Benebone Fishbone Small 24/4PK', available: 123, casePack: 24 },
-  { sku: '410300', description: 'Benebone Fishbone Small 30PK', available: 908, casePack: 30 },
-  { sku: '420244', description: 'Benebone Fishbone Medium 24/4PK', available: 2003, casePack: 24 },
-  { sku: '420244ML', description: 'ML Benebone Fishbone Medium 24/4PK', available: 525, casePack: 24 },
-  { sku: '420244T', description: 'T Benebone Fishbone Medium 24/4PK', available: 235, casePack: 24 },
-  { sku: '420300', description: 'Benebone Fishbone Medium 30PK', available: 315, casePack: 30 },
-  { sku: '420300V', description: 'V Benebone Fishbone Medium 30PK', available: 168, casePack: 30 },
-  { sku: '430244', description: 'Benebone Fishbone Large 24/4PK', available: 142, casePack: 24 },
-  { sku: '430244ML', description: 'ML Benebone Fishbone Large 24/4PK', available: 143, casePack: 24 },
-  { sku: '430300', description: 'Benebone Fishbone Large 30PK', available: 505, casePack: 30 },
-  { sku: '440244', description: 'Benebone Fishbone Giant 24/4PK', available: 30, casePack: 24 },
-  { sku: '440244ML', description: 'ML Benebone Fishbone Giant 24/4PK', available: 50, casePack: 24 },
-  { sku: '440250', description: 'Benebone Fishbone Giant 25PK', available: 316, casePack: 25 },
-  { sku: '451244', description: 'Benebone Green Fishbone Eco Bone Small 24/4PK', available: 1093, casePack: 24 },
-  { sku: '451244ML', description: 'ML Benebone Green Fishbone Eco Bone Small 24/4PK', available: 0, casePack: 24 },
-  { sku: '452244', description: 'Benebone Green Fishbone Eco Bone Medium 24/4PK', available: 942, casePack: 24 },
-  { sku: '452244ML', description: 'ML Benebone Green Fishbone Eco Bone Medium 24/4PK', available: 0, casePack: 24 },
-  { sku: '453244', description: 'Benebone Green Fishbone Eco Bone Large 24/4PK', available: 472, casePack: 24 },
-  { sku: '453244ML', description: 'ML Benebone Green Fishbone Eco Bone Large 24/4PK', available: 0, casePack: 24 },
-  { sku: '501008', description: 'Benebone 4-Pack WB/FB/MS/ZG Medium', available: 13063, casePack: 8 },
-  { sku: '501008-BLU', description: 'Benebone 4-Pack Blueberry Ring/WB/FB/ZG Medium', available: 262, casePack: 8 },
-  { sku: '502008', description: 'Benebone 4-Pack WB/FB/MS/ZG Small', available: 3669, casePack: 8 },
-  { sku: '502008-BLU', description: 'Benebone 4-Pack Blueberry Ring/WB/FB/ZG Small', available: 83, casePack: 8 },
-  { sku: '503008', description: 'Benebone 4-Pack WB/FB/MS/ZG Large', available: 8906, casePack: 8 },
-  { sku: '503008-BLU', description: 'Benebone 4-Pack Blueberry Ring/WB/FB/ZG Large', available: 98, casePack: 8 },
-  { sku: '504080', description: 'Benebone 4-Pack WB/FB/MS/ZG Puppy', available: 688, casePack: 8 },
-  { sku: '507080', description: 'Benebone 3-Pack Ball / Bone Medium / Pawbler', available: 84, casePack: 8 },
-  { sku: '508080', description: 'Benebone 4-Pack Ball / Bone / Bacon Wishbone / Fishbone Medium', available: 1416, casePack: 8 },
-  { sku: '509', description: 'LBL21091 Benebone 4-Pack Rubber Ball', available: 1000, casePack: 1 },
-  { sku: '509100', description: 'Benebone 4-Pack Rubber Ball', available: 37, casePack: 10 },
-  { sku: '510200', description: 'Benebone Tripe Bone Small 20PK', available: 643, casePack: 20 },
-  { sku: '510244', description: 'Benebone Tripe Bone Small 24/4PK', available: 64, casePack: 24 },
-  { sku: '510244ML', description: 'ML Benebone Tripe Bone Small 24/4PK', available: 17, casePack: 24 },
-  { sku: '511', description: 'LBL21129 Benebone 3-Pack Wishbone Small 20PK', available: 1000, casePack: 1 },
-  { sku: '511200', description: 'Benebone 3-Pack Wishbone Small 20PK', available: 341, casePack: 20 },
-  { sku: '512', description: 'LBL21130 Benebone 3-Pack Wishbone Medium 15PK', available: 2000, casePack: 1 },
-  { sku: '512150', description: 'Benebone 3-Pack Wishbone Medium 15PK', available: 393, casePack: 15 },
-  { sku: '513', description: 'LBL21131 Benebone 3-Pack Wishbone Large 10PK', available: 1000, casePack: 1 },
-  { sku: '513100', description: 'Benebone 3-Pack Wishbone Large 10PK', available: 418, casePack: 10 },
-  { sku: '514080', description: 'Benebone 7-Pack Medium', available: 777, casePack: 8 },
-  { sku: '518080', description: 'TSC Farm House 4 PK Box - Longhorn / Chicken Foot / Bacon WB / FB', available: 0, casePack: 8 },
-  { sku: '520244', description: 'Benebone Tripe Bone Medium 24/4PK', available: 1951, casePack: 24 },
-  { sku: '520244ML', description: 'ML Benebone Tripe Bone Medium 24/4PK', available: 106, casePack: 24 },
-  { sku: '520350', description: 'Benebone Tripe Bone Medium 35PK', available: 823, casePack: 35 },
-  { sku: '530244', description: 'Benebone Tripe Bone Large 24/4PK', available: 45, casePack: 24 },
-  { sku: '530244ML', description: 'ML Benebone Tripe Bone Large 24/4PK', available: 1, casePack: 24 },
-  { sku: '530300', description: 'Benebone Tripe Bone Large 30PK', available: 178, casePack: 30 },
-  { sku: '540200', description: 'Benebone Tripe Bone Giant 20PK', available: 17, casePack: 20 },
-  { sku: '540244', description: 'Benebone Tripe Bone Giant 24/4PK', available: 64, casePack: 24 },
-  { sku: '551244', description: 'Benebone Ring Blueberry Small 24/4PK', available: 205, casePack: 24 },
-  { sku: '552244', description: 'Benebone Ring Blueberry Medium 24/4PK', available: 504, casePack: 24 },
-  { sku: '553244', description: 'Benebone Ring Blueberry Large 24/4PK', available: 349, casePack: 24 },
-  { sku: '560200', description: 'Benebone Ring Bacon Small 20PK', available: 660, casePack: 20 },
-  { sku: '560244', description: 'Benebone Ring Bacon Small 24/4PK', available: 118, casePack: 24 },
-  { sku: '560244ML', description: 'ML Benebone Ring Bacon Small 24/4PK', available: 75, casePack: 24 },
-  { sku: '561244', description: 'Benebone Ring Peppermint Small 24/4PK', available: 171, casePack: 24 },
-  { sku: '570244', description: 'Benebone Ring Bacon Medium 24/4PK', available: 1656, casePack: 24 },
-  { sku: '570244ML', description: 'ML Benebone Ring Bacon Medium 24/4PK', available: 27, casePack: 24 },
-  { sku: '570244T', description: 'T Benebone Ring Bacon Medium 24/4PK', available: 138, casePack: 24 },
-  { sku: '570300', description: 'Benebone Ring Bacon Medium 30PK', available: 1035, casePack: 30 },
-  { sku: '571244', description: 'Benebone Ring Peppermint Medium 24/4PK', available: 78, casePack: 24 },
-  { sku: '580200', description: 'Benebone Ring Bacon Large 20PK', available: 688, casePack: 20 },
-  { sku: '580244', description: 'Benebone Ring Bacon Large 24/4PK', available: 74, casePack: 24 },
-  { sku: '580244ML', description: 'ML Benebone Ring Bacon Large 24/4PK', available: 2, casePack: 24 },
-  { sku: '581244', description: 'Benebone Ring Peppermint Large 24/4PK', available: 2, casePack: 24 },
-  { sku: '610244', description: 'Benebone Zaggler Bacon Small 24/4PK', available: 95, casePack: 24 },
-  { sku: '610300', description: 'Benebone Zaggler Bacon Small 30PK', available: 277, casePack: 30 },
-  { sku: '611300', description: 'Benebone Zaggler Peanut Small 30PK', available: 2, casePack: 30 },
-  { sku: '620244', description: 'Benebone Zaggler Bacon Medium 24/4PK', available: 75, casePack: 24 },
-  { sku: '620400', description: 'Benebone Zaggler Bacon Medium 40PK', available: 394, casePack: 40 },
-  { sku: '630244', description: 'Benebone Zaggler Bacon Large 24/4PK', available: 52, casePack: 24 },
-  { sku: '630250', description: 'Benebone Zaggler Bacon Large 25PK', available: 151, casePack: 25 },
-  { sku: '631250', description: 'Benebone Zaggler Peanut Large 25PK', available: 8, casePack: 25 },
-  { sku: '635244', description: 'Benebone Zaggler Bacon Giant 24/4PK', available: 132, casePack: 24 },
-  { sku: '635250', description: 'Benebone Zaggler Bacon Giant 25PK', available: 127, casePack: 25 },
-  { sku: '640244', description: 'Benebone Puppy 2-Pack Dental Chew/Wishbone Bacon Tiny 24/4PK', available: 1325, casePack: 24 },
-  { sku: '640244ML', description: 'ML Benebone Puppy 2-Pack Dental Chew/Wishbone Bacon Tiny 24/4PK', available: 482, casePack: 24 },
-  { sku: '640400', description: 'Benebone Puppy 2-Pack Dental Chew/Wishbone Bacon Tiny 40PK', available: 690, casePack: 40 },
-  { sku: '641', description: 'LBL21090 Benebone 2-Pack Rubber Ball (641', available: 2000, casePack: 1 },
-  { sku: '641150', description: 'Benebone 2-Pack Rubber Ball', available: 172, casePack: 15 },
-  { sku: '642200', description: 'Benebone 2-Pack Dental Chew/Wishbone Bacon Medium 20PK', available: 1471, casePack: 20 },
-  { sku: '642244', description: 'Benebone 2-Pack Dental Chew / Wishbone Bacon Medium 24/4PK', available: 31, casePack: 24 },
-  { sku: '643', description: 'LBL21092 Benebone 2-Pack Bacon Wishbone / Rubber Bone Medium (643)', available: 2000, casePack: 1 },
-  { sku: '643100', description: 'Benebone 2-Pack Bacon Wishbone / Rubber Bone Medium', available: 193, casePack: 10 },
-  { sku: '644', description: 'LBL21133 Benebone Puppy 2-Pack Dental Chew/Wishbone Bacon Small 15PK', available: 1000, casePack: 1 },
-  { sku: '644150', description: 'Benebone Puppy 2-Pack Dental Chew/Wishbone Bacon Small', available: 143, casePack: 15 },
-  { sku: '645244', description: 'Benebone 2-Pack Dental Chew/Wishbone Bacon Tiny 24/4PK', available: 74, casePack: 24 },
-  { sku: '645244ML', description: 'ML Benebone 2-Pack Dental Chew/Wishbone Bacon Tiny 24/4PK', available: 81, casePack: 24 },
-  { sku: '645400', description: 'Benebone 2-Pack Dental Chew/Wishbone Bacon Tiny 40PK', available: 269, casePack: 40 },
-  { sku: '646', description: 'LBL21134 Benebone Puppy 2-Pack Dental Chew/Wishbone Chicken Tiny 40PK', available: 2000, casePack: 1 },
-  { sku: '646400', description: 'Benebone Puppy 2-Pack Dental Chew/Wishbone Chicken Tiny', available: 67, casePack: 40 },
-  { sku: '647150', description: 'Benebone Puppy 2-Pack Dental Chew/Wishbone Chicken Small', available: 74, casePack: 15 },
-  { sku: '650244', description: 'Benebone Puppy 2-Pack Maplestick/Zaggler Bacon Tiny 24/4PK', available: 1402, casePack: 24 },
-  { sku: '650244ML', description: 'ML Benebone Puppy 2-Pack Maplestick/Zaggler Bacon Tiny 24/4PK', available: 465, casePack: 24 },
-  { sku: '650400', description: 'Benebone Puppy 2-Pack Maplestick/Zaggler Bacon Tiny 40PK', available: 204, casePack: 40 },
-  { sku: '655244', description: 'Benebone 2-Pack Maplestick/Zaggler Bacon Tiny 24/4PK', available: 51, casePack: 24 },
-  { sku: '655244ML', description: 'ML Benebone 2-Pack Maplestick/Zaggler Bacon Tiny 24/4PK', available: 45, casePack: 24 },
-  { sku: '655400', description: 'Benebone 2-Pack Maplestick/Zaggler Bacon Tiny 40PK', available: 122, casePack: 40 },
-  { sku: '660244', description: 'Benebone Puppy 2-Pack Fishbone Tiny 24/4PK', available: 39, casePack: 24 },
-  { sku: '660244ML', description: 'ML Benebone Puppy 2-Pack Fishbone Tiny 24/4PK', available: 53, casePack: 24 },
-  { sku: '660400', description: 'Benebone Puppy 2-Pack Fishbone Tiny 40PK', available: 234, casePack: 40 },
-  { sku: '661244', description: 'Benebone 2-Pack Wishbone Bacon & Chicken Medium', available: 0, casePack: 24 },
-  { sku: '662200', description: 'Benebone 2-Pack Fishbone/Wishbone Bacon Medium 20PK', available: 674, casePack: 20 },
-  { sku: '662244', description: 'Benebone 2-Pack Fishbone / Wishbone Bacon Medium 24/4PK', available: 1228, casePack: 24 },
-  { sku: '665244', description: 'Benebone 2-Pack Fishbone Tiny 24/4PK', available: 64, casePack: 24 },
-  { sku: '665244ML', description: 'ML Benebone 2-Pack Fishbone Tiny 24/4PK', available: 191, casePack: 24 },
-  { sku: '665400', description: 'Benebone 2-Pack Fishbone Tiny 40PK', available: 114, casePack: 40 },
-  { sku: '670244', description: 'Benebone Puppy 2-Pack Rubber Bone/Wishbone Bacon Tiny 24/4PK', available: 426, casePack: 24 },
-  { sku: '670244ML', description: 'ML Benebone Puppy 2-Pack Rubber Bone/Wishbone Bacon Tiny 24/4PK', available: 81, casePack: 24 },
-  { sku: '670400', description: 'Benebone Puppy 2-Pack Rubber Bone/Wishbone Bacon Tiny 40PK', available: 335, casePack: 40 },
-  { sku: '671', description: 'LBL21042 Benebone 2-Pack Wishbone / Dental Chew Small (671)', available: 7000, casePack: 1 },
-  { sku: '671100', description: 'Benebone 2-Pack Wishbone / Dental Chew Small 10PK', available: 317, casePack: 10 },
-  { sku: '672', description: 'LBL21043 Benebone 2-Pack Wishbone / Dental Chew Medium (672)', available: 6000, casePack: 1 },
-  { sku: '672080', description: 'Benebone 2-Pack Wishbone / Dental Chew Medium 8PK', available: 1299, casePack: 8 },
-  { sku: '673080', description: 'Benebone 2-Pack Wishbone / Dental Chew Large 8PK', available: 1936, casePack: 8 },
-  { sku: '674', description: 'LBL21045 Benebone 2-Pack Wishbone / Fishbone Small (674)', available: 5000, casePack: 1 },
-  { sku: '674100', description: 'Benebone 2-Pack Wishbone / Fishbone Small 10PK', available: 391, casePack: 10 },
-  { sku: '675', description: 'LBL21046 Benebone 2-Pack Wishbone / Fishbone Medium (675)', available: 7500, casePack: 1 },
-  { sku: '675080', description: 'Benebone 2-Pack Wishbone / Fishbone Medium 8PK', available: 1316, casePack: 8 },
-  { sku: '676', description: 'LBL21047 Benebone 2-Pack Wishbone / Fishbone Large (676)', available: 4000, casePack: 1 },
-  { sku: '676080', description: 'Benebone 2-Pack Wishbone / Fishbone Large 8PK', available: 334, casePack: 8 },
-  { sku: '677', description: 'LBL21048 Benebone 2-Pack Maplestick / Zaggler Small (677)', available: 2000, casePack: 1 },
-  { sku: '677080', description: 'Benebone 2-Pack Maplestick / Zaggler Small 8PK', available: 127, casePack: 8 },
-  { sku: '678060', description: 'Benebone 2-Pack Maplestick / Zaggler Medium 6PK', available: 322, casePack: 6 },
-  { sku: '679', description: 'LBL21050 Benebone 2-Pack Maplestick / Zaggler Large (679)', available: 6000, casePack: 1 },
-  { sku: '679060', description: 'Benebone 2-Pack Maplestick / Zaggler Large 6PK', available: 698, casePack: 6 },
-  { sku: '680100', description: 'Benebone 2-Pack Wishbone Bacon Small', available: 81, casePack: 10 },
-  { sku: '681080', description: 'Benebone 2-Pack Wishbone Bacon Medium', available: 85, casePack: 8 },
-  { sku: '682060', description: 'Benebone 2-Pack Wishbone Bacon Large', available: 1, casePack: 6 },
-  { sku: '685244', description: 'Benebone 2-Pack Tripe Bone Tiny 24/4PK', available: 37, casePack: 24 },
-  { sku: '685400', description: 'Benebone 2-Pack Tripe Bone Tiny 40PK', available: 65, casePack: 40 },
-  { sku: '721244', description: 'Benebone Bone Bacon Small 24/4PK', available: 434, casePack: 24 },
-  { sku: '722244', description: 'Benebone Bone Bacon Medium  24/4PK', available: 1625, casePack: 24 },
-  { sku: '723244', description: 'Benebone Bone Bacon Large 24/4PK', available: 730, casePack: 24 },
-  { sku: '724244', description: 'Benebone Bone Bacon Giant 24/4PK', available: 782, casePack: 24 },
-  { sku: '801244', description: 'Benebone Maplestick Small 24/4PK', available: 111, casePack: 24 },
-  { sku: '801244ML', description: 'ML Benebone Maplestick Small 24/4PK', available: 56, casePack: 24 },
-  { sku: '801300', description: 'Benebone Maplestick Small 30PK', available: 305, casePack: 30 },
-  { sku: '802244', description: 'Benebone Maplestick Medium 24/4PK', available: 1418, casePack: 24 },
-  { sku: '802244ML', description: 'ML Benebone Maplestick Medium 24/4PK', available: 32, casePack: 24 },
-  { sku: '802350', description: 'Benebone Maplestick Medium 35PK', available: 428, casePack: 35 },
-  { sku: '803244', description: 'Benebone Maplestick Large 24/4PK', available: 87, casePack: 24 },
-  { sku: '803244ML', description: 'ML Benebone Maplestick Large 24/4PK', available: 48, casePack: 24 },
-  { sku: '803300', description: 'Benebone Maplestick Large 30PK', available: 338, casePack: 30 },
-  { sku: '804244', description: 'Benebone Puppy Maplestick Small 24/4PK', available: 110, casePack: 24 },
-  { sku: '804300', description: 'Benebone Puppy Maplestick Small 30PK', available: 479, casePack: 30 },
-  { sku: '805244', description: 'Benebone Maplestick Giant 24/4PK', available: 11, casePack: 24 },
-  { sku: '805300', description: 'Benebone Maplestick Giant 30PK', available: 46, casePack: 30 },
-  { sku: '807', description: 'LBL21052 Benebone Tiny Wishbone (807)', available: 12000, casePack: 1 },
-  { sku: '807200', description: 'Benebone Wishbone Bacon Tiny 20PK', available: 1275, casePack: 20 },
-  { sku: '807244', description: 'Benebone Wishbone Bacon Tiny 24/4PK', available: 202, casePack: 24 },
-  { sku: '808244', description: 'Benebone Wishbone Bacon Medium 24/4PK', available: 3837, casePack: 24 },
-  { sku: '808244ML', description: 'ML Benebone Wishbone Bacon Medium 24/4PK', available: 605, casePack: 24 },
-  { sku: '808244T', description: 'T Benebone Wishbone Bacon Medium 24/4PK', available: 163, casePack: 24 },
-  { sku: '808600', description: 'Benebone Wishbone Bacon Medium 60PK', available: 3174, casePack: 60 },
-  { sku: '808600X', description: 'X Benebone Wishbone Bacon Medium 60PK', available: 405, casePack: 60 },
-  { sku: '809244', description: 'Benebone Puppy Wishbone Bacon Medium 24/4PK', available: 66, casePack: 24 },
-  { sku: '809244ML', description: 'ML Benebone Puppy Wishbone Bacon Medium 24/4PK', available: 98, casePack: 24 },
-  { sku: '809600', description: 'Benebone Puppy Wishbone Bacon Medium 60PK', available: 57, casePack: 60 },
-  { sku: '810244', description: 'Benebone Wishbone Pumpkin Spice Medium 24/4PK', available: 357, casePack: 24 },
-  { sku: '811244', description: 'Benebone Bacon Stick Small 24/4PK', available: 87, casePack: 24 },
-  { sku: '811244ML', description: 'ML Benebone Bacon Stick Small 24/4PK', available: 238, casePack: 24 },
-  { sku: '811300', description: 'Benebone Bacon Stick Small 30PK', available: 195, casePack: 30 },
-  { sku: '812244', description: 'Benebone Bacon Stick Medium 24/4PK', available: 279, casePack: 24 },
-  { sku: '812244ML', description: 'ML Benebone Bacon Stick Medium 24/4PK', available: 337, casePack: 24 },
-  { sku: '812350', description: 'Benebone Bacon Stick Medium 35PK', available: 820, casePack: 35 },
-  { sku: '813244', description: 'Benebone Bacon Stick Large 24/4PK', available: 69, casePack: 24 },
-  { sku: '813244ML', description: 'ML Benebone Bacon Stick Large 24/4PK', available: 267, casePack: 24 },
-  { sku: '813300', description: 'Benebone Bacon Stick Large 30PK', available: 364, casePack: 30 },
-  { sku: '814244', description: 'Benebone Bacon Stick Giant 24/4PK', available: 2, casePack: 24 },
-  { sku: '814300', description: 'Benebone Bacon Stick Giant 30PK', available: 170, casePack: 30 },
-  { sku: '818244', description: 'Benebone Wishbone Peanut Medium 24/4PK', available: 66, casePack: 24 },
-  { sku: '818244ML', description: 'ML Benebone Wishbone Peanut Medium 24/4PK', available: 196, casePack: 24 },
-  { sku: '818600', description: 'Benebone Wishbone Peanut Medium 60PK', available: 756, casePack: 60 },
-  { sku: '820244', description: 'Benebone Wishbone Chicken Medium 24/4PK', available: 86, casePack: 24 },
-  { sku: '820244ML', description: 'ML Benebone Wishbone Chicken Medium 24/4PK', available: 473, casePack: 24 },
-  { sku: '820600', description: 'Benebone Wishbone Chicken Medium 60PK', available: 513, casePack: 60 },
-  { sku: '820600X', description: 'X Benebone Wishbone Chicken Medium 60PK', available: 90, casePack: 60 },
-  { sku: '821244', description: 'Benebone Wishbone Pumpkin Spice Small 24/4PK', available: 116, casePack: 24 },
-  { sku: '823244', description: 'Benebone Wishbone Pumpkin Spice Large 24/4PK', available: 203, casePack: 24 },
-  { sku: '825244', description: 'Benebone Pawplexer Bacon Small 24/4PK', available: 67, casePack: 24 },
-  { sku: '825300', description: 'Benebone Pawplexer Bacon Small 30PK', available: 55, casePack: 30 },
-  { sku: '828244', description: 'Benebone Wishbone Bacon Small 24/4PK', available: 1520, casePack: 24 },
-  { sku: '828244ML', description: 'ML Benebone Wishbone Bacon Small 24/4PK', available: 390, casePack: 24 },
-  { sku: '828244T', description: 'T Benebone Wishbone Bacon Small 24/4PK', available: 437, casePack: 24 },
-  { sku: '828500', description: 'Benebone Wishbone Bacon Small 50PK', available: 1637, casePack: 50 },
-  { sku: '828500X', description: 'X Benebone Wishbone Bacon Small 50PK', available: 560, casePack: 50 },
-  { sku: '829244', description: 'Benebone Puppy Wishbone Bacon Small 24/4PK', available: 411, casePack: 24 },
-  { sku: '829244ML', description: 'ML Benebone Puppy Wishbone Bacon Small 24/4PK', available: 336, casePack: 24 },
-  { sku: '829500', description: 'Benebone Puppy Wishbone Bacon Small 50PK', available: 425, casePack: 50 },
-  { sku: '830244', description: 'Benebone Pawplexer Bacon Medium 24/4PK', available: 66, casePack: 24 },
-  { sku: '830400', description: 'Benebone Pawplexer Bacon Medium 40PK', available: 27, casePack: 40 },
-  { sku: '831244', description: 'Benebone Wishbone Duck Small 24/4PK', available: 166, casePack: 24 },
-  { sku: '832244', description: 'Benebone Wishbone Duck Medium 24/4PK', available: 211, casePack: 24 },
-  { sku: '833244', description: 'Benebone Wishbone Duck Large 24/4PK', available: 231, casePack: 24 },
-  { sku: '834244', description: 'Benebone Wishbone Duck Giant 24/4PK', available: 123, casePack: 24 },
-  { sku: '838244', description: 'Benebone Wishbone Peanut Small 24/4PK', available: 127, casePack: 24 },
-  { sku: '838244ML', description: 'ML Benebone Wishbone Peanut Small 24/4PK', available: 110, casePack: 24 },
-  { sku: '838500', description: 'Benebone Wishbone Peanut Small 50PK', available: 625, casePack: 50 },
-  { sku: '840244', description: 'Benebone Wishbone Chicken Small 24/4PK', available: 81, casePack: 24 },
-  { sku: '840244ML', description: 'ML Benebone Wishbone Chicken Small 24/4PK', available: 439, casePack: 24 },
-  { sku: '840500', description: 'Benebone Wishbone Chicken Small 50PK', available: 772, casePack: 50 },
-  { sku: '841244', description: 'Benebone Wishbone Venison Small 24/4PK', available: 342, casePack: 24 },
-  { sku: '842244', description: 'Benebone Wishbone Venison Medium 24/4PK', available: 587, casePack: 24 },
-  { sku: '843244', description: 'Benebone Wishbone Venison Large 24/4PK', available: 260, casePack: 24 },
-  { sku: '845244', description: 'Benebone Wishbone Turkey Medium 24/4PK', available: 181, casePack: 24 },
-  { sku: '846244', description: 'Benebone Ring Turkey Medium 24/4PK', available: 85, casePack: 24 },
-  { sku: '847244', description: 'Benebone Bone Turkey Medium 24/4PK', available: 86, casePack: 24 },
-  { sku: '850244', description: 'Benebone Pawplexer Bacon Large 24/4PK', available: 3, casePack: 24 },
-  { sku: '850250', description: 'Benebone Pawplexer Bacon Large 25PK', available: 25, casePack: 25 },
-  { sku: '851244', description: 'Benebone Longhorn Medium 24/4PK', available: 575, casePack: 24 },
-  { sku: '851244P', description: 'P Benebone Longhorn Medium 24/4PK', available: 16, casePack: 24 },
-  { sku: '855244', description: 'Benebone Chicken Foot Medium 24/4PK', available: 612, casePack: 24 },
-  { sku: '855244P', description: 'P Benebone Chicken Foot Medium 24/4PK', available: 71, casePack: 24 },
-  { sku: '860244', description: 'Benebone Dental Chew Bacon Medium 24/4PK', available: 968, casePack: 24 },
-  { sku: '860244ML', description: 'ML Benebone Dental Chew Bacon Medium 24/4PK', available: 93, casePack: 24 },
-  { sku: '860350', description: 'Benebone Dental Chew Bacon Medium 35PK', available: 1329, casePack: 35 },
-  { sku: '860350X', description: 'X Benebone Dental Chew Bacon Medium 35PK', available: 882, casePack: 35 },
-  { sku: '861244', description: 'Benebone Dental Chew Peanut Medium 24/4PK', available: 60, casePack: 24 },
-  { sku: '861350', description: 'Benebone Dental Chew Peanut Medium 35PK', available: 203, casePack: 35 },
-  { sku: '862244', description: 'Benebone Dental Chew Chicken Medium 24/4PK', available: 64, casePack: 24 },
-  { sku: '862350', description: 'Benebone Dental Chew Chicken Medium 35PK', available: 230, casePack: 35 },
-  { sku: '870244', description: 'Benebone Wishbone Bacon Large 24/4PK', available: 1035, casePack: 24 },
-  { sku: '870244ML', description: 'ML Benebone Wishbone Bacon Large 24/4PK', available: 458, casePack: 24 },
-  { sku: '870400', description: 'Benebone Wishbone Bacon Large 40PK', available: 2604, casePack: 40 },
-  { sku: '871244', description: 'Benebone Wishbone Peanut Large 24/4PK', available: 101, casePack: 24 },
-  { sku: '871244ML', description: 'ML Benebone Wishbone Peanut Large 24/4PK', available: 81, casePack: 24 },
-  { sku: '871400', description: 'Benebone Wishbone Peanut Large 40PK', available: 1024, casePack: 40 },
-  { sku: '872244', description: 'Benebone Wishbone Chicken Large 24/4PK', available: 129, casePack: 24 },
-  { sku: '872244ML', description: 'ML Benebone Wishbone Chicken Large 24/4PK', available: 314, casePack: 24 },
-  { sku: '872400', description: 'Benebone Wishbone Chicken Large 40PK', available: 448, casePack: 40 },
-  { sku: '873244', description: 'Benebone Green Wishbone Bacon Eco Bone Small 24/4PK', available: 283, casePack: 24 },
-  { sku: '873244ML', description: 'ML Benebone Green Wishbone Bacon Eco Bone Small 24/4PK', available: 0, casePack: 24 },
-  { sku: '874244', description: 'Benebone Green Wishbone Bacon Eco Bone Medium 24/4PK', available: 67, casePack: 24 },
-  { sku: '874244ML', description: 'ML Benebone Green Wishbone Bacon Eco Bone Medium 24/4PK', available: 0, casePack: 24 },
-  { sku: '875244', description: 'Benebone Green Wishbone Bacon Eco Bone Large 24/4PK', available: 237, casePack: 24 },
-  { sku: '875244ML', description: 'ML Benebone Green Wishbone Bacon Eco Bone Large 24/4PK', available: 0, casePack: 24 },
-  { sku: '876244', description: 'Benebone Wishbone Bacon Giant 24/4PK', available: 68, casePack: 24 },
-  { sku: '876244ML', description: 'ML Benebone Wishbone Bacon Giant 24/4PK', available: 105, casePack: 24 },
-  { sku: '876300', description: 'Benebone Wishbone Bacon Giant 30PK', available: 449, casePack: 30 },
-  { sku: '877244', description: 'Benebone Wishbone Peanut Giant 24/4PK', available: 52, casePack: 24 },
-  { sku: '877300', description: 'Benebone Wishbone Peanut Giant 30PK', available: 120, casePack: 30 },
-  { sku: '878244', description: 'Benebone Wishbone Chicken Giant 24/4PK', available: 69, casePack: 24 },
-  { sku: '878300', description: 'Benebone Wishbone Chicken Giant 30PK', available: 127, casePack: 30 },
-  { sku: '880244', description: 'Benebone Dental Chew Bacon Small 24/4PK', available: 76, casePack: 24 },
-  { sku: '880244ML', description: 'ML Benebone Dental Chew Bacon Small 24/4PK', available: 112, casePack: 24 },
-  { sku: '880300', description: 'Benebone Dental Chew Bacon Small 30PK', available: 189, casePack: 30 },
-  { sku: '881244', description: 'Benebone Dental Chew Peanut Small 24/4PK', available: 2, casePack: 24 },
-  { sku: '881300', description: 'Benebone Dental Chew Peanut Small 30PK', available: 67, casePack: 30 },
-  { sku: '882244', description: 'Benebone Dental Chew Chicken Small 24/4PK', available: 2, casePack: 24 },
-  { sku: '882300', description: 'Benebone Dental Chew Chicken Small 30PK', available: 228, casePack: 30 },
-  { sku: '890244', description: 'Benebone Dental Chew Bacon Large 24/4PK', available: 53, casePack: 24 },
-  { sku: '890244ML', description: 'ML Benebone Dental Chew Bacon Large 24/4PK', available: 70, casePack: 24 },
-  { sku: '890300', description: 'Benebone Dental Chew Bacon Large 30PK', available: 200, casePack: 30 },
-  { sku: '891244', description: 'Benebone Dental Chew Peanut Large 24/4PK', available: 46, casePack: 24 },
-  { sku: '891300', description: 'Benebone Dental Chew Peanut Large 30PK', available: 71, casePack: 30 },
-  { sku: '892244', description: 'Benebone Dental Chew Chicken Large 24/4PK', available: 47, casePack: 24 },
-  { sku: '892300', description: 'Benebone Dental Chew Chicken Large 30PK', available: 116, casePack: 30 },
-  { sku: '901244', description: 'Lumabone Stick Small 24/4PK', available: 17, casePack: 24 },
-  { sku: '901246EF', description: 'EF Lumabone Stick Small 24/6PK', available: 1, casePack: 24 },
-  { sku: '902244', description: 'Lumabone Stick Medium 24/4PK', available: 224, casePack: 24 },
-  { sku: '904244', description: 'Lumabone Ring-Stuffer Bacon Small 24/4PK', available: 92, casePack: 24 },
-  { sku: '905244', description: 'Lumabone Ring-Stuffer Bacon Medium 24/4PK', available: 110, casePack: 24 },
-  { sku: '905246EF', description: 'EF Lumabone Ring-Stuffer Bacon Medium 24/6PK', available: 3, casePack: 24 },
-  { sku: '906244', description: 'Lumabone Ring-Stuffer Bacon Large 24/4PK', available: 76, casePack: 24 },
-  { sku: '908244', description: 'Lumabone Wishbone Bacon Medium 24/4PK', available: 1108, casePack: 24 },
-  { sku: '913320F', description: 'BBG Shipper F: 451-452-453-873-874-875 (BBG Floor Display)', available: 1692, casePack: 1 },
-  { sku: '914244', description: 'Lumabone Ring-Stuffer Beef Small 24/4PK', available: 25, casePack: 24 },
-  { sku: '915244', description: 'Lumabone Ring-Stuffer Beef Medium 24/4PK', available: 88, casePack: 24 },
-  { sku: '916244', description: 'Lumabone Ring-Stuffer Beef Large 24/4PK', available: 47, casePack: 24 },
-  { sku: '920244', description: 'Lumabone Wag-n-Roll Bacon Medium 24/4PK', available: 112, casePack: 24 },
-  { sku: '928244', description: 'Lumabone Wishbone Bacon Small 24/4PK', available: 1177, casePack: 24 },
-  { sku: '960244', description: 'Lumabone Dental Chew Bacon Medium 24/4PK', available: 93, casePack: 24 },
-  { sku: '960246EF', description: 'EF Lumabone Dental Chew Bacon Medium 24/6PK', available: 2, casePack: 24 },
-  { sku: '970244', description: 'Lumabone Wishbone Bacon Large 24/4PK', available: 208, casePack: 24 },
-  { sku: '971244', description: 'Lumabone Bulkster Bacon Small 24/4PK', available: 86, casePack: 24 },
-  { sku: '972244', description: 'Lumabone Bulkster Bacon Medium 24/4PK', available: 141, casePack: 24 },
-  { sku: '973244', description: 'Lumabone Bulkster Bacon Large 24/4PK', available: 43, casePack: 24 },
-  { sku: '974244', description: 'Lumabone Bulkster Bacon Giant 24/4PK', available: 16, casePack: 24 },
-  { sku: '980244', description: 'Lumabone Dental Chew Bacon Small 24/4PK', available: 66, casePack: 24 },
-  { sku: '981244', description: 'Lumabone Bulkster Beef Small 24/4PK', available: 60, casePack: 24 },
-  { sku: '982244', description: 'Lumabone Bulkster Beef Medium 24/4PK', available: 79, casePack: 24 },
-  { sku: '982246EF', description: 'EF Lumabone Bulkster Beef Medium 24/6PK', available: 47, casePack: 24 },
-  { sku: '983244', description: 'Lumabone Bulkster Beef Large 24/4PK', available: 14, casePack: 24 },
-  { sku: '984244', description: 'Lumabone Bulkster Beef Giant 24/4PK', available: 19, casePack: 24 },
-  { sku: '990060', description: 'Lumabone 3-Pack WB/WG/SK Bacon Medium', available: 1519, casePack: 6 },
-  { sku: '991060', description: 'Lumabone 3-Pack WB/DC/RS Bacon Medium', available: 1162, casePack: 6 },
-  { sku: '992080', description: 'Lumabone 4-Pack WB/RS/DC/SK Bacon Medium', available: 1723, casePack: 8 },
-  { sku: 'BB-PM0', description: 'Padded Mailer 0', available: 7993, casePack: 1 },
-  { sku: 'BB-PM2', description: 'Padded Mailer 2', available: 0, casePack: 1 },
-  { sku: 'BB-PM4', description: 'Padded Mailer 4', available: 5400, casePack: 1 },
-  { sku: 'BB-PM5', description: 'Padded Mailer 5', available: 2755, casePack: 1 },
-  { sku: 'CTN03', description: 'Box 3 - Medium', available: 906, casePack: 0 },
-  { sku: 'CTN05', description: 'Box 5 - Large', available: 615, casePack: 1 },
-  { sku: 'CTN07', description: 'Box 7 -Xlarge', available: 1080, casePack: 1 },
-  { sku: 'CTN08', description: 'Small Outreach', available: 16152, casePack: 1 },
-  { sku: 'CTN08 SHIPPER', description: 'Small Outreach Shipper', available: 1859, casePack: 1 },
-  { sku: 'U111', description: 'Benebone Rubber Bone Small - LOOSE', available: 1439, casePack: 1 },
-  { sku: 'U112', description: 'Benebone Rubber Bone Medium - LOOSE', available: 13758, casePack: 1 },
-  { sku: 'U113', description: 'Benebone Rubber Bone Large - LOOSE', available: 837, casePack: 1 },
-  { sku: 'U121', description: 'Benebone Ball - LOOSE', available: 4759, casePack: 1 },
-  { sku: 'U131', description: 'Benebone Tug (Ball) - LOOSE', available: 960, casePack: 1 },
-  { sku: 'U141', description: 'Benebone Cone - LOOSE', available: 1041, casePack: 1 },
-  { sku: 'U150', description: 'Benebone Essentials Pawbler - LOOSE', available: 3844, casePack: 1 },
-  { sku: 'U151', description: 'Benebone Pawbler - LOOSE', available: 2095, casePack: 1 },
-  { sku: 'U410', description: 'Benebone Fishbone Small - LOOSE', available: 26540, casePack: 1 },
-  { sku: 'U420', description: 'Benebone Fishbone Medium - LOOSE', available: 4768, casePack: 1 },
-  { sku: 'U430', description: 'Benebone Fishbone Large - LOOSE', available: 6760, casePack: 1 },
-  { sku: 'U610', description: 'Benebone Zaggler Bacon Small - LOOSE', available: 464, casePack: 1 },
-  { sku: 'U620', description: 'Benebone Zaggler Bacon Medium - LOOSE', available: 2420, casePack: 1 },
-  { sku: 'U630', description: 'Benebone Zaggler Bacon Large - LOOSE', available: 1380, casePack: 1 },
-  { sku: 'U801', description: 'Benebone Maplestick Small - LOOSE', available: 1724, casePack: 1 },
-  { sku: 'U803', description: 'Benebone Maplestick Large - LOOSE', available: 3290, casePack: 1 },
-  { sku: 'U808', description: 'Benebone Wishbone Bacon Medium - LOOSE', available: 10478, casePack: 1 },
-  { sku: 'U818', description: 'Benebone Wishbone Peanut Medium - LOOSE', available: 1350, casePack: 0 },
-  { sku: 'U820', description: 'Benebone Wishbone Peanut Medium - LOOSE', available: 290, casePack: 0 },
-  { sku: 'U826', description: 'Benebone Puppy Wishbone Chicken Tiny - LOOSE', available: 1360, casePack: 1 },
-  { sku: 'U827', description: 'Benebone Puppy Wishbone Chicken Small - LOOSE', available: 2580, casePack: 1 },
-  { sku: 'U828', description: 'Benebone Wishbone Bacon Small - LOOSE', available: 10900, casePack: 1 },
-  { sku: 'U829', description: 'Benebone Puppy Wishbone Bacon Small - LOOSE', available: 1990, casePack: 1 },
-  { sku: 'U838', description: 'Benebone Wishbone Bacon Peanut - LOOSE', available: 6450, casePack: 0 },
-  { sku: 'U860', description: 'Benebone Dental Chew Bacon Medium - LOOSE', available: 10507, casePack: 1 },
-  { sku: 'U863', description: 'Benebone Puppy Dental Chew Chicken Tiny - LOOSE', available: 4250, casePack: 1 },
-  { sku: 'U864', description: 'Benebone Puppy Dental Chew Chicken Small - LOOSE', available: 2700, casePack: 1 },
-  { sku: 'U865', description: 'Benebone Puppy Dental Chew Bacon Small - LOOSE', available: 2650, casePack: 1 },
-  { sku: 'U870', description: 'Benebone Wishbone Bacon Large - LOOSE', available: 8057, casePack: 1 },
-  { sku: 'U871', description: 'Benebone Wishbone Peanut Large - LOOSE', available: 2495, casePack: 0 },
-  { sku: 'U872', description: 'Benebone Wishbone Chicken Large - LOOSE', available: 1795, casePack: 0 },
-  { sku: 'U880', description: 'Benebone Dental Chew Bacon Small - LOOSE', available: 660, casePack: 1 }
-]
+import FactorySelector from './components/FactorySelector'
+import AlertPreview from './components/AlertPreview'
+import { generateAlertWord } from './utils/wordGenerator'
+import { INVENTORY_DATA, FACTORY_CONFIG, FACTORY_RECIPIENTS } from './data/inventory'
 
 export default function App() {
+  const [selectedFactory, setSelectedFactory] = useState('AIM')
   const [downloading, setDownloading] = useState(false)
 
-  const downloadAsWord = async () => {
+  const handleDownloadWord = async () => {
     setDownloading(true)
     try {
-      const timestamp = new Date().toLocaleString()
-      const date = new Date().toISOString().split('T')[0]
-
-      let tableRows = '<w:tr><w:tc><w:p><w:r><w:rPr><w:b/></w:rPr><w:t>SKU</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:rPr><w:b/></w:rPr><w:t>Description</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:rPr><w:b/></w:rPr><w:t>OnHand</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:rPr><w:b/></w:rPr><w:t>CasePack</w:t></w:r></w:p></w:tc></w:tr>'
-      INVENTORY_DATA.forEach(i => {
-        tableRows += '<w:tr><w:tc><w:p><w:r><w:t>' + (i.sku || '') + '</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>' + (i.description || '') + '</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>' + (i.available || 0) + '</w:t></w:r></w:p></w:tc><w:tc><w:p><w:r><w:t>' + (i.casePack || '') + '</w:t></w:r></w:p></w:tc></w:tr>'
-      })
-
-      const xml = '<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="32"/></w:rPr><w:t>Benebone Inventory Report</w:t></w:r></w:p><w:p><w:r><w:t>Generated: ' + timestamp + '</w:t></w:r></w:p><w:p><w:r><w:t>Total SKUs: ' + INVENTORY_DATA.length + '</w:t></w:r></w:p><w:tbl><w:tblPr><w:tblBorders><w:top w:val="single" w:sz="12" w:space="0" w:color="000000"/><w:left w:val="single" w:sz="12" w:space="0" w:color="000000"/><w:bottom w:val="single" w:sz="12" w:space="0" w:color="000000"/><w:right w:val="single" w:sz="12" w:space="0" w:color="000000"/><w:insideH w:val="single" w:sz="12" w:space="0" w:color="000000"/><w:insideV w:val="single" w:sz="12" w:space="0" w:color="000000"/></w:tblBorders></w:tblPr>' + tableRows + '</w:tbl></w:body></w:document>'
-
-      const blob = new Blob([xml], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' })
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = 'Benebone_Inventory_' + date + '.docx'
-      document.body.appendChild(a)
-      a.click()
-      document.body.removeChild(a)
-      URL.revokeObjectURL(url)
+      await generateAlertWord(selectedFactory, INVENTORY_DATA, FACTORY_CONFIG, FACTORY_RECIPIENTS)
     } catch (error) {
-      alert('Error downloading document: ' + error.message)
+      alert('Error generating document: ' + error.message)
     } finally {
       setDownloading(false)
     }
   }
 
+  const factories = Object.keys(FACTORY_CONFIG)
+  const selectedConfig = FACTORY_CONFIG[selectedFactory]
+  const alertSkus = INVENTORY_DATA.filter(sku => {
+    const mosSetting = FACTORY_CONFIG[selectedFactory]
+    return (
+      (sku.factoryFlag?.[selectedFactory] !== false) &&
+      sku.mos <= mosSetting.threshold &&
+      sku.plannedProd > 0 &&
+      sku.exclude !== 'X'
+    )
+  })
+
   return (
     <div style={{ minHeight: '100vh', background: '#f9fafb' }}>
       <Header />
-      <div style={{ padding: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div>
-            <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '0.5rem', color: '#1b2817' }}>
-              Inventory ({INVENTORY_DATA.length})
-            </h1>
+      <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+        
+        {/* Controls */}
+        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
+              Select Factory
+            </label>
+            <select
+              value={selectedFactory}
+              onChange={(e) => setSelectedFactory(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                border: '1px solid #e5e7eb',
+                borderRadius: '6px',
+                fontSize: '14px',
+                fontFamily: 'inherit',
+                maxWidth: '300px'
+              }}
+            >
+              {factories.map(f => (
+                <option key={f} value={f}>{f}</option>
+              ))}
+            </select>
           </div>
-          <button
-            onClick={downloadAsWord}
-            disabled={downloading}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              padding: '0.75rem 1.5rem',
-              background: '#2d5016',
-              color: 'white',
-              border: 'none',
-              borderRadius: '6px',
-              fontSize: '14px',
-              fontWeight: 600,
-              cursor: downloading ? 'not-allowed' : 'pointer',
-              opacity: downloading ? 0.6 : 1
-            }}
-          >
-            <Download size={16} />
-            {downloading ? 'Downloading...' : 'Download as Word'}
-          </button>
+
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            <button
+              onClick={handleDownloadWord}
+              disabled={downloading || alertSkus.length === 0}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.75rem 1.5rem',
+                background: '#2d5016',
+                color: 'white',
+                border: 'none',
+                borderRadius: '6px',
+                fontSize: '14px',
+                fontWeight: 600,
+                cursor: downloading || alertSkus.length === 0 ? 'not-allowed' : 'pointer',
+                opacity: downloading || alertSkus.length === 0 ? 0.6 : 1
+              }}
+            >
+              <Download size={16} />
+              {downloading ? 'Generating...' : 'Download as Word'}
+            </button>
+            
+            <button
+              disabled
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.75rem 1.5rem',
+                background: '#ccc',
+                color: '#666',
+                border: 'none',
+                borderRadius: '6px',
+                fontSize: '14px',
+                fontWeight: 600,
+                cursor: 'not-allowed',
+                opacity: 0.5
+              }}
+              title="Coming in Phase 2"
+            >
+              <Mail size={16} />
+              Send Email (Phase 2)
+            </button>
+          </div>
         </div>
-        <InventoryTable skus={INVENTORY_DATA} />
+
+        {/* Alert Info */}
+        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
+          <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1b2817', marginBottom: '0.5rem' }}>
+            {selectedFactory} Alert Summary
+          </h2>
+          <p style={{ color: '#666', fontSize: '14px' }}>
+            MOS Threshold: ≤ {selectedConfig.threshold} | SKUs on Alert: <strong>{alertSkus.length}</strong>
+          </p>
+          {alertSkus.length === 0 && (
+            <p style={{ color: '#f59e0b', fontSize: '14px', marginTop: '0.5rem' }}>
+              No SKUs on alert for {selectedFactory} this week.
+            </p>
+          )}
+        </div>
+
+        {/* Preview Table */}
+        {alertSkus.length > 0 && (
+          <AlertPreview factory={selectedFactory} skus={alertSkus.slice(0, 10)} />
+        )}
       </div>
     </div>
   )
