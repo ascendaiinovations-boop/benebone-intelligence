@@ -60,8 +60,9 @@ export default async function handler(req, res) {
 
     const alertSkus = allSkus.filter(sku => {
       if (!sku.factoryFlag || !sku.factoryFlag[factory]) return false
-      // FIX: Exclude SKUs with MOS=0 (new products with no sales history)
-      if (sku.mos === 0 || sku.mos === undefined || sku.mos === null || sku.mos > threshold) return false
+      // FINAL FIX: Only exclude if MOS is undefined/null or exceeds threshold
+      // Include all products with MOS data and sales (even MOS≈0)
+      if (sku.mos === undefined || sku.mos === null || sku.mos > threshold) return false
       if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false
       if (sku.exclude === 'X') return false
       
