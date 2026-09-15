@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MessageSquare, Download, Trash2, CheckCircle, AlertCircle } from 'lucide-react';
-import { INVENTORY_DATA } from './inventory-data.js';
+import { INVENTORY_DATA } from '../api/inventory-data.js';
 
 export default function App() {
   const [selectedFactory, setSelectedFactory] = useState('AIM');
