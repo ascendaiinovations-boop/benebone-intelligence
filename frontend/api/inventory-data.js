@@ -7,7 +7,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 480.0,
     "mos": 0.0,
     "amtToSS": 3708.0,
-    "notes": "Packaging artwork approved",
     "plannedProdEaches": 960.0,
     "factoryFlag": {
       "AIM": true
@@ -30,7 +29,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 676.0,
     "mos": 0.0,
     "amtToSS": 1081.6,
-    "notes": "Walmart Canada new SKU",
     "plannedProdEaches": 1352.0,
     "factoryFlag": {
       "AIM": true
@@ -53,7 +51,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 824.72,
     "mos": 0.0,
     "amtToSS": 3958.6560000000004,
-    "notes": "Walmart Canada new SKU",
     "plannedProdEaches": 1649.44,
     "factoryFlag": {
       "AIM": true
@@ -76,7 +73,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 608.4,
     "mos": 0.0,
     "amtToSS": 2920.3199999999997,
-    "notes": "Walmart Canada new SKU",
     "plannedProdEaches": 1216.8,
     "factoryFlag": {
       "AIM": true
@@ -99,7 +95,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 236.6,
     "mos": 0.0,
     "amtToSS": 1135.6799999999998,
-    "notes": "Walmart Canada new SKU",
     "plannedProdEaches": 473.2,
     "factoryFlag": {
       "AIM": true
@@ -122,7 +117,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 608.4,
     "mos": 0.0,
     "amtToSS": 2920.3199999999997,
-    "notes": "Walmart Canada new SKU",
     "plannedProdEaches": 1216.8,
     "factoryFlag": {
       "AIM": true
@@ -145,7 +139,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 400.0,
     "mos": 0.0,
     "amtToSS": 1545.0,
-    "notes": "Production mold end of Aug / shipping mid-Sept",
     "plannedProdEaches": 800.0,
     "factoryFlag": {
       "201": true
@@ -168,7 +161,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 0.0,
     "amtToSS": 1545.0,
-    "notes": "Production mold end of Aug / shipping mid-Sept",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -191,7 +183,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 250.0,
     "mos": 0.0,
     "amtToSS": 1931.25,
-    "notes": "Packaging on August order",
     "plannedProdEaches": 500.0,
     "factoryFlag": {
       "AIM": true
@@ -214,7 +205,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2000.0,
     "mos": 0.0,
     "amtToSS": 3600.0,
-    "notes": "",
     "plannedProdEaches": 4000.0,
     "factoryFlag": {
       "AIM": true
@@ -237,7 +227,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 320.0,
     "mos": 0.0,
     "amtToSS": 1152.0,
-    "notes": "",
     "plannedProdEaches": 640.0,
     "factoryFlag": {
       "AIM": true
@@ -260,7 +249,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 500.0,
     "mos": 0.0,
     "amtToSS": 900.0,
-    "notes": "",
     "plannedProdEaches": 1000.0,
     "factoryFlag": {
       "AIM": true
@@ -283,7 +271,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 750.0,
     "mos": 0.0,
     "amtToSS": 1350.0,
-    "notes": "",
     "plannedProdEaches": 1500.0,
     "factoryFlag": {
       "AIM": true
@@ -306,7 +293,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 500.0,
     "mos": 0.0,
     "amtToSS": 1950.0,
-    "notes": "",
     "plannedProdEaches": 1000.0,
     "factoryFlag": {
       "AIM": true
@@ -329,7 +315,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 250.0,
     "mos": 0.0,
     "amtToSS": 975.0,
-    "notes": "",
     "plannedProdEaches": 500.0,
     "factoryFlag": {
       "AIM": true
@@ -352,7 +337,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 250.0,
     "mos": 0.0,
     "amtToSS": 975.0,
-    "notes": "",
     "plannedProdEaches": 500.0,
     "factoryFlag": {
       "AIM": true
@@ -375,7 +359,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 500.0,
     "mos": 0.0,
     "amtToSS": 1931.25,
-    "notes": "",
     "plannedProdEaches": 1000.0,
     "factoryFlag": {
       "AIM": true
@@ -398,7 +381,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 250.0,
     "mos": 0.0,
     "amtToSS": 450.0,
-    "notes": "",
     "plannedProdEaches": 500.0,
     "factoryFlag": {
       "AIM": true
@@ -421,7 +403,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 0.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -444,7 +425,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 165.0,
     "mos": 0.0,
     "amtToSS": 637.3125,
-    "notes": "",
     "plannedProdEaches": 330.0,
     "factoryFlag": {
       "AIM": true
@@ -467,7 +447,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 165.0,
     "mos": 0.0,
     "amtToSS": 637.3125,
-    "notes": "",
     "plannedProdEaches": 330.0,
     "factoryFlag": {
       "AIM": true
@@ -490,7 +469,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 165.0,
     "mos": 0.0,
     "amtToSS": 637.3125,
-    "notes": "",
     "plannedProdEaches": 330.0,
     "factoryFlag": {
       "AIM": true
@@ -513,7 +491,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 165.0,
     "mos": 0.0,
     "amtToSS": 637.3125,
-    "notes": "",
     "plannedProdEaches": 330.0,
     "factoryFlag": {
       "AIM": true
@@ -536,7 +513,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 265.0,
     "mos": 0.0,
     "amtToSS": 1023.5625,
-    "notes": "",
     "plannedProdEaches": 530.0,
     "factoryFlag": {
       "AIM": true
@@ -559,7 +535,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 265.0,
     "mos": 0.0,
     "amtToSS": 1023.5625,
-    "notes": "",
     "plannedProdEaches": 530.0,
     "factoryFlag": {
       "AIM": true
@@ -582,7 +557,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 500.0,
     "mos": 0.0,
     "amtToSS": 1931.25,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1000.0,
     "factoryFlag": {
       "AIM": true
@@ -605,7 +579,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1000.0,
     "mos": 0.004337349397590362,
     "amtToSS": 3856.5,
-    "notes": "",
     "plannedProdEaches": 2000.0,
     "factoryFlag": {
       "AIM": true
@@ -628,7 +601,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 0.018982335881887687,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -651,7 +623,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 4500.0,
     "mos": 0.05012048192771084,
     "amtToSS": 17069.25,
-    "notes": "",
     "plannedProdEaches": 9000.0,
     "factoryFlag": {
       "Loving Pets": true
@@ -674,7 +645,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 0.08674698795180723,
     "amtToSS": 1521.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -697,7 +667,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 0.21706864564007422,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -720,7 +689,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 150.0,
     "mos": 0.23132530120481928,
     "amtToSS": 672.0,
-    "notes": "",
     "plannedProdEaches": 300.0,
     "factoryFlag": {
       "AIM": true
@@ -743,7 +711,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 4500.0,
     "mos": 0.35180722891566263,
     "amtToSS": 15191.25,
-    "notes": "",
     "plannedProdEaches": 9000.0,
     "factoryFlag": {
       "Loving Pets": true
@@ -766,7 +733,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 4456.6,
     "mos": 0.4204404567964449,
     "amtToSS": 14621.6175,
-    "notes": "",
     "plannedProdEaches": 8913.2,
     "factoryFlag": {
       "Coltoys": true
@@ -789,7 +755,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1200.0,
     "mos": 0.4879518072289157,
     "amtToSS": 3825.0,
-    "notes": "",
     "plannedProdEaches": 2400.0,
     "factoryFlag": {
       "AIM": true
@@ -812,7 +777,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 4250.0,
     "mos": 0.5817150956768249,
     "amtToSS": 7523.75,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 8500.0,
     "factoryFlag": {
       "AIM": true
@@ -835,7 +799,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 800.0,
     "mos": 0.6144578313253012,
     "amtToSS": 2410.0,
-    "notes": "",
     "plannedProdEaches": 1600.0,
     "factoryFlag": {
       "AIM": true
@@ -858,7 +821,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 10000.0,
     "mos": 0.63,
     "amtToSS": 29568.75,
-    "notes": "",
     "plannedProdEaches": 20000.0,
     "factoryFlag": {
       "LTM": true
@@ -881,7 +843,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1800.0,
     "mos": 0.636144578313253,
     "amtToSS": 3051.0,
-    "notes": "Will start on Tues 9/8",
     "plannedProdEaches": 3600.0,
     "factoryFlag": {
       "Midbury": true
@@ -904,7 +865,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1000.0,
     "mos": 0.6997590361445784,
     "amtToSS": 2894.5,
-    "notes": "",
     "plannedProdEaches": 2000.0,
     "factoryFlag": {
       "AIM": true
@@ -927,7 +887,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1000.0,
     "mos": 0.9310843373493977,
     "amtToSS": 2574.5,
-    "notes": "",
     "plannedProdEaches": 2000.0,
     "factoryFlag": {
       "AIM": true
@@ -950,7 +909,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 850.0,
     "mos": 0.9389085754783841,
     "amtToSS": 2179.125,
-    "notes": "",
     "plannedProdEaches": 1700.0,
     "factoryFlag": {
       "LTM": true
@@ -973,7 +931,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 0.9813992017471196,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -996,7 +953,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 7000.0,
     "mos": 1.0079173838209983,
     "amtToSS": 12771.25,
-    "notes": "",
     "plannedProdEaches": 14000.0,
     "factoryFlag": {
       "AIM": true
@@ -1019,7 +975,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1.082036775106082,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -1042,7 +997,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 225.0,
     "mos": 1.0923694779116466,
     "amtToSS": 384.21875,
-    "notes": "",
     "plannedProdEaches": 450.0,
     "factoryFlag": {
       "AIM": true
@@ -1065,7 +1019,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1.0947666195190948,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -1088,7 +1041,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 12500.0,
     "mos": 1.140281551000247,
     "amtToSS": 43181.25,
-    "notes": "Will follow 820600",
     "plannedProdEaches": 25000.0,
     "factoryFlag": {
       "Midbury": true
@@ -1111,7 +1063,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1200.0,
     "mos": 1.2433734939759036,
     "amtToSS": 1026.0,
-    "notes": "Will start on Mon 9/14",
     "plannedProdEaches": 2400.0,
     "factoryFlag": {
       "Midbury": true
@@ -1134,7 +1085,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 375.0,
     "mos": 1.249156626506024,
     "amtToSS": 2248.875,
-    "notes": "",
     "plannedProdEaches": 750.0,
     "factoryFlag": {
       "AIM": true
@@ -1157,7 +1107,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 6300.0,
     "mos": 1.29312,
     "amtToSS": 9998.75,
-    "notes": "",
     "plannedProdEaches": 12600.0,
     "factoryFlag": {
       "AIM": true
@@ -1180,7 +1129,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1.3295896328293737,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -1203,7 +1151,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 7132.0,
     "mos": 1.3671286379393064,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 14264.0,
     "factoryFlag": {
       "AIM": true
@@ -1226,7 +1173,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1400.0,
     "mos": 1.3934177215189874,
     "amtToSS": 4508.5,
-    "notes": "",
     "plannedProdEaches": 2800.0,
     "factoryFlag": {
       "Bennett": true
@@ -1249,7 +1195,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 1.4457831325301207,
     "amtToSS": 44.69999999999999,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -1272,7 +1217,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 1.4457831325301207,
     "amtToSS": 44.69999999999999,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -1295,7 +1239,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 1.4457831325301207,
     "amtToSS": 44.69999999999999,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -1318,7 +1261,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 1.4746987951807229,
     "amtToSS": 1137.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -1341,7 +1283,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 13000.0,
     "mos": 1.5347544022242818,
     "amtToSS": 18428.125,
-    "notes": "",
     "plannedProdEaches": 26000.0,
     "factoryFlag": {
       "AIM": true
@@ -1364,7 +1305,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2825.0,
     "mos": 1.535344919501013,
     "amtToSS": 3092.96875,
-    "notes": "",
     "plannedProdEaches": 5650.0,
     "factoryFlag": {
       "AIM": true
@@ -1387,7 +1327,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 8000.0,
     "mos": 1.5555555555555556,
     "amtToSS": 12030.0,
-    "notes": "Will follow 860350X",
     "plannedProdEaches": 16000.0,
     "factoryFlag": {
       "Midbury": true
@@ -1410,7 +1349,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 65000.0,
     "mos": 1.5614593663552376,
     "amtToSS": 168495.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 130000.0,
     "factoryFlag": {
       "AIM": true
@@ -1433,7 +1371,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 470.0,
     "mos": 1.5872853114586005,
     "amtToSS": 783.375,
-    "notes": "",
     "plannedProdEaches": 940.0,
     "factoryFlag": {
       "AIM": true
@@ -1456,7 +1393,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2650.0,
     "mos": 1.6760172766537849,
     "amtToSS": 0.0,
-    "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 5300.0,
     "factoryFlag": {
       "AIM": true
@@ -1479,7 +1415,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 9540.0,
     "mos": 1.7131166174130483,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 19080.0,
     "factoryFlag": {
       "AIM": true
@@ -1502,7 +1437,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 300.0,
     "mos": 1.7349397590361446,
     "amtToSS": 438.75,
-    "notes": "",
     "plannedProdEaches": 600.0,
     "factoryFlag": {
       "AIM": true
@@ -1525,7 +1459,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 4100.0,
     "mos": 1.8026447252424331,
     "amtToSS": 2972.875,
-    "notes": "",
     "plannedProdEaches": 8200.0,
     "factoryFlag": {
       "AIM": true
@@ -1548,7 +1481,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 550.0,
     "mos": 1.813800657174151,
     "amtToSS": 390.3125,
-    "notes": "",
     "plannedProdEaches": 1100.0,
     "factoryFlag": {
       "AIM": true
@@ -1571,7 +1503,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 105.0,
     "mos": 1.8175559380378659,
     "amtToSS": 141.5625,
-    "notes": "",
     "plannedProdEaches": 210.0,
     "factoryFlag": {
       "AIM": true
@@ -1594,7 +1525,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 9888.4,
     "mos": 1.8382985442843336,
     "amtToSS": 13047.945,
-    "notes": "",
     "plannedProdEaches": 19776.8,
     "factoryFlag": {
       "Loving Pets": true
@@ -1617,7 +1547,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 300.0,
     "mos": 1.8506024096385543,
     "amtToSS": 744.0,
-    "notes": "",
     "plannedProdEaches": 600.0,
     "factoryFlag": {
       "AIM": true
@@ -1640,7 +1569,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 150.0,
     "mos": 1.8506024096385543,
     "amtToSS": 98.8125,
-    "notes": "",
     "plannedProdEaches": 300.0,
     "factoryFlag": {
       "AIM": true
@@ -1663,7 +1591,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 4000.0,
     "mos": 1.9445783132530121,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 8000.0,
     "factoryFlag": {
       "AIM": true
@@ -1686,7 +1613,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2150.0,
     "mos": 1.9669375175119082,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 4300.0,
     "factoryFlag": {
       "AIM": true
@@ -1709,7 +1635,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 10000.0,
     "mos": 1.971891891891892,
     "amtToSS": 4457.5,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 20000.0,
     "factoryFlag": {
       "AIM": true
@@ -1732,7 +1657,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 12000.0,
     "mos": 2.0034602076124566,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 24000.0,
     "factoryFlag": {
       "AIM": true
@@ -1755,7 +1679,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1700.0,
     "mos": 2.0104890148830616,
     "amtToSS": 1838.25,
-    "notes": "",
     "plannedProdEaches": 3400.0,
     "factoryFlag": {
       "AIM": true
@@ -1778,7 +1701,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 800.0,
     "mos": 2.016867469879518,
     "amtToSS": 343.0,
-    "notes": "",
     "plannedProdEaches": 1600.0,
     "factoryFlag": {
       "AIM": true
@@ -1801,7 +1723,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 12500.0,
     "mos": 2.0374383679697106,
     "amtToSS": 3979.875,
-    "notes": "",
     "plannedProdEaches": 25000.0,
     "factoryFlag": {
       "AIM": true
@@ -1824,7 +1745,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 29000.0,
     "mos": 2.0402991275446616,
     "amtToSS": 39612.5,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 58000.0,
     "factoryFlag": {
       "AIM": true
@@ -1847,7 +1767,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2200.0,
     "mos": 2.04249726177437,
     "amtToSS": 2281.5,
-    "notes": "",
     "plannedProdEaches": 4400.0,
     "factoryFlag": {
       "Bennett": true
@@ -1870,7 +1789,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 2.0616740088105727,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -1893,7 +1811,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 21000.0,
     "mos": 2.115117828104185,
     "amtToSS": 28372.5,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 42000.0,
     "factoryFlag": {
       "AIM": true
@@ -1916,7 +1833,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2000.0,
     "mos": 2.1307228915662653,
     "amtToSS": 1830.0,
-    "notes": "",
     "plannedProdEaches": 4000.0,
     "factoryFlag": {
       "DMG": true
@@ -1939,7 +1855,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 2.168674698795181,
     "amtToSS": 20.69999999999999,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -1962,7 +1877,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 800.0,
     "mos": 2.1903614457831324,
     "amtToSS": 151.0,
-    "notes": "",
     "plannedProdEaches": 1600.0,
     "factoryFlag": {
       "AIM": true
@@ -1985,7 +1899,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 800.0,
     "mos": 2.2445783132530117,
     "amtToSS": 606.0,
-    "notes": "",
     "plannedProdEaches": 1600.0,
     "factoryFlag": {
       "AIM": true
@@ -2008,7 +1921,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 950.0,
     "mos": 2.246290424857324,
     "amtToSS": 4386.75,
-    "notes": "",
     "plannedProdEaches": 1900.0,
     "factoryFlag": {
       "AIM": true
@@ -2031,7 +1943,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3000.0,
     "mos": 2.255421686746988,
     "amtToSS": 296.25,
-    "notes": "",
     "plannedProdEaches": 6000.0,
     "factoryFlag": {
       "AIM": true
@@ -2054,7 +1965,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2100.0,
     "mos": 2.2719449225473323,
     "amtToSS": 159.375,
-    "notes": "",
     "plannedProdEaches": 4200.0,
     "factoryFlag": {
       "AIM": true
@@ -2077,7 +1987,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1525.0,
     "mos": 2.3132530120481927,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 3050.0,
     "factoryFlag": {
       "AIM": true
@@ -2100,7 +2009,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 335.0,
     "mos": 2.3305160942276566,
     "amtToSS": 213.9375,
-    "notes": "",
     "plannedProdEaches": 670.0,
     "factoryFlag": {
       "AIM": true
@@ -2123,7 +2031,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 8090.0,
     "mos": 2.3439915409474734,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 16180.0,
     "factoryFlag": {
       "AIM": true
@@ -2146,7 +2053,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 8000.0,
     "mos": 2.4333061224489794,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 16000.0,
     "factoryFlag": {
       "AIM": true
@@ -2169,7 +2075,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1350.0,
     "mos": 2.4417670682730925,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2700.0,
     "factoryFlag": {
       "AIM": true
@@ -2192,7 +2097,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 589.0,
     "mos": 2.4669134943850106,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1178.0,
     "factoryFlag": {
       "AIM": true
@@ -2215,7 +2119,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1650.0,
     "mos": 2.4920043811610078,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 3300.0,
     "factoryFlag": {
       "AIM": true
@@ -2238,7 +2141,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 900.0,
     "mos": 2.5461847389558234,
     "amtToSS": 306.25,
-    "notes": "",
     "plannedProdEaches": 1800.0,
     "factoryFlag": {
       "AIM": true
@@ -2261,7 +2163,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2750.0,
     "mos": 2.5866374589266155,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 5500.0,
     "factoryFlag": {
       "AIM": true
@@ -2284,7 +2185,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1000.0,
     "mos": 2.602409638554217,
     "amtToSS": 262.5,
-    "notes": "",
     "plannedProdEaches": 2000.0,
     "factoryFlag": {
       "AIM": true
@@ -2307,7 +2207,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 4200.0,
     "mos": 2.6075731497418246,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 8400.0,
     "factoryFlag": {
       "AIM": true
@@ -2330,7 +2229,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 650.0,
     "mos": 2.615755329008341,
     "amtToSS": 2669.25,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1300.0,
     "factoryFlag": {
       "AIM": true
@@ -2353,7 +2251,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 350.0,
     "mos": 2.6271944922547332,
     "amtToSS": 1431.75,
-    "notes": "",
     "plannedProdEaches": 700.0,
     "factoryFlag": {
       "AIM": true
@@ -2376,7 +2273,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1560.0,
     "mos": 2.6274328081557,
     "amtToSS": 355.5,
-    "notes": "",
     "plannedProdEaches": 3120.0,
     "factoryFlag": {
       "AIM": true
@@ -2399,7 +2295,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 8000.0,
     "mos": 2.6428432705379685,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 16000.0,
     "factoryFlag": {
       "AIM": true
@@ -2422,7 +2317,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 575.0,
     "mos": 2.677841801990571,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1150.0,
     "factoryFlag": {
       "AIM": true
@@ -2445,7 +2339,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 2.710103455866168,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -2468,7 +2361,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 8774.0,
     "mos": 2.77226526347011,
     "amtToSS": 241.5749999999971,
-    "notes": "",
     "plannedProdEaches": 17548.0,
     "factoryFlag": {
       "AIM": true
@@ -2491,7 +2383,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 9000.0,
     "mos": 2.8122522522522524,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 18000.0,
     "factoryFlag": {
       "AIM": true
@@ -2514,7 +2405,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3525.0,
     "mos": 2.8218405537041784,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 7050.0,
     "factoryFlag": {
       "AIM": true
@@ -2537,7 +2427,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 2.841340982430979,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -2560,7 +2449,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 450.0,
     "mos": 2.853012048192771,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 900.0,
     "factoryFlag": {
       "AIM": true
@@ -2583,7 +2471,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 12934.800000000001,
     "mos": 2.8824454511617295,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 25869.600000000002,
     "factoryFlag": {
       "AIM": true
@@ -2606,7 +2493,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 8000.0,
     "mos": 2.8843373493975903,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 16000.0,
     "factoryFlag": {
       "AIM": true
@@ -2629,7 +2515,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3400.0,
     "mos": 2.9340892983699507,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 6800.0,
     "factoryFlag": {
       "AIM": true
@@ -2652,7 +2537,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 265.0,
     "mos": 2.9461241191179814,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 530.0,
     "factoryFlag": {
       "AIM": true
@@ -2675,7 +2559,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1650.0,
     "mos": 2.975684556407448,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 3300.0,
     "factoryFlag": {
       "AIM": true
@@ -2698,7 +2581,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 4500.0,
     "mos": 3.0725333333333333,
     "amtToSS": 0.0,
-    "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 9000.0,
     "factoryFlag": {
       "AIM": true
@@ -2721,7 +2603,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3000.0,
     "mos": 3.105542168674699,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 6000.0,
     "factoryFlag": {
       "Coltoys": true
@@ -2744,7 +2625,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2125.0,
     "mos": 3.1126860382707298,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 4250.0,
     "factoryFlag": {
       "AIM": true
@@ -2767,7 +2647,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 250.0,
     "mos": 3.1228915662650603,
     "amtToSS": 851.25,
-    "notes": "",
     "plannedProdEaches": 500.0,
     "factoryFlag": {
       "AIM": true
@@ -2790,7 +2669,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3400.0,
     "mos": 3.1228915662650603,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 6800.0,
     "factoryFlag": {
       "AIM": true
@@ -2813,7 +2691,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 7325.0,
     "mos": 3.1382869361404664,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 14650.0,
     "factoryFlag": {
       "AIM": true
@@ -2836,7 +2713,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3500.0,
     "mos": 3.138691855284263,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 7000.0,
     "factoryFlag": {
       "AIM": true
@@ -2859,7 +2735,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 6250.0,
     "mos": 3.1506506024096383,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 12500.0,
     "factoryFlag": {
       "AIM": true
@@ -2882,7 +2757,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3025.0,
     "mos": 3.154435925520263,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 6050.0,
     "factoryFlag": {
       "AIM": true
@@ -2905,7 +2779,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 6550.0,
     "mos": 3.1674790766117904,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 13100.0,
     "factoryFlag": {
       "AIM": true
@@ -2928,7 +2801,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 18500.0,
     "mos": 3.2,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 37000.0,
     "factoryFlag": {
       "AIM": true
@@ -2951,7 +2823,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 300.0,
     "mos": 3.23855421686747,
     "amtToSS": 1344.0,
-    "notes": "",
     "plannedProdEaches": 600.0,
     "factoryFlag": {
       "AIM": true
@@ -2974,7 +2845,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3000.0,
     "mos": 3.2481927710843372,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 6000.0,
     "factoryFlag": {
       "AIM": true
@@ -2997,7 +2867,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 8000.0,
     "mos": 3.26216814159292,
     "amtToSS": 0.0,
-    "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 16000.0,
     "factoryFlag": {
       "AIM": true
@@ -3020,7 +2889,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 225.0,
     "mos": 3.26425702811245,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 450.0,
     "factoryFlag": {
       "AIM": true
@@ -3043,7 +2911,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 850.0,
     "mos": 3.327002126151666,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1700.0,
     "factoryFlag": {
       "AIM": true
@@ -3066,7 +2933,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3250.0,
     "mos": 3.3319740500463393,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 6500.0,
     "factoryFlag": {
       "AIM": true
@@ -3089,7 +2955,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 135.0,
     "mos": 3.3467202141900936,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 270.0,
     "factoryFlag": {
       "AIM": true
@@ -3112,7 +2977,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 325.0,
     "mos": 3.4164967562557926,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 650.0,
     "factoryFlag": {
       "AIM": true
@@ -3135,7 +2999,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 7750.0,
     "mos": 3.4331214639938534,
     "amtToSS": 2114.375,
-    "notes": "",
     "plannedProdEaches": 15500.0,
     "factoryFlag": {
       "AIM": true
@@ -3158,7 +3021,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 800.0,
     "mos": 3.442771084337349,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1600.0,
     "factoryFlag": {
       "AIM": true
@@ -3181,7 +3043,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 8000.0,
     "mos": 3.4553658536585368,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 16000.0,
     "factoryFlag": {
       "Bennett": true
@@ -3204,7 +3065,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 11500.0,
     "mos": 3.4683708748035618,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 23000.0,
     "factoryFlag": {
       "AIM": true
@@ -3227,7 +3087,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 17533.84,
     "mos": 3.5126567509332314,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 35067.68,
     "factoryFlag": {
       "AIM": true
@@ -3250,7 +3109,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2225.0,
     "mos": 3.5478543387031274,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 4450.0,
     "factoryFlag": {
       "AIM": true
@@ -3273,7 +3131,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 5000.0,
     "mos": 3.591325301204819,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 10000.0,
     "factoryFlag": {
       "AIM": true
@@ -3296,7 +3153,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 500.0,
     "mos": 3.6433734939759037,
     "amtToSS": 1342.5,
-    "notes": "",
     "plannedProdEaches": 1000.0,
     "factoryFlag": {
       "AIM": true
@@ -3319,7 +3175,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 350.0,
     "mos": 3.7177280550774525,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 700.0,
     "factoryFlag": {
       "AIM": true
@@ -3342,7 +3197,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 6025.0,
     "mos": 3.725441183822426,
     "amtToSS": 0.0,
-    "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 12050.0,
     "factoryFlag": {
       "AIM": true
@@ -3365,7 +3219,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 650.0,
     "mos": 3.7634847080630216,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1300.0,
     "factoryFlag": {
       "AIM": true
@@ -3388,7 +3241,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1350.0,
     "mos": 3.8045515394912983,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2700.0,
     "factoryFlag": {
       "AIM": true
@@ -3411,7 +3263,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1925.0,
     "mos": 3.807854795806603,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 3850.0,
     "factoryFlag": {
       "AIM": true
@@ -3434,7 +3285,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 500.0,
     "mos": 3.863132530120482,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1000.0,
     "factoryFlag": {
       "AIM": true
@@ -3457,7 +3307,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 13449.279999999999,
     "mos": 3.929300680797854,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 26898.559999999998,
     "factoryFlag": {
       "AIM": true
@@ -3480,7 +3329,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 4500.0,
     "mos": 3.9345421076852283,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 9000.0,
     "factoryFlag": {
       "AIM": true
@@ -3503,7 +3351,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3900.0,
     "mos": 3.9388322520852643,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 7800.0,
     "factoryFlag": {
       "AIM": true
@@ -3526,7 +3373,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 300.0,
     "mos": 3.9903614457831327,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 600.0,
     "factoryFlag": {
       "AIM": true
@@ -3549,7 +3395,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 6150.0,
     "mos": 4.000235086688217,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 12300.0,
     "factoryFlag": {
       "AIM": true
@@ -3572,7 +3417,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 900.0,
     "mos": 4.009638554216868,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1800.0,
     "factoryFlag": {
       "AIM": true
@@ -3595,7 +3439,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 350.0,
     "mos": 4.015146299483649,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 700.0,
     "factoryFlag": {
       "AIM": true
@@ -3618,7 +3461,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3983.0,
     "mos": 4.079580873385,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 7966.0,
     "factoryFlag": {
       "AIM": true
@@ -3641,7 +3483,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 5500.0,
     "mos": 4.1073384446878425,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 11000.0,
     "factoryFlag": {
       "AIM": true
@@ -3664,7 +3505,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 4350.0,
     "mos": 4.11200664727877,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 8700.0,
     "factoryFlag": {
       "AIM": true
@@ -3687,7 +3527,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2250.0,
     "mos": 4.131726907630522,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 4500.0,
     "factoryFlag": {
       "AIM": true
@@ -3710,7 +3549,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 4.163855421686747,
     "amtToSS": 360.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -3733,7 +3571,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1600.0,
     "mos": 4.228915662650602,
     "amtToSS": 3000.0,
-    "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 3200.0,
     "factoryFlag": {
       "AIM": true
@@ -3756,7 +3593,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1370.0,
     "mos": 4.247647524404186,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2740.0,
     "factoryFlag": {
       "AIM": true
@@ -3779,7 +3615,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 550.0,
     "mos": 4.258488499452355,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1100.0,
     "factoryFlag": {
       "AIM": true
@@ -3802,7 +3637,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3000.0,
     "mos": 4.32,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 6000.0,
     "factoryFlag": {
       "AIM": true
@@ -3825,7 +3659,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 15500.0,
     "mos": 4.3272755538282155,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 31000.0,
     "factoryFlag": {
       "AIM": true
@@ -3848,7 +3681,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 550.0,
     "mos": 4.353121577217962,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1100.0,
     "factoryFlag": {
       "AIM": true
@@ -3871,7 +3703,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 625.0,
     "mos": 4.366265060240964,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1250.0,
     "factoryFlag": {
       "AIM": true
@@ -3894,7 +3725,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 500.0,
     "mos": 4.4067469879518075,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1000.0,
     "factoryFlag": {
       "AIM": true
@@ -3917,7 +3747,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 12250.0,
     "mos": 4.411703958691911,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 24500.0,
     "factoryFlag": {
       "AIM": true
@@ -3940,7 +3769,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 350.0,
     "mos": 4.430292598967298,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 700.0,
     "factoryFlag": {
       "AIM": true
@@ -3963,7 +3791,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1350.0,
     "mos": 4.449799196787149,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2700.0,
     "factoryFlag": {
       "AIM": true
@@ -3986,7 +3813,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1700.0,
     "mos": 4.476824946846208,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 3400.0,
     "factoryFlag": {
       "AIM": true
@@ -4009,7 +3835,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 3632.0,
     "mos": 4.550062282548001,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 7264.0,
     "factoryFlag": {
       "AIM": true
@@ -4032,7 +3857,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 425.0,
     "mos": 4.5584691708008505,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 850.0,
     "factoryFlag": {
       "AIM": true
@@ -4055,7 +3879,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 800.0,
     "mos": 4.608433734939759,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1600.0,
     "factoryFlag": {
       "AIM": true
@@ -4078,7 +3901,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 300.0,
     "mos": 4.68433734939759,
     "amtToSS": 373.5,
-    "notes": "",
     "plannedProdEaches": 600.0,
     "factoryFlag": {
       "AIM": true
@@ -4101,7 +3923,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1200.0,
     "mos": 4.759036144578313,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2400.0,
     "factoryFlag": {
       "AIM": true
@@ -4124,7 +3945,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 8000.0,
     "mos": 4.800903614457831,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 16000.0,
     "factoryFlag": {
       "AIM": true
@@ -4147,7 +3967,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 700.0,
     "mos": 4.857831325301205,
     "amtToSS": 703.5,
-    "notes": "",
     "plannedProdEaches": 1400.0,
     "factoryFlag": {
       "AIM": true
@@ -4170,7 +3989,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2600.0,
     "mos": 5.031325301204819,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 5200.0,
     "factoryFlag": {
       "AIM": true
@@ -4193,7 +4011,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2250.0,
     "mos": 5.063453815261044,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 4500.0,
     "factoryFlag": {
       "AIM": true
@@ -4216,7 +4033,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 275.0,
     "mos": 5.078641840087623,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 550.0,
     "factoryFlag": {
       "AIM": true
@@ -4239,7 +4055,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1300.0,
     "mos": 5.084708063021316,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2600.0,
     "factoryFlag": {
       "AIM": true
@@ -4262,7 +4077,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 375.0,
     "mos": 5.089156626506024,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 750.0,
     "factoryFlag": {
       "AIM": true
@@ -4285,7 +4099,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 5.109677419354839,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -4308,7 +4121,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 22000.0,
     "mos": 5.115706462212486,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 44000.0,
     "factoryFlag": {
       "AIM": true
@@ -4331,7 +4143,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 560.0,
     "mos": 5.142857142857143,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1120.0,
     "factoryFlag": {
       "AIM": true
@@ -4354,7 +4165,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 175.0,
     "mos": 5.155249569707401,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 350.0,
     "factoryFlag": {
       "AIM": true
@@ -4377,7 +4187,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 485.0,
     "mos": 5.186933300211154,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 970.0,
     "factoryFlag": {
       "AIM": true
@@ -4400,7 +4209,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2000.0,
     "mos": 5.248192771084337,
     "amtToSS": 930.0,
-    "notes": "",
     "plannedProdEaches": 4000.0,
     "factoryFlag": {
       "AIM": true
@@ -4423,7 +4231,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1025.0,
     "mos": 5.314839847193652,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2050.0,
     "factoryFlag": {
       "AIM": true
@@ -4446,7 +4253,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 150.0,
     "mos": 5.349397590361446,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 300.0,
     "factoryFlag": {
       "AIM": true
@@ -4469,7 +4275,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1400.0,
     "mos": 5.36592082616179,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2800.0,
     "factoryFlag": {
       "AIM": true
@@ -4492,7 +4297,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 450.0,
     "mos": 5.436144578313253,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 900.0,
     "factoryFlag": {
       "AIM": true
@@ -4515,7 +4319,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 550.0,
     "mos": 5.493975903614458,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1100.0,
     "factoryFlag": {
       "AIM": true
@@ -4538,7 +4341,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2500.0,
     "mos": 5.4962891566265055,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 5000.0,
     "factoryFlag": {
       "AIM": true
@@ -4561,7 +4363,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 415.0,
     "mos": 5.530555958774858,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 830.0,
     "factoryFlag": {
       "AIM": true
@@ -4584,7 +4385,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 500.0,
     "mos": 5.653012048192771,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1000.0,
     "factoryFlag": {
       "AIM": true
@@ -4607,7 +4407,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1250.0,
     "mos": 5.704481927710843,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2500.0,
     "factoryFlag": {
       "AIM": true
@@ -4630,7 +4429,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 640.0,
     "mos": 5.719879518072289,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1280.0,
     "factoryFlag": {
       "AIM": true
@@ -4653,7 +4451,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 5.725301204819277,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -4676,7 +4473,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 850.0,
     "mos": 5.81715095676825,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1700.0,
     "factoryFlag": {
       "AIM": true
@@ -4699,7 +4495,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 5.9638554216867465,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -4722,7 +4517,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 400.0,
     "mos": 6.202409638554216,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 800.0,
     "factoryFlag": {
       "AIM": true
@@ -4745,7 +4539,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 225.0,
     "mos": 6.2457831325301205,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 450.0,
     "factoryFlag": {
       "AIM": true
@@ -4768,7 +4561,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 650.0,
     "mos": 6.272474513438369,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1300.0,
     "factoryFlag": {
       "AIM": true
@@ -4791,7 +4583,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1300.0,
     "mos": 6.332530120481928,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2600.0,
     "factoryFlag": {
       "AIM": true
@@ -4814,7 +4605,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 470.0,
     "mos": 6.441425275570367,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 940.0,
     "factoryFlag": {
       "AIM": true
@@ -4837,7 +4627,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 600.0,
     "mos": 6.47710843373494,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1200.0,
     "factoryFlag": {
       "AIM": true
@@ -4860,7 +4649,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1200.0,
     "mos": 6.621686746987952,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2400.0,
     "factoryFlag": {
       "AIM": true
@@ -4883,7 +4671,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 850.0,
     "mos": 6.858114812189936,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1700.0,
     "factoryFlag": {
       "AIM": true
@@ -4906,7 +4693,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 125.0,
     "mos": 6.9397590361445785,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 250.0,
     "factoryFlag": {
       "AIM": true
@@ -4929,7 +4715,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 160.0,
     "mos": 6.9397590361445785,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 320.0,
     "factoryFlag": {
       "AIM": true
@@ -4952,7 +4737,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1000.0,
     "mos": 7.121927710843374,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2000.0,
     "factoryFlag": {
       "AIM": true
@@ -4975,7 +4759,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 225.0,
     "mos": 7.171084337349398,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 450.0,
     "factoryFlag": {
       "AIM": true
@@ -4998,7 +4781,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 800.0,
     "mos": 7.308433734939759,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1600.0,
     "factoryFlag": {
       "AIM": true
@@ -5021,7 +4803,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 625.0,
     "mos": 7.411662650602409,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1250.0,
     "factoryFlag": {
       "AIM": true
@@ -5044,7 +4825,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1100.0,
     "mos": 7.460240963855421,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2200.0,
     "factoryFlag": {
       "AIM": true
@@ -5067,7 +4847,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 7.9807228915662645,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -5090,7 +4869,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 496.0,
     "mos": 8.080062184220754,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 992.0,
     "factoryFlag": {
       "AIM": true
@@ -5113,7 +4891,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1285.0,
     "mos": 8.084009188504993,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2570.0,
     "factoryFlag": {
       "AIM": true
@@ -5136,7 +4913,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 275.0,
     "mos": 8.327710843373493,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 550.0,
     "factoryFlag": {
       "AIM": true
@@ -5159,7 +4935,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 850.0,
     "mos": 8.351523742026933,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1700.0,
     "factoryFlag": {
       "AIM": true
@@ -5182,7 +4957,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 225.0,
     "mos": 8.353413654618475,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 450.0,
     "factoryFlag": {
       "AIM": true
@@ -5205,7 +4979,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2050.0,
     "mos": 8.9920658242727,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 4100.0,
     "factoryFlag": {
       "AIM": true
@@ -5228,7 +5001,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 800.0,
     "mos": 9.520481927710843,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1600.0,
     "factoryFlag": {
       "AIM": true
@@ -5251,7 +5023,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 9.6768,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -5274,7 +5045,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 125.0,
     "mos": 9.71566265060241,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 250.0,
     "factoryFlag": {
       "AIM": true
@@ -5297,7 +5067,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 425.0,
     "mos": 9.715662650602411,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 850.0,
     "factoryFlag": {
       "AIM": true
@@ -5320,7 +5089,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 300.0,
     "mos": 9.773493975903614,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 600.0,
     "factoryFlag": {
       "AIM": true
@@ -5343,7 +5111,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 775.0,
     "mos": 9.782821609016713,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1550.0,
     "factoryFlag": {
       "AIM": true
@@ -5366,7 +5133,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 550.0,
     "mos": 9.904928806133626,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1100.0,
     "factoryFlag": {
       "AIM": true
@@ -5389,7 +5155,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 5500.0,
     "mos": 9.961708652792991,
     "amtToSS": 0.0,
-    "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 11000.0,
     "factoryFlag": {
       "AIM": true
@@ -5412,7 +5177,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 750.0,
     "mos": 10.039518072289157,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1500.0,
     "factoryFlag": {
       "AIM": true
@@ -5435,7 +5199,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 206.0,
     "mos": 10.359106328225524,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 412.0,
     "factoryFlag": {
       "AIM": true
@@ -5458,7 +5221,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 2000.0,
     "mos": 10.652530120481929,
     "amtToSS": 0.0,
-    "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 4000.0,
     "factoryFlag": {
       "AIM": true
@@ -5481,7 +5243,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 85.0,
     "mos": 10.817859673990078,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 170.0,
     "factoryFlag": {
       "AIM": true
@@ -5504,7 +5265,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 125.0,
     "mos": 11.242409638554218,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 250.0,
     "factoryFlag": {
       "AIM": true
@@ -5527,7 +5287,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 800.0,
     "mos": 11.385542168674698,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1600.0,
     "factoryFlag": {
       "AIM": true
@@ -5550,7 +5309,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 95.0,
     "mos": 11.688015218769817,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 190.0,
     "factoryFlag": {
       "AIM": true
@@ -5573,7 +5331,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1000.0,
     "mos": 12.387469879518074,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 2000.0,
     "factoryFlag": {
       "AIM": true
@@ -5596,7 +5353,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 150.0,
     "mos": 12.433734939759036,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 300.0,
     "factoryFlag": {
       "AIM": true
@@ -5619,7 +5375,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 12.578313253012047,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -5642,7 +5397,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 150.0,
     "mos": 12.72289156626506,
     "amtToSS": 48.0,
-    "notes": "",
     "plannedProdEaches": 300.0,
     "factoryFlag": {
       "AIM": true
@@ -5665,7 +5419,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 50.0,
     "mos": 12.838554216867468,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 100.0,
     "factoryFlag": {
       "AIM": true
@@ -5688,7 +5441,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 650.0,
     "mos": 12.865245597775719,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1300.0,
     "factoryFlag": {
       "AIM": true
@@ -5711,7 +5463,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 150.0,
     "mos": 12.95421686746988,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 300.0,
     "factoryFlag": {
       "AIM": true
@@ -5734,7 +5485,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 100.0,
     "mos": 13.012048192771083,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 200.0,
     "factoryFlag": {
       "AIM": true
@@ -5757,7 +5507,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 144.0,
     "mos": 13.373493975903614,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 288.0,
     "factoryFlag": {
       "AIM": true
@@ -5780,7 +5529,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 500.0,
     "mos": 13.567228915662652,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1000.0,
     "factoryFlag": {
       "AIM": true
@@ -5803,7 +5551,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 14.963855421686747,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -5826,7 +5573,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 15.050602409638554,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -5849,7 +5595,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 75.0,
     "mos": 15.730120481927711,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 150.0,
     "factoryFlag": {
       "AIM": true
@@ -5872,7 +5617,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 15.874698795180722,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -5895,7 +5639,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 600.0,
     "mos": 16.14457831325301,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1200.0,
     "factoryFlag": {
       "AIM": true
@@ -5918,7 +5661,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 450.0,
     "mos": 16.15421686746988,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 900.0,
     "factoryFlag": {
       "AIM": true
@@ -5941,7 +5683,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 150.0,
     "mos": 16.424096385542168,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 300.0,
     "factoryFlag": {
       "AIM": true
@@ -5964,7 +5705,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 750.0,
     "mos": 16.886746987951806,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1500.0,
     "factoryFlag": {
       "AIM": true
@@ -5987,7 +5727,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 40.0,
     "mos": 16.91566265060241,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 80.0,
     "factoryFlag": {
       "AIM": true
@@ -6010,7 +5749,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 17.17590361445783,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -6033,7 +5771,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 75.0,
     "mos": 17.580722891566264,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 150.0,
     "factoryFlag": {
       "AIM": true
@@ -6056,7 +5793,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 450.0,
     "mos": 17.927710843373493,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 900.0,
     "factoryFlag": {
       "AIM": true
@@ -6079,7 +5815,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 1500.0,
     "mos": 18.795180722891565,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 3000.0,
     "factoryFlag": {
       "AIM": true
@@ -6102,7 +5837,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 19.171084337349395,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -6125,7 +5859,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 19.776,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -6148,7 +5881,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 22.40963855421687,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6171,7 +5903,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 22.727710843373494,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -6194,7 +5925,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 60.0,
     "mos": 22.843373493975903,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 120.0,
     "factoryFlag": {
       "AIM": true
@@ -6217,7 +5947,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 65.0,
     "mos": 23.221501390176087,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 130.0,
     "factoryFlag": {
       "AIM": true
@@ -6240,7 +5969,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 50.0,
     "mos": 23.942168674698795,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 100.0,
     "factoryFlag": {
       "AIM": true
@@ -6263,7 +5991,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 24.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -6286,7 +6013,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 24.202409638554215,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -6309,7 +6035,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 60.0,
     "mos": 24.867469879518072,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 120.0,
     "factoryFlag": {
       "AIM": true
@@ -6332,7 +6057,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 450.0,
     "mos": 24.880321285140564,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 900.0,
     "factoryFlag": {
       "AIM": true
@@ -6355,7 +6079,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 50.0,
     "mos": 26.371084337349394,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 100.0,
     "factoryFlag": {
       "AIM": true
@@ -6378,7 +6101,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 75.0,
     "mos": 27.296385542168675,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 150.0,
     "factoryFlag": {
       "AIM": true
@@ -6401,7 +6123,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 27.75903614457831,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -6424,7 +6145,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 50.0,
     "mos": 32.963855421686745,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 100.0,
     "factoryFlag": {
       "AIM": true
@@ -6447,7 +6167,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 33.25301204819277,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6470,7 +6189,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 33.975903614457835,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6493,7 +6211,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 36.867469879518076,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6516,7 +6233,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 37.59036144578314,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6539,7 +6255,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 200.0,
     "mos": 40.94457831325301,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 400.0,
     "factoryFlag": {
       "AIM": true
@@ -6562,7 +6277,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 43.37349397590362,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6585,7 +6299,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 50.0,
     "mos": 44.76144578313253,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 100.0,
     "factoryFlag": {
       "AIM": true
@@ -6608,7 +6321,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 46.26506024096386,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6631,7 +6343,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 47.71084337349398,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6654,7 +6365,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 47.71084337349398,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6677,7 +6387,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 48.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -6700,7 +6409,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 48.43373493975904,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6723,7 +6431,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 53.49397590361446,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6746,7 +6453,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 35.0,
     "mos": 54.526678141135974,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 70.0,
     "factoryFlag": {
       "AIM": true
@@ -6769,7 +6475,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 58.13253012048194,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6792,7 +6497,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 60.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -6815,7 +6519,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 24.0,
     "mos": 63.61445783132531,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 48.0,
     "factoryFlag": {
       "AIM": true
@@ -6838,7 +6541,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 50.0,
     "mos": 66.27469879518071,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 100.0,
     "factoryFlag": {
       "AIM": true
@@ -6861,7 +6563,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 72.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -6884,7 +6585,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 12.0,
     "mos": 86.74698795180724,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 24.0,
     "factoryFlag": {
       "AIM": true
@@ -6907,7 +6607,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 150.0,
     "mos": 90.44819277108434,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 300.0,
     "factoryFlag": {
       "AIM": true
@@ -6930,7 +6629,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 200.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -6953,7 +6651,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 336.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -6976,7 +6673,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 370.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -6999,7 +6695,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 384.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7022,7 +6717,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 408.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7045,7 +6739,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 420.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7068,7 +6761,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 456.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7091,7 +6783,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 600.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7114,7 +6805,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 664.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7137,7 +6827,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 672.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7160,7 +6849,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 672.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7183,7 +6871,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 750.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7206,7 +6893,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 784.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7229,7 +6915,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 790.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7252,7 +6937,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1128.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7275,7 +6959,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1128.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7298,7 +6981,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1500.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7321,7 +7003,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1600.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7344,7 +7025,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1650.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7367,7 +7047,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1650.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7390,7 +7069,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1692.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7413,7 +7091,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1704.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7436,7 +7113,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1720.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7459,7 +7135,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1800.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7482,7 +7157,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 1800.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7505,7 +7179,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 2096.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7528,7 +7201,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 2160.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7551,7 +7223,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 2592.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7574,7 +7245,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 2688.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7597,7 +7267,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 2784.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7620,7 +7289,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 4400.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7643,7 +7311,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 4848.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7666,7 +7333,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 4872.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7689,7 +7355,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 4920.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7712,7 +7377,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 5400.0,
     "amtToSS": 0.0,
-    "notes": "Press 102 currently running 820600X with 3 of 11 skids complete",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7735,7 +7399,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 6972.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7758,7 +7421,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 8376.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7781,7 +7443,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 8568.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7804,7 +7465,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 9114.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7827,7 +7487,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 12096.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7850,7 +7509,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 13784.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7873,7 +7531,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 24300.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7896,7 +7553,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 28000.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
@@ -7919,7 +7575,6 @@ const INVENTORY_DATA = [
     "avgMonthlySales": 0.0,
     "mos": 30870.0,
     "amtToSS": 0.0,
-    "notes": "",
     "plannedProdEaches": 1,
     "factoryFlag": {
       "AIM": true
