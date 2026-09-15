@@ -629,130 +629,37 @@ export default function App() {
           </div>
         )}
 
-        {/* BENEBONE BRANDED PRIVACY FOOTER - PROFESSIONAL & BEAUTIFUL */}
+        {/* MINIMAL SLEEK FOOTER - PROFESSIONAL & SUBTLE */}
         <footer style={{ 
-          marginTop: '4rem', 
+          marginTop: '3rem',
           paddingTop: '2rem',
-          borderTop: '3px solid #1b4d3e',
-          background: 'linear-gradient(135deg, #1b4d3e 0%, #0d1117 100%)'
+          paddingBottom: '2rem',
+          borderTop: '1px solid #e5e7eb',
+          background: '#ffffff',
+          textAlign: 'center'
         }}>
-          <div style={{ maxWidth: '900px', margin: '0 auto', padding: '3rem 2rem' }}>
-            {/* Benebone Branding & Header */}
-            <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
-              <div style={{ fontSize: '32px', fontWeight: 700, color: '#c4975a', marginBottom: '0.5rem' }}>
-                🦴 Benebone
-              </div>
-              <div style={{ fontSize: '14px', color: '#c4975a', fontStyle: 'italic', marginBottom: '1.5rem' }}>
-                Wealth for All. Intelligence for One.
-              </div>
-            </div>
-
-            {/* Privacy & GDPR Section */}
-            <div style={{ 
-              background: 'rgba(196, 151, 90, 0.08)', 
-              border: '1px solid #c4975a', 
-              borderRadius: '8px', 
-              padding: '2rem',
-              marginBottom: '2rem'
-            }}
-            role="region"
-            aria-label="Privacy and data protection information">
-              
-              <h3 style={{ 
-                margin: '0 0 1rem 0', 
-                color: '#c4975a', 
-                fontSize: '18px',
-                fontWeight: 700,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}>
-                🔒 Data Protection & Privacy
-              </h3>
-
-              <p style={{ 
-                margin: '0 0 1.5rem 0', 
-                fontSize: '14px', 
-                color: '#e0e7ff', 
-                lineHeight: 1.7 
-              }}>
-                Your inventory data is processed exclusively for alert generation and automatically deleted within 24 hours. We never retain, share, or use your data for any other purpose. Your trust is our priority.
-              </p>
-
-              {/* Expandable GDPR Details */}
-              <details style={{ cursor: 'pointer' }}>
-                <summary style={{ 
-                  fontWeight: 600, 
-                  color: '#c4975a',
-                  padding: '0.75rem 0',
-                  userSelect: 'none'
-                }}>
-                  ► GDPR & Data Protection Compliance Details
+          <div style={{ fontSize: '12px', color: '#6b7280', lineHeight: 1.6 }}>
+            <p style={{ margin: '0 0 0.5rem 0' }}>
+              Data Protection: Your inventory data is processed for alert generation only and automatically deleted within 24 hours.
+            </p>
+            <p style={{ margin: '0 0 0.5rem 0' }}>
+              <details style={{ display: 'inline', cursor: 'pointer' }}>
+                <summary style={{ color: '#374151', fontWeight: 500, textDecoration: 'underline' }}>
+                  Privacy & GDPR
                 </summary>
-                <div style={{ 
-                  marginTop: '1rem', 
-                  paddingLeft: '1rem',
-                  borderLeft: '2px solid #c4975a',
-                  background: 'rgba(13, 17, 23, 0.3)',
-                  padding: '1rem',
-                  borderRadius: '6px'
-                }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', fontSize: '13px' }}>
-                    <div>
-                      <p style={{ margin: '0 0 0.5rem 0', color: '#c4975a', fontWeight: 600 }}>Article 4: Data Controller</p>
-                      <p style={{ margin: 0, color: '#e0e7ff' }}>Ascend AI Innovations</p>
-                    </div>
-                    <div>
-                      <p style={{ margin: '0 0 0.5rem 0', color: '#c4975a', fontWeight: 600 }}>Article 5: Processing Purpose</p>
-                      <p style={{ margin: 0, color: '#e0e7ff' }}>Inventory alert generation & warehouse automation</p>
-                    </div>
-                    <div>
-                      <p style={{ margin: '0 0 0.5rem 0', color: '#c4975a', fontWeight: 600 }}>Article 6: Legal Basis</p>
-                      <p style={{ margin: 0, color: '#e0e7ff' }}>Legitimate interest (operations efficiency)</p>
-                    </div>
-                    <div>
-                      <p style={{ margin: '0 0 0.5rem 0', color: '#c4975a', fontWeight: 600 }}>Article 6A: Recipients</p>
-                      <p style={{ margin: 0, color: '#e0e7ff' }}>Vercel (hosting), Email recipients (alerts)</p>
-                    </div>
-                    <div>
-                      <p style={{ margin: '0 0 0.5rem 0', color: '#c4975a', fontWeight: 600 }}>Retention Period</p>
-                      <p style={{ margin: 0, color: '#e0e7ff' }}>Deleted automatically within 24 hours</p>
-                    </div>
-                    <div>
-                      <p style={{ margin: '0 0 0.5rem 0', color: '#c4975a', fontWeight: 600 }}>Your Rights</p>
-                      <p style={{ margin: 0, color: '#e0e7ff' }}>Access, correction, deletion, portability</p>
-                    </div>
-                    <div style={{ gridColumn: '1 / -1' }}>
-                      <p style={{ margin: '0 0 0.5rem 0', color: '#c4975a', fontWeight: 600 }}>Article 13: Right to Lodge Complaint</p>
-                      <p style={{ margin: 0, color: '#e0e7ff' }}>Contact your local data protection authority or email privacy@ascendaiinnovations.com</p>
-                    </div>
-                    <div style={{ gridColumn: '1 / -1' }}>
-                      <p style={{ margin: '0 0 0.5rem 0', color: '#c4975a', fontWeight: 600 }}>International Data Transfer</p>
-                      <p style={{ margin: 0, color: '#e0e7ff' }}>Data processed in US via Vercel, protected under Standard Contractual Clauses (SCCs)</p>
-                    </div>
-                  </div>
+                <div style={{ marginTop: '1rem', textAlign: 'left', display: 'inline-block', fontSize: '11px', color: '#6b7280' }}>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Data Controller:</strong> Ascend AI Innovations</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Legal Basis:</strong> Legitimate interest (Article 6)</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Recipients:</strong> Vercel (hosting), email recipients</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Retention:</strong> Deleted within 24 hours</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Your Rights:</strong> Access, correction, deletion, portability (Articles 15-22)</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Complaint:</strong> <a href="mailto:privacy@ascendaiinnovations.com" style={{ color: '#374151', textDecoration: 'underline' }}>privacy@ascendaiinnovations.com</a></p>
                 </div>
               </details>
-            </div>
-
-            {/* Contact & Footer Info */}
-            <div style={{ 
-              textAlign: 'center', 
-              paddingTop: '1.5rem',
-              borderTop: '1px solid rgba(196, 151, 90, 0.3)',
-              color: '#c4975a',
-              fontSize: '13px'
-            }}>
-              <p style={{ margin: '0 0 0.5rem 0' }}>
-                <strong>Questions?</strong> Contact us at privacy@ascendaiinnovations.com
-              </p>
-              <p style={{ margin: '0 0 0.5rem 0' }}>
-                Data Controller: Ascend AI Innovations
-              </p>
-              <p style={{ margin: 0, color: '#8b7355', fontSize: '12px' }}>
-                © 2026 Benebone & Ascend AI Innovations. All rights reserved.
-              </p>
-            </div>
+            </p>
+            <p style={{ margin: '0 0 0.5rem 0' }}>
+              © 2026 Benebone & Ascend AI Innovations
+            </p>
           </div>
         </footer>
       </div>
