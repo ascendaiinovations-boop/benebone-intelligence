@@ -9,11 +9,20 @@ const INVENTORY_DATA = [
     "amtToSS": 3708.0,
     "notes": "Packaging artwork approved",
     "plannedProdEaches": 960.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "325244EF",
@@ -25,11 +34,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1081.6,
     "notes": "Walmart Canada new SKU",
     "plannedProdEaches": 1352.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "324244EF",
@@ -41,11 +59,20 @@ const INVENTORY_DATA = [
     "amtToSS": 3958.6560000000004,
     "notes": "Walmart Canada new SKU",
     "plannedProdEaches": 1649.44,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "323244EF",
@@ -57,11 +84,20 @@ const INVENTORY_DATA = [
     "amtToSS": 2920.3199999999997,
     "notes": "Walmart Canada new SKU",
     "plannedProdEaches": 1216.8,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "326244EF",
@@ -73,11 +109,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1135.6799999999998,
     "notes": "Walmart Canada new SKU",
     "plannedProdEaches": 473.2,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "327060EF",
@@ -89,11 +134,20 @@ const INVENTORY_DATA = [
     "amtToSS": 2920.3199999999997,
     "notes": "Walmart Canada new SKU",
     "plannedProdEaches": 1216.8,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "140244",
@@ -105,11 +159,18 @@ const INVENTORY_DATA = [
     "amtToSS": 1545.0,
     "notes": "Production mold end of Aug / shipping mid-Sept",
     "plannedProdEaches": 800.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "201": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 1,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "140244ML",
@@ -121,11 +182,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1545.0,
     "notes": "Production mold end of Aug / shipping mid-Sept",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "130244ML",
@@ -137,11 +207,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1931.25,
     "notes": "Packaging on August order",
     "plannedProdEaches": 500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "234244",
@@ -153,11 +232,20 @@ const INVENTORY_DATA = [
     "amtToSS": 3600.0,
     "notes": "",
     "plannedProdEaches": 4000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "234244ML",
@@ -169,11 +257,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1152.0,
     "notes": "",
     "plannedProdEaches": 640.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "238080",
@@ -185,11 +282,20 @@ const INVENTORY_DATA = [
     "amtToSS": 900.0,
     "notes": "",
     "plannedProdEaches": 1000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "239080",
@@ -201,11 +307,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1350.0,
     "notes": "",
     "plannedProdEaches": 1500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "264244",
@@ -217,11 +332,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1950.0,
     "notes": "",
     "plannedProdEaches": 1000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "265244",
@@ -233,11 +357,20 @@ const INVENTORY_DATA = [
     "amtToSS": 975.0,
     "notes": "",
     "plannedProdEaches": 500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "266244",
@@ -249,11 +382,20 @@ const INVENTORY_DATA = [
     "amtToSS": 975.0,
     "notes": "",
     "plannedProdEaches": 500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "335080",
@@ -265,11 +407,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1931.25,
     "notes": "",
     "plannedProdEaches": 1000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "336080",
@@ -281,11 +432,20 @@ const INVENTORY_DATA = [
     "amtToSS": 450.0,
     "notes": "",
     "plannedProdEaches": 500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "333244",
@@ -297,11 +457,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "873244ML",
@@ -313,11 +482,20 @@ const INVENTORY_DATA = [
     "amtToSS": 637.3125,
     "notes": "",
     "plannedProdEaches": 330.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "875244ML",
@@ -329,11 +507,20 @@ const INVENTORY_DATA = [
     "amtToSS": 637.3125,
     "notes": "",
     "plannedProdEaches": 330.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "451244ML",
@@ -345,11 +532,20 @@ const INVENTORY_DATA = [
     "amtToSS": 637.3125,
     "notes": "",
     "plannedProdEaches": 330.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "453244ML",
@@ -361,11 +557,20 @@ const INVENTORY_DATA = [
     "amtToSS": 637.3125,
     "notes": "",
     "plannedProdEaches": 330.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "874244ML",
@@ -377,11 +582,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1023.5625,
     "notes": "",
     "plannedProdEaches": 530.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "452244ML",
@@ -393,11 +607,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1023.5625,
     "notes": "",
     "plannedProdEaches": 530.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "661244",
@@ -409,11 +632,18 @@ const INVENTORY_DATA = [
     "amtToSS": 1931.25,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "682060",
@@ -425,11 +655,20 @@ const INVENTORY_DATA = [
     "amtToSS": 3856.5,
     "notes": "",
     "plannedProdEaches": 2000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "581244",
@@ -441,11 +680,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "232060",
@@ -457,11 +703,18 @@ const INVENTORY_DATA = [
     "amtToSS": 17069.25,
     "notes": "",
     "plannedProdEaches": 9000.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Loving Pets": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 1
   },
   {
     "sku": "530244ML",
@@ -473,11 +726,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1521.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "571244",
@@ -489,11 +751,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "580244ML",
@@ -505,11 +774,20 @@ const INVENTORY_DATA = [
     "amtToSS": 672.0,
     "notes": "",
     "plannedProdEaches": 300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "233060",
@@ -521,11 +799,18 @@ const INVENTORY_DATA = [
     "amtToSS": 15191.25,
     "notes": "",
     "plannedProdEaches": 9000.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Loving Pets": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 1
   },
   {
     "sku": "326244",
@@ -537,11 +822,18 @@ const INVENTORY_DATA = [
     "amtToSS": 14621.6175,
     "notes": "",
     "plannedProdEaches": 8913.2,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Coltoys": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 1,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "680100",
@@ -553,11 +845,20 @@ const INVENTORY_DATA = [
     "amtToSS": 3825.0,
     "notes": "",
     "plannedProdEaches": 2400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "809600",
@@ -569,11 +870,18 @@ const INVENTORY_DATA = [
     "amtToSS": 7523.75,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 8500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "681080",
@@ -585,11 +893,20 @@ const INVENTORY_DATA = [
     "amtToSS": 2410.0,
     "notes": "",
     "plannedProdEaches": 1600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "420300",
@@ -601,11 +918,18 @@ const INVENTORY_DATA = [
     "amtToSS": 29568.75,
     "notes": "",
     "plannedProdEaches": 20000.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "LTM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 1,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "818244",
@@ -617,11 +941,18 @@ const INVENTORY_DATA = [
     "amtToSS": 3051.0,
     "notes": "Will start on Tues 9/8",
     "plannedProdEaches": 3600.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Midbury": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 1,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "237080",
@@ -633,11 +964,20 @@ const INVENTORY_DATA = [
     "amtToSS": 2894.5,
     "notes": "",
     "plannedProdEaches": 2000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "236080",
@@ -649,11 +989,20 @@ const INVENTORY_DATA = [
     "amtToSS": 2574.5,
     "notes": "",
     "plannedProdEaches": 2000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "410244",
@@ -665,11 +1014,18 @@ const INVENTORY_DATA = [
     "amtToSS": 2179.125,
     "notes": "",
     "plannedProdEaches": 1700.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "LTM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 1,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "845244",
@@ -681,11 +1037,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "650400",
@@ -697,11 +1060,20 @@ const INVENTORY_DATA = [
     "amtToSS": 12771.25,
     "notes": "",
     "plannedProdEaches": 14000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "846244",
@@ -713,11 +1085,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "540200",
@@ -729,11 +1110,20 @@ const INVENTORY_DATA = [
     "amtToSS": 384.21875,
     "notes": "",
     "plannedProdEaches": 450.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "847244",
@@ -745,11 +1135,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "820600",
@@ -761,11 +1160,18 @@ const INVENTORY_DATA = [
     "amtToSS": 43181.25,
     "notes": "Will follow 820600",
     "plannedProdEaches": 25000.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Midbury": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 1,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "820244",
@@ -777,11 +1183,18 @@ const INVENTORY_DATA = [
     "amtToSS": 1026.0,
     "notes": "Will start on Mon 9/14",
     "plannedProdEaches": 2400.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Midbury": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 1,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "570244ML",
@@ -793,11 +1206,20 @@ const INVENTORY_DATA = [
     "amtToSS": 2248.875,
     "notes": "",
     "plannedProdEaches": 750.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "876300",
@@ -809,11 +1231,18 @@ const INVENTORY_DATA = [
     "amtToSS": 9998.75,
     "notes": "",
     "plannedProdEaches": 12600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "561244",
@@ -825,11 +1254,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "453244",
@@ -841,11 +1279,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 14264.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "504080",
@@ -857,11 +1302,18 @@ const INVENTORY_DATA = [
     "amtToSS": 4508.5,
     "notes": "",
     "plannedProdEaches": 2800.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Bennett": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 1,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "814244",
@@ -873,11 +1325,20 @@ const INVENTORY_DATA = [
     "amtToSS": 44.69999999999999,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "881244",
@@ -889,11 +1350,20 @@ const INVENTORY_DATA = [
     "amtToSS": 44.69999999999999,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "882244",
@@ -905,11 +1375,20 @@ const INVENTORY_DATA = [
     "amtToSS": 44.69999999999999,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "510244ML",
@@ -921,11 +1400,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1137.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "640400",
@@ -937,11 +1425,20 @@ const INVENTORY_DATA = [
     "amtToSS": 18428.125,
     "notes": "",
     "plannedProdEaches": 26000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "890300",
@@ -953,11 +1450,20 @@ const INVENTORY_DATA = [
     "amtToSS": 3092.96875,
     "notes": "",
     "plannedProdEaches": 5650.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "872400",
@@ -969,11 +1475,18 @@ const INVENTORY_DATA = [
     "amtToSS": 12030.0,
     "notes": "Will follow 860350X",
     "plannedProdEaches": 16000.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Midbury": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 1,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "808600",
@@ -985,11 +1498,18 @@ const INVENTORY_DATA = [
     "amtToSS": 168495.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 130000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "973244",
@@ -1001,11 +1521,20 @@ const INVENTORY_DATA = [
     "amtToSS": 783.375,
     "notes": "",
     "plannedProdEaches": 940.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "874244",
@@ -1017,11 +1546,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 5300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "452244",
@@ -1033,11 +1569,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 19080.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "440244",
@@ -1049,11 +1594,20 @@ const INVENTORY_DATA = [
     "amtToSS": 438.75,
     "notes": "",
     "plannedProdEaches": 600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "670244",
@@ -1065,11 +1619,20 @@ const INVENTORY_DATA = [
     "amtToSS": 2972.875,
     "notes": "",
     "plannedProdEaches": 8200.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "805300",
@@ -1081,11 +1644,20 @@ const INVENTORY_DATA = [
     "amtToSS": 390.3125,
     "notes": "",
     "plannedProdEaches": 1100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "805244",
@@ -1097,11 +1669,20 @@ const INVENTORY_DATA = [
     "amtToSS": 141.5625,
     "notes": "",
     "plannedProdEaches": 210.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "327060",
@@ -1113,11 +1694,18 @@ const INVENTORY_DATA = [
     "amtToSS": 13047.945,
     "notes": "",
     "plannedProdEaches": 19776.8,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Loving Pets": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 1
   },
   {
     "sku": "802244ML",
@@ -1129,11 +1717,20 @@ const INVENTORY_DATA = [
     "amtToSS": 744.0,
     "notes": "",
     "plannedProdEaches": 600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "974244",
@@ -1145,11 +1742,20 @@ const INVENTORY_DATA = [
     "amtToSS": 98.8125,
     "notes": "",
     "plannedProdEaches": 300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "645400",
@@ -1161,11 +1767,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 8000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "811300",
@@ -1177,11 +1792,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 4300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "828244",
@@ -1193,11 +1817,20 @@ const INVENTORY_DATA = [
     "amtToSS": 4457.5,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 20000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "840500",
@@ -1209,11 +1842,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 24000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "309244",
@@ -1225,11 +1867,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1838.25,
     "notes": "",
     "plannedProdEaches": 3400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "960244",
@@ -1241,11 +1892,20 @@ const INVENTORY_DATA = [
     "amtToSS": 343.0,
     "notes": "",
     "plannedProdEaches": 1600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "420244",
@@ -1257,11 +1917,20 @@ const INVENTORY_DATA = [
     "amtToSS": 3979.875,
     "notes": "",
     "plannedProdEaches": 25000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "828500",
@@ -1273,11 +1942,20 @@ const INVENTORY_DATA = [
     "amtToSS": 39612.5,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 58000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "514080",
@@ -1289,11 +1967,18 @@ const INVENTORY_DATA = [
     "amtToSS": 2281.5,
     "notes": "",
     "plannedProdEaches": 4400.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Bennett": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 1,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "843244",
@@ -1305,11 +1990,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "808244",
@@ -1321,11 +2015,20 @@ const INVENTORY_DATA = [
     "amtToSS": 28372.5,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 42000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "512150",
@@ -1337,11 +2040,18 @@ const INVENTORY_DATA = [
     "amtToSS": 1830.0,
     "notes": "",
     "plannedProdEaches": 4000.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "DMG": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 1,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "850244",
@@ -1353,11 +2063,20 @@ const INVENTORY_DATA = [
     "amtToSS": 20.69999999999999,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "871244",
@@ -1369,11 +2088,20 @@ const INVENTORY_DATA = [
     "amtToSS": 151.0,
     "notes": "",
     "plannedProdEaches": 1600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "141122",
@@ -1385,11 +2113,20 @@ const INVENTORY_DATA = [
     "amtToSS": 606.0,
     "notes": "",
     "plannedProdEaches": 1600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "410244ML",
@@ -1401,11 +2138,20 @@ const INVENTORY_DATA = [
     "amtToSS": 4386.75,
     "notes": "",
     "plannedProdEaches": 1900.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "660400",
@@ -1417,11 +2163,20 @@ const INVENTORY_DATA = [
     "amtToSS": 296.25,
     "notes": "",
     "plannedProdEaches": 6000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "131122",
@@ -1433,11 +2188,20 @@ const INVENTORY_DATA = [
     "amtToSS": 159.375,
     "notes": "",
     "plannedProdEaches": 4200.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "655400",
@@ -1449,11 +2213,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 3050.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "830400",
@@ -1465,11 +2236,20 @@ const INVENTORY_DATA = [
     "amtToSS": 213.9375,
     "notes": "",
     "plannedProdEaches": 670.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "451244",
@@ -1481,11 +2261,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 16180.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "570244",
@@ -1497,11 +2286,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 16000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "665400",
@@ -1513,11 +2311,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "881300",
@@ -1529,11 +2336,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1178.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "875244",
@@ -1545,11 +2361,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 3300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "671100",
@@ -1561,11 +2386,20 @@ const INVENTORY_DATA = [
     "amtToSS": 306.25,
     "notes": "",
     "plannedProdEaches": 1800.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "530300",
@@ -1577,11 +2411,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 5500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "877300",
@@ -1593,11 +2434,20 @@ const INVENTORY_DATA = [
     "amtToSS": 262.5,
     "notes": "",
     "plannedProdEaches": 2000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "430300",
@@ -1609,11 +2459,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 8400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "809244ML",
@@ -1625,11 +2484,20 @@ const INVENTORY_DATA = [
     "amtToSS": 2669.25,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "660244ML",
@@ -1641,11 +2509,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1431.75,
     "notes": "",
     "plannedProdEaches": 700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "880300",
@@ -1657,11 +2534,20 @@ const INVENTORY_DATA = [
     "amtToSS": 355.5,
     "notes": "",
     "plannedProdEaches": 3120.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "818600",
@@ -1673,11 +2559,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 16000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "891300",
@@ -1689,11 +2584,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1150.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "841244",
@@ -1705,11 +2609,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "650244",
@@ -1721,11 +2634,20 @@ const INVENTORY_DATA = [
     "amtToSS": 241.5749999999971,
     "notes": "",
     "plannedProdEaches": 17548.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "520244",
@@ -1737,11 +2659,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 18000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "580200",
@@ -1753,11 +2684,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 7050.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "842244",
@@ -1769,11 +2709,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "580244",
@@ -1785,11 +2734,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 900.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "323244",
@@ -1801,11 +2759,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 25869.600000000002,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "304244",
@@ -1817,11 +2782,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 16000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "851244",
@@ -1833,11 +2807,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 6800.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "530244",
@@ -1849,11 +2832,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 530.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "873244",
@@ -1865,11 +2857,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 3300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "520350",
@@ -1881,11 +2882,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 9000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "231244",
@@ -1897,11 +2907,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 6000.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Coltoys": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 1,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "801300",
@@ -1913,11 +2930,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 4250.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "655244ML",
@@ -1929,11 +2955,20 @@ const INVENTORY_DATA = [
     "amtToSS": 851.25,
     "notes": "",
     "plannedProdEaches": 500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "855244",
@@ -1945,11 +2980,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 6800.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "640244",
@@ -1961,11 +3005,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 14650.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "502008",
@@ -1977,11 +3030,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 7000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "410300",
@@ -1993,11 +3055,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 12500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "560200",
@@ -2009,11 +3080,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 6050.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "812350",
@@ -2025,11 +3105,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 13100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "870400",
@@ -2041,11 +3130,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 37000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "801244ML",
@@ -2057,11 +3155,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1344.0,
     "notes": "",
     "plannedProdEaches": 600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "662200",
@@ -2073,11 +3180,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 6000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "642200",
@@ -2089,11 +3205,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 16000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "677080",
@@ -2105,11 +3230,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 450.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "808244T",
@@ -2121,11 +3255,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "802350",
@@ -2137,11 +3280,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 6500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "850250",
@@ -2153,11 +3305,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 270.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "510244",
@@ -2169,11 +3330,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 650.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "871400",
@@ -2185,11 +3355,20 @@ const INVENTORY_DATA = [
     "amtToSS": 2114.375,
     "notes": "",
     "plannedProdEaches": 15500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "878300",
@@ -2201,11 +3380,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "501008",
@@ -2217,11 +3405,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 16000.0,
-    "aimProduction": 1,
     "factoryFlag": {
-      "AIM": true
+      "Bennett": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 0,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 1,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "302244",
@@ -2233,11 +3428,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 23000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "324244",
@@ -2249,11 +3451,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 35067.68,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "813300",
@@ -2265,11 +3476,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 4450.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "870244",
@@ -2281,11 +3501,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 10000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "876244ML",
@@ -2297,11 +3526,20 @@ const INVENTORY_DATA = [
     "amtToSS": 1342.5,
     "notes": "",
     "plannedProdEaches": 1000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "620244",
@@ -2313,11 +3551,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "570300",
@@ -2329,11 +3576,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 12050.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "972244",
@@ -2345,11 +3601,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "861350",
@@ -2361,11 +3626,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "803300",
@@ -2377,11 +3651,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 3850.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "676080",
@@ -2393,11 +3676,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "310244",
@@ -2409,11 +3701,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 26898.559999999998,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "503008",
@@ -2425,11 +3726,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 9000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "829500",
@@ -2441,11 +3751,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 7800.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "878244",
@@ -2457,11 +3776,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "802244",
@@ -2473,11 +3801,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 12300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "970244",
@@ -2489,11 +3826,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1800.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "645244ML",
@@ -2505,11 +3851,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "908244",
@@ -2521,11 +3876,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 7966.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "838500",
@@ -2537,11 +3901,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 11000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "860244",
@@ -2553,11 +3926,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 8700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "510200",
@@ -2569,11 +3951,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 4500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "803244ML",
@@ -2585,11 +3976,20 @@ const INVENTORY_DATA = [
     "amtToSS": 360.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "828244ML",
@@ -2601,11 +4001,20 @@ const INVENTORY_DATA = [
     "amtToSS": 3000.0,
     "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 3200.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "862350",
@@ -2617,11 +4026,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2740.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "306244EF",
@@ -2633,11 +4051,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "130244",
@@ -2649,11 +4076,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 6000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "301244",
@@ -2665,11 +4101,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 31000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "570244T",
@@ -2681,11 +4126,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 1100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "630250",
@@ -2697,11 +4151,18 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1250.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0
   },
   {
     "sku": "838244",
@@ -2713,11 +4174,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "303244",
@@ -2729,11 +4199,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 24500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "644150",
@@ -2745,11 +4224,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "610300",
@@ -2761,11 +4249,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "675080",
@@ -2777,11 +4274,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 3400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "928244",
@@ -2793,11 +4299,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 7264.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "646400",
@@ -2809,11 +4324,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 850.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "814300",
@@ -2825,11 +4349,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "670244ML",
@@ -2841,11 +4374,20 @@ const INVENTORY_DATA = [
     "amtToSS": 373.5,
     "notes": "",
     "plannedProdEaches": 600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "440250",
@@ -2857,11 +4399,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "860350",
@@ -2873,11 +4424,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 16000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "818244ML",
@@ -2889,11 +4449,20 @@ const INVENTORY_DATA = [
     "amtToSS": 703.5,
     "notes": "",
     "plannedProdEaches": 1400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "307244",
@@ -2905,11 +4474,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 5200.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "620400",
@@ -2921,11 +4499,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 4500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "678060",
@@ -2937,11 +4524,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 550.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "308122",
@@ -2953,11 +4549,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "905244",
@@ -2969,11 +4574,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 750.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "305244EF",
@@ -2985,11 +4599,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "306244",
@@ -3001,11 +4624,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 44000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "831244",
@@ -3017,11 +4649,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1120.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "630244",
@@ -3033,11 +4674,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 350.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "892300",
@@ -3049,11 +4699,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 970.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "808244ML",
@@ -3065,11 +4724,20 @@ const INVENTORY_DATA = [
     "amtToSS": 930.0,
     "notes": "",
     "plannedProdEaches": 4000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "302244EF",
@@ -3081,11 +4749,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2050.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "647150",
@@ -3097,11 +4774,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "672080",
@@ -3113,11 +4799,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2800.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "803244",
@@ -3129,11 +4824,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 900.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "513100",
@@ -3145,11 +4849,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "112244",
@@ -3161,11 +4874,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 5000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "635250",
@@ -3177,11 +4899,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 830.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "674100",
@@ -3193,11 +4924,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "829244",
@@ -3209,11 +4949,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "832244",
@@ -3225,11 +4974,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1280.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "809244",
@@ -3241,11 +4999,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "882300",
@@ -3257,11 +5024,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "825300",
@@ -3273,11 +5049,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "430244ML",
@@ -3289,11 +5074,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 800.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "840244",
@@ -3305,11 +5099,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 450.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "420244T",
@@ -3321,11 +5124,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "151122",
@@ -3337,11 +5149,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "679060",
@@ -3353,11 +5174,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 940.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "902244",
@@ -3369,11 +5199,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1200.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "870244ML",
@@ -3385,11 +5224,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "829244ML",
@@ -3401,11 +5249,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "440244ML",
@@ -3417,11 +5274,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 250.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "665244",
@@ -3433,11 +5299,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 320.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "150122",
@@ -3449,11 +5324,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "860244ML",
@@ -3465,11 +5349,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 450.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "812244ML",
@@ -3481,11 +5374,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "813244ML",
@@ -3497,11 +5399,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1250.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "820244ML",
@@ -3513,11 +5424,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2200.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "904244",
@@ -3529,11 +5449,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "833244",
@@ -3545,11 +5474,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 992.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "804300",
@@ -3561,11 +5499,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2570.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "635244",
@@ -3577,11 +5524,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 550.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "511200",
@@ -3593,11 +5549,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1700.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "685400",
@@ -3609,11 +5574,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 450.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "807200",
@@ -3625,11 +5599,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 4100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "840244ML",
@@ -3641,11 +5624,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "420300V",
@@ -3657,11 +5649,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "890244ML",
@@ -3673,11 +5674,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 250.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "811244ML",
@@ -3689,11 +5699,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 850.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "520244ML",
@@ -3705,11 +5724,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "828244T",
@@ -3721,11 +5749,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1550.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "872244ML",
@@ -3737,11 +5774,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "305244",
@@ -3753,11 +5799,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 2 Packaging (9/8-9/11/26)",
     "plannedProdEaches": 11000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "721244",
@@ -3769,11 +5824,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "834244",
@@ -3785,11 +5849,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 412.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "662244",
@@ -3801,11 +5874,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "September Week 3 Packaging (9/14-9/18)",
     "plannedProdEaches": 4000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "890244",
@@ -3817,11 +5899,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 170.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "871244ML",
@@ -3833,11 +5924,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 250.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "420244ML",
@@ -3849,11 +5949,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1600.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "540244",
@@ -3865,11 +5974,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 190.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "111244",
@@ -3881,11 +5999,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 2000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "641150",
@@ -3897,11 +6024,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "141122ML",
@@ -3913,11 +6049,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "838244ML",
@@ -3929,11 +6074,20 @@ const INVENTORY_DATA = [
     "amtToSS": 48.0,
     "notes": "",
     "plannedProdEaches": 300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "685244",
@@ -3945,11 +6099,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "640244ML",
@@ -3961,11 +6124,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "880244ML",
@@ -3977,11 +6149,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "560244ML",
@@ -3993,11 +6174,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 200.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "801244",
@@ -4009,11 +6199,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 288.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "113244",
@@ -4025,11 +6224,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "131122ML",
@@ -4041,11 +6249,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "150122ML",
@@ -4057,11 +6274,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "876244",
@@ -4073,11 +6299,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 150.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "151122ML",
@@ -4089,11 +6324,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "670400",
@@ -4105,11 +6349,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1200.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "121244",
@@ -4121,11 +6374,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 900.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "430244",
@@ -4137,11 +6399,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "723244",
@@ -4153,11 +6424,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1500.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "660244",
@@ -4169,11 +6449,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 80.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "121244ML",
@@ -4185,11 +6474,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "880244",
@@ -4201,11 +6499,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 150.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "650244ML",
@@ -4217,11 +6524,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 900.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "722244",
@@ -4233,11 +6549,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 3000.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "112244ML",
@@ -4249,11 +6574,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "304244EF",
@@ -4265,11 +6599,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "642244",
@@ -4281,11 +6624,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "111244ML",
@@ -4297,11 +6649,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "982244",
@@ -4313,11 +6674,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 120.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "811244",
@@ -4329,11 +6699,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 130.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "813244",
@@ -4345,11 +6724,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "901246EF",
@@ -4361,11 +6749,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "812244",
@@ -4377,11 +6774,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "971244",
@@ -4393,11 +6799,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 120.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "673080",
@@ -4409,11 +6824,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 900.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "906244",
@@ -4425,11 +6849,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "560244",
@@ -4441,11 +6874,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 150.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "113244ML",
@@ -4457,11 +6899,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "610244",
@@ -4473,11 +6924,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "891244",
@@ -4489,11 +6949,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "892244",
@@ -4505,11 +6974,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "655244",
@@ -4521,11 +6999,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "877244",
@@ -4537,11 +7024,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "508080",
@@ -4553,11 +7049,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 400.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "861244",
@@ -4569,11 +7074,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "872244",
@@ -4585,11 +7099,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "862244",
@@ -4601,11 +7124,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "830244",
@@ -4617,11 +7149,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "980244",
@@ -4633,11 +7174,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "960246EF",
@@ -4649,11 +7199,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "825244",
@@ -4665,11 +7224,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "645244",
@@ -4681,11 +7249,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "804244",
@@ -4697,11 +7274,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 70.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "643100",
@@ -4713,11 +7299,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "611300",
@@ -4729,11 +7324,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "915244",
@@ -4745,11 +7349,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 48.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "665244ML",
@@ -4761,11 +7374,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 100.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "905246EF",
@@ -4777,11 +7399,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "981244",
@@ -4793,11 +7424,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 24.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "724244",
@@ -4809,11 +7449,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 300.0,
-    "aimProduction": 1,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "631250",
@@ -4825,11 +7474,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "983244",
@@ -4841,11 +7499,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "509100",
@@ -4857,11 +7524,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "851244P",
@@ -4873,11 +7549,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "901244",
@@ -4889,11 +7574,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "322200",
@@ -4905,11 +7599,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "984244",
@@ -4921,11 +7624,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "914244",
@@ -4937,11 +7649,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "502008-BLU",
@@ -4953,11 +7674,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "507080",
@@ -4969,11 +7699,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "518080",
@@ -4985,11 +7724,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "317150",
@@ -5001,11 +7749,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "503008-BLU",
@@ -5017,11 +7774,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "321100",
@@ -5033,11 +7799,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "982246EF",
@@ -5049,11 +7824,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "916244",
@@ -5065,11 +7849,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "312300",
@@ -5081,11 +7874,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "316200",
@@ -5097,11 +7899,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "313150",
@@ -5113,11 +7924,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "319150",
@@ -5129,11 +7949,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "913320F",
@@ -5145,11 +7974,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "855244P",
@@ -5161,11 +7999,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "314100",
@@ -5177,11 +8024,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "311100",
@@ -5193,11 +8049,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "310150",
@@ -5209,11 +8074,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "501008-BLU",
@@ -5225,11 +8099,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "318300",
@@ -5241,11 +8124,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "231240",
@@ -5257,11 +8149,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "920244",
@@ -5273,11 +8174,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "821244",
@@ -5289,11 +8199,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "315400",
@@ -5305,11 +8224,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "807244",
@@ -5321,11 +8249,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "823244",
@@ -5337,11 +8274,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "551244",
@@ -5353,11 +8299,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "820600X",
@@ -5369,11 +8324,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "Press 102 currently running 820600X with 3 of 11 skids complete",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "991060",
@@ -5385,11 +8349,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "553244",
@@ -5401,11 +8374,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "810244",
@@ -5417,11 +8399,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "990060",
@@ -5433,11 +8424,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "552244",
@@ -5449,11 +8449,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "992080",
@@ -5465,11 +8474,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "808600X",
@@ -5481,11 +8499,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "828500X",
@@ -5497,11 +8524,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   },
   {
     "sku": "860350X",
@@ -5513,11 +8549,20 @@ const INVENTORY_DATA = [
     "amtToSS": 0.0,
     "notes": "",
     "plannedProdEaches": 1,
-    "aimProduction": 0,
     "factoryFlag": {
       "AIM": true
     },
-    "exclude": null
+    "exclude": null,
+    "aimProduction": 1,
+    "midburyProduction": 0,
+    "ltmProduction": 0,
+    "201Production": 0,
+    "bennettProduction": 0,
+    "dmgProduction": 0,
+    "coltoysProduction": 0,
+    "lovingpetsProduction": 0,
+    "grupoProduction": 0,
+    "lovingPetsProduction": 0
   }
 ];
 
