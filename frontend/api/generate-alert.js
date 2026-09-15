@@ -1,164 +1,183 @@
-import { Document, Packer, Table, TableRow, TableCell, Paragraph } from 'docx'
-import { INVENTORY_DATA } from './inventory-data.js'
+import { jsPDF } from "jspdf";
+import { Table } from "@jspdf/plugin-table";
+jsPDF.plugin.autotable;
+import { INVENTORY_DATA } from "./inventory-data.js";
 
-const THRESHOLDS = {
+const MOS_THRESHOLDS = {
   AIM: 1.5,
   Midbury: 2.0,
   LTM: 2.0,
-  '201': 2.0,
+  "201": 2.0,
   Bennett: 2.0,
   DMG: 2.0,
   Coltoys: 2.0,
-  'Loving Pets': 2.0
-}
+  "Loving Pets": 2.0,
+};
 
-const RECIPIENTS = {
-  AIM: { to: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-  Midbury: { to: ['benebone@midbury.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-  LTM: { to: ['eric@ltmplastics.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-  '201': { to: ['emilio.otero@201oficial.com.mx'], cc: ['salvador@201oficial.com.mx', 'punam@benebone.com'] },
-  Bennett: { to: ['jmattox@bpkc.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-  DMG: { to: ['monique.brunson@dmgincusa.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-  Coltoys: { to: ['jparra@coltoys.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-  'Loving Pets': { to: ['aaron@lovingpetsproducts.com'], cc: ['zach@benebone.com', 'carly@benebone.com', 'punam@benebone.com'] }
-}
+const PRODUCTION_FIELDS = {
+  AIM: "aimProduction",
+  Midbury: "midburyProduction",
+  LTM: "ltmProduction",
+  "201": "grupoProduction",
+  Bennett: "bennettProduction",
+  DMG: "dmgProduction",
+  Coltoys: "coltoysProduction",
+  "Loving Pets": "lovingPetsProduction",
+};
 
 export default async function handler(req, res) {
-  res.socket?.setTimeout(30000)
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
-  try {
-    const { factory } = req.body
-    
-    if (!factory || !THRESHOLDS[factory]) {
-      console.error('Invalid factory:', factory)
-      return res.status(400).json({ error: 'Invalid factory' })
-    }
+  const { factory } = req.body;
 
-    const factoryProductionMap = {
-      AIM: 'aimProduction',
-      Midbury: 'midburyProduction',
-      LTM: 'ltmProduction',
-      '201': 'grupoProduction',
-      Bennett: 'bennettProduction',
-      DMG: 'dmgProduction',
-      Coltoys: 'coltoysProduction',
-      'Loving Pets': 'lovingPetsProduction'
-    }
+  if (!factory || !MOS_THRESHOLDS[factory]) {
+    return res.status(400).json({ error: "Invalid factory" });
+  }
 
-    const threshold = THRESHOLDS[factory]
-    const factoryProdField = factoryProductionMap[factory]
+  const threshold = MOS_THRESHOLDS[factory];
+  const prodField = PRODUCTION_FIELDS[factory];
 
-    let allSkus = Array.isArray(INVENTORY_DATA) ? INVENTORY_DATA : (INVENTORY_DATA.skus || [])
+  // Filter SKUs
+  const alertSkus = INVENTORY_DATA.filter((sku) => {
+    if (!sku.factoryFlag || !sku.factoryFlag[factory]) return false;
+    // KEY: exclude exact MOS=0, include everything 0 < MOS <= threshold
+    if (
+      sku.mos === undefined ||
+      sku.mos === null ||
+      sku.mos <= 0 ||
+      sku.mos > threshold
+    )
+      return false;
+    if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false;
+    if (sku.exclude === "X") return false;
+    const factoryProd = sku[prodField] || 0;
+    return factoryProd > 0;
+  }).sort((a, b) => a.mos - b.mos);
 
-    if (!allSkus || !Array.isArray(allSkus) || allSkus.length === 0) {
-      return res.status(500).json({ error: 'No inventory data available' })
-    }
+  if (alertSkus.length === 0) {
+    return res.status(200).json({
+      message: `No SKUs on alert for ${factory} at threshold ${threshold}`,
+      skus: [],
+    });
+  }
 
-    const alertSkus = allSkus.filter(sku => {
-      if (!sku.factoryFlag || !sku.factoryFlag[factory]) return false
-      // TRUE FINAL FIX: Exclude if MOS <= 0 OR MOS > threshold
-      // This includes 682060 (MOS≈0.00433) but excludes new products (MOS=0.0000 exactly)
-      if (sku.mos === undefined || sku.mos === null || sku.mos <= 0 || sku.mos > threshold) return false
-      if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false
-      if (sku.exclude === 'X') return false
-      
-      const factoryProd = sku[factoryProdField] || 0
-      return factoryProd > 0
-    }).sort((a, b) => a.mos - b.mos)
+  // Build Word document using Docx
+  const Docx = require("docx");
+  const {
+    Document,
+    Paragraph,
+    Table: DocxTable,
+    TableCell,
+    TableRow,
+    WidthType,
+    AlignmentType,
+    BorderStyle,
+  } = Docx;
 
-    console.log(`Generate alert: ${factory} with ${alertSkus.length} SKUs`)
+  const tableRows = [
+    new TableRow({
+      children: [
+        new TableCell({
+          children: [new Paragraph("SKU")],
+          width: { size: 15, type: WidthType.PERCENTAGE },
+        }),
+        new TableCell({
+          children: [new Paragraph("Description")],
+          width: { size: 35, type: WidthType.PERCENTAGE },
+        }),
+        new TableCell({
+          children: [new Paragraph("On Hand")],
+          width: { size: 10, type: WidthType.PERCENTAGE },
+        }),
+        new TableCell({
+          children: [new Paragraph("Available")],
+          width: { size: 10, type: WidthType.PERCENTAGE },
+        }),
+        new TableCell({
+          children: [new Paragraph("Avg Monthly Sales")],
+          width: { size: 12, type: WidthType.PERCENTAGE },
+        }),
+        new TableCell({
+          children: [new Paragraph("MOS")],
+          width: { size: 8, type: WidthType.PERCENTAGE },
+        }),
+        new TableCell({
+          children: [new Paragraph("Amt to SS")],
+          width: { size: 10, type: WidthType.PERCENTAGE },
+        }),
+      ],
+    }),
+  ];
 
-    // Build table rows
-    const rows = [
+  alertSkus.forEach((sku) => {
+    tableRows.push(
       new TableRow({
         children: [
-          new TableCell({ children: [new Paragraph('SKU')] }),
-          new TableCell({ children: [new Paragraph('Description')] }),
-          new TableCell({ children: [new Paragraph('OnHand')] }),
-          new TableCell({ children: [new Paragraph('Available')] }),
-          new TableCell({ children: [new Paragraph('Avg Sales')] }),
-          new TableCell({ children: [new Paragraph('MOS')] }),
-          new TableCell({ children: [new Paragraph('Amt to SS')] }),
-          new TableCell({ children: [new Paragraph('Notes')] })
-        ]
+          new TableCell({
+            children: [new Paragraph(sku.sku)],
+          }),
+          new TableCell({
+            children: [new Paragraph(sku.description || "")],
+          }),
+          new TableCell({
+            children: [new Paragraph(String(sku.onHand))],
+          }),
+          new TableCell({
+            children: [new Paragraph(sku.available.toFixed(0))],
+          }),
+          new TableCell({
+            children: [new Paragraph(sku.avgMonthlySales.toFixed(0))],
+          }),
+          new TableCell({
+            children: [new Paragraph(sku.mos.toFixed(2))],
+          }),
+          new TableCell({
+            children: [new Paragraph(sku.amtToSS.toFixed(0))],
+          }),
+        ],
       })
-    ]
+    );
+  });
 
-    for (let i = 0; i < Math.min(alertSkus.length, 100); i++) {
-      const sku = alertSkus[i]
-      rows.push(
-        new TableRow({
-          children: [
-            new TableCell({ children: [new Paragraph(String(sku.sku || ''))] }),
-            new TableCell({ children: [new Paragraph(String(sku.description || '').substring(0, 50))] }),
-            new TableCell({ children: [new Paragraph(String(sku.onHand || 0))] }),
-            new TableCell({ children: [new Paragraph(String(sku.available || 0))] }),
-            new TableCell({ children: [new Paragraph(String(sku.avgMonthlySales || 0))] }),
-            new TableCell({ children: [new Paragraph(String((sku.mos || 0).toFixed(2)))] }),
-            new TableCell({ children: [new Paragraph(String(sku.amtToSS || 0))] }),
-            new TableCell({ children: [new Paragraph(String(sku.notes || '').substring(0, 30))] })
-          ]
-        })
-      )
-    }
+  const table = new DocxTable({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    rows: tableRows,
+  });
 
-    const recipients = RECIPIENTS[factory]
-    const now = new Date()
-    const dateStr = now.toISOString().split('T')[0]
+  const doc = new Document({
+    sections: [
+      {
+        children: [
+          new Paragraph({
+            text: `Weekly Low SKU Alert - ${factory}`,
+            bold: true,
+            size: 28,
+          }),
+          new Paragraph({
+            text: `Generated: ${new Date().toISOString().split("T")[0]}`,
+            size: 20,
+          }),
+          new Paragraph(""),
+          table,
+        ],
+      },
+    ],
+  });
 
-    const doc = new Document({
-      sections: [
-        {
-          children: [
-            new Paragraph({
-              text: `Weekly Low SKU Alert - ${factory}`,
-              bold: true,
-              size: 28
-            }),
-            new Paragraph({
-              text: `Generated: ${now.toLocaleString()}`,
-              spacing: { after: 200 }
-            }),
-            new Paragraph({
-              text: `To: ${recipients.to.join(', ')}`,
-              spacing: { after: 100 }
-            }),
-            new Paragraph({
-              text: `CC: ${recipients.cc.join(', ')}`,
-              spacing: { after: 200 }
-            }),
-            new Paragraph({
-              text: `SKUs on Alert (MOS ≤ ${threshold}): ${alertSkus.length}`,
-              bold: true,
-              spacing: { after: 400 }
-            }),
-            new Table({
-              rows: rows
-            })
-          ]
-        }
-      ]
-    })
+  const buffer = await Docx.Packer.toBuffer(doc);
 
-    const buffer = await Packer.toBuffer(doc)
+  res.setHeader(
+    "Content-Disposition",
+    `attachment; filename="Benebone_Alert_${factory}_${new Date()
+      .toISOString()
+      .split("T")[0]}.docx"`
+  );
+  res.setHeader(
+    "Content-Type",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  );
 
-    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-    res.setHeader('Content-Disposition', `attachment; filename="Benebone_Alert_${factory}_${dateStr}.docx"`)
-    res.setHeader('Content-Length', buffer.length)
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
-
-    console.log(`Sending ${buffer.length} bytes`)
-    res.status(200).end(buffer)
-    
-  } catch (error) {
-    console.error('ERROR in generate-alert:', error)
-    res.status(500).json({ 
-      error: 'Failed to generate alert',
-      message: error.message
-    })
-  }
+  return res.status(200).send(buffer);
 }
