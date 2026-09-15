@@ -1,4 +1,4 @@
-import { Document, Packer, Table, TableRow, TableCell, Paragraph, TextRun, AlignmentType } from 'docx'
+import { Document, Packer, Table, TableRow, TableCell, Paragraph } from 'docx'
 import { INVENTORY_DATA } from './inventory-data.js'
 
 const THRESHOLDS = {
@@ -24,7 +24,6 @@ const RECIPIENTS = {
 }
 
 export default async function handler(req, res) {
-  // Set timeout for long operations
   res.socket?.setTimeout(30000)
 
   if (req.method !== 'POST') {
@@ -34,14 +33,9 @@ export default async function handler(req, res) {
   try {
     const { factory } = req.body
     
-    if (!factory) {
-      console.error('Missing factory parameter')
-      return res.status(400).json({ error: 'Missing factory parameter' })
-    }
-
-    if (!THRESHOLDS[factory]) {
+    if (!factory || !THRESHOLDS[factory]) {
       console.error('Invalid factory:', factory)
-      return res.status(400).json({ error: `Invalid factory: ${factory}` })
+      return res.status(400).json({ error: 'Invalid factory' })
     }
 
     const factoryProductionMap = {
@@ -61,11 +55,8 @@ export default async function handler(req, res) {
     let allSkus = Array.isArray(INVENTORY_DATA) ? INVENTORY_DATA : (INVENTORY_DATA.skus || [])
 
     if (!allSkus || !Array.isArray(allSkus) || allSkus.length === 0) {
-      console.error('No inventory data')
       return res.status(500).json({ error: 'No inventory data available' })
     }
-
-    console.log(`Processing ${factory}: found ${allSkus.length} total SKUs`)
 
     const alertSkus = allSkus.filter(sku => {
       if (!sku.factoryFlag || !sku.factoryFlag[factory]) return false
@@ -77,48 +68,45 @@ export default async function handler(req, res) {
       return factoryProd > 0
     }).sort((a, b) => a.mos - b.mos)
 
-    console.log(`Filtered to ${alertSkus.length} alert SKUs for ${factory}`)
+    console.log(`Generate alert: ${factory} with ${alertSkus.length} SKUs`)
 
-    // Build table rows
+    // Build table rows - FIXED: use 'children' not 'cells' for TableRow
     const rows = [
       new TableRow({
-        cells: [
-          new TableCell({ children: [new Paragraph({ text: 'SKU', bold: true })] }),
-          new TableCell({ children: [new Paragraph({ text: 'Description', bold: true })] }),
-          new TableCell({ children: [new Paragraph({ text: 'OnHand', bold: true })] }),
-          new TableCell({ children: [new Paragraph({ text: 'Available', bold: true })] }),
-          new TableCell({ children: [new Paragraph({ text: 'Avg Sales', bold: true })] }),
-          new TableCell({ children: [new Paragraph({ text: 'MOS', bold: true })] }),
-          new TableCell({ children: [new Paragraph({ text: 'Amt to SS', bold: true })] }),
-          new TableCell({ children: [new Paragraph({ text: 'Notes', bold: true })] })
-        ],
-        style: 'TableGrid'
+        children: [
+          new TableCell({ children: [new Paragraph('SKU')] }),
+          new TableCell({ children: [new Paragraph('Description')] }),
+          new TableCell({ children: [new Paragraph('OnHand')] }),
+          new TableCell({ children: [new Paragraph('Available')] }),
+          new TableCell({ children: [new Paragraph('Avg Sales')] }),
+          new TableCell({ children: [new Paragraph('MOS')] }),
+          new TableCell({ children: [new Paragraph('Amt to SS')] }),
+          new TableCell({ children: [new Paragraph('Notes')] })
+        ]
       })
     ]
 
-    // Add up to 100 SKU rows
     for (let i = 0; i < Math.min(alertSkus.length, 100); i++) {
       const sku = alertSkus[i]
-      rows.push(new TableRow({
-        cells: [
-          new TableCell({ children: [new Paragraph(String(sku.sku || ''))] }),
-          new TableCell({ children: [new Paragraph(String(sku.description || '').substring(0, 50))] }),
-          new TableCell({ children: [new Paragraph(String(sku.onHand || 0))] }),
-          new TableCell({ children: [new Paragraph(String(sku.available || 0))] }),
-          new TableCell({ children: [new Paragraph(String(sku.avgMonthlySales || 0))] }),
-          new TableCell({ children: [new Paragraph(String((sku.mos || 0).toFixed(2)))] }),
-          new TableCell({ children: [new Paragraph(String(sku.amtToSS || 0))] }),
-          new TableCell({ children: [new Paragraph(String(sku.notes || '').substring(0, 30))] })
-        ],
-        style: 'TableGrid'
-      }))
+      rows.push(
+        new TableRow({
+          children: [
+            new TableCell({ children: [new Paragraph(String(sku.sku || ''))] }),
+            new TableCell({ children: [new Paragraph(String(sku.description || '').substring(0, 50))] }),
+            new TableCell({ children: [new Paragraph(String(sku.onHand || 0))] }),
+            new TableCell({ children: [new Paragraph(String(sku.available || 0))] }),
+            new TableCell({ children: [new Paragraph(String(sku.avgMonthlySales || 0))] }),
+            new TableCell({ children: [new Paragraph(String((sku.mos || 0).toFixed(2)))] }),
+            new TableCell({ children: [new Paragraph(String(sku.amtToSS || 0))] }),
+            new TableCell({ children: [new Paragraph(String(sku.notes || '').substring(0, 30))] })
+          ]
+        })
+      )
     }
 
     const recipients = RECIPIENTS[factory]
     const now = new Date()
     const dateStr = now.toISOString().split('T')[0]
-
-    console.log(`Building Word document for ${alertSkus.length} SKUs`)
 
     const doc = new Document({
       sections: [
@@ -126,7 +114,6 @@ export default async function handler(req, res) {
           children: [
             new Paragraph({
               text: `Weekly Low SKU Alert - ${factory}`,
-              heading: 'Heading1',
               bold: true,
               size: 28
             }),
@@ -148,7 +135,6 @@ export default async function handler(req, res) {
               spacing: { after: 400 }
             }),
             new Table({
-              width: { size: 100, type: 'pct' },
               rows: rows
             })
           ]
@@ -156,29 +142,21 @@ export default async function handler(req, res) {
       ]
     })
 
-    console.log('Converting document to buffer...')
     const buffer = await Packer.toBuffer(doc)
 
-    console.log(`Generated buffer size: ${buffer.length} bytes`)
-
-    // Set headers BEFORE writing response
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
     res.setHeader('Content-Disposition', `attachment; filename="Benebone_Alert_${factory}_${dateStr}.docx"`)
     res.setHeader('Content-Length', buffer.length)
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
 
-    console.log('Sending buffer to client...')
-    
-    // Use end() instead of send() for binary data
+    console.log(`Sending ${buffer.length} bytes`)
     res.status(200).end(buffer)
     
   } catch (error) {
     console.error('ERROR in generate-alert:', error)
-    console.error('Stack:', error.stack)
     res.status(500).json({ 
       error: 'Failed to generate alert',
-      message: error.message,
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+      message: error.message
     })
   }
 }
