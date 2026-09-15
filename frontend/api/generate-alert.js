@@ -1,4 +1,4 @@
-import { Document, Packer, Table, TableRow, TableCell, Paragraph, AlignmentType, BorderStyle } from 'docx'
+import { Document, Packer, Table, TableRow, TableCell, Paragraph } from 'docx'
 import { INVENTORY_DATA } from './inventory-data.js'
 
 const THRESHOLDS = {
@@ -26,10 +26,10 @@ const RECIPIENTS = {
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
-  const { factory } = req.body
-  if (!factory || !THRESHOLDS[factory]) return res.status(400).json({ error: 'Invalid factory' })
-
   try {
+    const { factory } = req.body
+    if (!factory || !THRESHOLDS[factory]) return res.status(400).json({ error: 'Invalid factory' })
+
     const factoryProductionMap = {
       AIM: 'aimProduction',
       Midbury: 'midburyProduction',
@@ -51,23 +51,13 @@ export default async function handler(req, res) {
     }
 
     const alertSkus = allSkus.filter(sku => {
-      // Check factory flag (boolean in factoryFlag object)
       if (!sku.factoryFlag || !sku.factoryFlag[factory]) return false
-      
-      // Check MOS threshold (use 'mos' not 'mosOH')
       if (sku.mos === undefined || sku.mos === null || sku.mos > threshold) return false
-      
-      // Check planned production
       if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false
-      
-      // Check exclude flag
       if (sku.exclude === 'X') return false
       
-      // Check factory has production for this SKU
       const factoryProd = sku[factoryProdField] || 0
-      if (factoryProd <= 0) return false
-      
-      return true
+      return factoryProd > 0
     }).sort((a, b) => a.mos - b.mos)
 
     // Build table rows
@@ -124,11 +114,12 @@ export default async function handler(req, res) {
     })
 
     const buffer = await Packer.toBuffer(doc)
+    
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
     res.setHeader('Content-Disposition', `attachment; filename="Benebone_Alert_${factory}_${new Date().toISOString().split('T')[0]}.docx"`)
-    res.send(buffer)
+    res.status(200).send(buffer)
   } catch (error) {
-    console.error('Error:', error.message)
-    res.status(500).json({ error: 'Failed to generate alert', message: error.message })
+    console.error('Error generating alert:', error)
+    res.status(500).json({ error: 'Failed to generate alert', details: error.message })
   }
 }
