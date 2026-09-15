@@ -1,8 +1,7 @@
 // CORRECTED API: get-alerts.js
 // Fixes: 1) Factory flag filtering, 2) Correct data reading
 
-import fs from 'fs'
-import path from 'path'
+import { inventoryData } from '../src/data/inventory-data.js'
 
 const THRESHOLDS = {
   AIM: 1.5,
@@ -22,9 +21,6 @@ export default async function handler(req, res) {
   if (!factory || !THRESHOLDS[factory]) return res.status(400).json({ error: 'Invalid factory' })
 
   try {
-    const inventoryPath = path.join(process.cwd(), 'src/data/inventory.json')
-    const inventoryData = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'))
-    
     // CRITICAL FIX: Factory flag field mapping
     const factoryFlagMap = {
       AIM: 'aimSKU',

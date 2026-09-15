@@ -2,8 +2,7 @@
 // Fixes: 1) Factory flag filtering, 2) Correct column indices, 3) Proper Word column mapping
 
 import { Document, Packer, Table, TableRow, TableCell, Paragraph, AlignmentType, BorderStyle } from 'docx'
-import fs from 'fs'
-import path from 'path'
+import { inventoryData } from '../src/data/inventory-data.js'
 
 const THRESHOLDS = {
   AIM: 1.5,
@@ -34,8 +33,6 @@ export default async function handler(req, res) {
   if (!factory || !THRESHOLDS[factory]) return res.status(400).json({ error: 'Invalid factory' })
 
   try {
-    const inventoryPath = path.join(process.cwd(), 'src/data/inventory.json')
-    const inventoryData = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'))
     const allSkus = inventoryData.skus
 
     // CRITICAL FIX: Filter by factory flag (column 25-32: aimSKU, midburySKU, ltmSKU, etc.)
