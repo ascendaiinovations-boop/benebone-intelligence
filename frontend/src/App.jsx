@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Download, Mail, Loader, Upload } from 'lucide-react'
+import { Download, Mail, Loader, Upload, ChevronDown, ChevronUp } from 'lucide-react'
 import Header from './components/Header'
 
 export default function App() {
@@ -14,6 +14,7 @@ export default function App() {
   const [qualityLoading, setQualityLoading] = useState(false)
   const [reportStatus, setReportStatus] = useState('')
   const [poStatus, setPoStatus] = useState('')
+  const [expandedUpload, setExpandedUpload] = useState('csv')
 
   const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets']
 
@@ -72,7 +73,7 @@ export default function App() {
       })
       const data = await response.json()
       if (data.success) {
-        setReportStatus('✅ Weekly Inventory Report uploaded successfully')
+        setReportStatus('✅ Report uploaded successfully')
         document.getElementById('reportInput').value = ''
       } else {
         setReportStatus(`❌ ${data.error || 'Upload failed'}`)
@@ -97,7 +98,7 @@ export default function App() {
       })
       const data = await response.json()
       if (data.success) {
-        setPoStatus('✅ PO & Receiving Log uploaded successfully')
+        setPoStatus('✅ PO log uploaded successfully')
         document.getElementById('poInput').value = ''
       } else {
         setPoStatus(`❌ ${data.error || 'Upload failed'}`)
@@ -203,251 +204,258 @@ export default function App() {
   const recipients = getRecipients(selectedFactory)
   const columns = getColumns(selectedFactory)
 
+  const UploadAccordion = ({ id, title, emoji, badge, isExpanded, onToggle, children, statusMessage }) => (
+    <div style={{ marginBottom: '1rem', border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden', background: 'white' }}>
+      <button
+        onClick={() => onToggle(id)}
+        style={{
+          width: '100%',
+          padding: '1rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          background: isExpanded ? '#f9fafb' : 'white',
+          border: 'none',
+          cursor: 'pointer',
+          fontSize: '16px',
+          fontWeight: 600,
+          color: '#1b2817',
+          transition: 'all 0.2s'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <span>{emoji}</span>
+          <span>{title}</span>
+          {badge && (
+            <span style={{ fontSize: '11px', fontWeight: 700, color: 'white', background: badge.color, padding: '2px 8px', borderRadius: '4px', marginLeft: '0.5rem' }}>
+              {badge.text}
+            </span>
+          )}
+        </div>
+        {isExpanded ? <ChevronUp size={20} color="#1b4d3e" /> : <ChevronDown size={20} color="#999" />}
+      </button>
+
+      {isExpanded && (
+        <div style={{ padding: '1.5rem', borderTop: '1px solid #e5e7eb', background: 'white' }}>
+          {children}
+          {statusMessage && (
+            <p style={{
+              fontSize: '13px',
+              marginTop: '1rem',
+              color: statusMessage.startsWith('✅') ? '#059669' : '#dc2626',
+              fontWeight: 600
+            }}>
+              {statusMessage}
+            </p>
+          )}
+        </div>
+      )}
+    </div>
+  )
+
   return (
-    <div style={{ minHeight: '100vh', background: '#f9fafb' }}>
+    <div style={{ minHeight: '100vh', background: '#ffffff' }}>
       <Header />
-      <div style={{ padding: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
+      <div style={{ padding: '2rem', maxWidth: '900px', margin: '0 auto' }}>
         
-        {/* CSV UPLOAD SECTION - WEEKLY */}
-        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #c41e3a' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ marginRight: '0.5rem', fontSize: '18px', fontWeight: 'bold', color: 'white', background: '#c41e3a', padding: '2px 8px', borderRadius: '4px' }}>WEEKLY ⭐⭐⭐</span>
-              <Upload size={20} style={{ marginRight: '0.5rem', color: '#1b4d3e' }} />
-              <h2 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>📄 Inventory Snapshot CSV</h2>
-            </div>
-          </div>
-
-          <div style={{ background: '#f5f5f5', padding: '1rem', borderRadius: '6px', marginBottom: '1rem', fontSize: '13px', lineHeight: '1.6', color: '#333' }}>
-            <div><strong>File:</strong> BeneBone Inventory Snapshot [DATE].csv</div>
-            <div style={{ marginTop: '0.5rem' }}><strong>When:</strong> Every Monday morning</div>
-            <div style={{ marginTop: '0.5rem' }}><strong>Why:</strong> Stock levels change weekly - upload latest snapshot to get fresh alerts</div>
-            <div style={{ marginTop: '0.5rem' }}><strong>Impact:</strong> 🔴 HIGH - Results change immediately</div>
-          </div>
-          
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '1rem' }}>
-            <div>
-              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
-                Select CSV File
-              </label>
-              <input
-                id="csvInput"
-                type="file"
-                accept=".csv"
-                onChange={handleFileSelect}
-                style={{ fontSize: '12px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
-              />
-            </div>
-            <button
-              onClick={handleUpload}
-              disabled={uploading || !csvFile}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.6rem 1.2rem',
-                background: uploading || !csvFile ? '#ccc' : '#1b4d3e',
-                color: 'white',
-                border: 'none',
-                borderRadius: '6px',
-                fontSize: '12px',
-                fontWeight: 600,
-                cursor: uploading || !csvFile ? 'not-allowed' : 'pointer',
-                opacity: uploading || !csvFile ? 0.5 : 1
-              }}
-            >
-              {uploading ? <Loader size={14} /> : <Upload size={14} />}
-              {uploading ? 'Uploading...' : 'Upload'}
-            </button>
-          </div>
-
-          <div style={{ background: '#f0f0f0', padding: '0.75rem', borderRadius: '6px', fontSize: '12px', color: '#666', marginBottom: '0.5rem' }}>
-            <div>✓ File must be: <strong>.csv format</strong></div>
-            <div>✓ Must contain: <strong>All 782 SKUs</strong></div>
-            <div>✓ Must have columns: <strong>SKU, OnHand, Available Eaches, etc.</strong></div>
-          </div>
-
-          {uploadStatus && (
-            <p style={{
-              fontSize: '12px',
-              marginTop: '0.5rem',
-              color: uploadStatus.startsWith('✅') ? '#059669' : '#dc2626',
-              fontWeight: 600
-            }}>
-              {uploadStatus}
-            </p>
-          )}
+        <div style={{ marginBottom: '3rem' }}>
+          <h1 style={{ fontSize: '32px', fontWeight: 700, color: '#1b2817', margin: '0 0 0.5rem 0' }}>
+            Upload Your Data
+          </h1>
+          <p style={{ fontSize: '16px', color: '#666', margin: 0 }}>
+            Keep your inventory alerts fresh by uploading your latest data files.
+          </p>
         </div>
 
-        {/* REPORT UPLOAD SECTION - MONTHLY */}
-        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #1976d2' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ marginRight: '0.5rem', fontSize: '11px', fontWeight: 'bold', color: 'white', background: '#1976d2', padding: '2px 8px', borderRadius: '4px' }}>MONTHLY</span>
-              <span style={{ marginRight: '0.5rem', fontSize: '18px' }}>📈</span>
-              <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>Weekly Inventory Report</h3>
+        {/* UPLOAD ACCORDION SECTIONS */}
+        <div style={{ marginBottom: '3rem' }}>
+          <UploadAccordion
+            id="csv"
+            title="Inventory Snapshot"
+            emoji="📄"
+            badge={{ text: 'WEEKLY', color: '#c41e3a' }}
+            isExpanded={expandedUpload === 'csv'}
+            onToggle={() => setExpandedUpload(expandedUpload === 'csv' ? null : 'csv')}
+            statusMessage={uploadStatus}
+          >
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>File Format</h3>
+              <code style={{ background: '#f5f5f5', padding: '0.5rem 0.75rem', borderRadius: '4px', fontSize: '13px', color: '#333', display: 'block' }}>
+                BeneBone Inventory Snapshot [DATE].csv
+              </code>
+              <p style={{ fontSize: '13px', color: '#666', margin: '0.5rem 0 0 0' }}>
+                Example: <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '2px' }}>BeneBone Inventory Snapshot 20260917.csv</code>
+              </p>
             </div>
-          </div>
 
-          <div style={{ background: '#f5f5f5', padding: '1rem', borderRadius: '6px', marginBottom: '1rem', fontSize: '13px', lineHeight: '1.6', color: '#333' }}>
-            <div><strong>File:</strong> Weekly Inventory Report [M-DD-YYYY].xlsx</div>
-            <div style={{ marginTop: '0.5rem' }}><strong>When:</strong> Once a month (or after major stock swings)</div>
-            <div style={{ marginTop: '0.5rem' }}><strong>Why:</strong> Recalculates MOS trends and provides analysis</div>
-            <div style={{ marginTop: '0.5rem' }}><strong>Impact:</strong> 🟡 MEDIUM - Information only</div>
-          </div>
-          
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '1rem' }}>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Requirements</h3>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '13px', color: '#666', lineHeight: 1.8 }}>
+                <li>File format: <strong>.csv</strong></li>
+                <li>Contains all <strong>782 SKUs</strong></li>
+                <li>Columns: SKU, OnHand, Available, Avg Monthly Sales, etc.</li>
+              </ul>
+            </div>
+
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Upload</h3>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+                <input
+                  id="csvInput"
+                  type="file"
+                  accept=".csv"
+                  onChange={handleFileSelect}
+                  style={{ fontSize: '13px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
+                />
+                <button
+                  onClick={handleUpload}
+                  disabled={uploading || !csvFile}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.6rem 1.2rem',
+                    background: uploading || !csvFile ? '#ccc' : '#1b4d3e',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    cursor: uploading || !csvFile ? 'not-allowed' : 'pointer',
+                    opacity: uploading || !csvFile ? 0.5 : 1
+                  }}
+                >
+                  {uploading ? <Loader size={14} /> : <Upload size={14} />}
+                  {uploading ? 'Uploading...' : 'Upload CSV'}
+                </button>
+              </div>
+            </div>
+          </UploadAccordion>
+
+          <UploadAccordion
+            id="report"
+            title="Weekly Inventory Report"
+            emoji="📈"
+            badge={{ text: 'MONTHLY', color: '#1976d2' }}
+            isExpanded={expandedUpload === 'report'}
+            onToggle={() => setExpandedUpload(expandedUpload === 'report' ? null : 'report')}
+            statusMessage={reportStatus}
+          >
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>File Format</h3>
+              <code style={{ background: '#f5f5f5', padding: '0.5rem 0.75rem', borderRadius: '4px', fontSize: '13px', color: '#333', display: 'block' }}>
+                Weekly Inventory Report [M-DD-YYYY].xlsx
+              </code>
+              <p style={{ fontSize: '13px', color: '#666', margin: '0.5rem 0 0 0' }}>
+                Example: <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '2px' }}>Weekly Inventory Report 9-17-2026.xlsx</code>
+              </p>
+            </div>
+
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Requirements</h3>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '13px', color: '#666', lineHeight: 1.8 }}>
+                <li>File format: <strong>.xlsx or .xls</strong></li>
+                <li>Contains MOS calculations and trends</li>
+                <li>File size: Max <strong>50MB</strong></li>
+              </ul>
+            </div>
+
             <div>
-              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
-                Select Excel File
-              </label>
-              <input
-                id="reportInput"
-                type="file"
-                accept=".xlsx,.xls"
-                onChange={handleReportUpload}
-                style={{ fontSize: '12px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
-              />
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Upload</h3>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+                <input
+                  id="reportInput"
+                  type="file"
+                  accept=".xlsx,.xls"
+                  onChange={handleReportUpload}
+                  style={{ fontSize: '13px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
+                />
+                <button
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.6rem 1.2rem',
+                    background: '#1b4d3e',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  }}
+                >
+                  <Upload size={14} />
+                  Upload Report
+                </button>
+              </div>
             </div>
-          </div>
+          </UploadAccordion>
 
-          <div style={{ background: '#f0f0f0', padding: '0.75rem', borderRadius: '6px', fontSize: '12px', color: '#666', marginBottom: '0.5rem' }}>
-            <div>✓ File must be: <strong>.xlsx or .xls format</strong></div>
-            <div>✓ Should contain: <strong>MOS calculations, trends, analysis</strong></div>
-            <div>✓ File size: <strong>Max 50MB</strong></div>
-          </div>
-
-          {reportStatus && (
-            <p style={{
-              fontSize: '12px',
-              marginTop: '0.5rem',
-              color: reportStatus.startsWith('✅') ? '#059669' : '#dc2626',
-              fontWeight: 600
-            }}>
-              {reportStatus}
-            </p>
-          )}
-        </div>
-
-        {/* PO UPLOAD SECTION */}
-        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #1976d2' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ marginRight: '0.5rem', fontSize: '11px', fontWeight: 'bold', color: 'white', background: '#1976d2', padding: '2px 8px', borderRadius: '4px' }}>WEEKLY</span>
-              <span style={{ marginRight: '0.5rem', fontSize: '18px' }}>📦</span>
-              <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>PO & Receiving Log</h3>
+          <UploadAccordion
+            id="po"
+            title="PO & Receiving Log"
+            emoji="📦"
+            badge={{ text: 'WEEKLY', color: '#1976d2' }}
+            isExpanded={expandedUpload === 'po'}
+            onToggle={() => setExpandedUpload(expandedUpload === 'po' ? null : 'po')}
+            statusMessage={poStatus}
+          >
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>File Format</h3>
+              <code style={{ background: '#f5f5f5', padding: '0.5rem 0.75rem', borderRadius: '4px', fontSize: '13px', color: '#333', display: 'block' }}>
+                PO & Receiving Log.xlsm
+              </code>
             </div>
-          </div>
 
-          <div style={{ background: '#f5f5f5', padding: '1rem', borderRadius: '6px', marginBottom: '1rem', fontSize: '13px', lineHeight: '1.6', color: '#333' }}>
-            <div><strong>File:</strong> PO & Receiving Log.xlsm</div>
-            <div style={{ marginTop: '0.5rem' }}><strong>When:</strong> Weekly (when orders change)</div>
-            <div style={{ marginTop: '0.5rem' }}><strong>Why:</strong> Shows inbound inventory and arrival dates</div>
-            <div style={{ marginTop: '0.5rem' }}><strong>Impact:</strong> 🟡 MEDIUM - Shows future supply</div>
-          </div>
-          
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '1rem' }}>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Requirements</h3>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '13px', color: '#666', lineHeight: 1.8 }}>
+                <li>File format: <strong>.xlsm or .xlsx</strong></li>
+                <li>Contains PO data, receiving status, lead times</li>
+                <li>File size: Max <strong>50MB</strong></li>
+              </ul>
+            </div>
+
             <div>
-              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
-                Select Excel File
-              </label>
-              <input
-                id="poInput"
-                type="file"
-                accept=".xlsm,.xlsx"
-                onChange={handlePoUpload}
-                style={{ fontSize: '12px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
-              />
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Upload</h3>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+                <input
+                  id="poInput"
+                  type="file"
+                  accept=".xlsm,.xlsx"
+                  onChange={handlePoUpload}
+                  style={{ fontSize: '13px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
+                />
+                <button
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.6rem 1.2rem',
+                    background: '#1b4d3e',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  }}
+                >
+                  <Upload size={14} />
+                  Upload PO Log
+                </button>
+              </div>
             </div>
-          </div>
-
-          <div style={{ background: '#f0f0f0', padding: '0.75rem', borderRadius: '6px', fontSize: '12px', color: '#666', marginBottom: '0.5rem' }}>
-            <div>✓ File must be: <strong>.xlsm or .xlsx format</strong></div>
-            <div>✓ Should contain: <strong>PO data, receiving status, lead times</strong></div>
-            <div>✓ File size: <strong>Max 50MB</strong></div>
-          </div>
-
-          {poStatus && (
-            <p style={{
-              fontSize: '12px',
-              marginTop: '0.5rem',
-              color: poStatus.startsWith('✅') ? '#059669' : '#dc2626',
-              fontWeight: 600
-            }}>
-              {poStatus}
-            </p>
-          )}
+          </UploadAccordion>
         </div>
-
-        {/* Data Quality Report */}
-        {dataQualityReport && (
-          <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: dataQualityReport.readyToProcess ? '2px solid #059669' : '2px solid #dc2626' }}>
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem', justifyContent: 'space-between' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <span style={{ fontSize: '24px' }}>📊</span>
-                <div>
-                  <h2 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>Data Quality Report</h2>
-                  <p style={{ fontSize: '12px', color: '#666', margin: '0.25rem 0 0 0' }}>Generated: {new Date(dataQualityReport.timestamp).toLocaleString()}</p>
-                </div>
-              </div>
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: '28px', fontWeight: 700, color: dataQualityReport.overallScore >= 95 ? '#059669' : dataQualityReport.overallScore >= 85 ? '#f59e0b' : '#dc2626' }}>
-                  {dataQualityReport.overallScore}%
-                </div>
-                <div style={{ fontSize: '12px', fontWeight: 600, color: dataQualityReport.readyToProcess ? '#059669' : dataQualityReport.overallScore >= 85 ? '#f59e0b' : '#dc2626' }}>
-                  {dataQualityReport.status}
-                </div>
-              </div>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
-              {Object.entries(dataQualityReport.checks || {}).map(([key, check]) => (
-                <div key={key} style={{ padding: '0.75rem', background: check.pass ? '#ecfdf5' : check.severity === 'WARN' ? '#fffbeb' : '#fef2f2', border: `1px solid ${check.pass ? '#d1fae5' : check.severity === 'WARN' ? '#fef3c7' : '#fee2e2'}`, borderRadius: '6px' }}>
-                  <div style={{ fontSize: '12px', fontWeight: 600, color: '#1b2817', marginBottom: '0.25rem' }}>
-                    {check.pass ? '✓' : '⚠️'} {check.name}
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#666', marginBottom: '0.25rem' }}>
-                    <span style={{ fontWeight: 500 }}>Expected:</span> {check.expected}
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#666' }}>
-                    <span style={{ fontWeight: 500 }}>Actual:</span> {check.actual}
-                  </div>
-                  {check.message && (
-                    <div style={{ fontSize: '11px', color: '#666', marginTop: '0.5rem', fontStyle: 'italic' }}>
-                      {check.message}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {dataQualityReport.dataVersion && (
-              <div style={{ padding: '0.75rem', background: '#f9fafb', borderRadius: '6px', fontSize: '11px', color: '#666' }}>
-                <div style={{ fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>Data Sources:</div>
-                <div>Snapshot: {dataQualityReport.dataVersion.snapshot} ({dataQualityReport.dataVersion.snapshotDate})</div>
-                <div>Weekly: {dataQualityReport.dataVersion.weeklyReport} ({dataQualityReport.dataVersion.reportDate})</div>
-                <div>Planning: {dataQualityReport.dataVersion.planning}</div>
-              </div>
-            )}
-
-            {!dataQualityReport.readyToProcess && (
-              <div style={{ marginTop: '1rem', padding: '0.75rem', background: '#fef2f2', border: '1px solid #fee2e2', borderRadius: '6px', fontSize: '12px', color: '#dc2626', fontWeight: 500 }}>
-                ⚠️ Data quality score is below 95%. Please verify data before generating alerts.
-              </div>
-            )}
-
-            {dataQualityReport.readyToProcess && (
-              <div style={{ marginTop: '1rem', padding: '0.75rem', background: '#ecfdf5', border: '1px solid #d1fae5', borderRadius: '6px', fontSize: '12px', color: '#059669', fontWeight: 500 }}>
-                ✓ Data quality is good. Ready to generate alerts.
-              </div>
-            )}
-          </div>
-        )}
 
         {/* Alert Controls */}
-        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
+        <div style={{ marginBottom: '2rem', background: '#f9fafb', padding: '1.5rem', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+          <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1b2817', margin: '0 0 1rem 0' }}>Generate Alerts</h2>
+
           <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
               Select Factory
             </label>
             <select
@@ -456,58 +464,62 @@ export default function App() {
                 setSelectedFactory(e.target.value)
                 setAlertData(null)
               }}
-              style={{ width: '100%', padding: '0.75rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontSize: '14px', fontFamily: 'inherit', maxWidth: '300px' }}
+              style={{ width: '100%', maxWidth: '300px', padding: '0.75rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontSize: '13px', fontFamily: 'inherit' }}
             >
               {factories.map(f => (<option key={f} value={f}>{f}</option>))}
             </select>
           </div>
 
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <button onClick={handleCheckDataQuality} disabled={qualityLoading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: '#6b7280', color: 'white', border: 'none', borderRadius: '6px', fontSize: '14px', fontWeight: 600, cursor: qualityLoading ? 'not-allowed' : 'pointer', opacity: qualityLoading ? 0.6 : 1 }} title="Check data quality before generating alerts">
-              {qualityLoading ? <Loader size={16} /> : <span>🔍</span>}
-              {qualityLoading ? 'Validating...' : 'Check Data Quality'}
+            <button onClick={handleCheckDataQuality} disabled={qualityLoading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', background: '#6b7280', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: qualityLoading ? 'not-allowed' : 'pointer', opacity: qualityLoading ? 0.6 : 1 }}>
+              {qualityLoading ? <Loader size={14} /> : <span>🔍</span>}
+              {qualityLoading ? 'Checking...' : 'Data Quality'}
             </button>
 
-            <button onClick={handleCheckAlerts} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '14px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.6 : 1 }} title="Check alerts for selected factory">
-              {loading ? <Loader size={16} /> : <span>📊</span>}
-              {loading ? 'Analyzing...' : 'Check Alerts'}
+            <button onClick={handleCheckAlerts} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.6 : 1 }}>
+              {loading ? <Loader size={14} /> : <span>📊</span>}
+              {loading ? 'Checking...' : 'Check Alerts'}
             </button>
 
-            <button onClick={handleDownloadWord} disabled={loading || alertCount === 0} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: '#2d5016', color: 'white', border: 'none', borderRadius: '6px', fontSize: '14px', fontWeight: 600, cursor: loading || alertCount === 0 ? 'not-allowed' : 'pointer', opacity: loading || alertCount === 0 ? 0.6 : 1 }}>
-              <Download size={16} />
-              {loading ? 'Generating...' : 'Download as Word'}
+            <button onClick={handleDownloadWord} disabled={loading || alertCount === 0} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', background: '#2d5016', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: loading || alertCount === 0 ? 'not-allowed' : 'pointer', opacity: loading || alertCount === 0 ? 0.6 : 1 }}>
+              <Download size={14} />
+              {loading ? 'Generating...' : 'Download Word'}
             </button>
             
-            <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: '#ccc', color: '#666', border: 'none', borderRadius: '6px', fontSize: '14px', fontWeight: 600, cursor: 'not-allowed', opacity: 0.5 }} title="Coming in Phase 2">
-              <Mail size={16} />
-              Send Email (Phase 2)
+            <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', background: '#ccc', color: '#666', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: 'not-allowed', opacity: 0.5 }}>
+              <Mail size={14} />
+              Send (Phase 2)
             </button>
           </div>
         </div>
 
-        {/* Preview Table */}
+        {/* Alert Results */}
         {alertData && (
-          <div style={{ background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
-            <div style={{ padding: '1.5rem', borderBottom: '2px solid #e5e7eb', background: '#f9fafb' }}>
-              <h2 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Weekly Low SKU Alert - {selectedFactory}</h2>
-              <p style={{ fontSize: '13px', color: '#666', margin: '0.5rem 0 0 0' }}>Generated: {new Date().toLocaleString()}</p>
+          <div style={{ background: 'white', borderRadius: '8px', border: '1px solid #e5e7eb', overflow: 'hidden' }}>
+            <div style={{ padding: '1.5rem', borderBottom: '1px solid #e5e7eb', background: '#f9fafb' }}>
+              <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1b2817', margin: '0 0 0.5rem 0' }}>
+                Weekly Alert - {selectedFactory}
+              </h2>
+              <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>
+                Generated: {new Date().toLocaleString()}
+              </p>
             </div>
 
             <div style={{ padding: '1.5rem' }}>
-              <p style={{ fontSize: '13px', color: '#333', margin: '0 0 0.5rem 0' }}>
+              <p style={{ fontSize: '12px', color: '#333', margin: '0 0 0.5rem 0' }}>
                 <strong>To:</strong> {recipients.to.join(', ')}
               </p>
-              <p style={{ fontSize: '13px', color: '#333', margin: '0 0 1rem 0' }}>
+              <p style={{ fontSize: '12px', color: '#333', margin: '0 0 1rem 0' }}>
                 <strong>CC:</strong> {recipients.cc.join(', ')}
               </p>
-              <p style={{ fontSize: '13px', color: '#666', margin: '0 0 1.5rem 0' }}>
+              <p style={{ fontSize: '12px', color: '#666', margin: '0 0 1.5rem 0' }}>
                 <strong>SKUs on Alert (MOS ≤ {alertData.threshold}):</strong> {alertCount}
               </p>
             </div>
 
             {alertCount === 0 ? (
               <div style={{ padding: '1.5rem', borderTop: '1px solid #e5e7eb', background: '#f9fafb' }}>
-                <p style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: 0 }}>No SKUs are on alert this week.</p>
+                <p style={{ fontSize: '13px', fontWeight: 600, color: '#1b2817', margin: 0 }}>No SKUs are on alert this week.</p>
               </div>
             ) : (
               <div style={{ overflowX: 'auto', borderTop: '1px solid #e5e7eb' }}>
@@ -515,7 +527,7 @@ export default function App() {
                   <thead>
                     <tr style={{ background: '#f3f4f6' }}>
                       {columns.map(col => (
-                        <th key={col} style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#1b2817', borderBottom: '2px solid #e5e7eb' }}>
+                        <th key={col} style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#1b2817', borderBottom: '1px solid #e5e7eb' }}>
                           {col}
                         </th>
                       ))}
