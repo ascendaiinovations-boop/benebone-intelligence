@@ -19,7 +19,7 @@ const PRODUCTION_FIELDS = {
   Bennett: "bennettProduction",
   DMG: "dmgProduction",
   Coltoys: "coltoysProduction",
-  "Loving Pets": "lovingPetsProduction",
+  "Loving Pets": "lovingpetsProduction",
 };
 
 export default function handler(req, res) {
@@ -38,7 +38,6 @@ export default function handler(req, res) {
 
   const alertSkus = INVENTORY_DATA.filter((sku) => {
     if (!sku.factoryFlag || !sku.factoryFlag[factory]) return false;
-    // KEY: exclude exact MOS=0, include everything 0 < MOS <= threshold
     if (
       sku.mos === undefined ||
       sku.mos === null ||
