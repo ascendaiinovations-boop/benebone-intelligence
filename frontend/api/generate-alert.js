@@ -60,7 +60,8 @@ export default async function handler(req, res) {
 
     const alertSkus = allSkus.filter(sku => {
       if (!sku.factoryFlag || !sku.factoryFlag[factory]) return false
-      if (sku.mos === undefined || sku.mos === null || sku.mos > threshold) return false
+      // FIX: Exclude SKUs with MOS=0 (new products with no sales history)
+      if (sku.mos === 0 || sku.mos === undefined || sku.mos === null || sku.mos > threshold) return false
       if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false
       if (sku.exclude === 'X') return false
       
@@ -70,7 +71,7 @@ export default async function handler(req, res) {
 
     console.log(`Generate alert: ${factory} with ${alertSkus.length} SKUs`)
 
-    // Build table rows - FIXED: use 'children' not 'cells' for TableRow
+    // Build table rows
     const rows = [
       new TableRow({
         children: [
