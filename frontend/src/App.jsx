@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import beneboneLogo from '../public/logo.avif';
+import beneboneLogo from './assets/logo.avif';
 import { MessageSquare, Download, Trash2, CheckCircle, AlertCircle } from 'lucide-react';
 import { INVENTORY_DATA } from '../api/inventory-data.js';
 
