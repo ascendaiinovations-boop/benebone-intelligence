@@ -12,6 +12,8 @@ export default function App() {
   const [csvFile, setCsvFile] = useState(null)
   const [dataQualityReport, setDataQualityReport] = useState(null)
   const [qualityLoading, setQualityLoading] = useState(false)
+  const [reportStatus, setReportStatus] = useState('')
+  const [poStatus, setPoStatus] = useState('')
 
   const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets']
 
@@ -52,6 +54,46 @@ export default function App() {
       setUploadStatus(`Upload failed: ${error.message}`)
     } finally {
       setUploading(false)
+    }
+  }
+
+  const handleReportUpload = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    setReportStatus('Uploading report...')
+    const formData = new FormData()
+    formData.append('file', file)
+
+    try {
+      const response = await fetch('/api/upload-report', {
+        method: 'POST',
+        body: formData
+      })
+      const data = await response.json()
+      setReportStatus(data.success ? '✅ Report uploaded successfully' : '❌ Upload failed')
+    } catch (error) {
+      setReportStatus(`❌ Error: ${error.message}`)
+    }
+  }
+
+  const handlePoUpload = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    setPoStatus('Uploading PO log...')
+    const formData = new FormData()
+    formData.append('file', file)
+
+    try {
+      const response = await fetch('/api/upload-po', {
+        method: 'POST',
+        body: formData
+      })
+      const data = await response.json()
+      setPoStatus(data.success ? '✅ PO log uploaded successfully' : '❌ Upload failed')
+    } catch (error) {
+      setPoStatus(`❌ Error: ${error.message}`)
     }
   }
 
@@ -156,7 +198,7 @@ export default function App() {
       <Header />
       <div style={{ padding: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
         
-        {/* Upload Section */}
+        {/* CSV UPLOAD SECTION */}
         <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #e5e7eb' }}>
           <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
             <Upload size={20} style={{ marginRight: '0.5rem', color: '#1b4d3e' }} />
@@ -209,6 +251,78 @@ export default function App() {
               color: uploadStatus.startsWith('✅') ? '#059669' : '#dc2626'
             }}>
               {uploadStatus}
+            </p>
+          )}
+        </div>
+
+        {/* REPORT UPLOAD SECTION */}
+        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #e5e7eb' }}>
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+            <span style={{ marginRight: '0.5rem', fontSize: '18px' }}>📈</span>
+            <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>Weekly Inventory Report (Optional)</h3>
+          </div>
+          <p style={{ fontSize: '13px', color: '#666', margin: '0 0 1rem 0' }}>
+            Upload monthly inventory analysis - helps track trends and MOS calculations
+          </p>
+          
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
+                Select Excel File
+              </label>
+              <input
+                id="reportInput"
+                type="file"
+                accept=".xlsx,.xls"
+                onChange={handleReportUpload}
+                style={{ fontSize: '12px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
+              />
+            </div>
+          </div>
+
+          {reportStatus && (
+            <p style={{
+              fontSize: '12px',
+              marginTop: '1rem',
+              color: reportStatus.startsWith('✅') ? '#059669' : '#dc2626'
+            }}>
+              {reportStatus}
+            </p>
+          )}
+        </div>
+
+        {/* PO UPLOAD SECTION */}
+        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #e5e7eb' }}>
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+            <span style={{ marginRight: '0.5rem', fontSize: '18px' }}>📦</span>
+            <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>PO & Receiving Log (Optional)</h3>
+          </div>
+          <p style={{ fontSize: '13px', color: '#666', margin: '0 0 1rem 0' }}>
+            Upload PO and receiving data - shows inbound inventory and arrival dates
+          </p>
+          
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
+                Select Excel File
+              </label>
+              <input
+                id="poInput"
+                type="file"
+                accept=".xlsm,.xlsx"
+                onChange={handlePoUpload}
+                style={{ fontSize: '12px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
+              />
+            </div>
+          </div>
+
+          {poStatus && (
+            <p style={{
+              fontSize: '12px',
+              marginTop: '1rem',
+              color: poStatus.startsWith('✅') ? '#059669' : '#dc2626'
+            }}>
+              {poStatus}
             </p>
           )}
         </div>
