@@ -30,17 +30,6 @@ export default async function handler(req, res) {
   if (!factory || !THRESHOLDS[factory]) return res.status(400).json({ error: 'Invalid factory' })
 
   try {
-    const factoryFlagMap = {
-      AIM: 'aimSKU',
-      Midbury: 'midburySKU',
-      LTM: 'ltmSKU',
-      '201': 'grupoSKU',
-      Bennett: 'bennettSKU',
-      DMG: 'dmgSKU',
-      Coltoys: 'coltoysSKU',
-      'Loving Pets': 'lovingPetsSKU'
-    }
-
     const factoryProductionMap = {
       AIM: 'aimProduction',
       Midbury: 'midburyProduction',
@@ -53,7 +42,6 @@ export default async function handler(req, res) {
     }
 
     const threshold = THRESHOLDS[factory]
-    const factoryFlagField = factoryFlagMap[factory]
     const factoryProdField = factoryProductionMap[factory]
 
     let allSkus = Array.isArray(INVENTORY_DATA) ? INVENTORY_DATA : (INVENTORY_DATA.skus || [])
@@ -63,22 +51,32 @@ export default async function handler(req, res) {
     }
 
     const alertSkus = allSkus.filter(sku => {
-      if (sku[factoryFlagField] !== 'Y') return false
-      if (!sku.mosOH || sku.mosOH > threshold) return false
-      if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false
-      if (sku.excludeFromEmail === 'X') return false
+      // Check factory flag (boolean in factoryFlag object)
+      if (!sku.factoryFlag || !sku.factoryFlag[factory]) return false
       
+      // Check MOS threshold (use 'mos' not 'mosOH')
+      if (sku.mos === undefined || sku.mos === null || sku.mos > threshold) return false
+      
+      // Check planned production
+      if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false
+      
+      // Check exclude flag
+      if (sku.exclude === 'X') return false
+      
+      // Check factory has production for this SKU
       const factoryProd = sku[factoryProdField] || 0
-      return factoryProd > 0
-    }).sort((a, b) => a.mosOH - b.mosOH)
+      if (factoryProd <= 0) return false
+      
+      return true
+    }).sort((a, b) => a.mos - b.mos)
 
     // Build table rows
     const rows = [
       new TableRow({
         cells: [
-          new TableCell({ children: [new Paragraph('Item No.')] }),
+          new TableCell({ children: [new Paragraph('SKU')] }),
           new TableCell({ children: [new Paragraph('Description')] }),
-          new TableCell({ children: [new Paragraph('Inbound')] }),
+          new TableCell({ children: [new Paragraph('OnHand')] }),
           new TableCell({ children: [new Paragraph('Available')] }),
           new TableCell({ children: [new Paragraph('Avg Sales')] }),
           new TableCell({ children: [new Paragraph('MOS')] }),
@@ -91,40 +89,46 @@ export default async function handler(req, res) {
     alertSkus.slice(0, 100).forEach(sku => {
       rows.push(new TableRow({
         cells: [
-          new TableCell({ children: [new Paragraph(sku.itemNo || '')] }),
+          new TableCell({ children: [new Paragraph(sku.sku || '')] }),
           new TableCell({ children: [new Paragraph(sku.description || '')] }),
-          new TableCell({ children: [new Paragraph((sku.inbound || 0).toString())] }),
-          new TableCell({ children: [new Paragraph((sku.availableEachesPlus || 0).toString())] }),
+          new TableCell({ children: [new Paragraph((sku.onHand || 0).toString())] }),
+          new TableCell({ children: [new Paragraph((sku.available || 0).toString())] }),
           new TableCell({ children: [new Paragraph((sku.avgMonthlySales || 0).toString())] }),
-          new TableCell({ children: [new Paragraph((sku.mosOH || 0).toFixed(2))] }),
-          new TableCell({ children: [new Paragraph((sku.amtToReachSS || 0).toString())] }),
+          new TableCell({ children: [new Paragraph((sku.mos || 0).toFixed(2))] }),
+          new TableCell({ children: [new Paragraph((sku.amtToSS || 0).toString())] }),
           new TableCell({ children: [new Paragraph(sku.notes || '')] })
         ]
       }))
     })
 
+    const recipients = RECIPIENTS[factory]
     const doc = new Document({
-      sections: [{
-        children: [
-          new Paragraph({
-            text: `${factory} Inventory Alerts - ${new Date().toLocaleDateString()}`,
-            bold: true,
-            size: 28
-          }),
-          new Paragraph(''),
-          new Table({
-            rows: rows
-          })
-        ]
-      }]
+      sections: [
+        {
+          children: [
+            new Paragraph({
+              text: `Weekly Low SKU Alert - ${factory}`,
+              style: 'Heading1'
+            }),
+            new Paragraph(`Generated: ${new Date().toLocaleString()}`),
+            new Paragraph(`To: ${recipients.to.join(', ')}`),
+            new Paragraph(`CC: ${recipients.cc.join(', ')}`),
+            new Paragraph(`SKUs on Alert (MOS ≤ ${threshold}): ${alertSkus.length}`),
+            new Paragraph(''),
+            new Table({
+              rows: rows
+            })
+          ]
+        }
+      ]
     })
 
     const buffer = await Packer.toBuffer(doc)
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-    res.setHeader('Content-Disposition', `attachment; filename="${factory}-alerts-${new Date().toISOString().split('T')[0]}.docx"`)
+    res.setHeader('Content-Disposition', `attachment; filename="Benebone_Alert_${factory}_${new Date().toISOString().split('T')[0]}.docx"`)
     res.send(buffer)
   } catch (error) {
     console.error('Error:', error.message)
-    res.status(500).json({ error: 'Failed to generate document', message: error.message })
+    res.status(500).json({ error: 'Failed to generate alert', message: error.message })
   }
 }
