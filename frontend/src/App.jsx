@@ -71,7 +71,12 @@ export default function App() {
         body: formData
       })
       const data = await response.json()
-      setReportStatus(data.success ? '✅ Report uploaded successfully' : '❌ Upload failed')
+      if (data.success) {
+        setReportStatus('✅ Weekly Inventory Report uploaded successfully')
+        document.getElementById('reportInput').value = ''
+      } else {
+        setReportStatus(`❌ ${data.error || 'Upload failed'}`)
+      }
     } catch (error) {
       setReportStatus(`❌ Error: ${error.message}`)
     }
@@ -91,7 +96,12 @@ export default function App() {
         body: formData
       })
       const data = await response.json()
-      setPoStatus(data.success ? '✅ PO log uploaded successfully' : '❌ Upload failed')
+      if (data.success) {
+        setPoStatus('✅ PO & Receiving Log uploaded successfully')
+        document.getElementById('poInput').value = ''
+      } else {
+        setPoStatus(`❌ ${data.error || 'Upload failed'}`)
+      }
     } catch (error) {
       setPoStatus(`❌ Error: ${error.message}`)
     }
@@ -198,17 +208,24 @@ export default function App() {
       <Header />
       <div style={{ padding: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
         
-        {/* CSV UPLOAD SECTION */}
-        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #e5e7eb' }}>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-            <Upload size={20} style={{ marginRight: '0.5rem', color: '#1b4d3e' }} />
-            <h2 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>Upload Inventory Data</h2>
+        {/* CSV UPLOAD SECTION - WEEKLY */}
+        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #c41e3a' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <span style={{ marginRight: '0.5rem', fontSize: '18px', fontWeight: 'bold', color: 'white', background: '#c41e3a', padding: '2px 8px', borderRadius: '4px' }}>WEEKLY ⭐⭐⭐</span>
+              <Upload size={20} style={{ marginRight: '0.5rem', color: '#1b4d3e' }} />
+              <h2 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>📄 Inventory Snapshot CSV</h2>
+            </div>
           </div>
-          <p style={{ fontSize: '13px', color: '#666', margin: '0 0 1rem 0' }}>
-            Upload BeneBone Inventory Snapshot CSV to update alerts
-          </p>
+
+          <div style={{ background: '#f5f5f5', padding: '1rem', borderRadius: '6px', marginBottom: '1rem', fontSize: '13px', lineHeight: '1.6', color: '#333' }}>
+            <div><strong>File:</strong> BeneBone Inventory Snapshot [DATE].csv</div>
+            <div style={{ marginTop: '0.5rem' }}><strong>When:</strong> Every Monday morning</div>
+            <div style={{ marginTop: '0.5rem' }}><strong>Why:</strong> Stock levels change weekly - upload latest snapshot to get fresh alerts</div>
+            <div style={{ marginTop: '0.5rem' }}><strong>Impact:</strong> 🔴 HIGH - Results change immediately</div>
+          </div>
           
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '1rem' }}>
             <div>
               <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
                 Select CSV File
@@ -244,28 +261,42 @@ export default function App() {
             </button>
           </div>
 
+          <div style={{ background: '#f0f0f0', padding: '0.75rem', borderRadius: '6px', fontSize: '12px', color: '#666', marginBottom: '0.5rem' }}>
+            <div>✓ File must be: <strong>.csv format</strong></div>
+            <div>✓ Must contain: <strong>All 782 SKUs</strong></div>
+            <div>✓ Must have columns: <strong>SKU, OnHand, Available Eaches, etc.</strong></div>
+          </div>
+
           {uploadStatus && (
             <p style={{
               fontSize: '12px',
-              marginTop: '1rem',
-              color: uploadStatus.startsWith('✅') ? '#059669' : '#dc2626'
+              marginTop: '0.5rem',
+              color: uploadStatus.startsWith('✅') ? '#059669' : '#dc2626',
+              fontWeight: 600
             }}>
               {uploadStatus}
             </p>
           )}
         </div>
 
-        {/* REPORT UPLOAD SECTION */}
-        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #e5e7eb' }}>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-            <span style={{ marginRight: '0.5rem', fontSize: '18px' }}>📈</span>
-            <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>Weekly Inventory Report (Optional)</h3>
+        {/* REPORT UPLOAD SECTION - MONTHLY */}
+        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #1976d2' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <span style={{ marginRight: '0.5rem', fontSize: '11px', fontWeight: 'bold', color: 'white', background: '#1976d2', padding: '2px 8px', borderRadius: '4px' }}>MONTHLY</span>
+              <span style={{ marginRight: '0.5rem', fontSize: '18px' }}>📈</span>
+              <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>Weekly Inventory Report</h3>
+            </div>
           </div>
-          <p style={{ fontSize: '13px', color: '#666', margin: '0 0 1rem 0' }}>
-            Upload monthly inventory analysis - helps track trends and MOS calculations
-          </p>
+
+          <div style={{ background: '#f5f5f5', padding: '1rem', borderRadius: '6px', marginBottom: '1rem', fontSize: '13px', lineHeight: '1.6', color: '#333' }}>
+            <div><strong>File:</strong> Weekly Inventory Report [M-DD-YYYY].xlsx</div>
+            <div style={{ marginTop: '0.5rem' }}><strong>When:</strong> Once a month (or after major stock swings)</div>
+            <div style={{ marginTop: '0.5rem' }}><strong>Why:</strong> Recalculates MOS trends and provides analysis</div>
+            <div style={{ marginTop: '0.5rem' }}><strong>Impact:</strong> 🟡 MEDIUM - Information only</div>
+          </div>
           
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '1rem' }}>
             <div>
               <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
                 Select Excel File
@@ -280,11 +311,18 @@ export default function App() {
             </div>
           </div>
 
+          <div style={{ background: '#f0f0f0', padding: '0.75rem', borderRadius: '6px', fontSize: '12px', color: '#666', marginBottom: '0.5rem' }}>
+            <div>✓ File must be: <strong>.xlsx or .xls format</strong></div>
+            <div>✓ Should contain: <strong>MOS calculations, trends, analysis</strong></div>
+            <div>✓ File size: <strong>Max 50MB</strong></div>
+          </div>
+
           {reportStatus && (
             <p style={{
               fontSize: '12px',
-              marginTop: '1rem',
-              color: reportStatus.startsWith('✅') ? '#059669' : '#dc2626'
+              marginTop: '0.5rem',
+              color: reportStatus.startsWith('✅') ? '#059669' : '#dc2626',
+              fontWeight: 600
             }}>
               {reportStatus}
             </p>
@@ -292,16 +330,23 @@ export default function App() {
         </div>
 
         {/* PO UPLOAD SECTION */}
-        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #e5e7eb' }}>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-            <span style={{ marginRight: '0.5rem', fontSize: '18px' }}>📦</span>
-            <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>PO & Receiving Log (Optional)</h3>
+        <div style={{ marginBottom: '2rem', background: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', border: '2px solid #1976d2' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <span style={{ marginRight: '0.5rem', fontSize: '11px', fontWeight: 'bold', color: 'white', background: '#1976d2', padding: '2px 8px', borderRadius: '4px' }}>WEEKLY</span>
+              <span style={{ marginRight: '0.5rem', fontSize: '18px' }}>📦</span>
+              <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#1b2817', margin: 0 }}>PO & Receiving Log</h3>
+            </div>
           </div>
-          <p style={{ fontSize: '13px', color: '#666', margin: '0 0 1rem 0' }}>
-            Upload PO and receiving data - shows inbound inventory and arrival dates
-          </p>
+
+          <div style={{ background: '#f5f5f5', padding: '1rem', borderRadius: '6px', marginBottom: '1rem', fontSize: '13px', lineHeight: '1.6', color: '#333' }}>
+            <div><strong>File:</strong> PO & Receiving Log.xlsm</div>
+            <div style={{ marginTop: '0.5rem' }}><strong>When:</strong> Weekly (when orders change)</div>
+            <div style={{ marginTop: '0.5rem' }}><strong>Why:</strong> Shows inbound inventory and arrival dates</div>
+            <div style={{ marginTop: '0.5rem' }}><strong>Impact:</strong> 🟡 MEDIUM - Shows future supply</div>
+          </div>
           
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '1rem' }}>
             <div>
               <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
                 Select Excel File
@@ -316,11 +361,18 @@ export default function App() {
             </div>
           </div>
 
+          <div style={{ background: '#f0f0f0', padding: '0.75rem', borderRadius: '6px', fontSize: '12px', color: '#666', marginBottom: '0.5rem' }}>
+            <div>✓ File must be: <strong>.xlsm or .xlsx format</strong></div>
+            <div>✓ Should contain: <strong>PO data, receiving status, lead times</strong></div>
+            <div>✓ File size: <strong>Max 50MB</strong></div>
+          </div>
+
           {poStatus && (
             <p style={{
               fontSize: '12px',
-              marginTop: '1rem',
-              color: poStatus.startsWith('✅') ? '#059669' : '#dc2626'
+              marginTop: '0.5rem',
+              color: poStatus.startsWith('✅') ? '#059669' : '#dc2626',
+              fontWeight: 600
             }}>
               {poStatus}
             </p>
