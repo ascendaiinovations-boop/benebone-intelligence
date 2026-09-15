@@ -18,14 +18,41 @@ export default function App() {
 
   const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets']
 
+  const validateFileSize = (file, maxMB = 50) => {
+    const maxBytes = maxMB * 1024 * 1024
+    if (file.size > maxBytes) {
+      return {
+        valid: false,
+        error: `File too large (${(file.size / 1024 / 1024).toFixed(1)}MB). Maximum allowed: ${maxMB}MB. Try a smaller file.`
+      }
+    }
+    return { valid: true }
+  }
+
   const handleFileSelect = (e) => {
-    setCsvFile(e.target.files[0])
+    const file = e.target.files[0]
+    if (!file) return
+    
+    const validation = validateFileSize(file)
+    if (!validation.valid) {
+      setUploadStatus(`❌ ${validation.error}`)
+      e.target.value = ''
+      return
+    }
+    
+    setCsvFile(file)
     setUploadStatus('')
   }
 
   const handleUpload = async () => {
     if (!csvFile) {
-      setUploadStatus('Please select a CSV file')
+      setUploadStatus('❌ Please select a CSV file')
+      return
+    }
+
+    const validation = validateFileSize(csvFile)
+    if (!validation.valid) {
+      setUploadStatus(`❌ ${validation.error}`)
       return
     }
 
@@ -44,7 +71,19 @@ export default function App() {
       const data = await response.json()
 
       if (!response.ok) {
-        setUploadStatus(`Error: ${data.error}`)
+        let errorMsg = data.error || 'Upload failed'
+        
+        if (errorMsg.includes('Missing column') || errorMsg.includes('missing')) {
+          errorMsg = `❌ CSV format error: ${errorMsg}. Required columns: SKU, OnHand, Available, Avg Monthly Sales.`
+        } else if (errorMsg.includes('Duplicate') || errorMsg.includes('duplicate')) {
+          errorMsg = `❌ Data error: ${errorMsg}`
+        } else if (errorMsg.includes('empty') || errorMsg.includes('Empty')) {
+          errorMsg = '❌ CSV file is empty. Please check your file and try again.'
+        } else {
+          errorMsg = `❌ ${errorMsg}`
+        }
+        
+        setUploadStatus(errorMsg)
       } else {
         setUploadStatus(`✅ Success! Loaded ${data.skuCount} SKUs`)
         setCsvFile(null)
@@ -52,7 +91,7 @@ export default function App() {
         handleCheckAlerts()
       }
     } catch (error) {
-      setUploadStatus(`Upload failed: ${error.message}`)
+      setUploadStatus(`❌ Upload failed: ${error.message}. Please check your connection and try again.`)
     } finally {
       setUploading(false)
     }
@@ -61,6 +100,13 @@ export default function App() {
   const handleReportUpload = async (e) => {
     const file = e.target.files[0]
     if (!file) return
+
+    const validation = validateFileSize(file)
+    if (!validation.valid) {
+      setReportStatus(`❌ ${validation.error}`)
+      e.target.value = ''
+      return
+    }
 
     setReportStatus('Uploading report...')
     const formData = new FormData()
@@ -76,16 +122,27 @@ export default function App() {
         setReportStatus('✅ Report uploaded successfully')
         document.getElementById('reportInput').value = ''
       } else {
-        setReportStatus(`❌ ${data.error || 'Upload failed'}`)
+        let errorMsg = data.error || 'Upload failed'
+        if (errorMsg.includes('format') || errorMsg.includes('invalid')) {
+          errorMsg = `File format error: ${errorMsg}. Please use .xlsx or .xls format.`
+        }
+        setReportStatus(`❌ ${errorMsg}`)
       }
     } catch (error) {
-      setReportStatus(`❌ Error: ${error.message}`)
+      setReportStatus(`❌ Error: ${error.message}. Please check your connection and try again.`)
     }
   }
 
   const handlePoUpload = async (e) => {
     const file = e.target.files[0]
     if (!file) return
+
+    const validation = validateFileSize(file)
+    if (!validation.valid) {
+      setPoStatus(`❌ ${validation.error}`)
+      e.target.value = ''
+      return
+    }
 
     setPoStatus('Uploading PO log...')
     const formData = new FormData()
@@ -101,10 +158,14 @@ export default function App() {
         setPoStatus('✅ PO log uploaded successfully')
         document.getElementById('poInput').value = ''
       } else {
-        setPoStatus(`❌ ${data.error || 'Upload failed'}`)
+        let errorMsg = data.error || 'Upload failed'
+        if (errorMsg.includes('format') || errorMsg.includes('invalid')) {
+          errorMsg = `File format error: ${errorMsg}. Please use .xlsm or .xlsx format.`
+        }
+        setPoStatus(`❌ ${errorMsg}`)
       }
     } catch (error) {
-      setPoStatus(`❌ Error: ${error.message}`)
+      setPoStatus(`❌ Error: ${error.message}. Please check your connection and try again.`)
     }
   }
 
@@ -552,6 +613,18 @@ export default function App() {
             )}
           </div>
         )}
+
+        {/* GDPR Privacy Notice - CRITICAL */}
+        <div style={{ marginTop: '3rem', paddingTop: '1.5rem', borderTop: '1px solid #e5e7eb', fontSize: '12px', color: '#666', lineHeight: 1.6 }}>
+          <div style={{ maxWidth: '100%', background: '#f0f9ff', border: '1px solid #bfdbfe', borderRadius: '6px', padding: '1rem' }}>
+            <p style={{ margin: '0 0 0.5rem 0', fontWeight: 600, color: '#1e40af' }}>
+              🔒 Privacy & Data Protection
+            </p>
+            <p style={{ margin: '0 0 0.5rem 0' }}>
+              Your uploaded files are processed for alert generation only and automatically deleted within 24 hours. We do not retain or share your inventory data. This platform complies with GDPR data handling requirements and international data protection standards. For detailed information, see our <a href="#" style={{ color: '#1e40af', textDecoration: 'underline' }}>Privacy Policy</a>.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   )
