@@ -253,7 +253,7 @@ export default function App() {
       'AIM': { to: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
       'Midbury': { to: ['benebone@midbury.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
       'LTM': { to: ['eric@ltmplastics.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-      '201': { to: ['emilio.otero@201oficial.com.mx'], cc: ['salvador@201oficial.com.mx', 'punam@benebone.com'] },
+      '201': { to: ['emilio.otero@201oficial.com.mx'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
       'Bennett': { to: ['jmattox@bpkc.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
       'DMG': { to: ['monique.brunson@dmgincusa.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
       'Coltoys': { to: ['jparra@coltoys.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
@@ -331,6 +331,57 @@ export default function App() {
       <Header />
       <div style={{ padding: '2rem', maxWidth: '900px', margin: '0 auto' }}>
         
+        {/* GDPR Privacy Notice - CRITICAL - MOVED TO TOP - ABOVE FOLD */}
+        <div style={{ marginBottom: '2rem' }}>
+          <div
+            style={{ maxWidth: '100%', background: '#f0f9ff', border: '1px solid #0369a1', borderRadius: '6px', padding: '1.5rem' }}
+            role="region"
+            aria-label="Privacy and data protection information"
+          >
+            <p style={{ margin: '0 0 1rem 0', fontWeight: 700, color: '#1e40af', fontSize: '14px' }}>
+              🔒 Privacy & Data Protection
+            </p>
+            
+            <p style={{ margin: '0 0 0.75rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+              <strong>Data Processing & Retention:</strong> Your uploaded files are processed for inventory alert generation only and automatically deleted within 24 hours. We do not retain, share, or use your inventory data for any other purpose.
+            </p>
+            
+            <details style={{ marginTop: '1rem', cursor: 'pointer' }}>
+              <summary style={{ fontWeight: 'bold', color: '#0369a1', marginBottom: '0.75rem' }}>GDPR & Data Protection Details (Click to expand)</summary>
+              <div style={{ marginTop: '0.75rem', paddingLeft: '1rem', borderLeft: '2px solid #0369a1' }}>
+                <p style={{ margin: '0.5rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+                  <strong>Data Controller (Article 4):</strong> Ascend AI Innovations
+                </p>
+                <p style={{ margin: '0.5rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+                  <strong>Processing Purpose (Article 5):</strong> Alert generation for inventory management and warehouse operations
+                </p>
+                <p style={{ margin: '0.5rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+                  <strong>Legal Basis (Article 6):</strong> Legitimate interest (warehouse operations efficiency and alert generation)
+                </p>
+                <p style={{ margin: '0.5rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+                  <strong>Data Recipients (Article 6A):</strong> Vercel (hosting platform), email recipients (alerts only)
+                </p>
+                <p style={{ margin: '0.5rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+                  <strong>Retention Period (Article 5):</strong> Automatically deleted within 24 hours of upload
+                </p>
+                <p style={{ margin: '0.5rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+                  <strong>Your Rights (Article 15-22):</strong> Access, correction, deletion, portability, and objection to processing
+                </p>
+                <p style={{ margin: '0.5rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+                  <strong>International Transfer:</strong> Data processed in the United States via Vercel. Protected under Standard Contractual Clauses (SCCs)
+                </p>
+                <p style={{ margin: '0.5rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+                  <strong>Right to Lodge Complaint (Article 13):</strong> Contact your local data protection authority or email privacy@ascendaiinnovations.com
+                </p>
+              </div>
+            </details>
+            
+            <p style={{ margin: '1rem 0 0 0', fontSize: '14px', color: '#4b5563', lineHeight: 1.6 }}>
+              <strong>Questions?</strong> Contact our Data Protection Officer: privacy@ascendaiinnovations.com | Data Controller: Ascend AI Innovations
+            </p>
+          </div>
+        </div>
+
         <div style={{ marginBottom: '3rem' }}>
           <h1 style={{ fontSize: '32px', fontWeight: 700, color: '#1b2817', margin: '0 0 0.5rem 0' }}>
             Upload Your Data
@@ -387,7 +438,8 @@ export default function App() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem',
-                    padding: '0.6rem 1.2rem',
+                    padding: '0.875rem 1.2rem',
+                    minHeight: '44px',
                     background: uploading || !csvFile ? '#ccc' : '#1b4d3e',
                     color: 'white',
                     border: 'none',
@@ -448,7 +500,8 @@ export default function App() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem',
-                    padding: '0.6rem 1.2rem',
+                    padding: '0.875rem 1.2rem',
+                    minHeight: '44px',
                     background: '#1b4d3e',
                     color: 'white',
                     border: 'none',
@@ -505,7 +558,8 @@ export default function App() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem',
-                    padding: '0.6rem 1.2rem',
+                    padding: '0.875rem 1.2rem',
+                    minHeight: '44px',
                     background: '#1b4d3e',
                     color: 'white',
                     border: 'none',
@@ -544,22 +598,22 @@ export default function App() {
           </div>
 
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <button onClick={handleCheckDataQuality} disabled={qualityLoading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', background: '#6b7280', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: qualityLoading ? 'not-allowed' : 'pointer', opacity: qualityLoading ? 0.6 : 1 }}>
+            <button onClick={handleCheckDataQuality} disabled={qualityLoading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#6b7280', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: qualityLoading ? 'not-allowed' : 'pointer', opacity: qualityLoading ? 0.6 : 1 }}>
               {qualityLoading ? <Loader size={14} /> : <span>🔍</span>}
               {qualityLoading ? 'Checking...' : 'Data Quality'}
             </button>
 
-            <button onClick={handleCheckAlerts} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.6 : 1 }}>
+            <button onClick={handleCheckAlerts} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.6 : 1 }}>
               {loading ? <Loader size={14} /> : <span>📊</span>}
               {loading ? 'Checking...' : 'Check Alerts'}
             </button>
 
-            <button onClick={handleDownloadWord} disabled={loading || alertCount === 0} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', background: '#2d5016', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: loading || alertCount === 0 ? 'not-allowed' : 'pointer', opacity: loading || alertCount === 0 ? 0.6 : 1 }}>
+            <button onClick={handleDownloadWord} disabled={loading || alertCount === 0} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: loading || alertCount === 0 ? 'not-allowed' : 'pointer', opacity: loading || alertCount === 0 ? 0.6 : 1 }}>
               <Download size={14} />
               {loading ? 'Generating...' : 'Download Word'}
             </button>
             
-            <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', background: '#ccc', color: '#666', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: 'not-allowed', opacity: 0.5 }}>
+            <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#ccc', color: '#666', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: 'not-allowed', opacity: 0.5 }}>
               <Mail size={14} />
               Send (Phase 2)
             </button>
@@ -625,31 +679,6 @@ export default function App() {
             )}
           </div>
         )}
-
-        {/* GDPR Privacy Notice - CRITICAL - FIXED */}
-        <div style={{ marginTop: '3rem', paddingTop: '1.5rem', borderTop: '1px solid #e5e7eb' }}>
-          <div style={{ maxWidth: '100%', background: '#f0f9ff', border: '1px solid #bfdbfe', borderRadius: '6px', padding: '1.5rem', role: 'region', 'aria-label': 'Privacy and data protection information' }}>
-            <p style={{ margin: '0 0 1rem 0', fontWeight: 700, color: '#1e40af', fontSize: '14px' }}>
-              🔒 Privacy & Data Protection
-            </p>
-            
-            <p style={{ margin: '0 0 0.75rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
-              <strong>Data Processing & Retention:</strong> Your uploaded files are processed for inventory alert generation only and automatically deleted within 24 hours. We do not retain, share, or use your inventory data for any other purpose.
-            </p>
-            
-            <p style={{ margin: '0 0 0.75rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
-              <strong>GDPR Compliance:</strong> This platform complies with GDPR data handling requirements and international data protection standards. Your rights under GDPR include access to your data, correction, deletion, and portability. To exercise these rights, contact privacy@ascendaiinnovations.com.
-            </p>
-            
-            <p style={{ margin: '0 0 0.75rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
-              <strong>International Data Transfer:</strong> Data processing occurs in the United States via Vercel. Your data is protected under Standard Contractual Clauses (SCCs) approved by GDPR regulators.
-            </p>
-            
-            <p style={{ margin: '0 0 0', fontSize: '14px', color: '#4b5563', lineHeight: 1.6 }}>
-              <strong>Questions?</strong> Contact our Data Protection Officer: privacy@ascendaiinnovations.com | Data Controller: Ascend AI Innovations
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   )
