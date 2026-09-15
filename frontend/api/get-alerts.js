@@ -18,17 +18,6 @@ export default async function handler(req, res) {
   if (!factory || !THRESHOLDS[factory]) return res.status(400).json({ error: 'Invalid factory' })
 
   try {
-    const factoryFlagMap = {
-      AIM: 'aimSKU',
-      Midbury: 'midburySKU',
-      LTM: 'ltmSKU',
-      '201': 'grupoSKU',
-      Bennett: 'bennettSKU',
-      DMG: 'dmgSKU',
-      Coltoys: 'coltoysSKU',
-      'Loving Pets': 'lovingPetsSKU'
-    }
-
     const factoryProductionMap = {
       AIM: 'aimProduction',
       Midbury: 'midburyProduction',
@@ -41,7 +30,6 @@ export default async function handler(req, res) {
     }
 
     const threshold = THRESHOLDS[factory]
-    const factoryFlagField = factoryFlagMap[factory]
     const factoryProdField = factoryProductionMap[factory]
 
     let allSkus = Array.isArray(INVENTORY_DATA) ? INVENTORY_DATA : (INVENTORY_DATA.skus || [])
@@ -51,14 +39,24 @@ export default async function handler(req, res) {
     }
 
     const alertSkus = allSkus.filter(sku => {
-      if (sku[factoryFlagField] !== 'Y') return false
-      if (!sku.mosOH || sku.mosOH > threshold) return false
-      if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false
-      if (sku.excludeFromEmail === 'X') return false
+      // Check factory flag (boolean in factoryFlag object)
+      if (!sku.factoryFlag || !sku.factoryFlag[factory]) return false
       
+      // Check MOS threshold (use 'mos' not 'mosOH')
+      if (sku.mos === undefined || sku.mos === null || sku.mos > threshold) return false
+      
+      // Check planned production
+      if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false
+      
+      // Check exclude flag
+      if (sku.exclude === 'X') return false
+      
+      // Check factory has production for this SKU
       const factoryProd = sku[factoryProdField] || 0
-      return factoryProd > 0
-    }).sort((a, b) => a.mosOH - b.mosOH)
+      if (factoryProd <= 0) return false
+      
+      return true
+    }).sort((a, b) => a.mos - b.mos)
 
     res.json({
       factory,
