@@ -1,3 +1,4 @@
+import * as Docx from "docx";
 import { INVENTORY_DATA } from "./inventory-data.js";
 
 const MOS_THRESHOLDS = {
@@ -58,15 +59,7 @@ export default async function handler(req, res) {
     });
   }
 
-  const Docx = require("docx");
-  const {
-    Document,
-    Paragraph,
-    Table: DocxTable,
-    TableCell,
-    TableRow,
-    WidthType,
-  } = Docx;
+  const { Document, Paragraph, Table, TableCell, TableRow, WidthType } = Docx;
 
   const tableRows = [
     new TableRow({
@@ -133,7 +126,7 @@ export default async function handler(req, res) {
     );
   });
 
-  const table = new DocxTable({
+  const table = new Table({
     width: { size: 100, type: WidthType.PERCENTAGE },
     rows: tableRows,
   });
@@ -158,18 +151,23 @@ export default async function handler(req, res) {
     ],
   });
 
-  const buffer = await Docx.Packer.toBuffer(doc);
+  try {
+    const buffer = await Docx.Packer.toBuffer(doc);
 
-  res.setHeader(
-    "Content-Disposition",
-    `attachment; filename="Benebone_Alert_${factory}_${new Date()
-      .toISOString()
-      .split("T")[0]}.docx"`
-  );
-  res.setHeader(
-    "Content-Type",
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-  );
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename="Benebone_Alert_${factory}_${new Date()
+        .toISOString()
+        .split("T")[0]}.docx"`
+    );
+    res.setHeader(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    );
 
-  return res.status(200).send(buffer);
+    return res.status(200).send(buffer);
+  } catch (error) {
+    console.error("Document generation error:", error);
+    return res.status(500).json({ error: "Failed to generate document", details: error.message });
+  }
 }
