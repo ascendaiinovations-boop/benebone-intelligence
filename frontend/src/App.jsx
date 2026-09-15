@@ -115,7 +115,7 @@ export default function App() {
       <header className="sticky top-0 z-50" style={{ backgroundColor: '#1a4d2e', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="https://www.benebone.com/cdn/shop/files/Benebone-Logo-Dark-Green.png?v=1743052787&width=500" alt="Benebone" className="h-8" />
+            <img src="https://www.benebone.com/cdn/shop/files/Benebone-Logo-Dark-Green.png?v=1743052787&width=500" alt="Benebone" className="h-12 w-auto" style={{ filter: "brightness(1.2)" }} />
             <div>
               <h1 className="text-xl font-bold text-white">Benebone Intelligence</h1>
               <p className="text-xs text-green-100">Inventory Management System</p>
