@@ -1,6 +1,3 @@
-import { jsPDF } from "jspdf";
-import { Table } from "@jspdf/plugin-table";
-jsPDF.plugin.autotable;
 import { INVENTORY_DATA } from "./inventory-data.js";
 
 const MOS_THRESHOLDS = {
@@ -22,7 +19,7 @@ const PRODUCTION_FIELDS = {
   Bennett: "bennettProduction",
   DMG: "dmgProduction",
   Coltoys: "coltoysProduction",
-  "Loving Pets": "lovingPetsProduction",
+  "Loving Pets": "lovingpetsProduction",
 };
 
 export default async function handler(req, res) {
@@ -39,10 +36,8 @@ export default async function handler(req, res) {
   const threshold = MOS_THRESHOLDS[factory];
   const prodField = PRODUCTION_FIELDS[factory];
 
-  // Filter SKUs
   const alertSkus = INVENTORY_DATA.filter((sku) => {
     if (!sku.factoryFlag || !sku.factoryFlag[factory]) return false;
-    // KEY: exclude exact MOS=0, include everything 0 < MOS <= threshold
     if (
       sku.mos === undefined ||
       sku.mos === null ||
@@ -63,7 +58,6 @@ export default async function handler(req, res) {
     });
   }
 
-  // Build Word document using Docx
   const Docx = require("docx");
   const {
     Document,
@@ -72,8 +66,6 @@ export default async function handler(req, res) {
     TableCell,
     TableRow,
     WidthType,
-    AlignmentType,
-    BorderStyle,
   } = Docx;
 
   const tableRows = [
