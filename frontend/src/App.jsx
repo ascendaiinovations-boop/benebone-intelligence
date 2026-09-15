@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageSquare, Download, Trash2, CheckCircle, AlertCircle } from 'lucide-react';
+import { MessageSquare, Download, Trash2, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
 import { INVENTORY_DATA } from '../api/inventory-data.js';
 
 export default function App() {
@@ -10,6 +10,18 @@ export default function App() {
   const [showConfirmPopup, setShowConfirmPopup] = useState(null);
   const [currentFileToUpload, setCurrentFileToUpload] = useState(null);
   const [generatingWord, setGeneratingWord] = useState(false);
+  const [expandedSections, setExpandedSections] = useState({
+    inventory: true,
+    weekly: true,
+    po: true
+  });
+
+  const toggleSection = (section) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
 
   const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets'];
   const thresholds = { AIM: 1.5, Midbury: 2.0, LTM: 2.0, '201': 2.0, Bennett: 2.0, DMG: 2.0, Coltoys: 2.0, 'Loving Pets': 2.0 };
@@ -163,13 +175,18 @@ export default function App() {
           <p className="text-gray-600 mb-6">Keep your inventory alerts fresh by uploading your latest data files.</p>
 
           {/* Inventory Snapshot */}
-          <div className="mb-6 border border-gray-200 rounded-lg p-4">
-            <div className="flex items-center justify-between mb-3">
+          <div className="mb-6 border border-gray-200 rounded-lg overflow-hidden">
+            <button 
+              onClick={() => toggleSection('inventory')}
+              className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
+            >
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold text-lg">Inventory Snapshot</h3>
                 <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>WEEKLY</span>
               </div>
-            </div>
+              <ChevronDown size={20} className={`text-gray-600 transition-transform duration-200 ${expandedSections.inventory ? 'rotate-180' : ''}`} />
+            </button>
+            {expandedSections.inventory && <div className="border-t border-gray-200 p-4">
             
             <div className="bg-gray-50 p-3 rounded mb-3 text-sm">
               <p><strong>File Format:</strong> BeneBone Inventory Snapshot [DATE].csv</p>
@@ -222,13 +239,18 @@ export default function App() {
           </div>
 
           {/* Weekly Inventory Report */}
-          <div className="mb-6 border border-gray-200 rounded-lg p-4">
-            <div className="flex items-center justify-between mb-3">
+          <div className="mb-6 border border-gray-200 rounded-lg overflow-hidden">
+            <button 
+              onClick={() => toggleSection('weekly')}
+              className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
+            >
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold text-lg">Weekly Inventory Report</h3>
                 <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>MONTHLY</span>
               </div>
-            </div>
+              <ChevronDown size={20} className={`text-gray-600 transition-transform duration-200 ${expandedSections.weekly ? 'rotate-180' : ''}`} />
+            </button>
+            {expandedSections.weekly && <div className="border-t border-gray-200 p-4">
             
             <div className="bg-gray-50 p-3 rounded mb-3 text-sm">
               <p><strong>File Format:</strong> Weekly Inventory Report [M-DD-YYYY].xlsx</p>
@@ -281,13 +303,18 @@ export default function App() {
           </div>
 
           {/* PO & Receiving Log */}
-          <div className="mb-6 border border-gray-200 rounded-lg p-4">
-            <div className="flex items-center justify-between mb-3">
+          <div className="mb-6 border border-gray-200 rounded-lg overflow-hidden">
+            <button 
+              onClick={() => toggleSection('po')}
+              className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
+            >
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold text-lg">PO & Receiving Log</h3>
                 <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>WEEKLY</span>
               </div>
-            </div>
+              <ChevronDown size={20} className={`text-gray-600 transition-transform duration-200 ${expandedSections.po ? 'rotate-180' : ''}`} />
+            </button>
+            {expandedSections.po && <div className="border-t border-gray-200 p-4">
 
             <div className="flex items-center gap-3">
               <input
