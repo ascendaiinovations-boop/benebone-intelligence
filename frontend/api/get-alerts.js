@@ -1,8 +1,4 @@
-// CORRECTED API: get-alerts.js
-// Fixes: 1) Factory flag filtering, 2) Use CommonJS require for Vercel
-
-const inventoryDataRaw = require('../lib/inventory.js')
-const inventoryData = inventoryDataRaw
+import { INVENTORY_DATA } from './inventory-data.js'
 
 const THRESHOLDS = {
   AIM: 1.5,
@@ -15,7 +11,7 @@ const THRESHOLDS = {
   'Loving Pets': 2.0
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
   const { factory } = req.body
@@ -48,7 +44,7 @@ module.exports = async function handler(req, res) {
     const factoryFlagField = factoryFlagMap[factory]
     const factoryProdField = factoryProductionMap[factory]
 
-    let allSkus = Array.isArray(inventoryData) ? inventoryData : (inventoryData.skus || [])
+    let allSkus = Array.isArray(INVENTORY_DATA) ? INVENTORY_DATA : (INVENTORY_DATA.skus || [])
 
     if (!allSkus || !Array.isArray(allSkus) || allSkus.length === 0) {
       return res.status(500).json({ error: 'No inventory data available' })
