@@ -3,6 +3,9 @@ import { Download, Mail, Loader, Upload, ChevronDown, ChevronUp } from 'lucide-r
 import Header from './components/Header'
 
 export default function App() {
+  const [uploadingCSV, setUploadingCSV] = useState(false)
+  const [uploadingReport, setUploadingReport] = useState(false)
+  const [uploadingPO, setUploadingPO] = useState(false)
   const [selectedFactory, setSelectedFactory] = useState('AIM')
   const [loading, setLoading] = useState(false)
   const [alertCount, setAlertCount] = useState(0)
@@ -19,6 +22,15 @@ export default function App() {
   const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets']
 
   const validateFileSize = (file, maxMB = 50) => {
+    if (!file || typeof file !== 'object') {
+      return { valid: false, error: 'Invalid file selected' }
+    }
+    if (typeof file.size !== 'number' || file.size < 0) {
+      return { valid: false, error: 'Unable to read file size' }
+    }
+    if (maxMB <= 0) {
+      return { valid: false, error: 'Invalid file size limit' }
+    }
     const maxBytes = maxMB * 1024 * 1024
     if (file.size > maxBytes) {
       return {
@@ -614,14 +626,27 @@ export default function App() {
           </div>
         )}
 
-        {/* GDPR Privacy Notice - CRITICAL */}
-        <div style={{ marginTop: '3rem', paddingTop: '1.5rem', borderTop: '1px solid #e5e7eb', fontSize: '12px', color: '#666', lineHeight: 1.6 }}>
-          <div style={{ maxWidth: '100%', background: '#f0f9ff', border: '1px solid #bfdbfe', borderRadius: '6px', padding: '1rem' }}>
-            <p style={{ margin: '0 0 0.5rem 0', fontWeight: 600, color: '#1e40af' }}>
+        {/* GDPR Privacy Notice - CRITICAL - FIXED */}
+        <div style={{ marginTop: '3rem', paddingTop: '1.5rem', borderTop: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '100%', background: '#f0f9ff', border: '1px solid #bfdbfe', borderRadius: '6px', padding: '1.5rem', role: 'region', 'aria-label': 'Privacy and data protection information' }}>
+            <p style={{ margin: '0 0 1rem 0', fontWeight: 700, color: '#1e40af', fontSize: '14px' }}>
               🔒 Privacy & Data Protection
             </p>
-            <p style={{ margin: '0 0 0.5rem 0' }}>
-              Your uploaded files are processed for alert generation only and automatically deleted within 24 hours. We do not retain or share your inventory data. This platform complies with GDPR data handling requirements and international data protection standards. For detailed information, see our <a href="#" style={{ color: '#1e40af', textDecoration: 'underline' }}>Privacy Policy</a>.
+            
+            <p style={{ margin: '0 0 0.75rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+              <strong>Data Processing & Retention:</strong> Your uploaded files are processed for inventory alert generation only and automatically deleted within 24 hours. We do not retain, share, or use your inventory data for any other purpose.
+            </p>
+            
+            <p style={{ margin: '0 0 0.75rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+              <strong>GDPR Compliance:</strong> This platform complies with GDPR data handling requirements and international data protection standards. Your rights under GDPR include access to your data, correction, deletion, and portability. To exercise these rights, contact privacy@ascendaiinnovations.com.
+            </p>
+            
+            <p style={{ margin: '0 0 0.75rem 0', fontSize: '14px', color: '#1f2937', lineHeight: 1.6 }}>
+              <strong>International Data Transfer:</strong> Data processing occurs in the United States via Vercel. Your data is protected under Standard Contractual Clauses (SCCs) approved by GDPR regulators.
+            </p>
+            
+            <p style={{ margin: '0 0 0', fontSize: '14px', color: '#4b5563', lineHeight: 1.6 }}>
+              <strong>Questions?</strong> Contact our Data Protection Officer: privacy@ascendaiinnovations.com | Data Controller: Ascend AI Innovations
             </p>
           </div>
         </div>
