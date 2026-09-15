@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import beneboneLogo from '../public/logo.avif';
 import { MessageSquare, Download, Trash2, CheckCircle, AlertCircle } from 'lucide-react';
 import { INVENTORY_DATA } from '../api/inventory-data.js';
 
@@ -115,7 +116,7 @@ export default function App() {
       <header className="sticky top-0 z-50" style={{ backgroundColor: '#1a4d2e', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="/logo.avif" alt="Benebone" className="h-8" />
+            <img src={beneboneLogo} alt="Benebone" className="h-8" />
             <div>
               <h1 className="text-xl font-bold text-white">Benebone Intelligence</h1>
               <p className="text-xs text-green-100">Inventory Management System</p>
