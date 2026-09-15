@@ -2,7 +2,7 @@ const INVENTORY_DATA = [
   {
     "sku": "231244ML",
     "description": "ML Benebone Tongue Twister Treat Medium",
-    "onHand": 0,
+    "onHand": 539,
     "available": 0.0,
     "avgMonthlySales": 480.0,
     "mos": 0.0,
@@ -46,7 +46,7 @@ const INVENTORY_DATA = [
   {
     "sku": "324244EF",
     "description": "EF Benebone Essentials 2-Pack Fishbone / Dental Chew Bacon M/L",
-    "onHand": 0,
+    "onHand": 3550,
     "available": 0.0,
     "avgMonthlySales": 824.72,
     "mos": 0.0,
@@ -68,7 +68,7 @@ const INVENTORY_DATA = [
   {
     "sku": "323244EF",
     "description": "EF Benebone Essentials Puppy 2-pack Wishbone & Dental Chew Bacon Tiny",
-    "onHand": 0,
+    "onHand": 2149,
     "available": 0.0,
     "avgMonthlySales": 608.4,
     "mos": 0.0,
@@ -90,7 +90,7 @@ const INVENTORY_DATA = [
   {
     "sku": "326244EF",
     "description": "EF Benebone Essentials Tongue Twister Medium",
-    "onHand": 0,
+    "onHand": 108,
     "available": 0.0,
     "avgMonthlySales": 236.6,
     "mos": 0.0,
@@ -112,7 +112,7 @@ const INVENTORY_DATA = [
   {
     "sku": "327060EF",
     "description": "EF Benebone Essentials Treat Pod - Bacon 6ct ",
-    "onHand": 0,
+    "onHand": 815,
     "available": 0.0,
     "avgMonthlySales": 608.4,
     "mos": 0.0,
@@ -178,7 +178,7 @@ const INVENTORY_DATA = [
   {
     "sku": "130244ML",
     "description": "#N/A",
-    "onHand": 0,
+    "onHand": 748,
     "available": 0.0,
     "avgMonthlySales": 250.0,
     "mos": 0.0,
