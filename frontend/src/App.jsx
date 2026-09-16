@@ -162,7 +162,7 @@ export default function App() {
             <h3 className="font-semibold text-lg mb-3">Weekly Inventory Report</h3>
             <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700 mr-2">
               Choose File
-              <input type="file" accept=".xlsx,.xls" onChange={(e) => handleFileSelect('weekly', e)} className="hidden" />
+              <input type="file" accept=".xlsx,.xls,.xlsm" onChange={(e) => handleFileSelect('weekly', e)} className="hidden" />
             </label>
             {uploadedFiles.weekly.length > 0 && (
               <div className="mt-3 p-2 bg-green-50 rounded border border-green-200">
@@ -176,7 +176,7 @@ export default function App() {
             <h3 className="font-semibold text-lg mb-3">PO & Receiving Log</h3>
             <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700 mr-2">
               Choose File
-              <input type="file" accept=".xlsx,.xls" onChange={(e) => handleFileSelect('po', e)} className="hidden" />
+              <input type="file" accept=".xlsx,.xls,.xlsm" onChange={(e) => handleFileSelect('po', e)} className="hidden" />
             </label>
             {uploadedFiles.po.length > 0 && (
               <div className="mt-3 p-2 bg-green-50 rounded border border-green-200">
