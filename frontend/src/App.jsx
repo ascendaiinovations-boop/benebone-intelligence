@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as XLSX from 'xlsx';
 import { Download } from 'lucide-react';
 import { INVENTORY_DATA } from '../api/inventory-data.js';
 
@@ -29,17 +30,45 @@ export default function App() {
     
     const reader = new FileReader();
     reader.onload = (e) => {
-      const fileData = { name: file.name, data: e.target.result, date: new Date().toLocaleDateString() };
+      let fileContent = e.target.result;
+      // For Excel files, read as binary
+      if (file.name.toLowerCase().includes('.xlsx') || file.name.toLowerCase().includes('.xlsm')) {
+        const binaryString = e.target.result;
+        fileContent = binaryString;
+      }
+      const fileData = { name: file.name, data: fileContent, date: new Date().toLocaleDateString() };
       setUploadedFiles(prev => ({ ...prev, [fileType]: [...prev[fileType], fileData] }));
       if (fileType === 'inventory') setInventoryFile(e.target.result);
       if (fileType === 'weekly') setWeeklyFile(e.target.result);
       if (fileType === 'po') setPoFile(e.target.result);
     };
-    reader.readAsText(file);
+    if (file.name.toLowerCase().includes('.xlsx') || file.name.toLowerCase().includes('.xlsm')) {
+      reader.readAsBinaryString(file);
+    } else {
+      reader.readAsText(file);
+    }
   };
 
-  const parseFileData = (fileContent) => {
+  const parseFileData = (fileContent, fileName = '') => {
     if (!fileContent) return { data: [], columns: [] };
+    
+    // Check if it's an Excel file (binary data or .xlsx/.xlsm)
+    const isExcel = fileName.toLowerCase().includes('.xlsx') || fileName.toLowerCase().includes('.xlsm') || fileContent.charCodeAt(0) === 80; // 80 = 'P' (PK header)
+    
+    if (isExcel) {
+      try {
+        const wb = XLSX.read(fileContent, { type: 'binary' });
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(ws);
+        const columns = Object.keys(jsonData[0] || {});
+        return { data: jsonData, columns };
+      } catch (e) {
+        console.error('Excel parse error:', e);
+        return { data: [], columns: [] };
+      }
+    }
+    
+    // CSV parsing
     const lines = fileContent.split('\n').filter(line => line.trim());
     if (lines.length === 0) return { data: [], columns: [] };
     const header = lines[0].split(',').map(col => col.trim().replace(/"/g, ''));
@@ -74,9 +103,9 @@ export default function App() {
       return;
     }
 
-    const invParsed = parseFileData(inventoryFile);
-    const weeklyParsed = parseFileData(weeklyFile);
-    const poParsed = parseFileData(poFile);
+    const invParsed = parseFileData(inventoryFile, 'inventory.csv');
+    const weeklyParsed = parseFileData(weeklyFile, 'weekly.xlsx');
+    const poParsed = parseFileData(poFile, 'po.xlsx');
 
     const mismatches = detectMismatches(invParsed.data, weeklyParsed.data, poParsed.data);
     setDataMismatches(mismatches);
