@@ -307,6 +307,21 @@ export default function App() {
       data: alertSkus,
       timestamp: new Date().toLocaleString()
     });
+
+    // Record a lightweight snapshot of THIS run for trend history.
+    // Month is taken from today's date - assumes each Weekly Report is checked close to the
+    // period it represents, which matches how the file is actually used week to week.
+    const now = new Date();
+    const monthKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+    const skuSnapshot = {};
+    liveInventory.forEach(s => {
+      if (!isValidSKU(s.sku)) return;
+      skuSnapshot[s.sku] = { mos: s.mos, onHand: s.onHand, available: s.available, avgMonthlySales: s.avgMonthlySales, description: s.description };
+    });
+    setMonthlyTrends(prev => ({
+      ...prev,
+      [monthKey]: { updatedAt: now.toLocaleString(), skuData: skuSnapshot }
+    }));
   };
 
   const handleGenerateWord = () => {
@@ -470,6 +485,39 @@ export default function App() {
               </div>
 
               <p className="text-sm text-gray-600 mt-2">Showing {Math.min(10, alertData.data.length)} of {alertData.count}. Download Word for complete list.</p>
+
+              {Object.keys(monthlyTrends).length > 1 && (
+                <div className="mt-8">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="text-lg font-semibold text-gray-800">Trend History - MOS by Month</h3>
+                    <button onClick={clearTrendHistory} className="text-xs text-red-600 hover:text-red-800 underline">Clear Trend History</button>
+                  </div>
+                  <div className="overflow-x-auto border border-gray-200 rounded">
+                    <table className="w-full border-collapse text-sm">
+                      <thead className="bg-gray-100">
+                        <tr>
+                          <th className="border px-3 py-2 text-left">SKU</th>
+                          <th className="border px-3 py-2 text-left">Description</th>
+                          {Object.keys(monthlyTrends).sort().map(m => (<th key={m} className="border px-3 py-2 text-right">{m}</th>))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {alertData.data.slice(0, 10).map((row, i) => (
+                          <tr key={i} className="hover:bg-gray-50">
+                            <td className="border px-3 py-2">{row.sku}</td>
+                            <td className="border px-3 py-2">{row.description}</td>
+                            {Object.keys(monthlyTrends).sort().map(m => {
+                              const rec = monthlyTrends[m].skuData[row.sku];
+                              return (<td key={m} className="border px-3 py-2 text-right">{rec ? formatValue(rec.mos) : '-'}</td>);
+                            })}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">Builds automatically each time you check alerts. Shows once 2+ months of history exist.</p>
+                </div>
+              )}
             </>
           )}
         </div>
