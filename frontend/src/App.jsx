@@ -83,11 +83,19 @@ export default function App() {
     return { data, columns: header };
   };
 
+  const isValidSKU = (sku) => {
+    if (!sku) return false;
+    const skuStr = String(sku).trim();
+    if (skuStr === '__EMPTY' || skuStr === 'Total' || skuStr.includes('__EMPTY')) return false;
+    if (skuStr.toLowerCase().includes('total') || skuStr.toLowerCase().includes('summary')) return false;
+    return skuStr.length > 0 && skuStr !== 'SKU';
+  };
+
   const detectMismatches = (invData, weeklyData, poData) => {
     const mismatches = [];
-    const invSKUs = invData.map(r => r.SKU || r.sku || '').filter(s => s);
-    const weeklySKUs = weeklyData.map(r => r.SKU || r.sku || '').filter(s => s);
-    const poSKUs = poData.map(r => r.SKU || r.sku || '').filter(s => s);
+    const invSKUs = invData.filter(r => isValidSKU(r.SKU || r.sku)).map(r => r.SKU || r.sku);
+    const weeklySKUs = weeklyData.filter(r => isValidSKU(r.SKU || r.sku)).map(r => r.SKU || r.sku);
+    const poSKUs = poData.filter(r => isValidSKU(r.SKU || r.sku)).map(r => r.SKU || r.sku);
     weeklySKUs.forEach(sku => {
       if (!invSKUs.includes(sku)) mismatches.push({ message: 'SKU ' + sku + ' in Weekly but NOT in Inventory' });
     });
@@ -127,6 +135,7 @@ export default function App() {
       if (sku.mos === undefined || sku.mos === null || sku.mos <= 0 || sku.mos > threshold) return false;
       if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false;
       if (sku.exclude === 'X') return false;
+      if (!isValidSKU(sku.sku)) return false;
       const factoryProd = sku[prodField] || 0;
       return factoryProd > 0;
     }).sort((a, b) => a.mos - b.mos);
@@ -135,8 +144,12 @@ export default function App() {
   };
 
   const handleGenerateWord = () => {
-    if (!alertData) return;
-    const doc = new window.jsPDF('l');
+    if (!alertData || !window.jsPDF) {
+      alert('Error: Unable to generate document. Please refresh page.');
+      return;
+    }
+    try {
+      const doc = new window.jsPDF('l');
     doc.setFillColor(26, 77, 46);
     doc.rect(0, 0, 297, 30, 'F');
     doc.setTextColor(255, 255, 255);
@@ -151,6 +164,10 @@ export default function App() {
     const tableData = [cols, ...alertData.data.map(row => cols.map(col => row[col] || row[col.toLowerCase()] || ''))];
     doc.autoTable({ startY: 60, head: [tableData[0]], body: tableData.slice(1), margin: { top: 10, right: 10, bottom: 10, left: 10 }, styles: { fontSize: 8 } });
     doc.save('Benebone_Alert_' + alertData.factory + '.pdf');
+    } catch (error) {
+      console.error('PDF generation error:', error);
+      alert('Error generating PDF. Please try again.');
+    }
   };
 
   return (
