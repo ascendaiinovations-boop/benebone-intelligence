@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MessageSquare, Download, Trash2, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
-import { jsPDF } = require('jspdf');
-import autoTable from 'jspdf-autotable');
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 import { INVENTORY_DATA } from '../api/inventory-data.js';
 
 export default function App() {
