@@ -125,8 +125,9 @@ export default function App() {
       return;
     }
 
-    const allCols = [...new Set([...invParsed.columns, ...weeklyParsed.columns, ...poParsed.columns])];
-    setDisplayColumns(allCols);
+    // Use fixed INVENTORY_DATA columns for display (ignore parsed file junk)
+    const displayCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amountToSafetyStock'];
+    setDisplayColumns(displayCols);
 
     const factoryConfig = factories[selectedFactory];
     const threshold = factoryConfig.threshold;
