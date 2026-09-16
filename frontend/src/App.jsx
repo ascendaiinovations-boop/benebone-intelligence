@@ -1,420 +1,505 @@
 import React, { useState } from 'react';
-import { MessageSquare, Download, Trash2, CheckCircle, AlertCircle } from 'lucide-react';
+import { MessageSquare, Download, Trash2, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
+import { jsPDF } = require('jspdf');
+import autoTable from 'jspdf-autotable');
 import { INVENTORY_DATA } from '../api/inventory-data.js';
 
 export default function App() {
-  const [selectedFactory, setSelectedFactory] = useState('AIM');
-  const [alerts, setAlerts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [uploadedFiles, setUploadedFiles] = useState({});
-  const [showConfirmPopup, setShowConfirmPopup] = useState(null);
-  const [currentFileToUpload, setCurrentFileToUpload] = useState(null);
-  const [generatingWord, setGeneratingWord] = useState(false);
-
-  const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets'];
-  const thresholds = { AIM: 1.5, Midbury: 2.0, LTM: 2.0, '201': 2.0, Bennett: 2.0, DMG: 2.0, Coltoys: 2.0, 'Loving Pets': 2.0 };
+  // File management state
+  const [inventoryFile, setInventoryFile] = useState(null);
+  const [weeklyFile, setWeeklyFile] = useState(null);
+  const [poFile, setPoFile] = useState(null);
   
-  const factoryEmails = {
-    AIM: { to: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], cc: 'punam@benebone.com' },
-    Midbury: { to: 'benebone@midbury.com', cc: 'punam@benebone.com' },
-    LTM: { to: 'eric@ltmplastics.com', cc: 'punam@benebone.com' },
-    '201': { to: 'emilio.otero@201oficial.com.mx', cc: 'punam@benebone.com, salvador@201oficial.com.mx' },
-    Bennett: { to: 'jmattox@bpkc.com', cc: 'punam@benebone.com' },
-    DMG: { to: 'monique.brunson@dmgincusa.com', cc: 'punam@benebone.com' },
-    Coltoys: { to: 'jparra@coltoys.com', cc: 'punam@benebone.com' },
-    'Loving Pets': { to: 'aaron@lovingpetsproducts.com', cc: 'punam@benebone.com, zach@benebone.com, carly@benebone.com' }
-  };
+  // Multi-file upload state
+  const [uploadedFiles, setUploadedFiles] = useState({
+    inventory: [],
+    weekly: [],
+    po: []
+  });
+  
+  // Historical data storage (6-12 months)
+  const [historicalData, setHistoricalData] = useState([]);
+  
+  // Current selection
+  const [selectedInventoryIndex, setSelectedInventoryIndex] = useState(null);
+  const [selectedFactory, setSelectedFactory] = useState('AIM');
+  const [generatingWord, setGeneratingWord] = useState(false);
+  const [alertData, setAlertData] = useState(null);
+  const [dataMismatches, setDataMismatches] = useState([]);
+  const [allColumns, setAllColumns] = useState([]);
 
-  const handleFileUploadClick = (fileType) => {
-    setCurrentFileToUpload(fileType);
-    setShowConfirmPopup(null);
-    document.getElementById(`file-${fileType}`)?.click();
-  };
-
-  const handleFileSelect = (e, fileType) => {
-    const file = e.target.files[0];
-    if (file) {
-      setCurrentFileToUpload(fileType);
-      setShowConfirmPopup({
-        type: 'upload',
-        fileType,
-        fileName: file.name,
-        message: `Do you want to upload ${file.name}?`
-      });
+  // Factory configuration
+  const factories = {
+    'AIM': {
+      threshold: 1.5,
+      recipients: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'],
+      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
+      prodField: 'aimProduction'
+    },
+    'Midbury': {
+      threshold: 2.0,
+      recipients: ['benebone@midbury.com'],
+      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
+      prodField: 'midburyProduction'
+    },
+    'LTM': {
+      threshold: 2.0,
+      recipients: ['eric@ltmplastics.com'],
+      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
+      prodField: 'ltmProduction'
+    },
+    '201': {
+      threshold: 2.0,
+      recipients: ['emilio.otero@201oficial.com.mx'],
+      ccList: ['salvador@201oficial.com.mx', 'punam@benebone.com'],
+      prodField: 'grupoProduction'
+    },
+    'Bennett': {
+      threshold: 2.0,
+      recipients: ['jmattox@bpkc.com'],
+      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
+      prodField: 'bennettProduction'
+    },
+    'DMG': {
+      threshold: 2.0,
+      recipients: ['monique.brunson@dmgincusa.com'],
+      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
+      prodField: 'dmgProduction'
+    },
+    'Coltoys': {
+      threshold: 2.0,
+      recipients: ['jparra@coltoys.com'],
+      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
+      prodField: 'coltoysProduction'
+    },
+    'Loving Pets': {
+      threshold: 2.0,
+      recipients: ['aaron@lovingpetsproducts.com'],
+      ccList: ['zach@benebone.com', 'carly@benebone.com', 'punam@benebone.com'],
+      prodField: 'lovingpetsProduction'
     }
   };
 
-  const confirmUpload = () => {
-    if (showConfirmPopup && showConfirmPopup.type === 'upload') {
+  // Handle multi-file upload with date tracking
+  const handleFileSelect = (fileType, event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const fileData = {
+        name: file.name,
+        data: e.target.result,
+        date: new Date().toISOString(),
+        size: file.size
+      };
+
+      // Add to upload queue
       setUploadedFiles(prev => ({
         ...prev,
-        [showConfirmPopup.fileType]: showConfirmPopup.fileName
+        [fileType]: [...prev[fileType], fileData]
       }));
-      setShowConfirmPopup(null);
-    }
+
+      // Show success
+      alert(`File added: ${file.name}`);
+    };
+    reader.readAsText(file);
   };
 
-  const deleteFile = (fileType) => {
-    setShowConfirmPopup({
-      type: 'delete',
-      fileType,
-      message: `Delete ${uploadedFiles[fileType]}?`
+  // Detect data mismatches between files
+  const detectMismatches = (inventoryData, weeklyData, poData) => {
+    const mismatches = [];
+    
+    const inventorySKUs = inventoryData.map(row => row.SKU);
+    const weeklySKUs = weeklyData.map(row => row.SKU);
+    const poSKUs = poData.map(row => row.SKU);
+
+    // Find SKUs in weekly/po but not in inventory
+    weeklySKUs.forEach(sku => {
+      if (!inventorySKUs.includes(sku)) {
+        mismatches.push({
+          type: 'MISSING_FROM_INVENTORY',
+          sku: sku,
+          message: \`SKU \${sku} found in Weekly Report but NOT in Inventory Snapshot\`
+        });
+      }
+    });
+
+    poSKUs.forEach(sku => {
+      if (!inventorySKUs.includes(sku)) {
+        mismatches.push({
+          type: 'MISSING_FROM_INVENTORY',
+          sku: sku,
+          message: \`SKU \${sku} found in PO Log but NOT in Inventory Snapshot\`
+        });
+      }
+    });
+
+    return mismatches;
+  };
+
+  // Parse CSV/Excel and extract all columns dynamically
+  const parseFileWithAllColumns = (fileData) => {
+    const lines = fileData.split('\n').filter(line => line.trim());
+    if (lines.length === 0) return [];
+
+    const header = lines[0].split(',').map(col => col.trim());
+    const data = [];
+
+    for (let i = 1; i < lines.length; i++) {
+      const values = lines[i].split(',');
+      const row = {};
+      header.forEach((col, idx) => {
+        row[col] = values[idx]?.trim() || '';
+      });
+      data.push(row);
+    }
+
+    return { data, columns: header };
+  };
+
+  // Check alerts with all features
+  const handleCheckAlerts = async () => {
+    if (!inventoryFile || !weeklyFile || !poFile) {
+      alert('Please upload all three files');
+      return;
+    }
+
+    // Parse all files with all columns
+    const { data: invData, columns: invCols } = parseFileWithAllColumns(inventoryFile);
+    const { data: weeklyData, columns: weeklyCols } = parseFileWithAllColumns(weeklyFile);
+    const { data: poData, columns: poCols } = parseFileWithAllColumns(poFile);
+
+    // Combine all columns
+    const allCols = [...new Set([...invCols, ...weeklyCols, ...poCols])];
+    setAllColumns(allCols);
+
+    // Detect mismatches
+    const mismatches = detectMismatches(invData, weeklyData, poData);
+    setDataMismatches(mismatches);
+
+    if (mismatches.length > 0) {
+      alert(\`⚠️ DATA QUALITY ISSUES DETECTED!\n\n\${mismatches.map(m => m.message).join('\n')}\n\nPlease review and correct the data before proceeding.\`);
+      return;
+    }
+
+    // Get factory config
+    const factoryConfig = factories[selectedFactory];
+    const threshold = factoryConfig.threshold;
+    const prodField = factoryConfig.prodField;
+
+    // Filter alerts with all columns
+    const alerts = invData.filter(row => {
+      const mos = parseFloat(row['MOS']) || 0;
+      return mos > 0 && mos <= threshold && row[prodField] === '1';
+    }).sort((a, b) => parseFloat(a['MOS']) - parseFloat(b['MOS']));
+
+    setAlertData({
+      factory: selectedFactory,
+      count: alerts.length,
+      data: alerts,
+      columns: allCols,
+      timestamp: new Date().toLocaleString()
+    });
+
+    // Store in historical data
+    const historicalEntry = {
+      date: new Date().toISOString(),
+      factory: selectedFactory,
+      alertCount: alerts.length,
+      alerts: alerts,
+      allColumns: allCols
+    };
+
+    setHistoricalData(prev => {
+      const updated = [historicalEntry, ...prev];
+      // Keep only 12 months
+      return updated.slice(0, 52);
     });
   };
 
-  const confirmDelete = () => {
-    if (showConfirmPopup && showConfirmPopup.type === 'delete') {
-      setUploadedFiles(prev => {
-        const newFiles = { ...prev };
-        delete newFiles[showConfirmPopup.fileType];
-        return newFiles;
-      });
-      setShowConfirmPopup(null);
-    }
-  };
-
-  const checkAlerts = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch('/api/get-alerts', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ factory: selectedFactory })
-      });
-      const data = await res.json();
-      setAlerts(data.skus || []);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-    setLoading(false);
-  };
-
-  const generateWord = async () => {
+  // Generate Word document with ALL columns
+  const handleGenerateWord = async () => {
+    if (!alertData) return;
+    
     setGeneratingWord(true);
+
     try {
-      const res = await fetch('/api/generate-alert', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ factory: selectedFactory })
+      const { jsPDF } = window;
+      const doc = new jsPDF('l'); // landscape for more columns
+
+      // Header
+      doc.setFillColor(26, 77, 46); // Benebone green
+      doc.rect(0, 0, 297, 30, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(18);
+      doc.text('Benebone Intelligence', 150, 15, { align: 'center' });
+      doc.setFontSize(12);
+      doc.text(\`Low SKU Alert - \${alertData.factory}\`, 150, 22, { align: 'center' });
+
+      // Metadata
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(10);
+      doc.text(\`Generated: \${alertData.timestamp}\`, 15, 40);
+      doc.text(\`Factory: \${alertData.factory}\`, 15, 46);
+      doc.text(\`Total Alerts: \${alertData.count}\`, 15, 52);
+
+      // Email section
+      const factoryConfig = factories[selectedFactory];
+      doc.text('Email Recipients:', 15, 62);
+      doc.setFontSize(9);
+      factoryConfig.recipients.forEach((email, idx) => {
+        doc.text(\`To: \${email}\`, 20, 68 + (idx * 5));
       });
-      const blob = await res.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `Benebone_Alert_${selectedFactory}_${new Date().toISOString().split('T')[0]}.docx`;
-      a.click();
+      doc.text(\`CC: \${factoryConfig.ccList.join(', ')}\`, 20, 68 + (factoryConfig.recipients.length * 5));
+
+      // Data Quality Report (if mismatches)
+      if (dataMismatches.length > 0) {
+        doc.setFontSize(11);
+        doc.text('⚠️ DATA QUALITY REPORT', 15, 95);
+        doc.setFontSize(9);
+        dataMismatches.forEach((mismatch, idx) => {
+          doc.text(\`• \${mismatch.message}\`, 20, 101 + (idx * 4));
+        });
+      }
+
+      // Table with ALL columns
+      const tableStartY = dataMismatches.length > 0 ? 120 : 75;
+      const tableData = [
+        alertData.columns,
+        ...alertData.data.map(row => alertData.columns.map(col => row[col] || ''))
+      ];
+
+      doc.autoTable({
+        startY: tableStartY,
+        head: [alertData.columns],
+        body: tableData.slice(1),
+        margin: { top: 10, right: 10, bottom: 10, left: 10 },
+        styles: { fontSize: 8 },
+        columnStyles: { 0: { cellWidth: 15 } }
+      });
+
+      // Footer
+      doc.setFontSize(9);
+      doc.text('This is an automated alert. Review before sending to factory.', 15, doc.internal.pageSize.getHeight() - 10);
+
+      // Save
+      doc.save(\`Benebone_Alert_\${selectedFactory}_\${new Date().toISOString().slice(0, 10)}.pdf\`);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error generating PDF:', error);
+      alert('Error generating document');
     }
+
     setGeneratingWord(false);
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="sticky top-0 z-50" style={{ backgroundColor: '#1a4d2e', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="https://www.benebone.com/cdn/shop/files/Benebone-Logo-Dark-Green.png?v=1743052787&width=500" alt="Benebone" className="h-12 w-auto" style={{ filter: "brightness(1.2)" }} />
-            <div>
-              <h1 className="text-xl font-bold text-white">Benebone Intelligence</h1>
-              <p className="text-xs text-green-100">Inventory Management System</p>
-            </div>
+      <div className="bg-gradient-to-r from-green-900 to-green-800 text-white py-6 px-4">
+        <div className="max-w-6xl mx-auto flex items-center gap-4">
+          <img src="https://www.benebone.com/cdn/shop/files/Benebone-Logo-Dark-Green.png?v=1743052787&width=500" alt="Benebone" className="h-12 w-auto" style={{ filter: 'brightness(1.2)' }} />
+          <div>
+            <h1 className="text-3xl font-bold">Benebone Intelligence</h1>
+            <p className="text-green-100">Inventory Management System</p>
           </div>
-          <div className="text-xs text-green-100">
-            Last sync: {new Date().toLocaleTimeString()}
+          <div className="ml-auto text-right">
+            <p className="text-sm">Last sync: {new Date().toLocaleTimeString()}</p>
           </div>
         </div>
-      </header>
-
-      {/* Popup Modal */}
-      {showConfirmPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full mx-4">
-            <div className="flex items-center gap-3 mb-4">
-              <AlertCircle className="w-6 h-6 text-orange-600" />
-              <h2 className="text-lg font-bold">Confirm Action</h2>
-            </div>
-            <p className="text-gray-700 mb-6">{showConfirmPopup.message}</p>
-            <div className="flex gap-3 justify-end">
-              <button
-                onClick={() => setShowConfirmPopup(null)}
-                className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={showConfirmPopup.type === 'upload' ? confirmUpload : confirmDelete}
-                style={{ backgroundColor: '#1a4d2e' }}
-                className="px-4 py-2 rounded text-white font-medium hover:opacity-90"
-              >
-                {showConfirmPopup.type === 'upload' ? 'Upload' : 'Delete'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      </div>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto p-6">
+        
         {/* Upload Section */}
-        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-          <h2 className="text-2xl font-bold mb-6" style={{ color: '#1a4d2e' }}>Upload Your Data</h2>
+        <div className="bg-white rounded-lg p-6 mb-6 border border-gray-200">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Upload Your Data</h2>
           <p className="text-gray-600 mb-6">Keep your inventory alerts fresh by uploading your latest data files.</p>
 
           {/* Inventory Snapshot */}
-          <div className="mb-6 border border-gray-200 rounded-lg p-4">
+          <div className="mb-6 border border-gray-200 rounded-lg p-4 bg-gray-50">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold text-lg">Inventory Snapshot</h3>
                 <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>WEEKLY</span>
               </div>
             </div>
-            
-            <div className="bg-gray-50 p-3 rounded mb-3 text-sm">
-              <p><strong>File Format:</strong> BeneBone Inventory Snapshot [DATE].csv</p>
-              <p><strong>Example:</strong> BeneBone Inventory Snapshot 20260917.csv</p>
-            </div>
-
-            <div className="bg-blue-50 border border-blue-200 p-3 rounded mb-4 text-sm">
-              <strong>Requirements:</strong>
-              <ul className="list-disc list-inside mt-2 text-gray-700">
-                <li>File format: .csv</li>
-                <li>Contains all 782 SKUs</li>
-                <li>Columns: SKU, OnHand, Available, Avg Monthly Sales, etc.</li>
+            <p className="text-sm text-gray-600 mb-3">File Format: Benebone Inventory Snapshot [DATE].csv</p>
+            <p className="text-sm text-gray-600 mb-3">Example: BeneBone Inventory Snapshot 20260917.csv</p>
+            <div className="bg-blue-50 p-3 rounded mb-3">
+              <p className="text-sm font-medium">Requirements:</p>
+              <ul className="text-sm text-gray-700 mt-2">
+                <li>• File format: .csv</li>
+                <li>• Contains all SKUs with complete data</li>
+                <li>• Include: SKU, OnHand, Available, Avg Monthly Sales, Notes, etc.</li>
               </ul>
             </div>
-
-            <div className="flex items-center gap-3">
-              <input
-                id="file-snapshot"
-                type="file"
-                accept=".csv"
-                onChange={(e) => handleFileSelect(e, 'snapshot')}
-                className="hidden"
-              />
-              <button
-                onClick={() => handleFileUploadClick('snapshot')}
-                className="px-4 py-2 rounded border border-gray-300 hover:border-gray-400 text-gray-700 font-medium"
-              >
-                Choose File
-              </button>
-              <span className="text-gray-600">
-                {uploadedFiles.snapshot ? uploadedFiles.snapshot : 'No file chosen'}
-              </span>
-              {uploadedFiles.snapshot && (
-                <button
-                  onClick={() => deleteFile('snapshot')}
-                  className="ml-auto px-3 py-2 text-red-600 hover:bg-red-50 rounded"
-                  title="Delete file"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              )}
-            </div>
-            
-            {uploadedFiles.snapshot && (
-              <div className="mt-3 flex items-center gap-2 text-green-700">
-                <CheckCircle className="w-4 h-4" />
-                <span className="text-sm">Success! Loaded 345 SKUs</span>
+            <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700">
+              Choose File
+              <input type="file" accept=".csv" onChange={(e) => handleFileSelect('inventory', e)} className="hidden" />
+            </label>
+            {uploadedFiles.inventory.length > 0 && (
+              <div className="mt-3">
+                <p className="text-green-700 font-semibold">✓ {uploadedFiles.inventory.length} file(s) uploaded</p>
+                <div className="mt-2">
+                  {uploadedFiles.inventory.map((file, idx) => (
+                    <div key={idx} className="text-sm text-gray-600 mb-1">
+                      • {file.name} ({new Date(file.date).toLocaleDateString()})
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
 
-          {/* Weekly Inventory Report */}
-          <div className="mb-6 border border-gray-200 rounded-lg p-4">
+          {/* Weekly Report */}
+          <div className="mb-6 border border-gray-200 rounded-lg p-4 bg-gray-50">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold text-lg">Weekly Inventory Report</h3>
                 <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>MONTHLY</span>
               </div>
             </div>
-            
-            <div className="bg-gray-50 p-3 rounded mb-3 text-sm">
-              <p><strong>File Format:</strong> Weekly Inventory Report [M-DD-YYYY].xlsx</p>
-              <p><strong>Example:</strong> Weekly Inventory Report 9-17-2026.xlsx</p>
-            </div>
-
-            <div className="bg-blue-50 border border-blue-200 p-3 rounded mb-4 text-sm">
-              <strong>Requirements:</strong>
-              <ul className="list-disc list-inside mt-2 text-gray-700">
-                <li>File format: .xlsx or .xls</li>
-                <li>Contains MOS calculations and trends</li>
-                <li>File size: Max 50MB</li>
+            <p className="text-sm text-gray-600 mb-3">File Format: Weekly Inventory Report [M-DD-YYYY].xlsx</p>
+            <p className="text-sm text-gray-600 mb-3">Example: Weekly Inventory Report 9-17-2026.xlsx</p>
+            <div className="bg-blue-50 p-3 rounded mb-3">
+              <p className="text-sm font-medium">Requirements:</p>
+              <ul className="text-sm text-gray-700 mt-2">
+                <li>• File format: .xlsx or .xls</li>
+                <li>• Contains MOS calculations and trends</li>
+                <li>• Max file size: 50MB</li>
               </ul>
             </div>
-
-            <div className="flex items-center gap-3">
-              <input
-                id="file-weekly"
-                type="file"
-                accept=".xlsx,.xls"
-                onChange={(e) => handleFileSelect(e, 'weekly')}
-                className="hidden"
-              />
-              <button
-                onClick={() => handleFileUploadClick('weekly')}
-                className="px-4 py-2 rounded border border-gray-300 hover:border-gray-400 text-gray-700 font-medium"
-              >
-                Choose File
-              </button>
-              <span className="text-gray-600">
-                {uploadedFiles.weekly ? uploadedFiles.weekly : 'No file chosen'}
-              </span>
-              {uploadedFiles.weekly && (
-                <button
-                  onClick={() => deleteFile('weekly')}
-                  className="ml-auto px-3 py-2 text-red-600 hover:bg-red-50 rounded"
-                  title="Delete file"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              )}
-            </div>
-
-            {uploadedFiles.weekly && (
-              <div className="mt-3 flex items-center gap-2 text-green-700">
-                <CheckCircle className="w-4 h-4" />
-                <span className="text-sm">Success! Loaded report</span>
+            <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700">
+              Choose File
+              <input type="file" accept=".xlsx,.xls" onChange={(e) => handleFileSelect('weekly', e)} className="hidden" />
+            </label>
+            {uploadedFiles.weekly.length > 0 && (
+              <div className="mt-3">
+                <p className="text-green-700 font-semibold">✓ {uploadedFiles.weekly.length} file(s) uploaded</p>
+                <div className="mt-2">
+                  {uploadedFiles.weekly.map((file, idx) => (
+                    <div key={idx} className="text-sm text-gray-600 mb-1">
+                      • {file.name} ({new Date(file.date).toLocaleDateString()})
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
 
           {/* PO & Receiving Log */}
-          <div className="mb-6 border border-gray-200 rounded-lg p-4">
+          <div className="mb-6 border border-gray-200 rounded-lg p-4 bg-gray-50">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold text-lg">PO & Receiving Log</h3>
                 <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>WEEKLY</span>
               </div>
             </div>
-
-            <div className="flex items-center gap-3">
-              <input
-                id="file-po"
-                type="file"
-                accept=".xlsm,.xlsx"
-                onChange={(e) => handleFileSelect(e, 'po')}
-                className="hidden"
-              />
-              <button
-                onClick={() => handleFileUploadClick('po')}
-                className="px-4 py-2 rounded border border-gray-300 hover:border-gray-400 text-gray-700 font-medium"
-              >
-                Choose File
-              </button>
-              <span className="text-gray-600">
-                {uploadedFiles.po ? uploadedFiles.po : 'No file chosen'}
-              </span>
-              {uploadedFiles.po && (
-                <button
-                  onClick={() => deleteFile('po')}
-                  className="ml-auto px-3 py-2 text-red-600 hover:bg-red-50 rounded"
-                  title="Delete file"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              )}
+            <p className="text-sm text-gray-600 mb-3">File Format: PO tracking and receiving data</p>
+            <div className="bg-blue-50 p-3 rounded mb-3">
+              <p className="text-sm font-medium">Requirements:</p>
+              <ul className="text-sm text-gray-700 mt-2">
+                <li>• File format: .xlsx or .xls</li>
+                <li>• Contains order and receiving status</li>
+                <li>• Max file size: 50MB</li>
+              </ul>
             </div>
-
-            {uploadedFiles.po && (
-              <div className="mt-3 flex items-center gap-2 text-green-700">
-                <CheckCircle className="w-4 h-4" />
-                <span className="text-sm">Success! Loaded PO log</span>
+            <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700">
+              Choose File
+              <input type="file" accept=".xlsx,.xls" onChange={(e) => handleFileSelect('po', e)} className="hidden" />
+            </label>
+            {uploadedFiles.po.length > 0 && (
+              <div className="mt-3">
+                <p className="text-green-700 font-semibold">✓ {uploadedFiles.po.length} file(s) uploaded</p>
+                <div className="mt-2">
+                  {uploadedFiles.po.map((file, idx) => (
+                    <div key={idx} className="text-sm text-gray-600 mb-1">
+                      • {file.name} ({new Date(file.date).toLocaleDateString()})
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
         </div>
 
         {/* Generate Alerts Section */}
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-2xl font-bold mb-6" style={{ color: '#1a4d2e' }}>Generate Alerts</h2>
+        <div className="bg-white rounded-lg p-6 border border-gray-200">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Generate Alerts</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div>
-              <label className="block text-sm font-semibold mb-2" style={{ color: '#1a4d2e' }}>Select Factory</label>
-              <select
-                value={selectedFactory}
+              <label className="block text-sm font-medium text-gray-700 mb-2">Select Factory</label>
+              <select 
+                value={selectedFactory} 
                 onChange={(e) => setSelectedFactory(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                style={{ borderColor: '#1a4d2e' }}
+                className="w-full p-2 border border-gray-300 rounded"
               >
-                {factories.map(f => (
-                  <option key={f} value={f}>{f}</option>
+                {Object.keys(factories).map(factory => (
+                  <option key={factory} value={factory}>{factory}</option>
                 ))}
               </select>
             </div>
           </div>
 
-          <div className="flex gap-3 mb-8">
-            <button
-              onClick={checkAlerts}
-              disabled={loading}
-              style={{ backgroundColor: '#1a4d2e' }}
-              className="px-6 py-2 rounded text-white font-medium hover:opacity-90 disabled:opacity-50"
-            >
-              {loading ? 'Checking...' : 'Check Alerts'}
-            </button>
+          <button 
+            onClick={handleCheckAlerts}
+            className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 font-medium mr-3"
+          >
+            Check Alerts
+          </button>
 
-            <button
-              onClick={generateWord}
-              disabled={generatingWord || alerts.length === 0}
-              style={{ backgroundColor: '#2d6a4f' }}
-              className="px-6 py-2 rounded text-white font-medium hover:opacity-90 disabled:opacity-50 flex items-center gap-2"
+          {alertData && (
+            <button 
+              onClick={handleGenerateWord}
+              disabled={generatingWord}
+              className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 font-medium"
             >
-              <Download className="w-4 h-4" />
               {generatingWord ? 'Generating...' : 'Download Word'}
             </button>
-          </div>
+          )}
 
-          {alerts.length > 0 && (
-            <div>
-              <h3 className="text-lg font-bold mb-4">
-                Weekly Alert - {selectedFactory} ({alerts.length} SKUs)
-              </h3>
-
-              <div className="bg-gray-50 p-4 rounded-lg mb-4 text-sm">
-                <p className="font-semibold mb-2">Email Recipients:</p>
-                <p><strong>To:</strong> {Array.isArray(factoryEmails[selectedFactory].to) ? factoryEmails[selectedFactory].to.join(', ') : factoryEmails[selectedFactory].to}</p>
-                <p><strong>CC:</strong> {factoryEmails[selectedFactory].cc}</p>
+          {alertData && (
+            <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded">
+              <p className="text-green-800 font-semibold">✓ {alertData.count} SKUs below MOS threshold</p>
+              <div className="mt-4">
+                <h4 className="font-semibold mb-2">Email Recipients for {selectedFactory}:</h4>
+                <div className="text-sm">
+                  <p><strong>To:</strong> {factories[selectedFactory].recipients.join(', ')}</p>
+                  <p><strong>CC:</strong> {factories[selectedFactory].ccList.join(', ')}</p>
+                </div>
               </div>
+            </div>
+          )}
 
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm border-collapse">
-                  <thead>
-                    <tr style={{ backgroundColor: '#e8f5e9' }}>
-                      <th className="border border-gray-300 p-2 text-left">SKU</th>
-                      <th className="border border-gray-300 p-2 text-left">Description</th>
-                      <th className="border border-gray-300 p-2 text-right">OnHand</th>
-                      <th className="border border-gray-300 p-2 text-right">Available</th>
-                      <th className="border border-gray-300 p-2 text-right">Avg Monthly</th>
-                      <th className="border border-gray-300 p-2 text-right">MOS</th>
-                      <th className="border border-gray-300 p-2 text-right">Amt to SS</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {alerts.slice(0, 10).map((sku, idx) => (
-                      <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                        <td className="border border-gray-300 p-2 font-mono">{sku.sku}</td>
-                        <td className="border border-gray-300 p-2">{sku.description}</td>
-                        <td className="border border-gray-300 p-2 text-right">{sku.onHand}</td>
-                        <td className="border border-gray-300 p-2 text-right">{sku.available?.toFixed(0)}</td>
-                        <td className="border border-gray-300 p-2 text-right">{sku.avgMonthlySales?.toFixed(0)}</td>
-                        <td className="border border-gray-300 p-2 text-right font-bold" style={{ color: '#d32f2f' }}>{sku.mos?.toFixed(2)}</td>
-                        <td className="border border-gray-300 p-2 text-right">{sku.amtToSS?.toFixed(0)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+          {dataMismatches.length > 0 && (
+            <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded">
+              <p className="text-yellow-800 font-semibold">⚠️ DATA QUALITY ISSUES DETECTED</p>
+              <div className="mt-2 text-sm">
+                {dataMismatches.map((mismatch, idx) => (
+                  <p key={idx} className="text-yellow-700">• {mismatch.message}</p>
+                ))}
               </div>
+              <p className="mt-2 text-sm text-yellow-700">Please review and correct the data before proceeding.</p>
+            </div>
+          )}
 
-              {alerts.length > 10 && (
-                <p className="text-sm text-gray-600 mt-3">Showing 10 of {alerts.length} SKUs. Download Word document to see all.</p>
-              )}
+          {historicalData.length > 0 && (
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded">
+              <h4 className="font-semibold mb-3">Historical Data ({historicalData.length} records)</h4>
+              <div className="text-sm max-h-32 overflow-y-auto">
+                {historicalData.slice(0, 5).map((record, idx) => (
+                  <div key={idx} className="py-1 text-blue-700">
+                    {new Date(record.date).toLocaleDateString()} - {record.factory}: {record.alertCount} alerts
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
-      </main>
+      </div>
     </div>
   );
 }
