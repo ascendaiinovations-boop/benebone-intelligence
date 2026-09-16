@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import { Document, Packer, Table, TableRow, TableCell, Paragraph, TextRun, WidthType } from 'docx';
 import { saveAs } from 'file-saver';
-import { INVENTORY_DATA } from '../api/inventory-data.js';
 
 const STORAGE_KEY = 'benebone_uploaded_files';
 
@@ -63,14 +62,14 @@ export default function App() {
   }, [uploadedFiles]);
 
   const factories = {
-    'AIM': { threshold: 1.5, recipients: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], prodField: 'aimProduction' },
-    'Midbury': { threshold: 2.0, recipients: ['benebone@midbury.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], prodField: 'midburyProduction' },
-    'LTM': { threshold: 2.0, recipients: ['eric@ltmplastics.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], prodField: 'ltmProduction' },
-    '201': { threshold: 2.0, recipients: ['emilio.otero@201oficial.com.mx'], ccList: ['salvador@201oficial.com.mx', 'punam@benebone.com'], prodField: 'grupoProduction' },
-    'Bennett': { threshold: 2.0, recipients: ['jmattox@bpkc.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], prodField: 'bennettProduction' },
-    'DMG': { threshold: 2.0, recipients: ['monique.brunson@dmgincusa.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], prodField: 'dmgProduction' },
-    'Coltoys': { threshold: 2.0, recipients: ['jparra@coltoys.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], prodField: 'coltoysProduction' },
-    'Loving Pets': { threshold: 2.0, recipients: ['aaron@lovingpetsproducts.com'], ccList: ['zach@benebone.com', 'carly@benebone.com', 'punam@benebone.com'], prodField: 'lovingpetsProduction' }
+    'AIM': { threshold: 1.5, recipients: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], flagCol: 'AIM SKU', prodCol: 'AIM Production' },
+    'Midbury': { threshold: 2.0, recipients: ['benebone@midbury.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], flagCol: 'Midbury SKU', prodCol: 'Midbury Production' },
+    'LTM': { threshold: 2.0, recipients: ['eric@ltmplastics.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], flagCol: 'LTM SKU', prodCol: 'LTM Production' },
+    '201': { threshold: 2.0, recipients: ['emilio.otero@201oficial.com.mx'], ccList: ['salvador@201oficial.com.mx', 'punam@benebone.com'], flagCol: 'Grupo SKU', prodCol: 'Grupo Production' },
+    'Bennett': { threshold: 2.0, recipients: ['jmattox@bpkc.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], flagCol: 'Bennett SKU', prodCol: 'Bennett Production' },
+    'DMG': { threshold: 2.0, recipients: ['monique.brunson@dmgincusa.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], flagCol: 'DMG SKU', prodCol: 'DMG Production' },
+    'Coltoys': { threshold: 2.0, recipients: ['jparra@coltoys.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], flagCol: 'Coltoys SKU', prodCol: 'Coltoys Production' },
+    'Loving Pets': { threshold: 2.0, recipients: ['aaron@lovingpetsproducts.com'], ccList: ['zach@benebone.com', 'carly@benebone.com', 'punam@benebone.com'], flagCol: 'Loving Pets SKU', prodCol: 'Loving Pets Production' }
   };
 
   const handleFileSelect = (fileType, event) => {
@@ -206,6 +205,42 @@ export default function App() {
     return mismatches;
   };
 
+  // Builds the live SKU dataset directly from this week's uploads - no static/baked-in data.
+  // Weekly Report ('Final' sheet) is the source of truth for MOS, production routing, and notes.
+  // Inventory Snapshot CSV supplies OnHand / Available (joined by normalized base SKU number).
+  const buildLiveInventory = (weeklyData, invData) => {
+    const invMap = {};
+    invData.forEach(r => {
+      const sku = r.SKU || r.sku;
+      if (sku) invMap[baseNumSKU(sku)] = r;
+    });
+
+    return weeklyData.map(r => {
+      const csvMatch = invMap[baseNumSKU(r['Item No.'])] || {};
+      const factoryFlag = {};
+      const production = {};
+      Object.entries(factories).forEach(([name, cfg]) => {
+        factoryFlag[name] = r[cfg.flagCol] === 'Y';
+        production[name] = Number(r[cfg.prodCol]) || 0;
+      });
+
+      return {
+        sku: String(r['Item No.']),
+        description: r['Description'] || '',
+        onHand: Number(csvMatch.OnHand) || 0,
+        available: Number(csvMatch.Available_Eaches) || 0,
+        avgMonthlySales: Number(r['Avg Mthly Sales']) || 0,
+        mos: Number(r['MOS O/H']) || 0,
+        amtToSS: Number(r['Amt to Reach SS']) || 0,
+        plannedProdEaches: Number(r['Planned Prod Eaches']) || 0,
+        exclude: r['Exclude from Email'],
+        notes: r['Notes'] || '',
+        factoryFlag,
+        production
+      };
+    });
+  };
+
   const handleCheckAlerts = () => {
     if (!inventoryFile || !weeklyFile || !poFile) {
       alert('Please upload all three files (Inventory Snapshot, Weekly Report, and PO Log)');
@@ -234,18 +269,16 @@ export default function App() {
     const displayCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amtToSS', 'notes'];
     setDisplayColumns(displayCols);
 
-    const factoryConfig = factories[selectedFactory];
-    const threshold = factoryConfig.threshold;
-    const prodField = factoryConfig.prodField;
+    const liveInventory = buildLiveInventory(weeklyParsed.data, invParsed.data);
+    const threshold = factories[selectedFactory].threshold;
 
-    const alertSkus = INVENTORY_DATA.filter(sku => {
+    const alertSkus = liveInventory.filter(sku => {
       if (!isValidSKU(sku.sku)) return false;
-      if (!sku.factoryFlag || !sku.factoryFlag[selectedFactory]) return false;
-      if (sku.mos === undefined || sku.mos === null || sku.mos <= 0 || sku.mos > threshold) return false;
-      if (!sku.plannedProdEaches || sku.plannedProdEaches <= 0) return false;
-      if (sku.exclude === 'X') return false;
-      const factoryProd = sku[prodField] || 0;
-      return factoryProd > 0;
+      if (!sku.factoryFlag[selectedFactory]) return false;
+      if (sku.mos <= 0 || sku.mos > threshold) return false;
+      if (sku.plannedProdEaches <= 0) return false;
+      if (sku.exclude === 'Y') return false;
+      return sku.production[selectedFactory] > 0;
     }).sort((a, b) => a.mos - b.mos);
 
     setAlertData({
