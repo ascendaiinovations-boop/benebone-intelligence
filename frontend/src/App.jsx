@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, Trash2 } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { INVENTORY_DATA } from '../api/inventory-data.js';
 
 export default function App() {
@@ -30,12 +30,7 @@ export default function App() {
     const reader = new FileReader();
     reader.onload = (e) => {
       const fileData = { name: file.name, data: e.target.result, date: new Date().toLocaleDateString() };
-      
-      setUploadedFiles(prev => ({
-        ...prev,
-        [fileType]: [...prev[fileType], fileData]
-      }));
-      
+      setUploadedFiles(prev => ({ ...prev, [fileType]: [...prev[fileType], fileData] }));
       if (fileType === 'inventory') setInventoryFile(e.target.result);
       if (fileType === 'weekly') setWeeklyFile(e.target.result);
       if (fileType === 'po') setPoFile(e.target.result);
@@ -47,16 +42,13 @@ export default function App() {
     if (!fileContent) return { data: [], columns: [] };
     const lines = fileContent.split('\n').filter(line => line.trim());
     if (lines.length === 0) return { data: [], columns: [] };
-    
     const header = lines[0].split(',').map(col => col.trim().replace(/"/g, ''));
     const data = [];
     for (let i = 1; i < lines.length; i++) {
       if (!lines[i].trim()) continue;
       const values = lines[i].split(',').map(v => v.trim().replace(/"/g, ''));
       const row = {};
-      header.forEach((col, idx) => {
-        row[col] = values[idx] || '';
-      });
+      header.forEach((col, idx) => { row[col] = values[idx] || ''; });
       data.push(row);
     }
     return { data, columns: header };
@@ -67,19 +59,12 @@ export default function App() {
     const invSKUs = invData.map(r => r.SKU || r.sku || '').filter(s => s);
     const weeklySKUs = weeklyData.map(r => r.SKU || r.sku || '').filter(s => s);
     const poSKUs = poData.map(r => r.SKU || r.sku || '').filter(s => s);
-    
     weeklySKUs.forEach(sku => {
-      if (!invSKUs.includes(sku)) {
-        mismatches.push({ type: 'MISSING', sku: sku, message: 'SKU ' + sku + ' in Weekly but NOT in Inventory' });
-      }
+      if (!invSKUs.includes(sku)) mismatches.push({ message: 'SKU ' + sku + ' in Weekly but NOT in Inventory' });
     });
-    
     poSKUs.forEach(sku => {
-      if (!invSKUs.includes(sku)) {
-        mismatches.push({ type: 'MISSING', sku: sku, message: 'SKU ' + sku + ' in PO Log but NOT in Inventory' });
-      }
+      if (!invSKUs.includes(sku)) mismatches.push({ message: 'SKU ' + sku + ' in PO Log but NOT in Inventory' });
     });
-    
     return mismatches;
   };
 
@@ -117,18 +102,11 @@ export default function App() {
       return factoryProd > 0;
     }).sort((a, b) => a.mos - b.mos);
 
-    setAlertData({
-      factory: selectedFactory,
-      count: alertSkus.length,
-      data: alertSkus,
-      columns: allCols,
-      timestamp: new Date().toLocaleString()
-    });
+    setAlertData({ factory: selectedFactory, count: alertSkus.length, data: alertSkus, columns: allCols, timestamp: new Date().toLocaleString() });
   };
 
   const handleGenerateWord = () => {
     if (!alertData) return;
-
     const doc = new window.jsPDF('l');
     doc.setFillColor(26, 77, 46);
     doc.rect(0, 0, 297, 30, 'F');
@@ -140,22 +118,9 @@ export default function App() {
     doc.text('Generated: ' + alertData.timestamp, 15, 40);
     doc.text('Factory: ' + alertData.factory, 15, 46);
     doc.text('Total Alerts: ' + alertData.count, 15, 52);
-
     const cols = alertData.columns && alertData.columns.length > 0 ? alertData.columns : ['SKU', 'Description', 'OnHand', 'Available', 'Avg Monthly Sales', 'MOS', 'Amt to SS', 'Notes'];
-    
-    const tableData = [
-      cols,
-      ...alertData.data.map(row => cols.map(col => row[col] || row[col.toLowerCase()] || ''))
-    ];
-
-    doc.autoTable({
-      startY: 60,
-      head: [tableData[0]],
-      body: tableData.slice(1),
-      margin: { top: 10, right: 10, bottom: 10, left: 10 },
-      styles: { fontSize: 8 }
-    });
-
+    const tableData = [cols, ...alertData.data.map(row => cols.map(col => row[col] || row[col.toLowerCase()] || ''))];
+    doc.autoTable({ startY: 60, head: [tableData[0]], body: tableData.slice(1), margin: { top: 10, right: 10, bottom: 10, left: 10 }, styles: { fontSize: 8 } });
     doc.save('Benebone_Alert_' + alertData.factory + '.pdf');
   };
 
@@ -175,9 +140,10 @@ export default function App() {
       </div>
 
       <div className="max-w-7xl mx-auto p-6">
+        {/* UPLOAD SECTION - Always visible */}
         <div className="bg-white rounded-lg p-6 mb-6 border border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">Upload Your Data</h2>
-
+          
           <div className="mb-6 border border-gray-200 rounded-lg p-4 bg-gray-50">
             <h3 className="font-semibold text-lg mb-3">Inventory Snapshot</h3>
             <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700 mr-2">
@@ -187,9 +153,7 @@ export default function App() {
             {uploadedFiles.inventory.length > 0 && (
               <div className="mt-3 p-2 bg-green-50 rounded border border-green-200">
                 <p className="text-green-700 font-semibold text-sm">✓ {uploadedFiles.inventory.length} file(s)</p>
-                {uploadedFiles.inventory.map((f, i) => (
-                  <p key={i} className="text-xs text-gray-600">• {f.name} ({f.date})</p>
-                ))}
+                {uploadedFiles.inventory.map((f, i) => (<p key={i} className="text-xs text-gray-600">• {f.name} ({f.date})</p>))}
               </div>
             )}
           </div>
@@ -203,9 +167,7 @@ export default function App() {
             {uploadedFiles.weekly.length > 0 && (
               <div className="mt-3 p-2 bg-green-50 rounded border border-green-200">
                 <p className="text-green-700 font-semibold text-sm">✓ {uploadedFiles.weekly.length} file(s)</p>
-                {uploadedFiles.weekly.map((f, i) => (
-                  <p key={i} className="text-xs text-gray-600">• {f.name} ({f.date})</p>
-                ))}
+                {uploadedFiles.weekly.map((f, i) => (<p key={i} className="text-xs text-gray-600">• {f.name} ({f.date})</p>))}
               </div>
             )}
           </div>
@@ -219,14 +181,13 @@ export default function App() {
             {uploadedFiles.po.length > 0 && (
               <div className="mt-3 p-2 bg-green-50 rounded border border-green-200">
                 <p className="text-green-700 font-semibold text-sm">✓ {uploadedFiles.po.length} file(s)</p>
-                {uploadedFiles.po.map((f, i) => (
-                  <p key={i} className="text-xs text-gray-600">• {f.name} ({f.date})</p>
-                ))}
+                {uploadedFiles.po.map((f, i) => (<p key={i} className="text-xs text-gray-600">• {f.name} ({f.date})</p>))}
               </div>
             )}
           </div>
         </div>
 
+        {/* ALERTS SECTION - Only after files uploaded + checked */}
         <div className="bg-white rounded-lg p-6 border border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">Generate Alerts</h2>
 
@@ -237,62 +198,47 @@ export default function App() {
               onChange={(e) => setSelectedFactory(e.target.value)}
               className="w-full p-2 border border-gray-300 rounded"
             >
-              {Object.keys(factories).map(factory => (
-                <option key={factory} value={factory}>{factory}</option>
-              ))}
+              {Object.keys(factories).map(factory => (<option key={factory} value={factory}>{factory}</option>))}
             </select>
           </div>
 
-          <button 
-            onClick={handleCheckAlerts}
-            className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 font-medium mr-3"
-          >
+          <button onClick={handleCheckAlerts} className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 font-medium mr-3">
             Check Alerts
           </button>
 
-          {alertData && (
-            <button 
-              onClick={handleGenerateWord}
-              className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 font-medium"
-            >
-              Download Word
-            </button>
-          )}
-
-          {dataMismatches.length > 0 && (
-            <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded">
-              <p className="text-yellow-800 font-semibold">⚠️ DATA ISSUES</p>
-              {dataMismatches.map((m, i) => (
-                <p key={i} className="text-sm text-yellow-700">• {m.message}</p>
-              ))}
-            </div>
-          )}
-
+          {/* ONLY SHOW RESULTS AFTER ALERTS ARE CHECKED */}
           {alertData && (
             <>
+              <button onClick={handleGenerateWord} className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 font-medium">
+                Download Word
+              </button>
+
+              {dataMismatches.length > 0 && (
+                <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded">
+                  <p className="text-yellow-800 font-semibold">⚠️ DATA ISSUES</p>
+                  {dataMismatches.map((m, i) => (<p key={i} className="text-sm text-yellow-700">• {m.message}</p>))}
+                </div>
+              )}
+
               <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded">
-                <p className="text-green-800 font-semibold">✓ {alertData.count} SKUs below MOS</p>
+                <p className="text-green-800 font-semibold">✓ {alertData.count} SKUs below MOS threshold</p>
                 <div className="mt-3 text-sm">
                   <p><strong>To:</strong> {factories[selectedFactory].recipients.join(', ')}</p>
                   <p><strong>CC:</strong> {factories[selectedFactory].ccList.join(', ')}</p>
                 </div>
               </div>
 
-              <div className="mt-6 overflow-x-auto">
+              <div className="mt-6 overflow-x-auto border border-gray-200 rounded">
                 <table className="w-full border-collapse text-sm">
                   <thead className="bg-gray-100">
                     <tr>
-                      {displayColumns.map((col, i) => (
-                        <th key={i} className="border px-2 py-2 text-left font-semibold">{col}</th>
-                      ))}
+                      {displayColumns.map((col, i) => (<th key={i} className="border px-2 py-2 text-left font-semibold">{col}</th>))}
                     </tr>
                   </thead>
                   <tbody>
                     {alertData.data.slice(0, 10).map((row, i) => (
                       <tr key={i} className="hover:bg-gray-50">
-                        {displayColumns.map((col, j) => (
-                          <td key={j} className="border px-2 py-2">{row[col] || ''}</td>
-                        ))}
+                        {displayColumns.map((col, j) => (<td key={j} className="border px-2 py-2">{row[col] || ''}</td>))}
                       </tr>
                     ))}
                   </tbody>
