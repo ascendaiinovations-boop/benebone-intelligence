@@ -295,7 +295,9 @@ export default function App() {
       });
 
       Packer.toBlob(doc).then(blob => {
-        saveAs(blob, 'Benebone_Alert_' + alertData.factory + '_' + new Date().toISOString().split('T')[0] + '.docx');
+        const now = new Date();
+        const timestamp = now.toISOString().split('T')[0] + '_' + String(now.getHours()).padStart(2,'0') + String(now.getMinutes()).padStart(2,'0') + String(now.getSeconds()).padStart(2,'0');
+        saveAs(blob, 'Benebone_Alert_' + alertData.factory + '_' + timestamp + '.docx');
       }).catch(err => {
         console.error('Packer error:', err);
         alert('Error creating Word document: ' + err.message);
