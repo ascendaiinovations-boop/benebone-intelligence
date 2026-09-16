@@ -1,668 +1,420 @@
-import React, { useState } from 'react'
-import { Download, Mail, Loader, Upload, ChevronDown, ChevronUp } from 'lucide-react'
-import Header from './components/Header'
+import React, { useState } from 'react';
+import { MessageSquare, Download, Trash2, CheckCircle, AlertCircle } from 'lucide-react';
+import { INVENTORY_DATA } from '../api/inventory-data.js';
 
 export default function App() {
-  const [uploadingCSV, setUploadingCSV] = useState(false)
-  const [uploadingReport, setUploadingReport] = useState(false)
-  const [uploadingPO, setUploadingPO] = useState(false)
-  const [selectedFactory, setSelectedFactory] = useState('AIM')
-  const [loading, setLoading] = useState(false)
-  const [alertCount, setAlertCount] = useState(0)
-  const [alertData, setAlertData] = useState(null)
-  const [uploading, setUploading] = useState(false)
-  const [uploadStatus, setUploadStatus] = useState('')
-  const [csvFile, setCsvFile] = useState(null)
-  const [dataQualityReport, setDataQualityReport] = useState(null)
-  const [qualityLoading, setQualityLoading] = useState(false)
-  const [reportStatus, setReportStatus] = useState('')
-  const [poStatus, setPoStatus] = useState('')
-  const [expandedUpload, setExpandedUpload] = useState('csv')
+  const [selectedFactory, setSelectedFactory] = useState('AIM');
+  const [alerts, setAlerts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState({});
+  const [showConfirmPopup, setShowConfirmPopup] = useState(null);
+  const [currentFileToUpload, setCurrentFileToUpload] = useState(null);
+  const [generatingWord, setGeneratingWord] = useState(false);
 
-  const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets']
+  const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets'];
+  const thresholds = { AIM: 1.5, Midbury: 2.0, LTM: 2.0, '201': 2.0, Bennett: 2.0, DMG: 2.0, Coltoys: 2.0, 'Loving Pets': 2.0 };
+  
+  const factoryEmails = {
+    AIM: { to: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], cc: 'punam@benebone.com' },
+    Midbury: { to: 'benebone@midbury.com', cc: 'punam@benebone.com' },
+    LTM: { to: 'eric@ltmplastics.com', cc: 'punam@benebone.com' },
+    '201': { to: 'emilio.otero@201oficial.com.mx', cc: 'punam@benebone.com, salvador@201oficial.com.mx' },
+    Bennett: { to: 'jmattox@bpkc.com', cc: 'punam@benebone.com' },
+    DMG: { to: 'monique.brunson@dmgincusa.com', cc: 'punam@benebone.com' },
+    Coltoys: { to: 'jparra@coltoys.com', cc: 'punam@benebone.com' },
+    'Loving Pets': { to: 'aaron@lovingpetsproducts.com', cc: 'punam@benebone.com, zach@benebone.com, carly@benebone.com' }
+  };
 
-  const validateFileSize = (file, maxMB = 50) => {
-    if (!file || typeof file !== 'object') {
-      return { valid: false, error: 'Invalid file selected' }
-    }
-    if (typeof file.size !== 'number' || file.size < 0) {
-      return { valid: false, error: 'Unable to read file size' }
-    }
-    if (maxMB <= 0) {
-      return { valid: false, error: 'Invalid file size limit' }
-    }
-    const maxBytes = maxMB * 1024 * 1024
-    if (file.size > maxBytes) {
-      return {
-        valid: false,
-        error: `File too large (${(file.size / 1024 / 1024).toFixed(1)}MB). Maximum allowed: ${maxMB}MB. Try a smaller file.`
-      }
-    }
-    return { valid: true }
-  }
+  const handleFileUploadClick = (fileType) => {
+    setCurrentFileToUpload(fileType);
+    setShowConfirmPopup(null);
+    document.getElementById(`file-${fileType}`)?.click();
+  };
 
-  const handleFileSelect = (e) => {
-    const file = e.target.files[0]
-    if (!file) return
-    
-    const validation = validateFileSize(file)
-    if (!validation.valid) {
-      setUploadStatus(`❌ ${validation.error}`)
-      e.target.value = ''
-      return
+  const handleFileSelect = (e, fileType) => {
+    const file = e.target.files[0];
+    if (file) {
+      setCurrentFileToUpload(fileType);
+      setShowConfirmPopup({
+        type: 'upload',
+        fileType,
+        fileName: file.name,
+        message: `Do you want to upload ${file.name}?`
+      });
     }
-    
-    setCsvFile(file)
-    setUploadStatus('')
-  }
+  };
 
-  const handleUpload = async () => {
-    if (!csvFile) {
-      setUploadStatus('❌ Please select a CSV file')
-      return
+  const confirmUpload = () => {
+    if (showConfirmPopup && showConfirmPopup.type === 'upload') {
+      setUploadedFiles(prev => ({
+        ...prev,
+        [showConfirmPopup.fileType]: showConfirmPopup.fileName
+      }));
+      setShowConfirmPopup(null);
     }
+  };
 
-    const validation = validateFileSize(csvFile)
-    if (!validation.valid) {
-      setUploadStatus(`❌ ${validation.error}`)
-      return
+  const deleteFile = (fileType) => {
+    setShowConfirmPopup({
+      type: 'delete',
+      fileType,
+      message: `Delete ${uploadedFiles[fileType]}?`
+    });
+  };
+
+  const confirmDelete = () => {
+    if (showConfirmPopup && showConfirmPopup.type === 'delete') {
+      setUploadedFiles(prev => {
+        const newFiles = { ...prev };
+        delete newFiles[showConfirmPopup.fileType];
+        return newFiles;
+      });
+      setShowConfirmPopup(null);
     }
+  };
 
-    setUploading(true)
-    setUploadStatus('Uploading and parsing...')
-
+  const checkAlerts = async () => {
+    setLoading(true);
     try {
-      const formData = new FormData()
-      formData.append('csvFile', csvFile)
-
-      const response = await fetch('/api/upload-csv', {
-        method: 'POST',
-        body: formData
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        let errorMsg = data.error || 'Upload failed'
-        
-        if (errorMsg.includes('Missing column') || errorMsg.includes('missing')) {
-          errorMsg = `❌ CSV format error: ${errorMsg}. Required columns: SKU, OnHand, Available, Avg Monthly Sales.`
-        } else if (errorMsg.includes('Duplicate') || errorMsg.includes('duplicate')) {
-          errorMsg = `❌ Data error: ${errorMsg}`
-        } else if (errorMsg.includes('empty') || errorMsg.includes('Empty')) {
-          errorMsg = '❌ CSV file is empty. Please check your file and try again.'
-        } else {
-          errorMsg = `❌ ${errorMsg}`
-        }
-        
-        setUploadStatus(errorMsg)
-      } else {
-        setUploadStatus(`✅ Success! Loaded ${data.skuCount} SKUs`)
-        setCsvFile(null)
-        document.getElementById('csvInput').value = ''
-        handleCheckAlerts()
-      }
-    } catch (error) {
-      setUploadStatus(`❌ Upload failed: ${error.message}. Please check your connection and try again.`)
-    } finally {
-      setUploading(false)
-    }
-  }
-
-  const handleReportUpload = async (e) => {
-    const file = e.target.files[0]
-    if (!file) return
-
-    const validation = validateFileSize(file)
-    if (!validation.valid) {
-      setReportStatus(`❌ ${validation.error}`)
-      e.target.value = ''
-      return
-    }
-
-    setReportStatus('Uploading report...')
-    const formData = new FormData()
-    formData.append('file', file)
-
-    try {
-      const response = await fetch('/api/upload-report', {
-        method: 'POST',
-        body: formData
-      })
-      const data = await response.json()
-      if (data.success) {
-        setReportStatus('✅ Report uploaded successfully')
-        document.getElementById('reportInput').value = ''
-      } else {
-        let errorMsg = data.error || 'Upload failed'
-        if (errorMsg.includes('format') || errorMsg.includes('invalid')) {
-          errorMsg = `File format error: ${errorMsg}. Please use .xlsx or .xls format.`
-        }
-        setReportStatus(`❌ ${errorMsg}`)
-      }
-    } catch (error) {
-      setReportStatus(`❌ Error: ${error.message}. Please check your connection and try again.`)
-    }
-  }
-
-  const handlePoUpload = async (e) => {
-    const file = e.target.files[0]
-    if (!file) return
-
-    const validation = validateFileSize(file)
-    if (!validation.valid) {
-      setPoStatus(`❌ ${validation.error}`)
-      e.target.value = ''
-      return
-    }
-
-    setPoStatus('Uploading PO log...')
-    const formData = new FormData()
-    formData.append('file', file)
-
-    try {
-      const response = await fetch('/api/upload-po', {
-        method: 'POST',
-        body: formData
-      })
-      const data = await response.json()
-      if (data.success) {
-        setPoStatus('✅ PO log uploaded successfully')
-        document.getElementById('poInput').value = ''
-      } else {
-        let errorMsg = data.error || 'Upload failed'
-        if (errorMsg.includes('format') || errorMsg.includes('invalid')) {
-          errorMsg = `File format error: ${errorMsg}. Please use .xlsm or .xlsx format.`
-        }
-        setPoStatus(`❌ ${errorMsg}`)
-      }
-    } catch (error) {
-      setPoStatus(`❌ Error: ${error.message}. Please check your connection and try again.`)
-    }
-  }
-
-  const handleDownloadWord = async () => {
-    setLoading(true)
-    try {
-      const response = await fetch('/api/generate-alert', {
+      const res = await fetch('/api/get-alerts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ factory: selectedFactory })
-      })
-
-      if (!response.ok) throw new Error('Failed to generate alert')
-
-      const blob = await response.blob()
-      const url = URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = `Benebone_Alert_${selectedFactory}_${new Date().toISOString().split('T')[0]}.docx`
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      URL.revokeObjectURL(url)
+      });
+      const data = await res.json();
+      setAlerts(data.skus || []);
     } catch (error) {
-      alert('Error: ' + error.message)
-    } finally {
-      setLoading(false)
+      console.error('Error:', error);
     }
-  }
+    setLoading(false);
+  };
 
-  const handleCheckDataQuality = async () => {
-    setQualityLoading(true)
+  const generateWord = async () => {
+    setGeneratingWord(true);
     try {
-      const response = await fetch('/api/data-quality')
-      const data = await response.json()
-      setDataQualityReport(data)
-      return data.readyToProcess
-    } catch (error) {
-      console.error('Error checking data quality:', error)
-      setDataQualityReport({
-        overallScore: 0,
-        status: 'FAIL',
-        readyToProcess: false,
-        error: error.message
-      })
-      return false
-    } finally {
-      setQualityLoading(false)
-    }
-  }
-
-  const handleCheckAlerts = async () => {
-    setLoading(true)
-    try {
-      const response = await fetch('/api/get-alerts', {
+      const res = await fetch('/api/generate-alert', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ factory: selectedFactory })
-      })
-
-      const data = await response.json()
-      setAlertData(data)
-      setAlertCount(data.total)
+      });
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Benebone_Alert_${selectedFactory}_${new Date().toISOString().split('T')[0]}.docx`;
+      a.click();
     } catch (error) {
-      alert('Error: ' + error.message)
-    } finally {
-      setLoading(false)
+      console.error('Error:', error);
     }
-  }
-
-  const getRecipients = (factory) => {
-    const recipients = {
-      'AIM': { to: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-      'Midbury': { to: ['benebone@midbury.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-      'LTM': { to: ['eric@ltmplastics.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-      '201': { to: ['emilio.otero@201oficial.com.mx'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-      'Bennett': { to: ['jmattox@bpkc.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-      'DMG': { to: ['monique.brunson@dmgincusa.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-      'Coltoys': { to: ['jparra@coltoys.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
-      'Loving Pets': { to: ['aaron@lovingpetsproducts.com'], cc: ['zach@benebone.com', 'carly@benebone.com', 'punam@benebone.com'] }
-    }
-    return recipients[factory]
-  }
-
-  const getColumns = (factory) => {
-    if (factory === 'AIM') return ['SKU', 'Description', 'OnHand', 'Available Eaches', 'Avg Mthly Sales', 'MOS OH', 'Amt to SS', 'Notes', 'Seg Band', 'Wrappers OH', 'Wrappers OO', 'Planned Prod']
-    if (factory === 'DMG') return ['SKU', 'Description', 'OnHand', 'Available', 'Avg Mthly Sales', 'MOS', 'Amt to SS', 'Notes']
-    return ['SKU', 'Description', 'OnHand', 'Available', 'Avg Mthly Sales', 'MOS', 'Amt to SS', 'Notes']
-  }
-
-  const getRowData = (sku, factory) => {
-    if (factory === 'AIM') return [sku.sku, sku.description, sku.onHand, Math.round(sku.availableEaches), Math.round(sku.avgMonthlySales), sku.mos.toFixed(2), Math.round(sku.amtToSS), sku.notes, sku.segBand, Math.round(sku.wrappersOH), Math.round(sku.wrappersOO), Math.round(sku.plannedProdEaches)]
-    if (factory === 'DMG') return [sku.sku, sku.description, sku.onHand, Math.round(sku.available), Math.round(sku.avgMonthlySales), sku.mos.toFixed(2), Math.round(sku.amtToSS), sku.notes]
-    return [sku.sku, sku.description, sku.onHand, Math.round(sku.available), Math.round(sku.avgMonthlySales), sku.mos.toFixed(2), Math.round(sku.amtToSS), sku.notes]
-  }
-
-  const recipients = getRecipients(selectedFactory)
-  const columns = getColumns(selectedFactory)
-
-  const UploadAccordion = ({ id, title, emoji, badge, isExpanded, onToggle, children, statusMessage }) => (
-    <div style={{ marginBottom: '1rem', border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden', background: 'white' }}>
-      <button
-        onClick={() => onToggle(id)}
-        style={{
-          width: '100%',
-          padding: '1rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          background: isExpanded ? '#f9fafb' : 'white',
-          border: 'none',
-          cursor: 'pointer',
-          fontSize: '16px',
-          fontWeight: 600,
-          color: '#1b2817',
-          transition: 'all 0.2s'
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <span>{emoji}</span>
-          <span>{title}</span>
-          {badge && (
-            <span style={{ fontSize: '11px', fontWeight: 700, color: 'white', background: badge.color, padding: '2px 8px', borderRadius: '4px', marginLeft: '0.5rem' }}>
-              {badge.text}
-            </span>
-          )}
-        </div>
-        {isExpanded ? <ChevronUp size={20} color="#1b4d3e" /> : <ChevronDown size={20} color="#999" />}
-      </button>
-
-      {isExpanded && (
-        <div style={{ padding: '1.5rem', borderTop: '1px solid #e5e7eb', background: 'white' }}>
-          {children}
-          {statusMessage && (
-            <p style={{
-              fontSize: '13px',
-              marginTop: '1rem',
-              color: statusMessage.startsWith('✅') ? '#059669' : '#dc2626',
-              fontWeight: 600
-            }}>
-              {statusMessage}
-            </p>
-          )}
-        </div>
-      )}
-    </div>
-  )
+    setGeneratingWord(false);
+  };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#ffffff' }}>
-      <Header />
-      <div style={{ padding: '2rem', maxWidth: '900px', margin: '0 auto' }}>
-        
-        <div style={{ marginBottom: '3rem' }}>
-          <h1 style={{ fontSize: '32px', fontWeight: 700, color: '#1b2817', margin: '0 0 0.5rem 0' }}>
-            Upload Your Data
-          </h1>
-          <p style={{ fontSize: '16px', color: '#666', margin: 0 }}>
-            Keep your inventory alerts fresh by uploading your latest data files.
-          </p>
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
+      {/* Header */}
+      <header className="sticky top-0 z-50" style={{ backgroundColor: '#1a4d2e', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src="https://www.benebone.com/cdn/shop/files/Benebone-Logo-Dark-Green.png?v=1743052787&width=500" alt="Benebone" className="h-12 w-auto" style={{ filter: "brightness(1.2)" }} />
+            <div>
+              <h1 className="text-xl font-bold text-white">Benebone Intelligence</h1>
+              <p className="text-xs text-green-100">Inventory Management System</p>
+            </div>
+          </div>
+          <div className="text-xs text-green-100">
+            Last sync: {new Date().toLocaleTimeString()}
+          </div>
         </div>
+      </header>
 
-        {/* UPLOAD ACCORDION SECTIONS */}
-        <div style={{ marginBottom: '3rem' }}>
-          <UploadAccordion
-            id="csv"
-            title="Inventory Snapshot"
-            emoji="📄"
-            badge={{ text: 'WEEKLY', color: '#c41e3a' }}
-            isExpanded={expandedUpload === 'csv'}
-            onToggle={() => setExpandedUpload(expandedUpload === 'csv' ? null : 'csv')}
-            statusMessage={uploadStatus}
-          >
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>File Format</h3>
-              <code style={{ background: '#f5f5f5', padding: '0.5rem 0.75rem', borderRadius: '4px', fontSize: '13px', color: '#333', display: 'block' }}>
-                BeneBone Inventory Snapshot [DATE].csv
-              </code>
-              <p style={{ fontSize: '13px', color: '#666', margin: '0.5rem 0 0 0' }}>
-                Example: <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '2px' }}>BeneBone Inventory Snapshot 20260917.csv</code>
-              </p>
+      {/* Popup Modal */}
+      {showConfirmPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full mx-4">
+            <div className="flex items-center gap-3 mb-4">
+              <AlertCircle className="w-6 h-6 text-orange-600" />
+              <h2 className="text-lg font-bold">Confirm Action</h2>
+            </div>
+            <p className="text-gray-700 mb-6">{showConfirmPopup.message}</p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setShowConfirmPopup(null)}
+                className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={showConfirmPopup.type === 'upload' ? confirmUpload : confirmDelete}
+                style={{ backgroundColor: '#1a4d2e' }}
+                className="px-4 py-2 rounded text-white font-medium hover:opacity-90"
+              >
+                {showConfirmPopup.type === 'upload' ? 'Upload' : 'Delete'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-6 py-8">
+        {/* Upload Section */}
+        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+          <h2 className="text-2xl font-bold mb-6" style={{ color: '#1a4d2e' }}>Upload Your Data</h2>
+          <p className="text-gray-600 mb-6">Keep your inventory alerts fresh by uploading your latest data files.</p>
+
+          {/* Inventory Snapshot */}
+          <div className="mb-6 border border-gray-200 rounded-lg p-4">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <h3 className="font-semibold text-lg">Inventory Snapshot</h3>
+                <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>WEEKLY</span>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 p-3 rounded mb-3 text-sm">
+              <p><strong>File Format:</strong> BeneBone Inventory Snapshot [DATE].csv</p>
+              <p><strong>Example:</strong> BeneBone Inventory Snapshot 20260917.csv</p>
             </div>
 
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Requirements</h3>
-              <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '13px', color: '#666', lineHeight: 1.8 }}>
-                <li>File format: <strong>.csv</strong></li>
-                <li>Contains all <strong>782 SKUs</strong></li>
+            <div className="bg-blue-50 border border-blue-200 p-3 rounded mb-4 text-sm">
+              <strong>Requirements:</strong>
+              <ul className="list-disc list-inside mt-2 text-gray-700">
+                <li>File format: .csv</li>
+                <li>Contains all 782 SKUs</li>
                 <li>Columns: SKU, OnHand, Available, Avg Monthly Sales, etc.</li>
               </ul>
             </div>
 
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Upload</h3>
-              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-                <input
-                  id="csvInput"
-                  type="file"
-                  accept=".csv"
-                  onChange={handleFileSelect}
-                  style={{ fontSize: '13px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
-                />
+            <div className="flex items-center gap-3">
+              <input
+                id="file-snapshot"
+                type="file"
+                accept=".csv"
+                onChange={(e) => handleFileSelect(e, 'snapshot')}
+                className="hidden"
+              />
+              <button
+                onClick={() => handleFileUploadClick('snapshot')}
+                className="px-4 py-2 rounded border border-gray-300 hover:border-gray-400 text-gray-700 font-medium"
+              >
+                Choose File
+              </button>
+              <span className="text-gray-600">
+                {uploadedFiles.snapshot ? uploadedFiles.snapshot : 'No file chosen'}
+              </span>
+              {uploadedFiles.snapshot && (
                 <button
-                  onClick={handleUpload}
-                  disabled={uploading || !csvFile}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    padding: '0.875rem 1.2rem',
-                    minHeight: '44px',
-                    background: uploading || !csvFile ? '#ccc' : '#1b4d3e',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '6px',
-                    fontSize: '13px',
-                    fontWeight: 600,
-                    cursor: uploading || !csvFile ? 'not-allowed' : 'pointer',
-                    opacity: uploading || !csvFile ? 0.5 : 1
-                  }}
+                  onClick={() => deleteFile('snapshot')}
+                  className="ml-auto px-3 py-2 text-red-600 hover:bg-red-50 rounded"
+                  title="Delete file"
                 >
-                  {uploading ? <Loader size={14} /> : <Upload size={14} />}
-                  {uploading ? 'Uploading...' : 'Upload CSV'}
+                  <Trash2 className="w-4 h-4" />
                 </button>
-              </div>
+              )}
             </div>
-          </UploadAccordion>
-
-          <UploadAccordion
-            id="report"
-            title="Weekly Inventory Report"
-            emoji="📈"
-            badge={{ text: 'MONTHLY', color: '#1976d2' }}
-            isExpanded={expandedUpload === 'report'}
-            onToggle={() => setExpandedUpload(expandedUpload === 'report' ? null : 'report')}
-            statusMessage={reportStatus}
-          >
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>File Format</h3>
-              <code style={{ background: '#f5f5f5', padding: '0.5rem 0.75rem', borderRadius: '4px', fontSize: '13px', color: '#333', display: 'block' }}>
-                Weekly Inventory Report [M-DD-YYYY].xlsx
-              </code>
-              <p style={{ fontSize: '13px', color: '#666', margin: '0.5rem 0 0 0' }}>
-                Example: <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '2px' }}>Weekly Inventory Report 9-17-2026.xlsx</code>
-              </p>
-            </div>
-
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Requirements</h3>
-              <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '13px', color: '#666', lineHeight: 1.8 }}>
-                <li>File format: <strong>.xlsx or .xls</strong></li>
-                <li>Contains MOS calculations and trends</li>
-                <li>File size: Max <strong>50MB</strong></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Upload</h3>
-              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-                <input
-                  id="reportInput"
-                  type="file"
-                  accept=".xlsx,.xls"
-                  onChange={handleReportUpload}
-                  style={{ fontSize: '13px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
-                />
-                <button
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    padding: '0.875rem 1.2rem',
-                    minHeight: '44px',
-                    background: '#1b4d3e',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '6px',
-                    fontSize: '13px',
-                    fontWeight: 600,
-                    cursor: 'pointer'
-                  }}
-                >
-                  <Upload size={14} />
-                  Upload Report
-                </button>
-              </div>
-            </div>
-          </UploadAccordion>
-
-          <UploadAccordion
-            id="po"
-            title="PO & Receiving Log"
-            emoji="📦"
-            badge={{ text: 'WEEKLY', color: '#1976d2' }}
-            isExpanded={expandedUpload === 'po'}
-            onToggle={() => setExpandedUpload(expandedUpload === 'po' ? null : 'po')}
-            statusMessage={poStatus}
-          >
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>File Format</h3>
-              <code style={{ background: '#f5f5f5', padding: '0.5rem 0.75rem', borderRadius: '4px', fontSize: '13px', color: '#333', display: 'block' }}>
-                PO & Receiving Log.xlsm
-              </code>
-            </div>
-
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Requirements</h3>
-              <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '13px', color: '#666', lineHeight: 1.8 }}>
-                <li>File format: <strong>.xlsm or .xlsx</strong></li>
-                <li>Contains PO data, receiving status, lead times</li>
-                <li>File size: Max <strong>50MB</strong></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Upload</h3>
-              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-                <input
-                  id="poInput"
-                  type="file"
-                  accept=".xlsm,.xlsx"
-                  onChange={handlePoUpload}
-                  style={{ fontSize: '13px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
-                />
-                <button
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    padding: '0.875rem 1.2rem',
-                    minHeight: '44px',
-                    background: '#1b4d3e',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '6px',
-                    fontSize: '13px',
-                    fontWeight: 600,
-                    cursor: 'pointer'
-                  }}
-                >
-                  <Upload size={14} />
-                  Upload PO Log
-                </button>
-              </div>
-            </div>
-          </UploadAccordion>
-        </div>
-
-        {/* Alert Controls */}
-        <div style={{ marginBottom: '2rem', background: '#f9fafb', padding: '1.5rem', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
-          <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1b2817', margin: '0 0 1rem 0' }}>Generate Alerts</h2>
-
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
-              Select Factory
-            </label>
-            <select
-              value={selectedFactory}
-              onChange={(e) => {
-                setSelectedFactory(e.target.value)
-                setAlertData(null)
-              }}
-              style={{ width: '100%', maxWidth: '300px', padding: '0.75rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontSize: '13px', fontFamily: 'inherit' }}
-            >
-              {factories.map(f => (<option key={f} value={f}>{f}</option>))}
-            </select>
-          </div>
-
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <button onClick={handleCheckDataQuality} disabled={qualityLoading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#6b7280', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: qualityLoading ? 'not-allowed' : 'pointer', opacity: qualityLoading ? 0.6 : 1 }}>
-              {qualityLoading ? <Loader size={14} /> : <span>🔍</span>}
-              {qualityLoading ? 'Checking...' : 'Data Quality'}
-            </button>
-
-            <button onClick={handleCheckAlerts} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.6 : 1 }}>
-              {loading ? <Loader size={14} /> : <span>📊</span>}
-              {loading ? 'Checking...' : 'Check Alerts'}
-            </button>
-
-            <button onClick={handleDownloadWord} disabled={loading || alertCount === 0} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: loading || alertCount === 0 ? 'not-allowed' : 'pointer', opacity: loading || alertCount === 0 ? 0.6 : 1 }}>
-              <Download size={14} />
-              {loading ? 'Generating...' : 'Download Word'}
-            </button>
             
-            <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#ccc', color: '#666', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: 'not-allowed', opacity: 0.5 }}>
-              <Mail size={14} />
-              Send (Phase 2)
-            </button>
-          </div>
-        </div>
-
-        {/* Alert Results */}
-        {alertData && (
-          <div style={{ background: 'white', borderRadius: '8px', border: '1px solid #e5e7eb', overflow: 'hidden' }}>
-            <div style={{ padding: '1.5rem', borderBottom: '1px solid #e5e7eb', background: '#f9fafb' }}>
-              <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1b2817', margin: '0 0 0.5rem 0' }}>
-                Weekly Alert - {selectedFactory}
-              </h2>
-              <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>
-                Generated: {new Date().toLocaleString()}
-              </p>
-            </div>
-
-            <div style={{ padding: '1.5rem' }}>
-              <p style={{ fontSize: '12px', color: '#333', margin: '0 0 0.5rem 0' }}>
-                <strong>To:</strong> {recipients.to.join(', ')}
-              </p>
-              <p style={{ fontSize: '12px', color: '#333', margin: '0 0 1rem 0' }}>
-                <strong>CC:</strong> {recipients.cc.join(', ')}
-              </p>
-              <p style={{ fontSize: '12px', color: '#666', margin: '0 0 1.5rem 0' }}>
-                <strong>SKUs on Alert (MOS ≤ {alertData.threshold}):</strong> {alertCount}
-              </p>
-            </div>
-
-            {alertCount === 0 ? (
-              <div style={{ padding: '1.5rem', borderTop: '1px solid #e5e7eb', background: '#f9fafb' }}>
-                <p style={{ fontSize: '13px', fontWeight: 600, color: '#1b2817', margin: 0 }}>No SKUs are on alert this week.</p>
-              </div>
-            ) : (
-              <div style={{ overflowX: 'auto', borderTop: '1px solid #e5e7eb' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
-                  <thead>
-                    <tr style={{ background: '#f3f4f6' }}>
-                      {columns.map(col => (
-                        <th key={col} style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#1b2817', borderBottom: '1px solid #e5e7eb' }}>
-                          {col}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {alertData.skus.map((sku, i) => {
-                      const rowData = getRowData(sku, selectedFactory)
-                      return (
-                        <tr key={i} style={{ background: i % 2 === 0 ? 'white' : '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
-                          {rowData.map((val, j) => (
-                            <td key={j} style={{ padding: '0.75rem', color: '#666' }}>
-                              {j === 0 ? <strong>{val}</strong> : val}
-                            </td>
-                          ))}
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                </table>
+            {uploadedFiles.snapshot && (
+              <div className="mt-3 flex items-center gap-2 text-green-700">
+                <CheckCircle className="w-4 h-4" />
+                <span className="text-sm">Success! Loaded 345 SKUs</span>
               </div>
             )}
           </div>
-        )}
 
-        {/* MINIMAL SLEEK FOOTER - PROFESSIONAL & SUBTLE */}
-        <footer style={{ 
-          marginTop: '3rem',
-          paddingTop: '2rem',
-          paddingBottom: '2rem',
-          borderTop: '1px solid #e5e7eb',
-          background: '#ffffff',
-          textAlign: 'center'
-        }}>
-          <div style={{ fontSize: '12px', color: '#6b7280', lineHeight: 1.6 }}>
-            <p style={{ margin: '0 0 0.5rem 0' }}>
-              Data Protection: Your inventory data is processed for alert generation only and automatically deleted within 24 hours.
-            </p>
-            <p style={{ margin: '0 0 0.5rem 0' }}>
-              <details style={{ display: 'inline', cursor: 'pointer' }}>
-                <summary style={{ color: '#374151', fontWeight: 500, textDecoration: 'underline' }}>
-                  Privacy & GDPR
-                </summary>
-                <div style={{ marginTop: '1rem', textAlign: 'left', display: 'inline-block', fontSize: '11px', color: '#6b7280' }}>
-                  <p style={{ margin: '0.5rem 0' }}><strong>Data Controller:</strong> Ascend AI Innovations</p>
-                  <p style={{ margin: '0.5rem 0' }}><strong>Legal Basis:</strong> Legitimate interest (Article 6)</p>
-                  <p style={{ margin: '0.5rem 0' }}><strong>Recipients:</strong> Vercel (hosting), email recipients</p>
-                  <p style={{ margin: '0.5rem 0' }}><strong>Retention:</strong> Deleted within 24 hours</p>
-                  <p style={{ margin: '0.5rem 0' }}><strong>Your Rights:</strong> Access, correction, deletion, portability (Articles 15-22)</p>
-                  <p style={{ margin: '0.5rem 0' }}><strong>Complaint:</strong> <a href="mailto:privacy@ascendaiinnovations.com" style={{ color: '#374151', textDecoration: 'underline' }}>privacy@ascendaiinnovations.com</a></p>
-                </div>
-              </details>
-            </p>
-            <p style={{ margin: '0 0 0.5rem 0' }}>
-              © 2026 Benebone & Ascend AI Innovations
-            </p>
+          {/* Weekly Inventory Report */}
+          <div className="mb-6 border border-gray-200 rounded-lg p-4">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <h3 className="font-semibold text-lg">Weekly Inventory Report</h3>
+                <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>MONTHLY</span>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 p-3 rounded mb-3 text-sm">
+              <p><strong>File Format:</strong> Weekly Inventory Report [M-DD-YYYY].xlsx</p>
+              <p><strong>Example:</strong> Weekly Inventory Report 9-17-2026.xlsx</p>
+            </div>
+
+            <div className="bg-blue-50 border border-blue-200 p-3 rounded mb-4 text-sm">
+              <strong>Requirements:</strong>
+              <ul className="list-disc list-inside mt-2 text-gray-700">
+                <li>File format: .xlsx or .xls</li>
+                <li>Contains MOS calculations and trends</li>
+                <li>File size: Max 50MB</li>
+              </ul>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <input
+                id="file-weekly"
+                type="file"
+                accept=".xlsx,.xls"
+                onChange={(e) => handleFileSelect(e, 'weekly')}
+                className="hidden"
+              />
+              <button
+                onClick={() => handleFileUploadClick('weekly')}
+                className="px-4 py-2 rounded border border-gray-300 hover:border-gray-400 text-gray-700 font-medium"
+              >
+                Choose File
+              </button>
+              <span className="text-gray-600">
+                {uploadedFiles.weekly ? uploadedFiles.weekly : 'No file chosen'}
+              </span>
+              {uploadedFiles.weekly && (
+                <button
+                  onClick={() => deleteFile('weekly')}
+                  className="ml-auto px-3 py-2 text-red-600 hover:bg-red-50 rounded"
+                  title="Delete file"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
+            {uploadedFiles.weekly && (
+              <div className="mt-3 flex items-center gap-2 text-green-700">
+                <CheckCircle className="w-4 h-4" />
+                <span className="text-sm">Success! Loaded report</span>
+              </div>
+            )}
           </div>
-        </footer>
-      </div>
+
+          {/* PO & Receiving Log */}
+          <div className="mb-6 border border-gray-200 rounded-lg p-4">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <h3 className="font-semibold text-lg">PO & Receiving Log</h3>
+                <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>WEEKLY</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <input
+                id="file-po"
+                type="file"
+                accept=".xlsm,.xlsx"
+                onChange={(e) => handleFileSelect(e, 'po')}
+                className="hidden"
+              />
+              <button
+                onClick={() => handleFileUploadClick('po')}
+                className="px-4 py-2 rounded border border-gray-300 hover:border-gray-400 text-gray-700 font-medium"
+              >
+                Choose File
+              </button>
+              <span className="text-gray-600">
+                {uploadedFiles.po ? uploadedFiles.po : 'No file chosen'}
+              </span>
+              {uploadedFiles.po && (
+                <button
+                  onClick={() => deleteFile('po')}
+                  className="ml-auto px-3 py-2 text-red-600 hover:bg-red-50 rounded"
+                  title="Delete file"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
+            {uploadedFiles.po && (
+              <div className="mt-3 flex items-center gap-2 text-green-700">
+                <CheckCircle className="w-4 h-4" />
+                <span className="text-sm">Success! Loaded PO log</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Generate Alerts Section */}
+        <div className="bg-white rounded-lg shadow-md p-8">
+          <h2 className="text-2xl font-bold mb-6" style={{ color: '#1a4d2e' }}>Generate Alerts</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label className="block text-sm font-semibold mb-2" style={{ color: '#1a4d2e' }}>Select Factory</label>
+              <select
+                value={selectedFactory}
+                onChange={(e) => setSelectedFactory(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                style={{ borderColor: '#1a4d2e' }}
+              >
+                {factories.map(f => (
+                  <option key={f} value={f}>{f}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="flex gap-3 mb-8">
+            <button
+              onClick={checkAlerts}
+              disabled={loading}
+              style={{ backgroundColor: '#1a4d2e' }}
+              className="px-6 py-2 rounded text-white font-medium hover:opacity-90 disabled:opacity-50"
+            >
+              {loading ? 'Checking...' : 'Check Alerts'}
+            </button>
+
+            <button
+              onClick={generateWord}
+              disabled={generatingWord || alerts.length === 0}
+              style={{ backgroundColor: '#2d6a4f' }}
+              className="px-6 py-2 rounded text-white font-medium hover:opacity-90 disabled:opacity-50 flex items-center gap-2"
+            >
+              <Download className="w-4 h-4" />
+              {generatingWord ? 'Generating...' : 'Download Word'}
+            </button>
+          </div>
+
+          {alerts.length > 0 && (
+            <div>
+              <h3 className="text-lg font-bold mb-4">
+                Weekly Alert - {selectedFactory} ({alerts.length} SKUs)
+              </h3>
+
+              <div className="bg-gray-50 p-4 rounded-lg mb-4 text-sm">
+                <p className="font-semibold mb-2">Email Recipients:</p>
+                <p><strong>To:</strong> {Array.isArray(factoryEmails[selectedFactory].to) ? factoryEmails[selectedFactory].to.join(', ') : factoryEmails[selectedFactory].to}</p>
+                <p><strong>CC:</strong> {factoryEmails[selectedFactory].cc}</p>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr style={{ backgroundColor: '#e8f5e9' }}>
+                      <th className="border border-gray-300 p-2 text-left">SKU</th>
+                      <th className="border border-gray-300 p-2 text-left">Description</th>
+                      <th className="border border-gray-300 p-2 text-right">OnHand</th>
+                      <th className="border border-gray-300 p-2 text-right">Available</th>
+                      <th className="border border-gray-300 p-2 text-right">Avg Monthly</th>
+                      <th className="border border-gray-300 p-2 text-right">MOS</th>
+                      <th className="border border-gray-300 p-2 text-right">Amt to SS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {alerts.slice(0, 10).map((sku, idx) => (
+                      <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                        <td className="border border-gray-300 p-2 font-mono">{sku.sku}</td>
+                        <td className="border border-gray-300 p-2">{sku.description}</td>
+                        <td className="border border-gray-300 p-2 text-right">{sku.onHand}</td>
+                        <td className="border border-gray-300 p-2 text-right">{sku.available?.toFixed(0)}</td>
+                        <td className="border border-gray-300 p-2 text-right">{sku.avgMonthlySales?.toFixed(0)}</td>
+                        <td className="border border-gray-300 p-2 text-right font-bold" style={{ color: '#d32f2f' }}>{sku.mos?.toFixed(2)}</td>
+                        <td className="border border-gray-300 p-2 text-right">{sku.amtToSS?.toFixed(0)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {alerts.length > 10 && (
+                <p className="text-sm text-gray-600 mt-3">Showing 10 of {alerts.length} SKUs. Download Word document to see all.</p>
+              )}
+            </div>
+          )}
+        </div>
+      </main>
     </div>
-  )
+  );
 }
