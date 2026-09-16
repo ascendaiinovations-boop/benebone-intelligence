@@ -126,7 +126,7 @@ export default function App() {
     }
 
     // Use fixed INVENTORY_DATA columns for display (ignore parsed file junk)
-    const displayCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amountToSafetyStock'];
+    const displayCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amountToSafetyStock', 'notes'];
     setDisplayColumns(displayCols);
 
     const factoryConfig = factories[selectedFactory];
@@ -153,8 +153,8 @@ export default function App() {
     }
     try {
       // Use only SKU, Description, MOS columns from INVENTORY_DATA
-      const keyCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amountToSafetyStock'];
-      const colHeaders = ['SKU', 'Description', 'OnHand', 'Available', 'Avg Monthly Sales', 'MOS', 'Amount to Safety Stock'];
+      const keyCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amountToSafetyStock', 'notes'];
+      const colHeaders = ['SKU', 'Description', 'OnHand', 'Available', 'Avg Monthly Sales', 'MOS', 'Amount to Safety Stock', 'Notes'];
       
       const rows = [
         new TableRow({
