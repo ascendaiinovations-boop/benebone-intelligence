@@ -174,21 +174,26 @@ export default function App() {
     return parseExcelSheet(fileContent, SHEET_CONFIG[fileType]);
   };
 
-  const detectMismatches = (invData, weeklyData, poData) => {
+  // Different systems use different SKU suffix conventions (e.g. "231244" vs "231244ML").
+  // Normalize to the leading numeric run so we compare the same underlying item, not formatting.
+  const baseNumSKU = (sku) => {
+    const match = String(sku).match(/^(\d+)/);
+    return match ? match[1] : String(sku);
+  };
+
+  const detectMismatches = (invData, weeklyData) => {
+    // NOTE: PO & Receiving Log is intentionally excluded from mismatch checking.
+    // It contains packaging/raw-material purchase orders (cartons, poly bags, mailers, etc.)
+    // that never appear in the finished-goods inventory snapshot - comparing them produces
+    // only false positives, not real data errors.
     const mismatches = [];
-    const invSKUs = new Set(invData.filter(r => isValidSKU(r.SKU || r.sku)).map(r => String(r.SKU || r.sku)));
+    const invBaseSKUs = new Set(invData.filter(r => isValidSKU(r.SKU || r.sku)).map(r => baseNumSKU(r.SKU || r.sku)));
     const weeklySKUs = weeklyData.filter(r => isValidSKU(r['Item No.'])).map(r => String(r['Item No.']));
-    const poSKUs = poData.filter(r => isValidSKU(r['Item No.'])).map(r => String(r['Item No.']));
 
-    // Only flag if the SKU never appears anywhere in inventory-data source either (avoid noisy false positives on ML/EF suffix variants)
-    const uniqueWeeklyMissing = [...new Set(weeklySKUs.filter(sku => !invSKUs.has(sku)))];
-    const uniquePoMissing = [...new Set(poSKUs.filter(sku => !invSKUs.has(sku)))];
+    const uniqueMissing = [...new Set(weeklySKUs.filter(sku => !invBaseSKUs.has(baseNumSKU(sku))))];
 
-    uniqueWeeklyMissing.forEach(sku => {
-      mismatches.push({ message: 'SKU ' + sku + ' found in Weekly Report but NOT in Inventory Snapshot' });
-    });
-    uniquePoMissing.forEach(sku => {
-      mismatches.push({ message: 'SKU ' + sku + ' found in PO Log but NOT in Inventory Snapshot' });
+    uniqueMissing.forEach(sku => {
+      mismatches.push({ message: 'SKU ' + sku + ' appears in Weekly Report but not in Inventory Snapshot - may be a new or discontinued SKU, worth a quick check' });
     });
     return mismatches;
   };
@@ -212,13 +217,11 @@ export default function App() {
       return;
     }
 
-    const mismatches = detectMismatches(invParsed.data, weeklyParsed.data, poParsed.data);
+    const mismatches = detectMismatches(invParsed.data, weeklyParsed.data);
     setDataMismatches(mismatches);
-
-    if (mismatches.length > 0) {
-      alert('DATA ISSUES FOUND:\n\n' + mismatches.map(m => m.message).join('\n') + '\n\nPlease fix and re-upload before proceeding.');
-      return;
-    }
+    // Advisory only - shown in the UI below, does not block alert generation.
+    // A hard block was too noisy: cross-system SKU suffix conventions differ enough
+    // that some "mismatches" are just formatting, not real errors. Human review is better here.
 
     const displayCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amountToSafetyStock', 'notes'];
     setDisplayColumns(displayCols);
