@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import { Document, Packer, Table, TableRow, TableCell, Paragraph, AlignmentType } from 'docx';
+import { saveAs } from 'file-saver';
 import { Download } from 'lucide-react';
 import { INVENTORY_DATA } from '../api/inventory-data.js';
 
@@ -146,29 +146,50 @@ export default function App() {
   };
 
   const handleGenerateWord = () => {
-    if (!alertData) {
+    if (!alertData || !alertData.data || alertData.data.length === 0) {
       alert('No alert data to download');
       return;
     }
     try {
-      const doc = new jsPDF('l');
-    doc.setFillColor(26, 77, 46);
-    doc.rect(0, 0, 297, 30, 'F');
-    doc.setTextColor(255, 255, 255);
-    doc.setFontSize(18);
-    doc.text('Benebone Intelligence', 150, 15, { align: 'center' });
-    doc.setTextColor(0, 0, 0);
-    doc.setFontSize(10);
-    doc.text('Generated: ' + alertData.timestamp, 15, 40);
-    doc.text('Factory: ' + alertData.factory, 15, 46);
-    doc.text('Total Alerts: ' + alertData.count, 15, 52);
-    const cols = alertData.columns && alertData.columns.length > 0 ? alertData.columns : ['SKU', 'Description', 'OnHand', 'Available', 'Avg Monthly Sales', 'MOS', 'Amt to SS', 'Notes'];
-    const tableData = [cols, ...alertData.data.map(row => cols.map(col => row[col] || row[col.toLowerCase()] || ''))];
-    doc.autoTable({ startY: 60, head: [tableData[0]], body: tableData.slice(1), margin: { top: 10, right: 10, bottom: 10, left: 10 }, styles: { fontSize: 8 } });
-    doc.save('Benebone_Alert_' + alertData.factory + '.pdf');
+      // Use only SKU, Description, MOS columns from INVENTORY_DATA
+      const keyCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amountToSafetyStock'];
+      const colHeaders = ['SKU', 'Description', 'OnHand', 'Available', 'Avg Monthly Sales', 'MOS', 'Amount to Safety Stock'];
+      
+      const rows = [
+        new TableRow({
+          children: colHeaders.map(col => new TableCell({ 
+            children: [new Paragraph({ text: col, bold: true })] 
+          }))
+        }),
+        ...alertData.data.map(sku => 
+          new TableRow({
+            children: keyCols.map(key => new TableCell({
+              children: [new Paragraph({ text: String(sku[key] || '') })]
+            }))
+          })
+        )
+      ];
+      
+      const doc = new Document({
+        sections: [{
+          children: [
+            new Paragraph({ text: 'Benebone Intelligence', bold: true, size: 32 }),
+            new Paragraph({ text: 'Alert Report', size: 24 }),
+            new Paragraph({ text: 'Generated: ' + alertData.timestamp, size: 12 }),
+            new Paragraph({ text: 'Factory: ' + alertData.factory, size: 12 }),
+            new Paragraph({ text: 'Total Alerts: ' + alertData.count, size: 12 }),
+            new Paragraph({ text: '' }),
+            new Table({ width: { size: 100, type: 'pct' }, rows })
+          ]
+        }]
+      });
+      
+      Packer.toBlob(doc).then(blob => {
+        saveAs(blob, 'Benebone_Alert_' + alertData.factory + '.docx');
+      });
     } catch (error) {
-      console.error('PDF generation error:', error);
-      alert('Error generating PDF. Please try again.');
+      console.error('Document generation error:', error);
+      alert('Error generating document. Please try again.');
     }
   };
 
