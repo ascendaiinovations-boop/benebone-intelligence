@@ -117,22 +117,43 @@ export default function App() {
     return skuStr.length > 0 && skuStr.toLowerCase() !== 'sku';
   };
 
-  const parseFileData = (fileContent, isExcel) => {
-    if (!fileContent) return { data: [], columns: [] };
+  // Config: which sheet + which row has real headers, per file type
+  const SHEET_CONFIG = {
+    weekly: { sheetName: 'Final', headerRow: 2, skuField: 'Item No.' },
+    po: { sheetName: 'PO & Receiving Log', headerRow: 2, skuField: 'Item No.' }
+  };
 
-    if (isExcel) {
-      try {
-        const wb = XLSX.read(fileContent, { type: 'binary' });
-        const ws = wb.Sheets[wb.SheetNames[0]];
-        const jsonData = XLSX.utils.sheet_to_json(ws);
-        const columns = jsonData.length > 0 ? Object.keys(jsonData[0]) : [];
-        return { data: jsonData, columns };
-      } catch (e) {
-        console.error('Excel parse error:', e);
-        return { data: [], columns: [] };
-      }
+  const parseExcelSheet = (fileContent, config) => {
+    try {
+      const wb = XLSX.read(fileContent, { type: 'binary' });
+      // Use configured sheet name if it exists, else fall back to first sheet
+      const sheetName = wb.SheetNames.includes(config.sheetName) ? config.sheetName : wb.SheetNames[0];
+      const ws = wb.Sheets[sheetName];
+
+      // Convert to array-of-arrays first so we can pick the correct header row
+      const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+      const headerRowIdx = config.headerRow - 1; // 0-indexed
+      if (rows.length <= headerRowIdx) return { data: [], columns: [], sheetUsed: sheetName };
+
+      const headers = rows[headerRowIdx].map(h => String(h || '').trim());
+      const dataRows = rows.slice(headerRowIdx + 1);
+
+      const data = dataRows
+        .filter(r => r[headers.indexOf(config.skuField)]) // must have a SKU value
+        .map(r => {
+          const obj = {};
+          headers.forEach((h, i) => { if (h) obj[h] = r[i]; });
+          return obj;
+        });
+
+      return { data, columns: headers.filter(h => h), sheetUsed: sheetName };
+    } catch (e) {
+      console.error('Excel parse error:', e);
+      return { data: [], columns: [], sheetUsed: null };
     }
+  };
 
+  const parseCSV = (fileContent) => {
     const lines = fileContent.split('\n').filter(line => line.trim());
     if (lines.length === 0) return { data: [], columns: [] };
     const header = lines[0].split(',').map(col => col.trim().replace(/"/g, ''));
@@ -144,20 +165,30 @@ export default function App() {
       header.forEach((col, idx) => { row[col] = values[idx] || ''; });
       data.push(row);
     }
-    return { data, columns: header };
+    return { data, columns: header.filter(h => h) };
+  };
+
+  const parseFileData = (fileContent, fileType) => {
+    if (!fileContent) return { data: [], columns: [] };
+    if (fileType === 'inventory') return parseCSV(fileContent);
+    return parseExcelSheet(fileContent, SHEET_CONFIG[fileType]);
   };
 
   const detectMismatches = (invData, weeklyData, poData) => {
     const mismatches = [];
-    const invSKUs = invData.filter(r => isValidSKU(r.SKU || r.sku)).map(r => r.SKU || r.sku);
-    const weeklySKUs = weeklyData.filter(r => isValidSKU(r.SKU || r.sku)).map(r => r.SKU || r.sku);
-    const poSKUs = poData.filter(r => isValidSKU(r.SKU || r.sku)).map(r => r.SKU || r.sku);
+    const invSKUs = new Set(invData.filter(r => isValidSKU(r.SKU || r.sku)).map(r => String(r.SKU || r.sku)));
+    const weeklySKUs = weeklyData.filter(r => isValidSKU(r['Item No.'])).map(r => String(r['Item No.']));
+    const poSKUs = poData.filter(r => isValidSKU(r['Item No.'])).map(r => String(r['Item No.']));
 
-    weeklySKUs.forEach(sku => {
-      if (!invSKUs.includes(sku)) mismatches.push({ message: 'SKU ' + sku + ' found in Weekly Report but NOT in Inventory Snapshot' });
+    // Only flag if the SKU never appears anywhere in inventory-data source either (avoid noisy false positives on ML/EF suffix variants)
+    const uniqueWeeklyMissing = [...new Set(weeklySKUs.filter(sku => !invSKUs.has(sku)))];
+    const uniquePoMissing = [...new Set(poSKUs.filter(sku => !invSKUs.has(sku)))];
+
+    uniqueWeeklyMissing.forEach(sku => {
+      mismatches.push({ message: 'SKU ' + sku + ' found in Weekly Report but NOT in Inventory Snapshot' });
     });
-    poSKUs.forEach(sku => {
-      if (!invSKUs.includes(sku)) mismatches.push({ message: 'SKU ' + sku + ' found in PO Log but NOT in Inventory Snapshot' });
+    uniquePoMissing.forEach(sku => {
+      mismatches.push({ message: 'SKU ' + sku + ' found in PO Log but NOT in Inventory Snapshot' });
     });
     return mismatches;
   };
@@ -168,9 +199,18 @@ export default function App() {
       return;
     }
 
-    const invParsed = parseFileData(inventoryFile, false);
-    const weeklyParsed = parseFileData(weeklyFile, true);
-    const poParsed = parseFileData(poFile, true);
+    const invParsed = parseFileData(inventoryFile, 'inventory');
+    const weeklyParsed = parseFileData(weeklyFile, 'weekly');
+    const poParsed = parseFileData(poFile, 'po');
+
+    if (weeklyParsed.data.length === 0) {
+      alert('Could not read Weekly Inventory Report. Please check the file has a "Final" sheet with data.');
+      return;
+    }
+    if (poParsed.data.length === 0) {
+      alert('Could not read PO & Receiving Log. Please check the file has a "PO & Receiving Log" sheet with data.');
+      return;
+    }
 
     const mismatches = detectMismatches(invParsed.data, weeklyParsed.data, poParsed.data);
     setDataMismatches(mismatches);
