@@ -23,8 +23,16 @@ export default function App() {
     available: 'Available',
     avgMonthlySales: 'Avg Monthly Sales',
     mos: 'MOS',
-    amountToSafetyStock: 'Amount to Safety Stock',
+    amtToSS: 'Amount to Safety Stock',
     notes: 'Notes'
+  };
+
+  const formatValue = (val) => {
+    if (val === undefined || val === null || val === '') return '';
+    if (typeof val === 'number') {
+      return Number.isInteger(val) ? String(val) : val.toFixed(2);
+    }
+    return String(val);
   };
 
   // Load persisted files on mount
@@ -223,7 +231,7 @@ export default function App() {
     // A hard block was too noisy: cross-system SKU suffix conventions differ enough
     // that some "mismatches" are just formatting, not real errors. Human review is better here.
 
-    const displayCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amountToSafetyStock', 'notes'];
+    const displayCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amtToSS', 'notes'];
     setDisplayColumns(displayCols);
 
     const factoryConfig = factories[selectedFactory];
@@ -254,7 +262,7 @@ export default function App() {
       return;
     }
     try {
-      const keyCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amountToSafetyStock', 'notes'];
+      const keyCols = ['sku', 'description', 'onHand', 'available', 'avgMonthlySales', 'mos', 'amtToSS', 'notes'];
 
       const headerRow = new TableRow({
         children: keyCols.map(col => new TableCell({
@@ -267,7 +275,7 @@ export default function App() {
         new TableRow({
           children: keyCols.map(key => new TableCell({
             width: { size: 100 / keyCols.length, type: WidthType.PERCENTAGE },
-            children: [new Paragraph({ children: [new TextRun({ text: String(sku[key] !== undefined && sku[key] !== null ? sku[key] : '') })] })]
+            children: [new Paragraph({ children: [new TextRun({ text: formatValue(sku[key]) })] })]
           }))
         })
       );
@@ -399,7 +407,7 @@ export default function App() {
                   <tbody>
                     {alertData.data.slice(0, 10).map((row, i) => (
                       <tr key={i} className="hover:bg-gray-50">
-                        {displayColumns.map((col, j) => (<td key={j} className="border px-3 py-2">{row[col] !== undefined && row[col] !== null ? String(row[col]) : ''}</td>))}
+                        {displayColumns.map((col, j) => (<td key={j} className="border px-3 py-2">{formatValue(row[col])}</td>))}
                       </tr>
                     ))}
                   </tbody>
