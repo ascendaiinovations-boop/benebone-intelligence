@@ -4,6 +4,7 @@ import { Document, Packer, Table, TableRow, TableCell, Paragraph, TextRun, Width
 import { saveAs } from 'file-saver';
 
 const STORAGE_KEY = 'benebone_uploaded_files';
+const TRENDS_KEY = 'benebone_monthly_trends';
 
 export default function App() {
   const [inventoryFile, setInventoryFile] = useState(null);
@@ -14,6 +15,7 @@ export default function App() {
   const [alertData, setAlertData] = useState(null);
   const [dataMismatches, setDataMismatches] = useState([]);
   const [displayColumns, setDisplayColumns] = useState([]);
+  const [monthlyTrends, setMonthlyTrends] = useState({});
 
   const columnLabels = {
     sku: 'SKU',
@@ -45,6 +47,8 @@ export default function App() {
         if (parsed.weekly.length > 0) setWeeklyFile(parsed.weekly[parsed.weekly.length - 1].data);
         if (parsed.po.length > 0) setPoFile(parsed.po[parsed.po.length - 1].data);
       }
+      const savedTrends = localStorage.getItem(TRENDS_KEY);
+      if (savedTrends) setMonthlyTrends(JSON.parse(savedTrends));
     } catch (e) {
       console.error('Failed to load saved files:', e);
     }
@@ -60,6 +64,16 @@ export default function App() {
       console.error('Failed to save files (storage may be full):', e);
     }
   }, [uploadedFiles]);
+
+  useEffect(() => {
+    try {
+      if (Object.keys(monthlyTrends).length > 0) {
+        localStorage.setItem(TRENDS_KEY, JSON.stringify(monthlyTrends));
+      }
+    } catch (e) {
+      console.error('Failed to save trend history:', e);
+    }
+  }, [monthlyTrends]);
 
   const factories = {
     'AIM': { threshold: 1.5, recipients: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'], flagCol: 'AIM SKU', prodCol: 'AIM Production' },
@@ -114,6 +128,12 @@ export default function App() {
     setPoFile(null);
     localStorage.removeItem(STORAGE_KEY);
     setAlertData(null);
+  };
+
+  const clearTrendHistory = () => {
+    if (!confirm('Clear all trend history? This cannot be undone.')) return;
+    setMonthlyTrends({});
+    localStorage.removeItem(TRENDS_KEY);
   };
 
   const isValidSKU = (sku) => {
