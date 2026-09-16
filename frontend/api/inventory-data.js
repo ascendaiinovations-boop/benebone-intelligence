@@ -19,7 +19,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Packaging artwork approved"
   },
   {
     "sku": "325244EF",
@@ -41,7 +42,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Walmart Canada new SKU"
   },
   {
     "sku": "324244EF",
@@ -63,7 +65,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Walmart Canada new SKU"
   },
   {
     "sku": "323244EF",
@@ -85,7 +88,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Walmart Canada new SKU"
   },
   {
     "sku": "326244EF",
@@ -107,7 +111,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Walmart Canada new SKU"
   },
   {
     "sku": "327060EF",
@@ -129,7 +134,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Walmart Canada new SKU"
   },
   {
     "sku": "140244",
@@ -151,7 +157,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Production mold end of Aug / shipping mid-Sept"
   },
   {
     "sku": "140244ML",
@@ -173,7 +180,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Production mold end of Aug / shipping mid-Sept"
   },
   {
     "sku": "130244ML",
@@ -195,7 +203,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Packaging on August order"
   },
   {
     "sku": "234244",
@@ -217,7 +226,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "234244ML",
@@ -239,7 +249,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "238080",
@@ -261,7 +272,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "239080",
@@ -283,7 +295,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "264244",
@@ -305,7 +318,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "265244",
@@ -327,7 +341,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "266244",
@@ -349,7 +364,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "335080",
@@ -371,7 +387,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "336080",
@@ -393,7 +410,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "333244",
@@ -415,7 +433,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "873244ML",
@@ -437,7 +456,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "875244ML",
@@ -459,7 +479,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "451244ML",
@@ -481,7 +502,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "453244ML",
@@ -503,7 +525,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "874244ML",
@@ -525,7 +548,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "452244ML",
@@ -547,7 +571,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "661244",
@@ -569,7 +594,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "682060",
@@ -591,7 +617,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "581244",
@@ -613,7 +640,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "232060",
@@ -635,7 +663,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 1
+    "lovingpetsProduction": 1,
+    "notes": ""
   },
   {
     "sku": "530244ML",
@@ -657,7 +686,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "571244",
@@ -679,7 +709,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "580244ML",
@@ -701,7 +732,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "233060",
@@ -723,7 +755,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 1
+    "lovingpetsProduction": 1,
+    "notes": ""
   },
   {
     "sku": "326244",
@@ -745,7 +778,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 1,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "680100",
@@ -767,7 +801,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "809600",
@@ -789,7 +824,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "681080",
@@ -811,7 +847,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "420300",
@@ -833,7 +870,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "818244",
@@ -855,7 +893,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Will start on Tues 9/8"
   },
   {
     "sku": "237080",
@@ -877,7 +916,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "236080",
@@ -899,7 +939,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "410244",
@@ -921,7 +962,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "845244",
@@ -943,7 +985,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "650400",
@@ -965,7 +1008,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "846244",
@@ -987,7 +1031,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "540200",
@@ -1009,7 +1054,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "847244",
@@ -1031,7 +1077,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "820600",
@@ -1053,7 +1100,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Will follow 820600"
   },
   {
     "sku": "820244",
@@ -1075,7 +1123,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Will start on Mon 9/14"
   },
   {
     "sku": "570244ML",
@@ -1097,7 +1146,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "876300",
@@ -1119,7 +1169,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "561244",
@@ -1141,7 +1192,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "453244",
@@ -1163,7 +1215,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "504080",
@@ -1185,7 +1238,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 1,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "814244",
@@ -1207,7 +1261,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "881244",
@@ -1229,7 +1284,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "882244",
@@ -1251,7 +1307,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "510244ML",
@@ -1273,7 +1330,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "640400",
@@ -1295,7 +1353,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "890300",
@@ -1317,7 +1376,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "872400",
@@ -1339,7 +1399,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Will follow 860350X"
   },
   {
     "sku": "808600",
@@ -1361,7 +1422,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "973244",
@@ -1383,7 +1445,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "874244",
@@ -1405,7 +1468,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 2 Packaging (9/8-9/11/26)"
   },
   {
     "sku": "452244",
@@ -1427,7 +1491,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "440244",
@@ -1449,7 +1514,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "670244",
@@ -1471,7 +1537,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "805300",
@@ -1493,7 +1560,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "805244",
@@ -1515,7 +1583,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "327060",
@@ -1537,7 +1606,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 1
+    "lovingpetsProduction": 1,
+    "notes": ""
   },
   {
     "sku": "802244ML",
@@ -1559,7 +1629,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "974244",
@@ -1581,7 +1652,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "645400",
@@ -1603,7 +1675,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "811300",
@@ -1625,7 +1698,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "828244",
@@ -1647,7 +1721,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "840500",
@@ -1669,7 +1744,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "309244",
@@ -1691,7 +1767,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "960244",
@@ -1713,7 +1790,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "420244",
@@ -1735,7 +1813,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "828500",
@@ -1757,7 +1836,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "514080",
@@ -1779,7 +1859,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 1,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "843244",
@@ -1801,7 +1882,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "808244",
@@ -1823,7 +1905,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "512150",
@@ -1845,7 +1928,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 1,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "850244",
@@ -1867,7 +1951,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "871244",
@@ -1889,7 +1974,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "141122",
@@ -1911,7 +1997,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "410244ML",
@@ -1933,7 +2020,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "660400",
@@ -1955,7 +2043,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "131122",
@@ -1977,7 +2066,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "655400",
@@ -1999,7 +2089,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "830400",
@@ -2021,7 +2112,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "451244",
@@ -2043,7 +2135,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "570244",
@@ -2065,7 +2158,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "665400",
@@ -2087,7 +2181,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "881300",
@@ -2109,7 +2204,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "875244",
@@ -2131,7 +2227,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "671100",
@@ -2153,7 +2250,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "530300",
@@ -2175,7 +2273,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "877300",
@@ -2197,7 +2296,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "430300",
@@ -2219,7 +2319,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "809244ML",
@@ -2241,7 +2342,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "660244ML",
@@ -2263,7 +2365,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "880300",
@@ -2285,7 +2388,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "818600",
@@ -2307,7 +2411,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "891300",
@@ -2329,7 +2434,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "841244",
@@ -2351,7 +2457,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "650244",
@@ -2373,7 +2480,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "520244",
@@ -2395,7 +2503,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "580200",
@@ -2417,7 +2526,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "842244",
@@ -2439,7 +2549,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "580244",
@@ -2461,7 +2572,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "323244",
@@ -2483,7 +2595,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "304244",
@@ -2505,7 +2618,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "851244",
@@ -2527,7 +2641,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "530244",
@@ -2549,7 +2664,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "873244",
@@ -2571,7 +2687,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "520350",
@@ -2593,7 +2710,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 2 Packaging (9/8-9/11/26)"
   },
   {
     "sku": "231244",
@@ -2615,7 +2733,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 1,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "801300",
@@ -2637,7 +2756,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "655244ML",
@@ -2659,7 +2779,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "855244",
@@ -2681,7 +2802,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "640244",
@@ -2703,7 +2825,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "502008",
@@ -2725,7 +2848,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "410300",
@@ -2747,7 +2871,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "560200",
@@ -2769,7 +2894,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "812350",
@@ -2791,7 +2917,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "870400",
@@ -2813,7 +2940,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "801244ML",
@@ -2835,7 +2963,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "662200",
@@ -2857,7 +2986,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "642200",
@@ -2879,7 +3009,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 2 Packaging (9/8-9/11/26)"
   },
   {
     "sku": "677080",
@@ -2901,7 +3032,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "808244T",
@@ -2923,7 +3055,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "802350",
@@ -2945,7 +3078,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "850250",
@@ -2967,7 +3101,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "510244",
@@ -2989,7 +3124,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "871400",
@@ -3011,7 +3147,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "878300",
@@ -3033,7 +3170,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "501008",
@@ -3055,7 +3193,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 1,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "302244",
@@ -3077,7 +3216,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "324244",
@@ -3099,7 +3239,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "813300",
@@ -3121,7 +3262,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "870244",
@@ -3143,7 +3285,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "876244ML",
@@ -3165,7 +3308,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "620244",
@@ -3187,7 +3331,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "570300",
@@ -3209,7 +3354,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 2 Packaging (9/8-9/11/26)"
   },
   {
     "sku": "972244",
@@ -3231,7 +3377,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "861350",
@@ -3253,7 +3400,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "803300",
@@ -3275,7 +3423,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "676080",
@@ -3297,7 +3446,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "310244",
@@ -3319,7 +3469,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "503008",
@@ -3341,7 +3492,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "829500",
@@ -3363,7 +3515,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "878244",
@@ -3385,7 +3538,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "802244",
@@ -3407,7 +3561,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "970244",
@@ -3429,7 +3584,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "645244ML",
@@ -3451,7 +3607,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "908244",
@@ -3473,7 +3630,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "838500",
@@ -3495,7 +3653,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "860244",
@@ -3517,7 +3676,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "510200",
@@ -3539,7 +3699,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "803244ML",
@@ -3561,7 +3722,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "828244ML",
@@ -3583,7 +3745,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 2 Packaging (9/8-9/11/26)"
   },
   {
     "sku": "862350",
@@ -3605,7 +3768,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "306244EF",
@@ -3627,7 +3791,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "130244",
@@ -3649,7 +3814,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "301244",
@@ -3671,7 +3837,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "570244T",
@@ -3693,7 +3860,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "630250",
@@ -3715,7 +3883,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "838244",
@@ -3737,7 +3906,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "303244",
@@ -3759,7 +3929,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "644150",
@@ -3781,7 +3952,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "610300",
@@ -3803,7 +3975,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "675080",
@@ -3825,7 +3998,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "928244",
@@ -3847,7 +4021,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "646400",
@@ -3869,7 +4044,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "814300",
@@ -3891,7 +4067,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "670244ML",
@@ -3913,7 +4090,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "440250",
@@ -3935,7 +4113,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "860350",
@@ -3957,7 +4136,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "818244ML",
@@ -3979,7 +4159,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "307244",
@@ -4001,7 +4182,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "620400",
@@ -4023,7 +4205,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "678060",
@@ -4045,7 +4228,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "308122",
@@ -4067,7 +4251,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "905244",
@@ -4089,7 +4274,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "305244EF",
@@ -4111,7 +4297,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "306244",
@@ -4133,7 +4320,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "831244",
@@ -4155,7 +4343,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "630244",
@@ -4177,7 +4366,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "892300",
@@ -4199,7 +4389,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "808244ML",
@@ -4221,7 +4412,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "302244EF",
@@ -4243,7 +4435,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "647150",
@@ -4265,7 +4458,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "672080",
@@ -4287,7 +4481,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "803244",
@@ -4309,7 +4504,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "513100",
@@ -4331,7 +4527,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "112244",
@@ -4353,7 +4550,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "635250",
@@ -4375,7 +4573,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "674100",
@@ -4397,7 +4596,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "829244",
@@ -4419,7 +4619,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "832244",
@@ -4441,7 +4642,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "809244",
@@ -4463,7 +4665,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "882300",
@@ -4485,7 +4688,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "825300",
@@ -4507,7 +4711,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "430244ML",
@@ -4529,7 +4734,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "840244",
@@ -4551,7 +4757,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "420244T",
@@ -4573,7 +4780,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "151122",
@@ -4595,7 +4803,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "679060",
@@ -4617,7 +4826,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "902244",
@@ -4639,7 +4849,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "870244ML",
@@ -4661,7 +4872,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "829244ML",
@@ -4683,7 +4895,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "440244ML",
@@ -4705,7 +4918,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "665244",
@@ -4727,7 +4941,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "150122",
@@ -4749,7 +4964,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "860244ML",
@@ -4771,7 +4987,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "812244ML",
@@ -4793,7 +5010,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "813244ML",
@@ -4815,7 +5033,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "820244ML",
@@ -4837,7 +5056,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "904244",
@@ -4859,7 +5079,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "833244",
@@ -4881,7 +5102,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "804300",
@@ -4903,7 +5125,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "635244",
@@ -4925,7 +5148,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "511200",
@@ -4947,7 +5171,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "685400",
@@ -4969,7 +5194,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "807200",
@@ -4991,7 +5217,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "840244ML",
@@ -5013,7 +5240,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "420300V",
@@ -5035,7 +5263,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "890244ML",
@@ -5057,7 +5286,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "811244ML",
@@ -5079,7 +5309,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "520244ML",
@@ -5101,7 +5332,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "828244T",
@@ -5123,7 +5355,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "872244ML",
@@ -5145,7 +5378,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "305244",
@@ -5167,7 +5401,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 2 Packaging (9/8-9/11/26)"
   },
   {
     "sku": "721244",
@@ -5189,7 +5424,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "834244",
@@ -5211,7 +5447,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "662244",
@@ -5233,7 +5470,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "September Week 3 Packaging (9/14-9/18)"
   },
   {
     "sku": "890244",
@@ -5255,7 +5493,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "871244ML",
@@ -5277,7 +5516,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "420244ML",
@@ -5299,7 +5539,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "540244",
@@ -5321,7 +5562,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "111244",
@@ -5343,7 +5585,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "641150",
@@ -5365,7 +5608,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "141122ML",
@@ -5387,7 +5631,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "838244ML",
@@ -5409,7 +5654,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "685244",
@@ -5431,7 +5677,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "640244ML",
@@ -5453,7 +5700,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "880244ML",
@@ -5475,7 +5723,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "560244ML",
@@ -5497,7 +5746,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "801244",
@@ -5519,7 +5769,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "113244",
@@ -5541,7 +5792,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "131122ML",
@@ -5563,7 +5815,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "150122ML",
@@ -5585,7 +5838,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "876244",
@@ -5607,7 +5861,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "151122ML",
@@ -5629,7 +5884,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "670400",
@@ -5651,7 +5907,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "121244",
@@ -5673,7 +5930,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "430244",
@@ -5695,7 +5953,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "723244",
@@ -5717,7 +5976,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "660244",
@@ -5739,7 +5999,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "121244ML",
@@ -5761,7 +6022,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "880244",
@@ -5783,7 +6045,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "650244ML",
@@ -5805,7 +6068,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "722244",
@@ -5827,7 +6091,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "112244ML",
@@ -5849,7 +6114,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "304244EF",
@@ -5871,7 +6137,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "642244",
@@ -5893,7 +6160,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "111244ML",
@@ -5915,7 +6183,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "982244",
@@ -5937,7 +6206,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "811244",
@@ -5959,7 +6229,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "813244",
@@ -5981,7 +6252,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "901246EF",
@@ -6003,7 +6275,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "812244",
@@ -6025,7 +6298,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "971244",
@@ -6047,7 +6321,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "673080",
@@ -6069,7 +6344,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "906244",
@@ -6091,7 +6367,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "560244",
@@ -6113,7 +6390,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "113244ML",
@@ -6135,7 +6413,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "610244",
@@ -6157,7 +6436,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "891244",
@@ -6179,7 +6459,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "892244",
@@ -6201,7 +6482,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "655244",
@@ -6223,7 +6505,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "877244",
@@ -6245,7 +6528,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "508080",
@@ -6267,7 +6551,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "861244",
@@ -6289,7 +6574,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "872244",
@@ -6311,7 +6597,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "862244",
@@ -6333,7 +6620,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "830244",
@@ -6355,7 +6643,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "980244",
@@ -6377,7 +6666,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "960246EF",
@@ -6399,7 +6689,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "825244",
@@ -6421,7 +6712,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "645244",
@@ -6443,7 +6735,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "804244",
@@ -6465,7 +6758,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "643100",
@@ -6487,7 +6781,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "611300",
@@ -6509,7 +6804,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "915244",
@@ -6531,7 +6827,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "665244ML",
@@ -6553,7 +6850,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "905246EF",
@@ -6575,7 +6873,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "981244",
@@ -6597,7 +6896,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "724244",
@@ -6619,7 +6919,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "631250",
@@ -6641,7 +6942,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "983244",
@@ -6663,7 +6965,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "509100",
@@ -6685,7 +6988,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "851244P",
@@ -6707,7 +7011,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "901244",
@@ -6729,7 +7034,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "322200",
@@ -6751,7 +7057,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "984244",
@@ -6773,7 +7080,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "914244",
@@ -6795,7 +7103,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "502008-BLU",
@@ -6817,7 +7126,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "507080",
@@ -6839,7 +7149,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "518080",
@@ -6861,7 +7172,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "317150",
@@ -6883,7 +7195,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "503008-BLU",
@@ -6905,7 +7218,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "321100",
@@ -6927,7 +7241,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "982246EF",
@@ -6949,7 +7264,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "916244",
@@ -6971,7 +7287,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "312300",
@@ -6993,7 +7310,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "316200",
@@ -7015,7 +7333,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "313150",
@@ -7037,7 +7356,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "319150",
@@ -7059,7 +7379,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "913320F",
@@ -7081,7 +7402,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "855244P",
@@ -7103,7 +7425,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "314100",
@@ -7125,7 +7448,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "311100",
@@ -7147,7 +7471,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "310150",
@@ -7169,7 +7494,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "501008-BLU",
@@ -7191,7 +7517,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "318300",
@@ -7213,7 +7540,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "231240",
@@ -7235,7 +7563,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "920244",
@@ -7257,7 +7586,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "821244",
@@ -7279,7 +7609,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "315400",
@@ -7301,7 +7632,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "807244",
@@ -7323,7 +7655,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "823244",
@@ -7345,7 +7678,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "551244",
@@ -7367,7 +7701,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "820600X",
@@ -7389,7 +7724,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": "Press 102 currently running 820600X with 3 of 11 skids complete"
   },
   {
     "sku": "991060",
@@ -7411,7 +7747,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "553244",
@@ -7433,7 +7770,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "810244",
@@ -7455,7 +7793,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "990060",
@@ -7477,7 +7816,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "552244",
@@ -7499,7 +7839,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "992080",
@@ -7521,7 +7862,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "808600X",
@@ -7543,7 +7885,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "828500X",
@@ -7565,7 +7908,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   },
   {
     "sku": "860350X",
@@ -7587,7 +7931,8 @@ const INVENTORY_DATA = [
     "bennettProduction": 0,
     "dmgProduction": 0,
     "coltoysProduction": 0,
-    "lovingpetsProduction": 0
+    "lovingpetsProduction": 0,
+    "notes": ""
   }
 ];
 
