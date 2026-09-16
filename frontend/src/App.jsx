@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 import { Download } from 'lucide-react';
 import { INVENTORY_DATA } from '../api/inventory-data.js';
 
@@ -144,12 +146,12 @@ export default function App() {
   };
 
   const handleGenerateWord = () => {
-    if (!alertData || !window.jsPDF) {
-      alert('Error: Unable to generate document. Please refresh page.');
+    if (!alertData) {
+      alert('No alert data to download');
       return;
     }
     try {
-      const doc = new window.jsPDF('l');
+      const doc = new jsPDF('l');
     doc.setFillColor(26, 77, 46);
     doc.rect(0, 0, 297, 30, 'F');
     doc.setTextColor(255, 255, 255);
