@@ -1,505 +1,668 @@
-import React, { useState } from 'react';
-import { MessageSquare, Download, Trash2, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
-import { jsPDF } from 'jspdf';
-import autoTable from 'jspdf-autotable';
-import { INVENTORY_DATA } from '../api/inventory-data.js';
+import React, { useState } from 'react'
+import { Download, Mail, Loader, Upload, ChevronDown, ChevronUp } from 'lucide-react'
+import Header from './components/Header'
 
 export default function App() {
-  // File management state
-  const [inventoryFile, setInventoryFile] = useState(null);
-  const [weeklyFile, setWeeklyFile] = useState(null);
-  const [poFile, setPoFile] = useState(null);
-  
-  // Multi-file upload state
-  const [uploadedFiles, setUploadedFiles] = useState({
-    inventory: [],
-    weekly: [],
-    po: []
-  });
-  
-  // Historical data storage (6-12 months)
-  const [historicalData, setHistoricalData] = useState([]);
-  
-  // Current selection
-  const [selectedInventoryIndex, setSelectedInventoryIndex] = useState(null);
-  const [selectedFactory, setSelectedFactory] = useState('AIM');
-  const [generatingWord, setGeneratingWord] = useState(false);
-  const [alertData, setAlertData] = useState(null);
-  const [dataMismatches, setDataMismatches] = useState([]);
-  const [allColumns, setAllColumns] = useState([]);
+  const [uploadingCSV, setUploadingCSV] = useState(false)
+  const [uploadingReport, setUploadingReport] = useState(false)
+  const [uploadingPO, setUploadingPO] = useState(false)
+  const [selectedFactory, setSelectedFactory] = useState('AIM')
+  const [loading, setLoading] = useState(false)
+  const [alertCount, setAlertCount] = useState(0)
+  const [alertData, setAlertData] = useState(null)
+  const [uploading, setUploading] = useState(false)
+  const [uploadStatus, setUploadStatus] = useState('')
+  const [csvFile, setCsvFile] = useState(null)
+  const [dataQualityReport, setDataQualityReport] = useState(null)
+  const [qualityLoading, setQualityLoading] = useState(false)
+  const [reportStatus, setReportStatus] = useState('')
+  const [poStatus, setPoStatus] = useState('')
+  const [expandedUpload, setExpandedUpload] = useState('csv')
 
-  // Factory configuration
-  const factories = {
-    'AIM': {
-      threshold: 1.5,
-      recipients: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'],
-      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
-      prodField: 'aimProduction'
-    },
-    'Midbury': {
-      threshold: 2.0,
-      recipients: ['benebone@midbury.com'],
-      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
-      prodField: 'midburyProduction'
-    },
-    'LTM': {
-      threshold: 2.0,
-      recipients: ['eric@ltmplastics.com'],
-      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
-      prodField: 'ltmProduction'
-    },
-    '201': {
-      threshold: 2.0,
-      recipients: ['emilio.otero@201oficial.com.mx'],
-      ccList: ['salvador@201oficial.com.mx', 'punam@benebone.com'],
-      prodField: 'grupoProduction'
-    },
-    'Bennett': {
-      threshold: 2.0,
-      recipients: ['jmattox@bpkc.com'],
-      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
-      prodField: 'bennettProduction'
-    },
-    'DMG': {
-      threshold: 2.0,
-      recipients: ['monique.brunson@dmgincusa.com'],
-      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
-      prodField: 'dmgProduction'
-    },
-    'Coltoys': {
-      threshold: 2.0,
-      recipients: ['jparra@coltoys.com'],
-      ccList: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'],
-      prodField: 'coltoysProduction'
-    },
-    'Loving Pets': {
-      threshold: 2.0,
-      recipients: ['aaron@lovingpetsproducts.com'],
-      ccList: ['zach@benebone.com', 'carly@benebone.com', 'punam@benebone.com'],
-      prodField: 'lovingpetsProduction'
+  const factories = ['AIM', 'Midbury', 'LTM', '201', 'Bennett', 'DMG', 'Coltoys', 'Loving Pets']
+
+  const validateFileSize = (file, maxMB = 50) => {
+    if (!file || typeof file !== 'object') {
+      return { valid: false, error: 'Invalid file selected' }
     }
-  };
-
-  // Handle multi-file upload with date tracking
-  const handleFileSelect = (fileType, event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const fileData = {
-        name: file.name,
-        data: e.target.result,
-        date: new Date().toISOString(),
-        size: file.size
-      };
-
-      // Add to upload queue
-      setUploadedFiles(prev => ({
-        ...prev,
-        [fileType]: [...prev[fileType], fileData]
-      }));
-
-      // Show success
-      alert(`File added: ${file.name}`);
-    };
-    reader.readAsText(file);
-  };
-
-  // Detect data mismatches between files
-  const detectMismatches = (inventoryData, weeklyData, poData) => {
-    const mismatches = [];
-    
-    const inventorySKUs = inventoryData.map(row => row.SKU);
-    const weeklySKUs = weeklyData.map(row => row.SKU);
-    const poSKUs = poData.map(row => row.SKU);
-
-    // Find SKUs in weekly/po but not in inventory
-    weeklySKUs.forEach(sku => {
-      if (!inventorySKUs.includes(sku)) {
-        mismatches.push({
-          type: 'MISSING_FROM_INVENTORY',
-          sku: sku,
-          message: \`SKU \${sku} found in Weekly Report but NOT in Inventory Snapshot\`
-        });
+    if (typeof file.size !== 'number' || file.size < 0) {
+      return { valid: false, error: 'Unable to read file size' }
+    }
+    if (maxMB <= 0) {
+      return { valid: false, error: 'Invalid file size limit' }
+    }
+    const maxBytes = maxMB * 1024 * 1024
+    if (file.size > maxBytes) {
+      return {
+        valid: false,
+        error: `File too large (${(file.size / 1024 / 1024).toFixed(1)}MB). Maximum allowed: ${maxMB}MB. Try a smaller file.`
       }
-    });
-
-    poSKUs.forEach(sku => {
-      if (!inventorySKUs.includes(sku)) {
-        mismatches.push({
-          type: 'MISSING_FROM_INVENTORY',
-          sku: sku,
-          message: \`SKU \${sku} found in PO Log but NOT in Inventory Snapshot\`
-        });
-      }
-    });
-
-    return mismatches;
-  };
-
-  // Parse CSV/Excel and extract all columns dynamically
-  const parseFileWithAllColumns = (fileData) => {
-    const lines = fileData.split('\n').filter(line => line.trim());
-    if (lines.length === 0) return [];
-
-    const header = lines[0].split(',').map(col => col.trim());
-    const data = [];
-
-    for (let i = 1; i < lines.length; i++) {
-      const values = lines[i].split(',');
-      const row = {};
-      header.forEach((col, idx) => {
-        row[col] = values[idx]?.trim() || '';
-      });
-      data.push(row);
     }
+    return { valid: true }
+  }
 
-    return { data, columns: header };
-  };
-
-  // Check alerts with all features
-  const handleCheckAlerts = async () => {
-    if (!inventoryFile || !weeklyFile || !poFile) {
-      alert('Please upload all three files');
-      return;
-    }
-
-    // Parse all files with all columns
-    const { data: invData, columns: invCols } = parseFileWithAllColumns(inventoryFile);
-    const { data: weeklyData, columns: weeklyCols } = parseFileWithAllColumns(weeklyFile);
-    const { data: poData, columns: poCols } = parseFileWithAllColumns(poFile);
-
-    // Combine all columns
-    const allCols = [...new Set([...invCols, ...weeklyCols, ...poCols])];
-    setAllColumns(allCols);
-
-    // Detect mismatches
-    const mismatches = detectMismatches(invData, weeklyData, poData);
-    setDataMismatches(mismatches);
-
-    if (mismatches.length > 0) {
-      alert(\`⚠️ DATA QUALITY ISSUES DETECTED!\n\n\${mismatches.map(m => m.message).join('\n')}\n\nPlease review and correct the data before proceeding.\`);
-      return;
-    }
-
-    // Get factory config
-    const factoryConfig = factories[selectedFactory];
-    const threshold = factoryConfig.threshold;
-    const prodField = factoryConfig.prodField;
-
-    // Filter alerts with all columns
-    const alerts = invData.filter(row => {
-      const mos = parseFloat(row['MOS']) || 0;
-      return mos > 0 && mos <= threshold && row[prodField] === '1';
-    }).sort((a, b) => parseFloat(a['MOS']) - parseFloat(b['MOS']));
-
-    setAlertData({
-      factory: selectedFactory,
-      count: alerts.length,
-      data: alerts,
-      columns: allCols,
-      timestamp: new Date().toLocaleString()
-    });
-
-    // Store in historical data
-    const historicalEntry = {
-      date: new Date().toISOString(),
-      factory: selectedFactory,
-      alertCount: alerts.length,
-      alerts: alerts,
-      allColumns: allCols
-    };
-
-    setHistoricalData(prev => {
-      const updated = [historicalEntry, ...prev];
-      // Keep only 12 months
-      return updated.slice(0, 52);
-    });
-  };
-
-  // Generate Word document with ALL columns
-  const handleGenerateWord = async () => {
-    if (!alertData) return;
+  const handleFileSelect = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
     
-    setGeneratingWord(true);
+    const validation = validateFileSize(file)
+    if (!validation.valid) {
+      setUploadStatus(`❌ ${validation.error}`)
+      e.target.value = ''
+      return
+    }
+    
+    setCsvFile(file)
+    setUploadStatus('')
+  }
+
+  const handleUpload = async () => {
+    if (!csvFile) {
+      setUploadStatus('❌ Please select a CSV file')
+      return
+    }
+
+    const validation = validateFileSize(csvFile)
+    if (!validation.valid) {
+      setUploadStatus(`❌ ${validation.error}`)
+      return
+    }
+
+    setUploading(true)
+    setUploadStatus('Uploading and parsing...')
 
     try {
-      const { jsPDF } = window;
-      const doc = new jsPDF('l'); // landscape for more columns
+      const formData = new FormData()
+      formData.append('csvFile', csvFile)
 
-      // Header
-      doc.setFillColor(26, 77, 46); // Benebone green
-      doc.rect(0, 0, 297, 30, 'F');
-      doc.setTextColor(255, 255, 255);
-      doc.setFontSize(18);
-      doc.text('Benebone Intelligence', 150, 15, { align: 'center' });
-      doc.setFontSize(12);
-      doc.text(\`Low SKU Alert - \${alertData.factory}\`, 150, 22, { align: 'center' });
+      const response = await fetch('/api/upload-csv', {
+        method: 'POST',
+        body: formData
+      })
 
-      // Metadata
-      doc.setTextColor(0, 0, 0);
-      doc.setFontSize(10);
-      doc.text(\`Generated: \${alertData.timestamp}\`, 15, 40);
-      doc.text(\`Factory: \${alertData.factory}\`, 15, 46);
-      doc.text(\`Total Alerts: \${alertData.count}\`, 15, 52);
+      const data = await response.json()
 
-      // Email section
-      const factoryConfig = factories[selectedFactory];
-      doc.text('Email Recipients:', 15, 62);
-      doc.setFontSize(9);
-      factoryConfig.recipients.forEach((email, idx) => {
-        doc.text(\`To: \${email}\`, 20, 68 + (idx * 5));
-      });
-      doc.text(\`CC: \${factoryConfig.ccList.join(', ')}\`, 20, 68 + (factoryConfig.recipients.length * 5));
-
-      // Data Quality Report (if mismatches)
-      if (dataMismatches.length > 0) {
-        doc.setFontSize(11);
-        doc.text('⚠️ DATA QUALITY REPORT', 15, 95);
-        doc.setFontSize(9);
-        dataMismatches.forEach((mismatch, idx) => {
-          doc.text(\`• \${mismatch.message}\`, 20, 101 + (idx * 4));
-        });
+      if (!response.ok) {
+        let errorMsg = data.error || 'Upload failed'
+        
+        if (errorMsg.includes('Missing column') || errorMsg.includes('missing')) {
+          errorMsg = `❌ CSV format error: ${errorMsg}. Required columns: SKU, OnHand, Available, Avg Monthly Sales.`
+        } else if (errorMsg.includes('Duplicate') || errorMsg.includes('duplicate')) {
+          errorMsg = `❌ Data error: ${errorMsg}`
+        } else if (errorMsg.includes('empty') || errorMsg.includes('Empty')) {
+          errorMsg = '❌ CSV file is empty. Please check your file and try again.'
+        } else {
+          errorMsg = `❌ ${errorMsg}`
+        }
+        
+        setUploadStatus(errorMsg)
+      } else {
+        setUploadStatus(`✅ Success! Loaded ${data.skuCount} SKUs`)
+        setCsvFile(null)
+        document.getElementById('csvInput').value = ''
+        handleCheckAlerts()
       }
-
-      // Table with ALL columns
-      const tableStartY = dataMismatches.length > 0 ? 120 : 75;
-      const tableData = [
-        alertData.columns,
-        ...alertData.data.map(row => alertData.columns.map(col => row[col] || ''))
-      ];
-
-      doc.autoTable({
-        startY: tableStartY,
-        head: [alertData.columns],
-        body: tableData.slice(1),
-        margin: { top: 10, right: 10, bottom: 10, left: 10 },
-        styles: { fontSize: 8 },
-        columnStyles: { 0: { cellWidth: 15 } }
-      });
-
-      // Footer
-      doc.setFontSize(9);
-      doc.text('This is an automated alert. Review before sending to factory.', 15, doc.internal.pageSize.getHeight() - 10);
-
-      // Save
-      doc.save(\`Benebone_Alert_\${selectedFactory}_\${new Date().toISOString().slice(0, 10)}.pdf\`);
     } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Error generating document');
+      setUploadStatus(`❌ Upload failed: ${error.message}. Please check your connection and try again.`)
+    } finally {
+      setUploading(false)
+    }
+  }
+
+  const handleReportUpload = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    const validation = validateFileSize(file)
+    if (!validation.valid) {
+      setReportStatus(`❌ ${validation.error}`)
+      e.target.value = ''
+      return
     }
 
-    setGeneratingWord(false);
-  };
+    setReportStatus('Uploading report...')
+    const formData = new FormData()
+    formData.append('file', file)
+
+    try {
+      const response = await fetch('/api/upload-report', {
+        method: 'POST',
+        body: formData
+      })
+      const data = await response.json()
+      if (data.success) {
+        setReportStatus('✅ Report uploaded successfully')
+        document.getElementById('reportInput').value = ''
+      } else {
+        let errorMsg = data.error || 'Upload failed'
+        if (errorMsg.includes('format') || errorMsg.includes('invalid')) {
+          errorMsg = `File format error: ${errorMsg}. Please use .xlsx or .xls format.`
+        }
+        setReportStatus(`❌ ${errorMsg}`)
+      }
+    } catch (error) {
+      setReportStatus(`❌ Error: ${error.message}. Please check your connection and try again.`)
+    }
+  }
+
+  const handlePoUpload = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    const validation = validateFileSize(file)
+    if (!validation.valid) {
+      setPoStatus(`❌ ${validation.error}`)
+      e.target.value = ''
+      return
+    }
+
+    setPoStatus('Uploading PO log...')
+    const formData = new FormData()
+    formData.append('file', file)
+
+    try {
+      const response = await fetch('/api/upload-po', {
+        method: 'POST',
+        body: formData
+      })
+      const data = await response.json()
+      if (data.success) {
+        setPoStatus('✅ PO log uploaded successfully')
+        document.getElementById('poInput').value = ''
+      } else {
+        let errorMsg = data.error || 'Upload failed'
+        if (errorMsg.includes('format') || errorMsg.includes('invalid')) {
+          errorMsg = `File format error: ${errorMsg}. Please use .xlsm or .xlsx format.`
+        }
+        setPoStatus(`❌ ${errorMsg}`)
+      }
+    } catch (error) {
+      setPoStatus(`❌ Error: ${error.message}. Please check your connection and try again.`)
+    }
+  }
+
+  const handleDownloadWord = async () => {
+    setLoading(true)
+    try {
+      const response = await fetch('/api/generate-alert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ factory: selectedFactory })
+      })
+
+      if (!response.ok) throw new Error('Failed to generate alert')
+
+      const blob = await response.blob()
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = `Benebone_Alert_${selectedFactory}_${new Date().toISOString().split('T')[0]}.docx`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+    } catch (error) {
+      alert('Error: ' + error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleCheckDataQuality = async () => {
+    setQualityLoading(true)
+    try {
+      const response = await fetch('/api/data-quality')
+      const data = await response.json()
+      setDataQualityReport(data)
+      return data.readyToProcess
+    } catch (error) {
+      console.error('Error checking data quality:', error)
+      setDataQualityReport({
+        overallScore: 0,
+        status: 'FAIL',
+        readyToProcess: false,
+        error: error.message
+      })
+      return false
+    } finally {
+      setQualityLoading(false)
+    }
+  }
+
+  const handleCheckAlerts = async () => {
+    setLoading(true)
+    try {
+      const response = await fetch('/api/get-alerts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ factory: selectedFactory })
+      })
+
+      const data = await response.json()
+      setAlertData(data)
+      setAlertCount(data.total)
+    } catch (error) {
+      alert('Error: ' + error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const getRecipients = (factory) => {
+    const recipients = {
+      'AIM': { to: ['JAyers@AluminumInjectionMold.com', 'SRoloson@AluminumInjectionMold.com', 'TSwanson@AluminumInjectionMold.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'Midbury': { to: ['benebone@midbury.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'LTM': { to: ['eric@ltmplastics.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      '201': { to: ['emilio.otero@201oficial.com.mx'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'Bennett': { to: ['jmattox@bpkc.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'DMG': { to: ['monique.brunson@dmgincusa.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'Coltoys': { to: ['jparra@coltoys.com'], cc: ['carly@benebone.com', 'zach@benebone.com', 'punam@benebone.com'] },
+      'Loving Pets': { to: ['aaron@lovingpetsproducts.com'], cc: ['zach@benebone.com', 'carly@benebone.com', 'punam@benebone.com'] }
+    }
+    return recipients[factory]
+  }
+
+  const getColumns = (factory) => {
+    if (factory === 'AIM') return ['SKU', 'Description', 'OnHand', 'Available Eaches', 'Avg Mthly Sales', 'MOS OH', 'Amt to SS', 'Notes', 'Seg Band', 'Wrappers OH', 'Wrappers OO', 'Planned Prod']
+    if (factory === 'DMG') return ['SKU', 'Description', 'OnHand', 'Available', 'Avg Mthly Sales', 'MOS', 'Amt to SS', 'Notes']
+    return ['SKU', 'Description', 'OnHand', 'Available', 'Avg Mthly Sales', 'MOS', 'Amt to SS', 'Notes']
+  }
+
+  const getRowData = (sku, factory) => {
+    if (factory === 'AIM') return [sku.sku, sku.description, sku.onHand, Math.round(sku.availableEaches), Math.round(sku.avgMonthlySales), sku.mos.toFixed(2), Math.round(sku.amtToSS), sku.notes, sku.segBand, Math.round(sku.wrappersOH), Math.round(sku.wrappersOO), Math.round(sku.plannedProdEaches)]
+    if (factory === 'DMG') return [sku.sku, sku.description, sku.onHand, Math.round(sku.available), Math.round(sku.avgMonthlySales), sku.mos.toFixed(2), Math.round(sku.amtToSS), sku.notes]
+    return [sku.sku, sku.description, sku.onHand, Math.round(sku.available), Math.round(sku.avgMonthlySales), sku.mos.toFixed(2), Math.round(sku.amtToSS), sku.notes]
+  }
+
+  const recipients = getRecipients(selectedFactory)
+  const columns = getColumns(selectedFactory)
+
+  const UploadAccordion = ({ id, title, emoji, badge, isExpanded, onToggle, children, statusMessage }) => (
+    <div style={{ marginBottom: '1rem', border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden', background: 'white' }}>
+      <button
+        onClick={() => onToggle(id)}
+        style={{
+          width: '100%',
+          padding: '1rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          background: isExpanded ? '#f9fafb' : 'white',
+          border: 'none',
+          cursor: 'pointer',
+          fontSize: '16px',
+          fontWeight: 600,
+          color: '#1b2817',
+          transition: 'all 0.2s'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <span>{emoji}</span>
+          <span>{title}</span>
+          {badge && (
+            <span style={{ fontSize: '11px', fontWeight: 700, color: 'white', background: badge.color, padding: '2px 8px', borderRadius: '4px', marginLeft: '0.5rem' }}>
+              {badge.text}
+            </span>
+          )}
+        </div>
+        {isExpanded ? <ChevronUp size={20} color="#1b4d3e" /> : <ChevronDown size={20} color="#999" />}
+      </button>
+
+      {isExpanded && (
+        <div style={{ padding: '1.5rem', borderTop: '1px solid #e5e7eb', background: 'white' }}>
+          {children}
+          {statusMessage && (
+            <p style={{
+              fontSize: '13px',
+              marginTop: '1rem',
+              color: statusMessage.startsWith('✅') ? '#059669' : '#dc2626',
+              fontWeight: 600
+            }}>
+              {statusMessage}
+            </p>
+          )}
+        </div>
+      )}
+    </div>
+  )
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-green-900 to-green-800 text-white py-6 px-4">
-        <div className="max-w-6xl mx-auto flex items-center gap-4">
-          <img src="https://www.benebone.com/cdn/shop/files/Benebone-Logo-Dark-Green.png?v=1743052787&width=500" alt="Benebone" className="h-12 w-auto" style={{ filter: 'brightness(1.2)' }} />
-          <div>
-            <h1 className="text-3xl font-bold">Benebone Intelligence</h1>
-            <p className="text-green-100">Inventory Management System</p>
-          </div>
-          <div className="ml-auto text-right">
-            <p className="text-sm">Last sync: {new Date().toLocaleTimeString()}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-6xl mx-auto p-6">
+    <div style={{ minHeight: '100vh', background: '#ffffff' }}>
+      <Header />
+      <div style={{ padding: '2rem', maxWidth: '900px', margin: '0 auto' }}>
         
-        {/* Upload Section */}
-        <div className="bg-white rounded-lg p-6 mb-6 border border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Upload Your Data</h2>
-          <p className="text-gray-600 mb-6">Keep your inventory alerts fresh by uploading your latest data files.</p>
-
-          {/* Inventory Snapshot */}
-          <div className="mb-6 border border-gray-200 rounded-lg p-4 bg-gray-50">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <h3 className="font-semibold text-lg">Inventory Snapshot</h3>
-                <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>WEEKLY</span>
-              </div>
-            </div>
-            <p className="text-sm text-gray-600 mb-3">File Format: Benebone Inventory Snapshot [DATE].csv</p>
-            <p className="text-sm text-gray-600 mb-3">Example: BeneBone Inventory Snapshot 20260917.csv</p>
-            <div className="bg-blue-50 p-3 rounded mb-3">
-              <p className="text-sm font-medium">Requirements:</p>
-              <ul className="text-sm text-gray-700 mt-2">
-                <li>• File format: .csv</li>
-                <li>• Contains all SKUs with complete data</li>
-                <li>• Include: SKU, OnHand, Available, Avg Monthly Sales, Notes, etc.</li>
-              </ul>
-            </div>
-            <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700">
-              Choose File
-              <input type="file" accept=".csv" onChange={(e) => handleFileSelect('inventory', e)} className="hidden" />
-            </label>
-            {uploadedFiles.inventory.length > 0 && (
-              <div className="mt-3">
-                <p className="text-green-700 font-semibold">✓ {uploadedFiles.inventory.length} file(s) uploaded</p>
-                <div className="mt-2">
-                  {uploadedFiles.inventory.map((file, idx) => (
-                    <div key={idx} className="text-sm text-gray-600 mb-1">
-                      • {file.name} ({new Date(file.date).toLocaleDateString()})
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Weekly Report */}
-          <div className="mb-6 border border-gray-200 rounded-lg p-4 bg-gray-50">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <h3 className="font-semibold text-lg">Weekly Inventory Report</h3>
-                <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>MONTHLY</span>
-              </div>
-            </div>
-            <p className="text-sm text-gray-600 mb-3">File Format: Weekly Inventory Report [M-DD-YYYY].xlsx</p>
-            <p className="text-sm text-gray-600 mb-3">Example: Weekly Inventory Report 9-17-2026.xlsx</p>
-            <div className="bg-blue-50 p-3 rounded mb-3">
-              <p className="text-sm font-medium">Requirements:</p>
-              <ul className="text-sm text-gray-700 mt-2">
-                <li>• File format: .xlsx or .xls</li>
-                <li>• Contains MOS calculations and trends</li>
-                <li>• Max file size: 50MB</li>
-              </ul>
-            </div>
-            <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700">
-              Choose File
-              <input type="file" accept=".xlsx,.xls" onChange={(e) => handleFileSelect('weekly', e)} className="hidden" />
-            </label>
-            {uploadedFiles.weekly.length > 0 && (
-              <div className="mt-3">
-                <p className="text-green-700 font-semibold">✓ {uploadedFiles.weekly.length} file(s) uploaded</p>
-                <div className="mt-2">
-                  {uploadedFiles.weekly.map((file, idx) => (
-                    <div key={idx} className="text-sm text-gray-600 mb-1">
-                      • {file.name} ({new Date(file.date).toLocaleDateString()})
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* PO & Receiving Log */}
-          <div className="mb-6 border border-gray-200 rounded-lg p-4 bg-gray-50">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <h3 className="font-semibold text-lg">PO & Receiving Log</h3>
-                <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a4d2e', color: 'white' }}>WEEKLY</span>
-              </div>
-            </div>
-            <p className="text-sm text-gray-600 mb-3">File Format: PO tracking and receiving data</p>
-            <div className="bg-blue-50 p-3 rounded mb-3">
-              <p className="text-sm font-medium">Requirements:</p>
-              <ul className="text-sm text-gray-700 mt-2">
-                <li>• File format: .xlsx or .xls</li>
-                <li>• Contains order and receiving status</li>
-                <li>• Max file size: 50MB</li>
-              </ul>
-            </div>
-            <label className="inline-block bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700">
-              Choose File
-              <input type="file" accept=".xlsx,.xls" onChange={(e) => handleFileSelect('po', e)} className="hidden" />
-            </label>
-            {uploadedFiles.po.length > 0 && (
-              <div className="mt-3">
-                <p className="text-green-700 font-semibold">✓ {uploadedFiles.po.length} file(s) uploaded</p>
-                <div className="mt-2">
-                  {uploadedFiles.po.map((file, idx) => (
-                    <div key={idx} className="text-sm text-gray-600 mb-1">
-                      • {file.name} ({new Date(file.date).toLocaleDateString()})
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+        <div style={{ marginBottom: '3rem' }}>
+          <h1 style={{ fontSize: '32px', fontWeight: 700, color: '#1b2817', margin: '0 0 0.5rem 0' }}>
+            Upload Your Data
+          </h1>
+          <p style={{ fontSize: '16px', color: '#666', margin: 0 }}>
+            Keep your inventory alerts fresh by uploading your latest data files.
+          </p>
         </div>
 
-        {/* Generate Alerts Section */}
-        <div className="bg-white rounded-lg p-6 border border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Generate Alerts</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Select Factory</label>
-              <select 
-                value={selectedFactory} 
-                onChange={(e) => setSelectedFactory(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded"
-              >
-                {Object.keys(factories).map(factory => (
-                  <option key={factory} value={factory}>{factory}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <button 
-            onClick={handleCheckAlerts}
-            className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 font-medium mr-3"
+        {/* UPLOAD ACCORDION SECTIONS */}
+        <div style={{ marginBottom: '3rem' }}>
+          <UploadAccordion
+            id="csv"
+            title="Inventory Snapshot"
+            emoji="📄"
+            badge={{ text: 'WEEKLY', color: '#c41e3a' }}
+            isExpanded={expandedUpload === 'csv'}
+            onToggle={() => setExpandedUpload(expandedUpload === 'csv' ? null : 'csv')}
+            statusMessage={uploadStatus}
           >
-            Check Alerts
-          </button>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>File Format</h3>
+              <code style={{ background: '#f5f5f5', padding: '0.5rem 0.75rem', borderRadius: '4px', fontSize: '13px', color: '#333', display: 'block' }}>
+                BeneBone Inventory Snapshot [DATE].csv
+              </code>
+              <p style={{ fontSize: '13px', color: '#666', margin: '0.5rem 0 0 0' }}>
+                Example: <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '2px' }}>BeneBone Inventory Snapshot 20260917.csv</code>
+              </p>
+            </div>
 
-          {alertData && (
-            <button 
-              onClick={handleGenerateWord}
-              disabled={generatingWord}
-              className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 font-medium"
-            >
-              {generatingWord ? 'Generating...' : 'Download Word'}
-            </button>
-          )}
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Requirements</h3>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '13px', color: '#666', lineHeight: 1.8 }}>
+                <li>File format: <strong>.csv</strong></li>
+                <li>Contains all <strong>782 SKUs</strong></li>
+                <li>Columns: SKU, OnHand, Available, Avg Monthly Sales, etc.</li>
+              </ul>
+            </div>
 
-          {alertData && (
-            <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded">
-              <p className="text-green-800 font-semibold">✓ {alertData.count} SKUs below MOS threshold</p>
-              <div className="mt-4">
-                <h4 className="font-semibold mb-2">Email Recipients for {selectedFactory}:</h4>
-                <div className="text-sm">
-                  <p><strong>To:</strong> {factories[selectedFactory].recipients.join(', ')}</p>
-                  <p><strong>CC:</strong> {factories[selectedFactory].ccList.join(', ')}</p>
-                </div>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Upload</h3>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+                <input
+                  id="csvInput"
+                  type="file"
+                  accept=".csv"
+                  onChange={handleFileSelect}
+                  style={{ fontSize: '13px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
+                />
+                <button
+                  onClick={handleUpload}
+                  disabled={uploading || !csvFile}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.875rem 1.2rem',
+                    minHeight: '44px',
+                    background: uploading || !csvFile ? '#ccc' : '#1b4d3e',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    cursor: uploading || !csvFile ? 'not-allowed' : 'pointer',
+                    opacity: uploading || !csvFile ? 0.5 : 1
+                  }}
+                >
+                  {uploading ? <Loader size={14} /> : <Upload size={14} />}
+                  {uploading ? 'Uploading...' : 'Upload CSV'}
+                </button>
               </div>
             </div>
-          )}
+          </UploadAccordion>
 
-          {dataMismatches.length > 0 && (
-            <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded">
-              <p className="text-yellow-800 font-semibold">⚠️ DATA QUALITY ISSUES DETECTED</p>
-              <div className="mt-2 text-sm">
-                {dataMismatches.map((mismatch, idx) => (
-                  <p key={idx} className="text-yellow-700">• {mismatch.message}</p>
-                ))}
-              </div>
-              <p className="mt-2 text-sm text-yellow-700">Please review and correct the data before proceeding.</p>
+          <UploadAccordion
+            id="report"
+            title="Weekly Inventory Report"
+            emoji="📈"
+            badge={{ text: 'MONTHLY', color: '#1976d2' }}
+            isExpanded={expandedUpload === 'report'}
+            onToggle={() => setExpandedUpload(expandedUpload === 'report' ? null : 'report')}
+            statusMessage={reportStatus}
+          >
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>File Format</h3>
+              <code style={{ background: '#f5f5f5', padding: '0.5rem 0.75rem', borderRadius: '4px', fontSize: '13px', color: '#333', display: 'block' }}>
+                Weekly Inventory Report [M-DD-YYYY].xlsx
+              </code>
+              <p style={{ fontSize: '13px', color: '#666', margin: '0.5rem 0 0 0' }}>
+                Example: <code style={{ background: '#f5f5f5', padding: '2px 4px', borderRadius: '2px' }}>Weekly Inventory Report 9-17-2026.xlsx</code>
+              </p>
             </div>
-          )}
 
-          {historicalData.length > 0 && (
-            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded">
-              <h4 className="font-semibold mb-3">Historical Data ({historicalData.length} records)</h4>
-              <div className="text-sm max-h-32 overflow-y-auto">
-                {historicalData.slice(0, 5).map((record, idx) => (
-                  <div key={idx} className="py-1 text-blue-700">
-                    {new Date(record.date).toLocaleDateString()} - {record.factory}: {record.alertCount} alerts
-                  </div>
-                ))}
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Requirements</h3>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '13px', color: '#666', lineHeight: 1.8 }}>
+                <li>File format: <strong>.xlsx or .xls</strong></li>
+                <li>Contains MOS calculations and trends</li>
+                <li>File size: Max <strong>50MB</strong></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Upload</h3>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+                <input
+                  id="reportInput"
+                  type="file"
+                  accept=".xlsx,.xls"
+                  onChange={handleReportUpload}
+                  style={{ fontSize: '13px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
+                />
+                <button
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.875rem 1.2rem',
+                    minHeight: '44px',
+                    background: '#1b4d3e',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  }}
+                >
+                  <Upload size={14} />
+                  Upload Report
+                </button>
               </div>
             </div>
-          )}
+          </UploadAccordion>
+
+          <UploadAccordion
+            id="po"
+            title="PO & Receiving Log"
+            emoji="📦"
+            badge={{ text: 'WEEKLY', color: '#1976d2' }}
+            isExpanded={expandedUpload === 'po'}
+            onToggle={() => setExpandedUpload(expandedUpload === 'po' ? null : 'po')}
+            statusMessage={poStatus}
+          >
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>File Format</h3>
+              <code style={{ background: '#f5f5f5', padding: '0.5rem 0.75rem', borderRadius: '4px', fontSize: '13px', color: '#333', display: 'block' }}>
+                PO & Receiving Log.xlsm
+              </code>
+            </div>
+
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Requirements</h3>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '13px', color: '#666', lineHeight: 1.8 }}>
+                <li>File format: <strong>.xlsm or .xlsx</strong></li>
+                <li>Contains PO data, receiving status, lead times</li>
+                <li>File size: Max <strong>50MB</strong></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#1b2817', margin: '0 0 0.5rem 0' }}>Upload</h3>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+                <input
+                  id="poInput"
+                  type="file"
+                  accept=".xlsm,.xlsx"
+                  onChange={handlePoUpload}
+                  style={{ fontSize: '13px', padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '6px' }}
+                />
+                <button
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.875rem 1.2rem',
+                    minHeight: '44px',
+                    background: '#1b4d3e',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  }}
+                >
+                  <Upload size={14} />
+                  Upload PO Log
+                </button>
+              </div>
+            </div>
+          </UploadAccordion>
         </div>
+
+        {/* Alert Controls */}
+        <div style={{ marginBottom: '2rem', background: '#f9fafb', padding: '1.5rem', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+          <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1b2817', margin: '0 0 1rem 0' }}>Generate Alerts</h2>
+
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#333', marginBottom: '0.5rem' }}>
+              Select Factory
+            </label>
+            <select
+              value={selectedFactory}
+              onChange={(e) => {
+                setSelectedFactory(e.target.value)
+                setAlertData(null)
+              }}
+              style={{ width: '100%', maxWidth: '300px', padding: '0.75rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontSize: '13px', fontFamily: 'inherit' }}
+            >
+              {factories.map(f => (<option key={f} value={f}>{f}</option>))}
+            </select>
+          </div>
+
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <button onClick={handleCheckDataQuality} disabled={qualityLoading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#6b7280', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: qualityLoading ? 'not-allowed' : 'pointer', opacity: qualityLoading ? 0.6 : 1 }}>
+              {qualityLoading ? <Loader size={14} /> : <span>🔍</span>}
+              {qualityLoading ? 'Checking...' : 'Data Quality'}
+            </button>
+
+            <button onClick={handleCheckAlerts} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.6 : 1 }}>
+              {loading ? <Loader size={14} /> : <span>📊</span>}
+              {loading ? 'Checking...' : 'Check Alerts'}
+            </button>
+
+            <button onClick={handleDownloadWord} disabled={loading || alertCount === 0} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#1b4d3e', color: 'white', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: loading || alertCount === 0 ? 'not-allowed' : 'pointer', opacity: loading || alertCount === 0 ? 0.6 : 1 }}>
+              <Download size={14} />
+              {loading ? 'Generating...' : 'Download Word'}
+            </button>
+            
+            <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.875rem 1rem', minHeight: '44px', background: '#ccc', color: '#666', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: 'not-allowed', opacity: 0.5 }}>
+              <Mail size={14} />
+              Send (Phase 2)
+            </button>
+          </div>
+        </div>
+
+        {/* Alert Results */}
+        {alertData && (
+          <div style={{ background: 'white', borderRadius: '8px', border: '1px solid #e5e7eb', overflow: 'hidden' }}>
+            <div style={{ padding: '1.5rem', borderBottom: '1px solid #e5e7eb', background: '#f9fafb' }}>
+              <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1b2817', margin: '0 0 0.5rem 0' }}>
+                Weekly Alert - {selectedFactory}
+              </h2>
+              <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>
+                Generated: {new Date().toLocaleString()}
+              </p>
+            </div>
+
+            <div style={{ padding: '1.5rem' }}>
+              <p style={{ fontSize: '12px', color: '#333', margin: '0 0 0.5rem 0' }}>
+                <strong>To:</strong> {recipients.to.join(', ')}
+              </p>
+              <p style={{ fontSize: '12px', color: '#333', margin: '0 0 1rem 0' }}>
+                <strong>CC:</strong> {recipients.cc.join(', ')}
+              </p>
+              <p style={{ fontSize: '12px', color: '#666', margin: '0 0 1.5rem 0' }}>
+                <strong>SKUs on Alert (MOS ≤ {alertData.threshold}):</strong> {alertCount}
+              </p>
+            </div>
+
+            {alertCount === 0 ? (
+              <div style={{ padding: '1.5rem', borderTop: '1px solid #e5e7eb', background: '#f9fafb' }}>
+                <p style={{ fontSize: '13px', fontWeight: 600, color: '#1b2817', margin: 0 }}>No SKUs are on alert this week.</p>
+              </div>
+            ) : (
+              <div style={{ overflowX: 'auto', borderTop: '1px solid #e5e7eb' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
+                  <thead>
+                    <tr style={{ background: '#f3f4f6' }}>
+                      {columns.map(col => (
+                        <th key={col} style={{ padding: '0.75rem', textAlign: 'left', fontWeight: 600, color: '#1b2817', borderBottom: '1px solid #e5e7eb' }}>
+                          {col}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {alertData.skus.map((sku, i) => {
+                      const rowData = getRowData(sku, selectedFactory)
+                      return (
+                        <tr key={i} style={{ background: i % 2 === 0 ? 'white' : '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
+                          {rowData.map((val, j) => (
+                            <td key={j} style={{ padding: '0.75rem', color: '#666' }}>
+                              {j === 0 ? <strong>{val}</strong> : val}
+                            </td>
+                          ))}
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* MINIMAL SLEEK FOOTER - PROFESSIONAL & SUBTLE */}
+        <footer style={{ 
+          marginTop: '3rem',
+          paddingTop: '2rem',
+          paddingBottom: '2rem',
+          borderTop: '1px solid #e5e7eb',
+          background: '#ffffff',
+          textAlign: 'center'
+        }}>
+          <div style={{ fontSize: '12px', color: '#6b7280', lineHeight: 1.6 }}>
+            <p style={{ margin: '0 0 0.5rem 0' }}>
+              Data Protection: Your inventory data is processed for alert generation only and automatically deleted within 24 hours.
+            </p>
+            <p style={{ margin: '0 0 0.5rem 0' }}>
+              <details style={{ display: 'inline', cursor: 'pointer' }}>
+                <summary style={{ color: '#374151', fontWeight: 500, textDecoration: 'underline' }}>
+                  Privacy & GDPR
+                </summary>
+                <div style={{ marginTop: '1rem', textAlign: 'left', display: 'inline-block', fontSize: '11px', color: '#6b7280' }}>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Data Controller:</strong> Ascend AI Innovations</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Legal Basis:</strong> Legitimate interest (Article 6)</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Recipients:</strong> Vercel (hosting), email recipients</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Retention:</strong> Deleted within 24 hours</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Your Rights:</strong> Access, correction, deletion, portability (Articles 15-22)</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Complaint:</strong> <a href="mailto:privacy@ascendaiinnovations.com" style={{ color: '#374151', textDecoration: 'underline' }}>privacy@ascendaiinnovations.com</a></p>
+                </div>
+              </details>
+            </p>
+            <p style={{ margin: '0 0 0.5rem 0' }}>
+              © 2026 Benebone & Ascend AI Innovations
+            </p>
+          </div>
+        </footer>
       </div>
     </div>
-  );
+  )
 }
